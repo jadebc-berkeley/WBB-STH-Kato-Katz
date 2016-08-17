@@ -83,4 +83,6 @@ drop _m
 
 order dataid personid tr
 
+save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
+
 log close
