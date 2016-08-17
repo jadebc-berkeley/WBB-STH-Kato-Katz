@@ -19,7 +19,7 @@ set more off
 *--------------------------------------------
 use "/Users/jadederong/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
 
-* merge in block
+* merge in tr assignment
 merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
 drop _m
 
@@ -156,13 +156,18 @@ foreach var of varlist dataid EEenrolled enroll* list* status need_* sex* done_*
 
 keep dataid status enroll*
 
+* merge in tr assignment
+merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+drop if _m==1
+drop _m
+
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv", replace comma
 
 
 *--------------------------------------------
 * Has sample T1, O1, C1
 *--------------------------------------------
-use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta", clear
+use "~/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta", clear
 
 * drop spillover children
 drop if personid=="S1"
@@ -170,6 +175,13 @@ drop if personid=="S1"
 destring original*, replace
 
 drop if originalAL==. & originalTT==. & originalHW==.
+collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
+
+* merge in tr assignment
+merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+drop if _m==2
+drop _m
+
 
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_kk.csv", replace comma
 

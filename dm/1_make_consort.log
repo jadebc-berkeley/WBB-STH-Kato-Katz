@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  16 Aug 2016, 17:51:30
+ opened on:  16 Aug 2016, 17:55:00
 
 . 
 . *********************************************
@@ -28,7 +28,7 @@
 > rvey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
 
 . 
-. * merge in block
+. * merge in tr assignment
 . merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
 > -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
 
@@ -305,6 +305,25 @@ delimiter now cr
 . keep dataid status enroll*
 
 . 
+. * merge in tr assignment
+. merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
+> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                           209
+        from master                       209  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             5,551  (_merge==3)
+    -----------------------------------------
+
+. drop if _m==1
+(209 observations deleted)
+
+. drop _m
+
+. 
 . outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.
 > csv", replace comma
 
@@ -313,8 +332,7 @@ delimiter now cr
 . *--------------------------------------------
 . * Has sample T1, O1, C1
 . *--------------------------------------------
-. use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta"
-> , clear
+. use "~/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta", clear
 
 . 
 . * drop spillover children
@@ -332,6 +350,28 @@ originalHW has all characters numeric; replaced as int
 . drop if originalAL==. & originalTT==. & originalHW==.
 (0 observations deleted)
 
+. collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
+
+. 
+. * merge in tr assignment
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
+> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         1,643
+        from master                         0  (_merge==1)
+        from using                      1,643  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. drop if _m==2
+(1,643 observations deleted)
+
+. drop _m
+
+. 
 . 
 . outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_kk.csv", re
 > place comma
@@ -342,5 +382,5 @@ originalHW has all characters numeric; replaced as int
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- closed on:  16 Aug 2016, 17:51:34
+ closed on:  16 Aug 2016, 17:55:03
 ---------------------------------------------------------------------------------
