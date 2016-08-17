@@ -3,13 +3,14 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  16 Aug 2016, 17:33:22
+ opened on:  16 Aug 2016, 17:35:27
 
 . 
 . *********************************************
-. * WASH Benefits Kenya
+. * WASH Benefits Bangladesh
+. * STH Kato-Katz analysis
 . 
-. * Make analysis dataset: diarrhea
+. * Make analysis dataset
 . 
 . * by Jade
 . *********************************************
@@ -170,5 +171,5 @@ originalHW has all characters numeric; replaced as int
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  16 Aug 2016, 17:33:22
+ closed on:  16 Aug 2016, 17:35:27
 ---------------------------------------------------------------------------------

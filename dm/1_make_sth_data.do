@@ -2,9 +2,10 @@ capture log close
 log using "~/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_sth_data.log", replace
 
 *********************************************
-* WASH Benefits Kenya
+* WASH Benefits Bangladesh
+* STH Kato-Katz analysis
 
-* Make analysis dataset: diarrhea
+* Make analysis dataset
 
 * by Jade
 *********************************************
