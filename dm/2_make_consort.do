@@ -161,6 +161,24 @@ merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-
 drop if _m==1
 drop _m
 
+* convert from rows for compounds to rows for individuals
+ren enrollT1 enroll1
+ren enrollT2 enroll2
+ren enrollC1 enroll3
+ren enrollO1 enroll4
+ren enrollA1 enroll5 
+
+reshape long enroll, i(dataid tr status) j(person)
+format %8s enroll
+
+gen str personid="T1" if person==1
+replace personid="T2" if person==2
+replace personid="C1" if person==3
+replace personid="O1" if person==4
+replace personid="A1" if person==5
+
+drop person
+
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv", replace comma
 
 
