@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  16 Aug 2016, 17:55:00
+ opened on:  17 Aug 2016, 08:18:11
 
 . 
 . *********************************************
@@ -324,6 +324,56 @@ delimiter now cr
 . drop _m
 
 . 
+. * convert from rows for compounds to rows for individuals
+. ren enrollT1 enroll1
+
+. ren enrollT2 enroll2
+
+. ren enrollC1 enroll3
+
+. ren enrollO1 enroll4
+
+. ren enrollA1 enroll5 
+
+. 
+. reshape long enroll, i(dataid tr status) j(person)
+(note: j = 1 2 3 4 5)
+
+Data                               wide   ->   long
+-----------------------------------------------------------------------------
+Number of obs.                     5551   ->   27755
+Number of variables                   8   ->       5
+j variable (5 values)                     ->   person
+xij variables:
+            enroll1 enroll2 ... enroll5   ->   enroll
+-----------------------------------------------------------------------------
+
+. format %8s enroll
+
+. 
+. gen str personid="T1" if person==1
+(22,204 missing values generated)
+
+. replace personid="T2" if person==2
+(5,551 real changes made)
+
+. replace personid="C1" if person==3
+(5,551 real changes made)
+
+. replace personid="O1" if person==4
+(5,551 real changes made)
+
+. replace personid="A1" if person==5
+(5,551 real changes made)
+
+. 
+. drop person
+
+. 
+. replace enroll="EW" if enroll==" EW"
+(1 real change made)
+
+. 
 . outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.
 > csv", replace comma
 
@@ -382,5 +432,5 @@ originalHW has all characters numeric; replaced as int
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- closed on:  16 Aug 2016, 17:55:03
+ closed on:  17 Aug 2016, 08:18:16
 ---------------------------------------------------------------------------------

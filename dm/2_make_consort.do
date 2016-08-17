@@ -179,6 +179,8 @@ replace personid="A1" if person==5
 
 drop person
 
+replace enroll="EW" if enroll==" EW"
+
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv", replace comma
 
 
