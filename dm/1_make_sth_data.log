@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  16 Aug 2016, 17:38:07
+ opened on:  16 Aug 2016, 17:51:29
 
 . 
 . *********************************************
@@ -167,8 +167,6 @@ originalHW has all characters numeric; replaced as int
 
 . 
 . save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
-(note: file /Users/jadederong/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta n
-> ot found)
 file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
 
 . 
@@ -177,5 +175,5 @@ file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  16 Aug 2016, 17:38:07
+ closed on:  16 Aug 2016, 17:51:29
 ---------------------------------------------------------------------------------
