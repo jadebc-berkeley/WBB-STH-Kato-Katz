@@ -40,9 +40,14 @@ rownames(compound_lost_j)=c("Compounds lost","Moved","Absent","Withdrew","No liv
 # ---------------------------------------------
 # Compounds at year 2 in STH analysis
 # ---------------------------------------------
-kk.comp.tab=table(kk$dataid,kk$tr)
-kk.comp.tab[kk.comp.tab>1]=1
-CompoundsSTH=colSums(kk.comp.tab)
+sth.comp.tab=table(enr$dataid[enr$hhstatus=="E"],enr$tr[enr$hhstatus=="E"])
+sth.comp.tab[sth.comp.tab>1]=1
+CompoundsSTH=colSums(sth.comp.tab)
+
+# kk.comp.tab=table(kk$dataid,kk$tr)
+# kk.comp.tab[kk.comp.tab>1]=1
+# CompoundsSTH=colSums(kk.comp.tab)
+
 
 # ---------------------------------------------
 # Has sample T1, O1, C1
