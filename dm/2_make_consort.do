@@ -17,11 +17,21 @@ set more off
 * Follow-up at year 2 
 * (compounds lost, moved, absent, withdrew, no LB, child death)
 *--------------------------------------------
-use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
+
+keep dataid hhstatus 
+
+duplicates drop 
 
 * merge in tr assignment
-merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+drop if _m==1
 drop _m
+
+* get info on hh's with "L" enroll code
+* from main trial source
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
 
 * dropped out at midline or endline
 gen dropout=0
@@ -80,10 +90,15 @@ replace cdeath=1 if reason=="CHILD DEATH"
 replace cdeath=. if reason==""
 replace cdeath=0 if dropout==0
 
-* primary analysis hhs ------------
+keep dataid nolb withdrew moved absent cdeath
 
+tempfile svydropout
+save `svydropout'
 
-keep dataid tr nolb withdrew moved cdeath dropout reason absent
+restore
+
+merge 1:1 dataid using `svydropout'
+drop _m
 
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv", replace comma
 
@@ -91,7 +106,7 @@ outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv
 *--------------------------------------------
 * Enrolled T1, O1, C1
 *--------------------------------------------
-use "/Users/jadederong/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
 
 keep dataid personid hhstatus enroll*
 
