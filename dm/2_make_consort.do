@@ -17,7 +17,7 @@ set more off
 * Follow-up at year 2 
 * (compounds lost, moved, absent, withdrew, no LB, child death)
 *--------------------------------------------
-use "/Users/jadederong/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
 
 * merge in tr assignment
 merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
@@ -91,95 +91,16 @@ outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv
 *--------------------------------------------
 * Enrolled T1, O1, C1
 *--------------------------------------------
-import excel using "~/Dropbox/WASHB-PSTH/Field tracking/1_Day 1 data/Untouched/WASHB-PSTH-Day1-Field-tracking.xlsx", sheet("Day1") clear
-drop if _n==1 | _n==2 | _n==3
+use "/Users/jadederong/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
 
-ren A dataid
-ren B clusterid
-ren C motherid
-ren D arm
-ren E EEtarget
-ren F status
-ren G EEenrolled
-ren H FRAname
-ren I day1_v1_day
-ren J day1_v1_month
-ren K day1_v1_year
-ren L day1_v2_day
-ren M day1_v2_month
-ren N day1_v2_year
-ren O day1_v3_day
-ren P day1_v3_month
-ren Q day1_v3_year
-ren R need_water
-ren S need_handrinse
-ren T need_food
-ren U need_toyball
-ren V need_flytape
-ren W need_soil
-ren X done_water
-ren Y done_waterblank
-ren Z done_childhandrinse
-ren AA done_handblank
-ren AB done_foodcollected
-ren AC done_foodduplicate
-ren AD done_toyball
-ren AE done_flytape
-ren AF done_soil
-ren AG listT1
-ren AH listT2
-ren AI listC1
-ren AJ enrollT1
-ren AK enrollT2
-ren AL enrollC1
-ren AM enrollO1
-ren AN enrollA1
-ren AO nameT1
-ren AP sexT1
-ren AQ nameT2
-ren AR sexT2
-ren AS nameC1
-ren AT sexC1
-ren AU nameO1
-ren AV sexO1
-ren AW nameA1
-ren AX sexA1
-ren AY dw_compound
-ren AZ dw_preg
-ren BA dw_1_2y
-ren BB dw_under12m
+keep dataid personid hhstatus enroll*
 
-* reformat long string variables
-foreach var of varlist dataid EEenrolled enroll* list* status need_* sex* done_* dw_* {
-	format %8s `var'
-}
-
-keep dataid status enroll*
+duplicates drop 
 
 * merge in tr assignment
-merge 1:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
 drop if _m==1
 drop _m
-
-* convert from rows for compounds to rows for individuals
-ren enrollT1 enroll1
-ren enrollT2 enroll2
-ren enrollC1 enroll3
-ren enrollO1 enroll4
-ren enrollA1 enroll5 
-
-reshape long enroll, i(dataid tr status) j(person)
-format %8s enroll
-
-gen str personid="T1" if person==1
-replace personid="T2" if person==2
-replace personid="C1" if person==3
-replace personid="O1" if person==4
-replace personid="A1" if person==5
-
-drop person
-
-replace enroll="EW" if enroll==" EW"
 
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv", replace comma
 
