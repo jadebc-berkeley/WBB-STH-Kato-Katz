@@ -13,6 +13,16 @@ wd=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv")
 enr=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv")
 kk=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_kk.csv")
 
+# reorder tr labels
+reord=function(x){
+  x$tr=factor(x$tr,levels(x$tr)[c(1,6,5,2,7,3,4)])
+  return(x)
+}
+
+wd=reord(wd)
+enr=reord(enr)
+kk=reord(kk)
+
 # ---------------------------------------------
 # Follow-up at year 2 
 # (compounds lost, moved, absent, withdrew, no LB, child death)
@@ -54,14 +64,11 @@ rownames(kk.samp)=c("T1/T2 has sample","C1 has sample","O1 has sample")
 # and STH add on
 # EWSB = same as above but blood refusal 
 # ---------------------------------------------
-enr.T12=table(enr$tr[(enr$enroll=="EWS"|enr$enroll=="EWSB") & 
-    (enr$personid=="T1" | enr$personid=="T2")])
+enr.T12=table(enr$tr[enr$enroll=="E" & (enr$personid=="T1" | enr$personid=="T2")])
 
-enr.C1=table(enr$tr[(enr$enroll=="EWS"|enr$enroll=="EWSB"|enr$enroll=="EW"|
-    enr$enroll=="EWB") & enr$personid=="C1"])
+enr.C1=table(enr$tr[enr$enroll=="E" & enr$personid=="C1"])
 
-enr.O1=table(enr$tr[(enr$enroll=="EWS"|enr$enroll=="EWSB"|enr$enroll=="EW"|
-    enr$enroll=="EWB") & enr$personid=="O1"])
+enr.O1=table(enr$tr[enr$enroll=="E" & enr$personid=="O1"])
 
 enr.all=rbind(enr.T12,enr.C1,enr.O1)
 rownames(enr.all)=c("T1/T2 Enrolled","C1 Enrolled","O1 Enrolled")
@@ -73,4 +80,4 @@ flowchart_j=rbind(compound_lost_j,CompoundsSTH,enr.all,kk.samp)
 
 flowchart_j
 
-save(flowchart_j,file="~/Dropbox/WASH Benefits/Bangladesh/STH/Results/flowchart.RData")
+save(flowchart_j,file="~/Dropbox/WASHB Parasites/Results/Jade/flowchart.RData")
