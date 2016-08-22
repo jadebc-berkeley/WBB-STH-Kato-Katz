@@ -100,6 +100,23 @@ restore
 merge 1:1 dataid using `svydropout'
 drop _m
 
+gen sthmoved=0
+replace sthmoved=1 if hhstatus=="M" | (moved==1 & hhstatus=="L")
+
+gen sthabsent=0
+replace sthabsent=1 if hhstatus=="A" | (absent==1 & hhstatus=="L")
+
+gen sthnolb=0
+replace sthnolb=1 if nolb==1
+
+gen sthwd=0
+replace sthwd=1 if hhstatus=="R" | (hhstatus=="L" & withdrew==1)
+
+gen sthcd=0
+replace sthcd=1 if hhstatus=="D" | cdeath==1
+
+drop nolb withdrew moved absent cdeath
+
 outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv", replace comma
 
 

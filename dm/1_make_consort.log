@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  19 Aug 2016, 16:05:17
+ opened on:  22 Aug 2016, 09:18:39
 
 . 
 . *********************************************
@@ -212,104 +212,117 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_10929.000002 saved
 . drop _m
 
 . 
-. outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.cs
-> v", replace comma
+. gen sthmoved=0
+
+. replace sthmoved=1 if hhstatus=="M" | (moved==1 & hhstatus=="L")
+(373 real changes made)
 
 . 
-. 
-. *--------------------------------------------
-. * Enrolled T1, O1, C1
-. *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P
-> -sckk-fieldtrack.dta", clear
+. gen sthabsent=0
+
+. replace sthabsent=1 if hhstatus=="A" | (absent==1 & hhstatus=="L")
+(181 real changes made)
 
 . 
-. keep dataid personid hhstatus enroll*
+. gen sthnolb=0
+
+. replace sthnolb=1 if nolb==1
+(361 real changes made)
 
 . 
-. duplicates drop 
+. gen sthwd=0
 
-Duplicates in terms of all variables
-
-(7,187 observations deleted)
-
-. 
-. * merge in tr assignment
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
-> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                           836
-        from master                       836  (_merge==1)
-        from using                          0  (_merge==2)
-
-    matched                            13,664  (_merge==3)
-    -----------------------------------------
-
-. drop if _m==1
-(836 observations deleted)
-
-. drop _m
+. replace sthwd=1 if hhstatus=="R" | (hhstatus=="L" & withdrew==1)
+(296 real changes made)
 
 . 
-. outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.
-> csv", replace comma
+. gen sthcd=0
 
-. 
-. 
-. *--------------------------------------------
-. * Has sample T1, O1, C1
-. *--------------------------------------------
-. use "~/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta", clear
+. replace sthcd=1 if hhstatus=="D" | cdeath==1
+(237 real changes made)
 
-. 
-. * drop spillover children
-. drop if personid=="S1"
-(2,690 observations deleted)
+. stop
+command stop is unrecognized
+r(199);
 
-. 
-. destring original*, replace
-originalAL has all characters numeric; replaced as int
-(1 missing value generated)
-originalTT has all characters numeric; replaced as int
-originalHW has all characters numeric; replaced as int
+end of do-file
 
-. 
-. drop if originalAL==. & originalTT==. & originalHW==.
-(0 observations deleted)
+r(199);
 
-. collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
+. tab sthcd hhstatus
 
-. 
-. * merge in tr assignment
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
-> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+           |              Household enrollment status
+     sthcd |         A          D          E          L          M |     Total
+-----------+-------------------------------------------------------+----------
+         0 |       180          0      4,102        421        319 |     5,314 
+         1 |         0         40          0        196          1 |       237 
+-----------+-------------------------------------------------------+----------
+     Total |       180         40      4,102        617        320 |     5,551 
 
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                         1,643
-        from master                         0  (_merge==1)
-        from using                      1,643  (_merge==2)
 
-    matched                             7,187  (_merge==3)
-    -----------------------------------------
+           | Household
+           | enrollment
+           |   status
+     sthcd |         R |     Total
+-----------+-----------+----------
+         0 |       292 |     5,314 
+         1 |         0 |       237 
+-----------+-----------+----------
+     Total |       292 |     5,551 
 
-. drop if _m==2
-(1,643 observations deleted)
 
-. drop _m
+. tab hhstatus sthcd
 
-. 
-. 
-. outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_kk.csv", re
-> place comma
+ Household enrollment |         sthcd
+               status |         0          1 |     Total
+----------------------+----------------------+----------
+                    A |       180          0 |       180 
+                    D |         0         40 |        40 
+                    E |     4,102          0 |     4,102 
+                    L |       421        196 |       617 
+                    M |       319          1 |       320 
+                    R |       292          0 |       292 
+----------------------+----------------------+----------
+                Total |     5,314        237 |     5,551 
 
-. 
-. log close
-      name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
-> 1_make_consort.log
-  log type:  text
- closed on:  19 Aug 2016, 16:05:18
----------------------------------------------------------------------------------
+
+. tab hhstatus sthcd if cdeath==1
+
+ Household enrollment |   sthcd
+               status |         1 |     Total
+----------------------+-----------+----------
+                    D |        23 |        23 
+                    L |       196 |       196 
+                    M |         1 |         1 
+----------------------+-----------+----------
+                Total |       220 |       220 
+
+
+. tab hhstatus sthcd if cdeath==0
+
+ Household enrollment |         sthcd
+               status |         0          1 |     Total
+----------------------+----------------------+----------
+                    A |       180          0 |       180 
+                    D |         0         17 |        17 
+                    E |     4,102          0 |     4,102 
+                    L |       421          0 |       421 
+                    M |       319          0 |       319 
+                    R |       292          0 |       292 
+----------------------+----------------------+----------
+                Total |     5,314         17 |     5,331 
+
+
+. tab sthmoved moved
+
+           |         moved
+  sthmoved |         0          1 |     Total
+-----------+----------------------+----------
+         0 |     5,169          9 |     5,178 
+         1 |       273        100 |       373 
+-----------+----------------------+----------
+     Total |     5,442        109 |     5,551 
+
+
+. br if moved==1 & sthmoved==0
+
