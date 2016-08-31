@@ -81,8 +81,14 @@ merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-
 drop if _m==2
 drop _m
 
+* create variable for any sth infection
+gen sth=.
+replace sth=1 if al==1 | hw==1 | tt==1
+replace sth=0 if al==0 & hw==0 & tt==0
+
 order dataid personid tr
 
 save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
+outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.csv", replace comma
 
 log close

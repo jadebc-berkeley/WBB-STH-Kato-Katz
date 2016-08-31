@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  16 Aug 2016, 17:51:29
+ opened on:  31 Aug 2016, 12:10:17
 
 . 
 . *********************************************
@@ -163,11 +163,25 @@ originalHW has all characters numeric; replaced as int
 . drop _m
 
 . 
+. * create variable for any sth infection
+. gen sth=.
+(7,187 missing values generated)
+
+. replace sth=1 if al==1 | hw==1 | tt==1
+(3,045 real changes made)
+
+. replace sth=0 if al==0 & hw==0 & tt==0
+(4,142 real changes made)
+
+. 
 . order dataid personid tr
 
 . 
 . save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
 file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
+
+. outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.csv", replace c
+> omma
 
 . 
 . log close
@@ -175,5 +189,5 @@ file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  16 Aug 2016, 17:51:29
+ closed on:  31 Aug 2016, 12:10:18
 ---------------------------------------------------------------------------------

@@ -326,3 +326,7 @@ r(199);
 
 . br if moved==1 & sthmoved==0
 
+. do "/Users/jadederong/Documents/CRG/washb-spillover/primary/0_permute_tr.do"
+
+. 
+. capture log close
