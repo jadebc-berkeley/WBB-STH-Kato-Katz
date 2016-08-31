@@ -27,15 +27,27 @@ drop if personid=="S1"
 *--------------------------------------------
 destring original*, replace
 
-collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
+* convert long to wide for duplicate slides
+keep dataid labdate personid slide originalAL originalTT originalHW
+ren originalAL al
+ren originalTT tt
+ren originalHW hw
 
-ren originalAL alepg
-ren originalTT ttepg
-ren originalHW hwepg
+destring slide, replace
 
-gen al = (alepg>0)
-gen tt = (ttepg>0)
-gen hw = (hwepg>0)
+reshape wide al hw tt, i(dataid personid) j(slide)
+
+* eggs per gram of stool (EPG) =  sum of the two fecal egg counts
+* from duplicate Kato-Katz thick smears times 12
+* NOT SURE THIS IS RIGHT
+
+gen alepg = (al1 + al2)*12
+gen hwepg = (hw1 + hw2)*12
+gen ttepg = (tt1 + tt2)*12
+
+gen al = (al1>0 | al2>0)
+gen tt = (tt1>0 | tt2>0)
+gen hw = (hw1>0 | hw2>0)
 
 gen alint=0
 replace alint=1 if alepg>=1 & alepg<5000
@@ -85,6 +97,8 @@ label variable hwint "Any infection intensity"
 label variable almh "Moderate/heavy Ascaris infection"
 label variable ttmh "Moderate/heavy Trichuris infection"
 label variable hwmh "Moderate/heavy hookworm infection"
+
+drop al1 al2 tt1 tt2 hw1 hw2
 
 *--------------------------------------------
 * Merge with baseline covariates
