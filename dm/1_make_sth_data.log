@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  31 Aug 2016, 12:30:59
+ opened on:  31 Aug 2016, 12:34:55
 
 . 
 . *********************************************
@@ -110,6 +110,38 @@ originalHW has all characters numeric; replaced as int
 . label values alint ttint hwint intl
 
 . 
+. gen almh=0
+
+. replace almh=1 if alint==2 | alint==3
+(3 real changes made)
+
+. replace almh=. if alint==. 
+(0 real changes made)
+
+. 
+. gen ttmh=0
+
+. replace ttmh=1 if ttint==2 | ttint==3
+(0 real changes made)
+
+. replace ttmh=. if ttint==. 
+(0 real changes made)
+
+. 
+. gen hwmh=0
+
+. replace hwmh=1 if hwint==2 | hwint==3
+(0 real changes made)
+
+. replace hwmh=. if hwint==. 
+(0 real changes made)
+
+. 
+. label define mhl 0 "No/low intensity infection" 1 "Moderate/heavy infection"
+
+. label values almh ttmh hwmh mhl
+
+. 
 . label variable alepg "Ascaris eggs per gram"
 
 . label variable ttepg "Trichuris eggs per gram"
@@ -122,6 +154,20 @@ originalHW has all characters numeric; replaced as int
 . label variable tt "Any Trichuris eggs"
 
 . label variable hw "Any hookworm eggs"
+
+. 
+. label variable alint "Ascaris infection intensity"
+
+. label variable ttint "Any infection intensity"
+
+. label variable hwint "Any infection intensity"
+
+. 
+. label variable almh "Moderate/heavy Ascaris infection"
+
+. label variable ttmh "Moderate/heavy Trichuris infection"
+
+. label variable hwmh "Moderate/heavy hookworm infection"
 
 . 
 . *--------------------------------------------
@@ -196,5 +242,5 @@ file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  31 Aug 2016, 12:31:00
+ closed on:  31 Aug 2016, 12:34:57
 ---------------------------------------------------------------------------------

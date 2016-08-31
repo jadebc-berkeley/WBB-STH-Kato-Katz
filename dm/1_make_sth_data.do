@@ -58,6 +58,21 @@ replace hwint=. if hwepg==.
 label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "High intensity"
 label values alint ttint hwint intl
 
+gen almh=0
+replace almh=1 if alint==2 | alint==3
+replace almh=. if alint==. 
+
+gen ttmh=0
+replace ttmh=1 if ttint==2 | ttint==3
+replace ttmh=. if ttint==. 
+
+gen hwmh=0
+replace hwmh=1 if hwint==2 | hwint==3
+replace hwmh=. if hwint==. 
+
+label define mhl 0 "No/low intensity infection" 1 "Moderate/heavy infection"
+label values almh ttmh hwmh mhl
+
 label variable alepg "Ascaris eggs per gram"
 label variable ttepg "Trichuris eggs per gram"
 label variable hwepg "Hookworm eggs per gram"
@@ -65,6 +80,14 @@ label variable hwepg "Hookworm eggs per gram"
 label variable al "Any Ascaris eggs"
 label variable tt "Any Trichuris eggs"
 label variable hw "Any hookworm eggs"
+
+label variable alint "Ascaris infection intensity"
+label variable ttint "Any infection intensity"
+label variable hwint "Any infection intensity"
+
+label variable almh "Moderate/heavy Ascaris infection"
+label variable ttmh "Moderate/heavy Trichuris infection"
+label variable hwmh "Moderate/heavy hookworm infection"
 
 *--------------------------------------------
 * Merge with baseline covariates
