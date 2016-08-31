@@ -70,9 +70,6 @@ gen hwmh=0
 replace hwmh=1 if hwint==2 | hwint==3
 replace hwmh=. if hwint==. 
 
-label define mhl 0 "No/low intensity infection" 1 "Moderate/heavy infection"
-label values almh ttmh hwmh mhl
-
 label variable alepg "Ascaris eggs per gram"
 label variable ttepg "Trichuris eggs per gram"
 label variable hwepg "Hookworm eggs per gram"

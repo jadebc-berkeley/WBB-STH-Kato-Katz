@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  31 Aug 2016, 12:34:55
+ opened on:  31 Aug 2016, 12:37:44
 
 . 
 . *********************************************
@@ -137,11 +137,6 @@ originalHW has all characters numeric; replaced as int
 (0 real changes made)
 
 . 
-. label define mhl 0 "No/low intensity infection" 1 "Moderate/heavy infection"
-
-. label values almh ttmh hwmh mhl
-
-. 
 . label variable alepg "Ascaris eggs per gram"
 
 . label variable ttepg "Trichuris eggs per gram"
@@ -242,5 +237,5 @@ file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  31 Aug 2016, 12:34:57
+ closed on:  31 Aug 2016, 12:37:45
 ---------------------------------------------------------------------------------
