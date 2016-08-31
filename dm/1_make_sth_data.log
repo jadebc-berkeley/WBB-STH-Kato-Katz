@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  31 Aug 2016, 12:10:17
+ opened on:  31 Aug 2016, 12:30:59
 
 . 
 . *********************************************
@@ -59,8 +59,7 @@ originalHW has all characters numeric; replaced as int
 . gen hw = (hwepg>0)
 
 . 
-. gen alint=.
-(7,187 missing values generated)
+. gen alint=0
 
 . replace alint=1 if alepg>=1 & alepg<5000
 (2,617 real changes made)
@@ -71,9 +70,11 @@ originalHW has all characters numeric; replaced as int
 . replace alint=3 if alepg>=50000
 (0 real changes made)
 
+. replace alint=. if alepg==.
+(0 real changes made)
+
 . 
-. gen ttint=.
-(7,187 missing values generated)
+. gen ttint=0
 
 . replace ttint=1 if ttepg>=1 & ttepg<5000
 (501 real changes made)
@@ -84,9 +85,11 @@ originalHW has all characters numeric; replaced as int
 . replace ttint=3 if ttepg>=50000
 (0 real changes made)
 
+. replace ttint=. if ttepg==.
+(0 real changes made)
+
 . 
-. gen hwint=.
-(7,187 missing values generated)
+. gen hwint=0
 
 . replace hwint=1 if hwepg>=1 & hwepg<5000
 (553 real changes made)
@@ -97,8 +100,12 @@ originalHW has all characters numeric; replaced as int
 . replace hwint=3 if hwepg>=50000
 (0 real changes made)
 
+. replace hwint=. if hwepg==.
+(0 real changes made)
+
 . 
-. label define intl 1 "Low intensity" 2 "Moderate intensity" 3 "High intensity"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "
+> High intensity"
 
 . label values alint ttint hwint intl
 
@@ -189,5 +196,5 @@ file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  31 Aug 2016, 12:10:18
+ closed on:  31 Aug 2016, 12:31:00
 ---------------------------------------------------------------------------------

@@ -37,22 +37,25 @@ gen al = (alepg>0)
 gen tt = (ttepg>0)
 gen hw = (hwepg>0)
 
-gen alint=.
+gen alint=0
 replace alint=1 if alepg>=1 & alepg<5000
 replace alint=2 if alepg>=5000 & alepg<50000
 replace alint=3 if alepg>=50000
+replace alint=. if alepg==.
 
-gen ttint=.
+gen ttint=0
 replace ttint=1 if ttepg>=1 & ttepg<5000
 replace ttint=2 if ttepg>=5000 & ttepg<50000
 replace ttint=3 if ttepg>=50000
+replace ttint=. if ttepg==.
 
-gen hwint=.
+gen hwint=0
 replace hwint=1 if hwepg>=1 & hwepg<5000
 replace hwint=2 if hwepg>=5000 & hwepg<50000
 replace hwint=3 if hwepg>=50000
+replace hwint=. if hwepg==.
 
-label define intl 1 "Low intensity" 2 "Moderate intensity" 3 "High intensity"
+label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "High intensity"
 label values alint ttint hwint intl
 
 label variable alepg "Ascaris eggs per gram"
