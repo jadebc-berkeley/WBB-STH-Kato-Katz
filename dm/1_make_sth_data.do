@@ -39,7 +39,6 @@ reshape wide al hw tt, i(dataid personid) j(slide)
 
 * eggs per gram of stool (EPG) =  sum of the two fecal egg counts
 * from duplicate Kato-Katz thick smears times 12
-* NOT SURE THIS IS RIGHT
 
 gen alepg = (al1 + al2)*12
 gen hwepg = (hw1 + hw2)*12

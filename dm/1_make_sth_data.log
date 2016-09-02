@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  31 Aug 2016, 13:12:38
+ opened on:  31 Aug 2016, 13:20:17
 
 . 
 . *********************************************
@@ -42,8 +42,6 @@ originalTT has all characters numeric; replaced as int
 originalHW has all characters numeric; replaced as int
 
 . 
-. *collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
-. 
 . * convert long to wide for duplicate slides
 . keep dataid labdate personid slide originalAL originalTT originalHW
 
@@ -75,7 +73,6 @@ xij variables:
 . 
 . * eggs per gram of stool (EPG) =  sum of the two fecal egg counts
 . * from duplicate Kato-Katz thick smears times 12
-. * NOT SURE THIS IS RIGHT
 . 
 . gen alepg = (al1 + al2)*12
 (1 missing value generated)
@@ -91,38 +88,187 @@ xij variables:
 
 . gen hw = (hw1>0 | hw2>0)
 
-. stop
-command stop is unrecognized
-r(199);
+. 
+. gen alint=0
 
-end of do-file
+. replace alint=1 if alepg>=1 & alepg<5000
+(2,313 real changes made)
 
-r(199);
+. replace alint=2 if alepg>=5000 & alepg<50000
+(291 real changes made)
 
-. tab al
+. replace alint=3 if alepg>=50000
+(32 real changes made)
 
-         al |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |      4,551       63.32       63.32
-          1 |      2,636       36.68      100.00
-------------+-----------------------------------
-      Total |      7,187      100.00
+. replace alint=. if alepg==.
+(1 real change made, 1 to missing)
 
-. tab tt
+. 
+. gen ttint=0
 
-         tt |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |      6,685       93.02       93.02
-          1 |        502        6.98      100.00
-------------+-----------------------------------
-      Total |      7,187      100.00
+. replace ttint=1 if ttepg>=1 & ttepg<5000
+(499 real changes made)
 
-. tab hw
+. replace ttint=2 if ttepg>=5000 & ttepg<50000
+(3 real changes made)
 
-         hw |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |      6,633       92.29       92.29
-          1 |        554        7.71      100.00
-------------+-----------------------------------
-      Total |      7,187      100.00
+. replace ttint=3 if ttepg>=50000
+(0 real changes made)
 
+. replace ttint=. if ttepg==.
+(0 real changes made)
+
+. 
+. gen hwint=0
+
+. replace hwint=1 if hwepg>=1 & hwepg<5000
+(552 real changes made)
+
+. replace hwint=2 if hwepg>=5000 & hwepg<50000
+(2 real changes made)
+
+. replace hwint=3 if hwepg>=50000
+(0 real changes made)
+
+. replace hwint=. if hwepg==.
+(0 real changes made)
+
+. 
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "
+> High intensity"
+
+. label values alint ttint hwint intl
+
+. 
+. gen almh=0
+
+. replace almh=1 if alint==2 | alint==3
+(322 real changes made)
+
+. replace almh=. if alint==. 
+(1 real change made, 1 to missing)
+
+. 
+. gen ttmh=0
+
+. replace ttmh=1 if ttint==2 | ttint==3
+(3 real changes made)
+
+. replace ttmh=. if ttint==. 
+(0 real changes made)
+
+. 
+. gen hwmh=0
+
+. replace hwmh=1 if hwint==2 | hwint==3
+(2 real changes made)
+
+. replace hwmh=. if hwint==. 
+(0 real changes made)
+
+. 
+. label variable alepg "Ascaris eggs per gram"
+
+. label variable ttepg "Trichuris eggs per gram"
+
+. label variable hwepg "Hookworm eggs per gram"
+
+. 
+. label variable al "Any Ascaris eggs"
+
+. label variable tt "Any Trichuris eggs"
+
+. label variable hw "Any hookworm eggs"
+
+. 
+. label variable alint "Ascaris infection intensity"
+
+. label variable ttint "Any infection intensity"
+
+. label variable hwint "Any infection intensity"
+
+. 
+. label variable almh "Moderate/heavy Ascaris infection"
+
+. label variable ttmh "Moderate/heavy Trichuris infection"
+
+. label variable hwmh "Moderate/heavy hookworm infection"
+
+. 
+. drop al1 al2 tt1 tt2 hw1 hw2
+
+. 
+. *--------------------------------------------
+. * Merge with baseline covariates
+. *--------------------------------------------
+. * CHANGE THIS directory later
+. merge m:1 dataid using "~/Dropbox/WASHB Parasites/Temp Data/primary/washb-bangl
+> adesh-hbgdki-enrol.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         1,643
+        from master                         0  (_merge==1)
+        from using                      1,643  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. 
+. * drop if no KK data
+. drop if _m==2
+(1,643 observations deleted)
+
+. drop _m
+
+. 
+. *--------------------------------------------
+. * Merge in treatment assignment
+. *--------------------------------------------
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
+> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         1,643
+        from master                         0  (_merge==1)
+        from using                      1,643  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. * drop if no KK data
+. drop if _m==2
+(1,643 observations deleted)
+
+. drop _m
+
+. 
+. * create variable for any sth infection
+. gen sth=.
+(7,187 missing values generated)
+
+. replace sth=1 if al==1 | hw==1 | tt==1
+(3,046 real changes made)
+
+. replace sth=0 if al==0 & hw==0 & tt==0
+(4,141 real changes made)
+
+. 
+. order dataid personid tr
+
+. 
+. save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
+file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
+
+. outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.csv", replace c
+> omma
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
+> 1_make_sth_data.log
+  log type:  text
+ closed on:  31 Aug 2016, 13:20:18
+---------------------------------------------------------------------------------
