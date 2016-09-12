@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  12 Sep 2016, 13:04:18
+ opened on:  12 Sep 2016, 13:14:13
 
 . 
 . *********************************************
@@ -32,12 +32,17 @@
 (2,690 observations deleted)
 
 . 
+. * one child had a missing for one slide and 0 for second slide
+. * reassigning the missing to zero
+. replace originalAL="0" if dataid=="30607" & personid=="O1"
+(1 real change made)
+
+. 
 . *--------------------------------------------
 . * Take average of KK egg counts, create binary variables
 . *--------------------------------------------
 . destring original*, replace
 originalAL has all characters numeric; replaced as int
-(1 missing value generated)
 originalTT has all characters numeric; replaced as int
 originalHW has all characters numeric; replaced as int
 
@@ -75,7 +80,6 @@ xij variables:
 . * from duplicate Kato-Katz thick smears times 12
 . 
 . gen alepg = (al1 + al2)*12
-(1 missing value generated)
 
 . gen hwepg = (hw1 + hw2)*12
 
@@ -98,10 +102,10 @@ xij variables:
 (291 real changes made)
 
 . replace alint=3 if alepg>=50000
-(32 real changes made)
+(31 real changes made)
 
 . replace alint=. if alepg==.
-(1 real change made, 1 to missing)
+(0 real changes made)
 
 . 
 . gen ttint=0
@@ -146,7 +150,7 @@ xij variables:
 (322 real changes made)
 
 . replace almh=. if alint==. 
-(1 real change made, 1 to missing)
+(0 real changes made)
 
 . 
 . gen ttmh=0
@@ -197,6 +201,7 @@ xij variables:
 . 
 . drop al1 al2 tt1 tt2 hw1 hw2
 
+. 
 . 
 . *--------------------------------------------
 . * Merge with baseline covariates
@@ -249,24 +254,20 @@ xij variables:
 (7,187 missing values generated)
 
 . replace sth=1 if al==1 | hw==1 | tt==1
-(3,046 real changes made)
+(3,045 real changes made)
 
 . replace sth=0 if al==0 & hw==0 & tt==0
-(4,141 real changes made)
+(4,142 real changes made)
 
 . 
 . order dataid personid tr
 
 . 
 . save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
-(note: file /Users/jadederong/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.
-> dta not found)
 file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
 . outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", repl
 > ace comma
-(note: file /Users/jadederong/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.
-> csv not found)
 
 . 
 . log close
@@ -274,5 +275,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  12 Sep 2016, 13:04:19
+ closed on:  12 Sep 2016, 13:14:14
 ---------------------------------------------------------------------------------

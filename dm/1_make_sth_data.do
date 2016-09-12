@@ -22,6 +22,10 @@ use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta"
 * drop spillover children
 drop if personid=="S1"
 
+* one child had a missing for one slide and 0 for second slide
+* reassigning the missing to zero
+replace originalAL="0" if dataid=="30607" & personid=="O1"
+
 *--------------------------------------------
 * Take average of KK egg counts, create binary variables
 *--------------------------------------------
@@ -98,6 +102,7 @@ label variable ttmh "Moderate/heavy Trichuris infection"
 label variable hwmh "Moderate/heavy hookworm infection"
 
 drop al1 al2 tt1 tt2 hw1 hw2
+
 
 *--------------------------------------------
 * Merge with baseline covariates
