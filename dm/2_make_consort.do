@@ -115,6 +115,10 @@ replace sthmoved=1 if dataid=="33905"
 replace sthmoved=1 if dataid=="59604"
 replace sthmoved=1 if dataid=="59907"
 
+* data is inconsistent across sources; assuming endline main trial
+* data is correct 
+replace sthmoved=0 if dataid=="36303"
+
 gen sthabsent=0
 replace sthabsent=1 if hhstatus=="A" | (absent==1 & hhstatus=="L")
 

@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  12 Sep 2016, 13:54:50
+ opened on:  12 Sep 2016, 13:56:59
 
 . 
 . *********************************************
@@ -240,6 +240,12 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_19369.000002 saved
 (1 real change made)
 
 . 
+. * data is inconsistent across sources; assuming endline main trial
+. * data is correct 
+. replace sthmoved=0 if dataid=="36303"
+(1 real change made)
+
+. 
 . gen sthabsent=0
 
 . replace sthabsent=1 if hhstatus=="A" | (absent==1 & hhstatus=="L")
@@ -371,5 +377,5 @@ originalHW has all characters numeric; replaced as int
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- closed on:  12 Sep 2016, 13:54:50
+ closed on:  12 Sep 2016, 13:57:00
 ---------------------------------------------------------------------------------
