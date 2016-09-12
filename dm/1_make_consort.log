@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  12 Sep 2016, 11:16:44
+ opened on:  12 Sep 2016, 13:40:59
 
 . 
 . *********************************************
@@ -29,6 +29,15 @@
 
 . 
 . keep dataid hhstatus 
+
+. 
+. * manual corrections for inconsistency between field tracking and 
+. * main trial datasets - coordinated with ayse
+. replace hhstatus = "L" if dataid=="27406"
+(4 real changes made)
+
+. replace hhstatus = "L" if dataid=="31404"
+(4 real changes made)
 
 . 
 . duplicates drop 
@@ -239,80 +248,110 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_19369.000002 saved
 . gen sthcd=0
 
 . replace sthcd=1 if hhstatus=="D" | cdeath==1
-(237 real changes made)
+(235 real changes made)
 
 . 
 . drop nolb withdrew moved absent cdeath
 
-. stop
-command stop is unrecognized
-r(199);
-
-end of do-file
-
-r(199);
-
-. br if hhstatus=="D" | sthcd==1
-
-. br if dataid=="27406"
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
-
-. insheet using "Ayse/2-washb-bangladesh-psth-kk.csv"
-you must start with an empty dataset
-r(18);
-
-end of do-file
-
-r(18);
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
-
-. insheet using "Ayse/2-washb-bangladesh-psth-kk.csv", clear
-(22 vars, 7,187 obs)
+. 
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_withdr
+> aw.csv", replace comma
 
 . 
-end of do-file
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
-
-. insheet using "Jade/endline-kk.csv", clear
-file Jade/endline-kk.csv not found
-r(601);
-
-end of do-file
-
-r(601);
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
-
-. insheet using "Jade/endline_kk.csv", clear
-(7 vars, 7,187 obs)
+. 
+. *--------------------------------------------
+. * Enrolled T1, O1, C1
+. *--------------------------------------------
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P
+> -sckk-fieldtrack.dta", clear
 
 . 
-end of do-file
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
-
-. insheet using "Ayse/2-washb-bangladesh-psth-kk.csv", clear
-(22 vars, 7,187 obs)
+. keep dataid personid hhstatus enroll*
 
 . 
-end of do-file
+. duplicates drop 
 
-. br
+Duplicates in terms of all variables
 
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
-
-. insheet using "Jade/endline_kk.csv", clear
-(7 vars, 7,187 obs)
+(7,187 observations deleted)
 
 . 
-end of do-file
+. * merge in tr assignment
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
+> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
 
-. br
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                           836
+        from master                       836  (_merge==1)
+        from using                          0  (_merge==2)
 
-. do "/Users/jadederong/Documents/CRG/wash-benefits/bangladesh/src/sth/dm/1_make_
-> sth_data.do"
+    matched                            13,664  (_merge==3)
+    -----------------------------------------
 
-. capture log close
+. drop if _m==1
+(836 observations deleted)
+
+. drop _m
+
+. 
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_enroll
+> _sth.csv", replace comma
+
+. 
+. 
+. *--------------------------------------------
+. * Has sample T1, O1, C1
+. *--------------------------------------------
+. use "~/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta", clear
+
+. 
+. * drop spillover children
+. drop if personid=="S1"
+(2,690 observations deleted)
+
+. 
+. destring original*, replace
+originalAL has all characters numeric; replaced as int
+(1 missing value generated)
+originalTT has all characters numeric; replaced as int
+originalHW has all characters numeric; replaced as int
+
+. 
+. drop if originalAL==. & originalTT==. & originalHW==.
+(0 observations deleted)
+
+. collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
+
+. 
+. * merge in tr assignment
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
+> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         1,643
+        from master                         0  (_merge==1)
+        from using                      1,643  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. drop if _m==2
+(1,643 observations deleted)
+
+. drop _m
+
+. 
+. 
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_kk.csv
+> ", replace comma
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
+> 1_make_consort.log
+  log type:  text
+ closed on:  12 Sep 2016, 13:41:00
+---------------------------------------------------------------------------------

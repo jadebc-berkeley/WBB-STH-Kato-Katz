@@ -21,6 +21,11 @@ use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-
 
 keep dataid hhstatus 
 
+* manual corrections for inconsistency between field tracking and 
+* main trial datasets - coordinated with ayse
+replace hhstatus = "L" if dataid=="27406"
+replace hhstatus = "L" if dataid=="31404"
+
 duplicates drop 
 
 * merge in tr assignment
