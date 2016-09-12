@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  22 Aug 2016, 09:18:39
+ opened on:  12 Sep 2016, 11:16:44
 
 . 
 . *********************************************
@@ -195,7 +195,7 @@ delimiter now cr
 . tempfile svydropout
 
 . save `svydropout'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_10929.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_19369.000002 saved
 
 . 
 . restore
@@ -241,6 +241,9 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_10929.000002 saved
 . replace sthcd=1 if hhstatus=="D" | cdeath==1
 (237 real changes made)
 
+. 
+. drop nolb withdrew moved absent cdeath
+
 . stop
 command stop is unrecognized
 r(199);
@@ -249,84 +252,7 @@ end of do-file
 
 r(199);
 
-. tab sthcd hhstatus
+. br if hhstatus=="D" | sthcd==1
 
-           |              Household enrollment status
-     sthcd |         A          D          E          L          M |     Total
------------+-------------------------------------------------------+----------
-         0 |       180          0      4,102        421        319 |     5,314 
-         1 |         0         40          0        196          1 |       237 
------------+-------------------------------------------------------+----------
-     Total |       180         40      4,102        617        320 |     5,551 
+. br if dataid=="27406"
 
-
-           | Household
-           | enrollment
-           |   status
-     sthcd |         R |     Total
------------+-----------+----------
-         0 |       292 |     5,314 
-         1 |         0 |       237 
------------+-----------+----------
-     Total |       292 |     5,551 
-
-
-. tab hhstatus sthcd
-
- Household enrollment |         sthcd
-               status |         0          1 |     Total
-----------------------+----------------------+----------
-                    A |       180          0 |       180 
-                    D |         0         40 |        40 
-                    E |     4,102          0 |     4,102 
-                    L |       421        196 |       617 
-                    M |       319          1 |       320 
-                    R |       292          0 |       292 
-----------------------+----------------------+----------
-                Total |     5,314        237 |     5,551 
-
-
-. tab hhstatus sthcd if cdeath==1
-
- Household enrollment |   sthcd
-               status |         1 |     Total
-----------------------+-----------+----------
-                    D |        23 |        23 
-                    L |       196 |       196 
-                    M |         1 |         1 
-----------------------+-----------+----------
-                Total |       220 |       220 
-
-
-. tab hhstatus sthcd if cdeath==0
-
- Household enrollment |         sthcd
-               status |         0          1 |     Total
-----------------------+----------------------+----------
-                    A |       180          0 |       180 
-                    D |         0         17 |        17 
-                    E |     4,102          0 |     4,102 
-                    L |       421          0 |       421 
-                    M |       319          0 |       319 
-                    R |       292          0 |       292 
-----------------------+----------------------+----------
-                Total |     5,314         17 |     5,331 
-
-
-. tab sthmoved moved
-
-           |         moved
-  sthmoved |         0          1 |     Total
------------+----------------------+----------
-         0 |     5,169          9 |     5,178 
-         1 |       273        100 |       373 
------------+----------------------+----------
-     Total |     5,442        109 |     5,551 
-
-
-. br if moved==1 & sthmoved==0
-
-. do "/Users/jadederong/Documents/CRG/washb-spillover/primary/0_permute_tr.do"
-
-. 
-. capture log close

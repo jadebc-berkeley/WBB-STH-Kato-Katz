@@ -117,7 +117,7 @@ replace sthcd=1 if hhstatus=="D" | cdeath==1
 
 drop nolb withdrew moved absent cdeath
 
-outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv", replace comma
+outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_withdraw.csv", replace comma
 
 
 *--------------------------------------------
@@ -134,7 +134,7 @@ merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-
 drop if _m==1
 drop _m
 
-outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv", replace comma
+outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_enroll_sth.csv", replace comma
 
 
 *--------------------------------------------
@@ -156,6 +156,6 @@ drop if _m==2
 drop _m
 
 
-outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_kk.csv", replace comma
+outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_kk.csv", replace comma
 
 log close
