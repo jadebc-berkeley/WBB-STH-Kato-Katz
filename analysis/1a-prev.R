@@ -57,12 +57,15 @@ colnames(hw_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(tt_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(sth_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 
-psth_prev_j=cbind(al_prev[,c("Prev","lb","ub")],hw_prev[,c("Prev","lb","ub")],
-           tt_prev[,c("Prev","lb","ub")],sth_prev[,c("Prev","lb","ub")])
+psth_prev_j=cbind(al_prev[,c("Prev","Robust SE","lb","ub")],
+                  hw_prev[,c("Prev","Robust SE","lb","ub")],
+                  tt_prev[,c("Prev","Robust SE","lb","ub")],
+                  sth_prev[,c("Prev","Robust SE","lb","ub")])
 
-colnames(psth_prev_j)=c("al-prev","al-lb","al-ub","hw-prev","hw-lb",
-                      "hw-ub","tt-prev","tt-lb","tt-ub","sth-prev",
-                      "sth-lb","sth-ub")
+colnames(psth_prev_j)=c("al-prev","al-se","al-lb","al-ub",
+                        "hw-prev","hw-se","hw-lb","hw-ub",
+                        "tt-prev","tt-se","tt-lb","tt-ub",
+                        "sth-prev","sth-se","sth-lb","sth-ub")
 
 #----------------------------------------------
 # prevalence of moderate/heavy infection by arm and time point
@@ -78,11 +81,13 @@ colnames(al_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(hw_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(tt_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 
-psth_prev_mh_j=cbind(al_mh_prev[,c("Prev","lb","ub")],hw_mh_prev[,c("Prev","lb","ub")],
-           tt_mh_prev[,c("Prev","lb","ub")])
+psth_prev_mh_j=cbind(al_mh_prev[,c("Prev","Robust SE","lb","ub")],
+                     hw_mh_prev[,c("Prev","Robust SE","lb","ub")],
+                      tt_mh_prev[,c("Prev","Robust SE","lb","ub")])
 
-colnames(psth_prev_mh_j)=c("al-prev","al-lb","al-ub","hw-prev","hw-lb",
-                      "hw-ub","tt-prev","tt-lb","tt-ub")
+colnames(psth_prev_mh_j)=c("al-prev","al-se","al-lb","al-ub",
+                           "hw-prev","hw-se","hw-lb","hw-ub",
+                           "tt-prev","tt-se","tt-lb","tt-ub")
 
 #----------------------------------------------
 # arithmetic mean of intensity by arm and time point
