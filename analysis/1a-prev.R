@@ -10,7 +10,7 @@
 rm(list=ls())
 library(washb)
 
-data=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.csv")
+data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
 source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
 
 d=preprocess.sth(data)
