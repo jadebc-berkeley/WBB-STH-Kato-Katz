@@ -23,10 +23,10 @@ N.hw=table(d$tr[!is.na(d$hw)])
 N.tt=table(d$tr[!is.na(d$tt)])
 N.sth=table(d$tr[!is.na(d$sth)])
 
-n.al=table(d$al,d$tr)[1,]
-n.hw=table(d$hw,d$tr)[1,]
-n.tt=table(d$tt,d$tr)[1,]
-n.sth=table(d$sth,d$tr)[1,]
+n.al=table(d$al,d$tr)[2,]
+n.hw=table(d$hw,d$tr)[2,]
+n.tt=table(d$tt,d$tr)[2,]
+n.sth=table(d$sth,d$tr)[2,]
 
 psth_n_prev_j=data.frame(cbind(n.al,n.hw,n.tt,n.sth,
                                N.al,N.hw,N.tt,N.sth))
