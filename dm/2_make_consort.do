@@ -108,6 +108,13 @@ drop _m
 gen sthmoved=0
 replace sthmoved=1 if hhstatus=="M" | (moved==1 & hhstatus=="L")
 
+* manually recoding compounds that were visited at endline
+* but marked as moved at midline because PSTH team did not
+* visit them at endline
+replace sthmoved=1 if dataid=="33905"
+replace sthmoved=1 if dataid=="59604"
+replace sthmoved=1 if dataid=="59907"
+
 gen sthabsent=0
 replace sthabsent=1 if hhstatus=="A" | (absent==1 & hhstatus=="L")
 
@@ -120,7 +127,11 @@ replace sthwd=1 if hhstatus=="R" | (hhstatus=="L" & withdrew==1)
 gen sthcd=0
 replace sthcd=1 if hhstatus=="D" | cdeath==1
 
+format dataid %6s
+
 drop nolb withdrew moved absent cdeath
+
+
 
 outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_withdraw.csv", replace comma
 

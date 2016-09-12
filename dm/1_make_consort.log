@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- opened on:  12 Sep 2016, 13:40:59
+ opened on:  12 Sep 2016, 13:54:50
 
 . 
 . *********************************************
@@ -227,6 +227,19 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_19369.000002 saved
 (373 real changes made)
 
 . 
+. * manually recoding compounds that were visited at endline
+. * but marked as moved at midline because PSTH team did not
+. * visit them at endline
+. replace sthmoved=1 if dataid=="33905"
+(1 real change made)
+
+. replace sthmoved=1 if dataid=="59604"
+(1 real change made)
+
+. replace sthmoved=1 if dataid=="59907"
+(1 real change made)
+
+. 
 . gen sthabsent=0
 
 . replace sthabsent=1 if hhstatus=="A" | (absent==1 & hhstatus=="L")
@@ -251,8 +264,13 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_19369.000002 saved
 (235 real changes made)
 
 . 
+. format dataid %6s
+
+. 
 . drop nolb withdrew moved absent cdeath
 
+. 
+. 
 . 
 . outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_withdr
 > aw.csv", replace comma
@@ -353,5 +371,5 @@ originalHW has all characters numeric; replaced as int
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_consort.log
   log type:  text
- closed on:  12 Sep 2016, 13:41:00
+ closed on:  12 Sep 2016, 13:54:50
 ---------------------------------------------------------------------------------
