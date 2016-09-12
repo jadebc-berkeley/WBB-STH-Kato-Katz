@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  12 Sep 2016, 13:14:13
+ opened on:  12 Sep 2016, 13:19:02
 
 . 
 . *********************************************
@@ -110,14 +110,14 @@ xij variables:
 . 
 . gen ttint=0
 
-. replace ttint=1 if ttepg>=1 & ttepg<5000
-(499 real changes made)
+. replace ttint=1 if ttepg>=1 & ttepg<1000
+(468 real changes made)
 
-. replace ttint=2 if ttepg>=5000 & ttepg<50000
-(3 real changes made)
+. replace ttint=2 if ttepg>=1000 & ttepg<10000
+(33 real changes made)
 
-. replace ttint=3 if ttepg>=50000
-(0 real changes made)
+. replace ttint=3 if ttepg>=10000
+(1 real change made)
 
 . replace ttint=. if ttepg==.
 (0 real changes made)
@@ -125,14 +125,14 @@ xij variables:
 . 
 . gen hwint=0
 
-. replace hwint=1 if hwepg>=1 & hwepg<5000
-(552 real changes made)
+. replace hwint=1 if hwepg>=1 & hwepg<2000
+(544 real changes made)
 
-. replace hwint=2 if hwepg>=5000 & hwepg<50000
-(2 real changes made)
+. replace hwint=2 if hwepg>=2000 & hwepg<4000
+(6 real changes made)
 
-. replace hwint=3 if hwepg>=50000
-(0 real changes made)
+. replace hwint=3 if hwepg>=4000
+(4 real changes made)
 
 . replace hwint=. if hwepg==.
 (0 real changes made)
@@ -156,7 +156,7 @@ xij variables:
 . gen ttmh=0
 
 . replace ttmh=1 if ttint==2 | ttint==3
-(3 real changes made)
+(34 real changes made)
 
 . replace ttmh=. if ttint==. 
 (0 real changes made)
@@ -165,7 +165,7 @@ xij variables:
 . gen hwmh=0
 
 . replace hwmh=1 if hwint==2 | hwint==3
-(2 real changes made)
+(10 real changes made)
 
 . replace hwmh=. if hwint==. 
 (0 real changes made)
@@ -275,5 +275,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  12 Sep 2016, 13:14:14
+ closed on:  12 Sep 2016, 13:19:03
 ---------------------------------------------------------------------------------
