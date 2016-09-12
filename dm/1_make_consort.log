@@ -256,3 +256,63 @@ r(199);
 
 . br if dataid=="27406"
 
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
+
+. insheet using "Ayse/2-washb-bangladesh-psth-kk.csv"
+you must start with an empty dataset
+r(18);
+
+end of do-file
+
+r(18);
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
+
+. insheet using "Ayse/2-washb-bangladesh-psth-kk.csv", clear
+(22 vars, 7,187 obs)
+
+. 
+end of do-file
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
+
+. insheet using "Jade/endline-kk.csv", clear
+file Jade/endline-kk.csv not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
+
+. insheet using "Jade/endline_kk.csv", clear
+(7 vars, 7,187 obs)
+
+. 
+end of do-file
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
+
+. insheet using "Ayse/2-washb-bangladesh-psth-kk.csv", clear
+(22 vars, 7,187 obs)
+
+. 
+end of do-file
+
+. br
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD19369.000000"
+
+. insheet using "Jade/endline_kk.csv", clear
+(7 vars, 7,187 obs)
+
+. 
+end of do-file
+
+. br
+
+. do "/Users/jadederong/Documents/CRG/wash-benefits/bangladesh/src/sth/dm/1_make_
+> sth_data.do"
+
+. capture log close

@@ -124,7 +124,7 @@ replace sth=0 if al==0 & hw==0 & tt==0
 
 order dataid personid tr
 
-save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
-outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.csv", replace comma
+save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
+outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma
 
 log close

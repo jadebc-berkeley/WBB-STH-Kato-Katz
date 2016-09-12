@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- opened on:  31 Aug 2016, 13:20:17
+ opened on:  12 Sep 2016, 13:04:18
 
 . 
 . *********************************************
@@ -258,11 +258,15 @@ xij variables:
 . order dataid personid tr
 
 . 
-. save "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta", replace
-file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
+. save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
+(note: file /Users/jadederong/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.
+> dta not found)
+file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.csv", replace c
-> omma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", repl
+> ace comma
+(note: file /Users/jadederong/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.
+> csv not found)
 
 . 
 . log close
@@ -270,5 +274,5 @@ file ~/Dropbox/WASH Benefits/Bangladesh/STH/Data/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
 > 1_make_sth_data.log
   log type:  text
- closed on:  31 Aug 2016, 13:20:18
+ closed on:  12 Sep 2016, 13:04:19
 ---------------------------------------------------------------------------------
