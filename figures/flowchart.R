@@ -9,9 +9,9 @@
 rm(list=ls())
 library(plyr)
 
-wd=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_withdraw.csv")
-enr=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_enroll_sth.csv")
-kk=read.csv("~/Dropbox/WASH Benefits/Bangladesh/STH/Data/endline_kk.csv")
+wd=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_withdraw.csv")
+enr=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_enroll_sth.csv")
+kk=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_kk.csv")
 
 # reorder tr labels
 reord=function(x){
