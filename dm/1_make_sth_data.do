@@ -117,26 +117,12 @@ drop _m
 *--------------------------------------------
 * Merge in treatment assignment
 *--------------------------------------------
-merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-blind-tr.dta"
 * drop if no KK data
-
-* THIS IS WHERE BLOCK SHOULD BE MERGED IN ; TEMPORARILY
-* UNTIL WE FIGURE OUT A BETTER PLACE FOR IT TO BE
 
 drop if _m==2
 drop _m
 
-* TEMP MERGING IN BLOCK HERE
-preserve
-use "~/Dropbox/WBB-primary-analysis/Data/Untouched/3_Endline/02. WASHB_Endline_Arm_Identification.dta", clear
-drop cluster arm
-tempfile bl
-save `bl'
-restore 
-
-merge m:1 dataid using `bl'
-drop if _m!=3
-drop _m
 
 * create variable for any sth infection
 gen sth=.
