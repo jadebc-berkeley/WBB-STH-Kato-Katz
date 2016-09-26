@@ -52,36 +52,36 @@ glm.gau.tt.h1=lapply(trlist ,function(x) washb_glm(Y=df$ttmh,tr=df$tr,pair=df$bl
      id=df$clusterid,contrast=c("Control",x),
      family="gaussian", pval=0.2, print=TRUE))
 
-al_rr_h1_unadj_j=glm.bin.al.h1[[1]]$TR
-hw_rr_h1_unadj_j=glm.bin.hw.h1[[1]]$TR
-tt_rr_h1_unadj_j=glm.bin.tt.h1[[1]]$TR
+al_mh_rr_h1_unadj_j=glm.bin.al.h1[[1]]$TR
+hw_mh_rr_h1_unadj_j=glm.bin.hw.h1[[1]]$TR
+tt_mh_rr_h1_unadj_j=glm.bin.tt.h1[[1]]$TR
 for(i in 2:6){
-  al_rr_h1_unadj_j=rbind(al_rr_h1_unadj_j,glm.bin.al.h1[[i]]$TR)
-  hw_rr_h1_unadj_j=rbind(hw_rr_h1_unadj_j,glm.bin.hw.h1[[i]]$TR)
-  tt_rr_h1_unadj_j=rbind(tt_rr_h1_unadj_j,glm.bin.tt.h1[[i]]$TR)
+  al_mh_rr_h1_unadj_j=rbind(al_mh_rr_h1_unadj_j,glm.bin.al.h1[[i]]$TR)
+  hw_mh_rr_h1_unadj_j=rbind(hw_mh_rr_h1_unadj_j,glm.bin.hw.h1[[i]]$TR)
+  tt_mh_rr_h1_unadj_j=rbind(tt_mh_rr_h1_unadj_j,glm.bin.tt.h1[[i]]$TR)
 }
 
-al_rd_h1_unadj_j=glm.gau.al.h1[[1]]$TR
-hw_rd_h1_unadj_j=glm.gau.hw.h1[[1]]$TR
-tt_rd_h1_unadj_j=glm.gau.tt.h1[[1]]$TR
+al_mh_rd_h1_unadj_j=glm.gau.al.h1[[1]]$TR
+hw_mh_rd_h1_unadj_j=glm.gau.hw.h1[[1]]$TR
+tt_mh_rd_h1_unadj_j=glm.gau.tt.h1[[1]]$TR
 for(i in 2:6){
-  al_rd_h1_unadj_j=rbind(al_rd_h1_unadj_j,glm.gau.al.h1[[i]]$TR)
-  hw_rd_h1_unadj_j=rbind(hw_rd_h1_unadj_j,glm.gau.hw.h1[[i]]$TR)
-  tt_rd_h1_unadj_j=rbind(tt_rd_h1_unadj_j,glm.gau.tt.h1[[i]]$TR)
+  al_mh_rd_h1_unadj_j=rbind(al_mh_rd_h1_unadj_j,glm.gau.al.h1[[i]]$TR)
+  hw_mh_rd_h1_unadj_j=rbind(hw_mh_rd_h1_unadj_j,glm.gau.hw.h1[[i]]$TR)
+  tt_mh_rd_h1_unadj_j=rbind(tt_mh_rd_h1_unadj_j,glm.gau.tt.h1[[i]]$TR)
 }
 
-rownames(al_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_mh_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_mh_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_mh_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-rownames(al_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_h1_mh_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_h1_mh_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_h1_mh_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
 #----------------------------------------------
@@ -117,31 +117,31 @@ glm.gau.tt.h2=lapply(trlist ,function(x) washb_glm(Y=df$ttmh,tr=df$tr,pair=df$bl
      id=df$clusterid,contrast=c(x,"WSH"),
      family="gaussian", pval=0.2, print=TRUE))
 
-al_rr_h2_unadj_j=glm.bin.al.h2[[1]]$TR
-hw_rr_h2_unadj_j=glm.bin.hw.h2[[1]]$TR
-tt_rr_h2_unadj_j=glm.bin.tt.h2[[1]]$TR
+al_mh_rr_h2_unadj_j=glm.bin.al.h2[[1]]$TR
+hw_mh_rr_h2_unadj_j=glm.bin.hw.h2[[1]]$TR
+tt_mh_rr_h2_unadj_j=glm.bin.tt.h2[[1]]$TR
 for(i in 2:3){
-  al_rr_h2_unadj_j=rbind(al_rr_h2_unadj_j,glm.bin.al.h2[[i]]$TR)
-  hw_rr_h2_unadj_j=rbind(hw_rr_h2_unadj_j,glm.bin.hw.h2[[i]]$TR)
-  tt_rr_h2_unadj_j=rbind(tt_rr_h2_unadj_j,glm.bin.tt.h2[[i]]$TR)
+  al_mh_rr_h2_unadj_j=rbind(al_mh_rr_h2_unadj_j,glm.bin.al.h2[[i]]$TR)
+  hw_mh_rr_h2_unadj_j=rbind(hw_mh_rr_h2_unadj_j,glm.bin.hw.h2[[i]]$TR)
+  tt_mh_rr_h2_unadj_j=rbind(tt_mh_rr_h2_unadj_j,glm.bin.tt.h2[[i]]$TR)
 }
 
-al_rd_h2_unadj_j=glm.gau.al.h2[[1]]$TR
-hw_rd_h2_unadj_j=glm.gau.hw.h2[[1]]$TR
-tt_rd_h2_unadj_j=glm.gau.tt.h2[[1]]$TR
+al_mh_rd_h2_unadj_j=glm.gau.al.h2[[1]]$TR
+hw_mh_rd_h2_unadj_j=glm.gau.hw.h2[[1]]$TR
+tt_mh_rd_h2_unadj_j=glm.gau.tt.h2[[1]]$TR
 for(i in 2:3){
-  al_rd_h2_unadj_j=rbind(al_rd_h2_unadj_j,glm.gau.al.h2[[i]]$TR)
-  hw_rd_h2_unadj_j=rbind(hw_rd_h2_unadj_j,glm.gau.hw.h2[[i]]$TR)
-  tt_rd_h2_unadj_j=rbind(tt_rd_h2_unadj_j,glm.gau.tt.h2[[i]]$TR)
+  al_mh_rd_h2_unadj_j=rbind(al_mh_rd_h2_unadj_j,glm.gau.al.h2[[i]]$TR)
+  hw_mh_rd_h2_unadj_j=rbind(hw_mh_rd_h2_unadj_j,glm.gau.hw.h2[[i]]$TR)
+  tt_mh_rd_h2_unadj_j=rbind(tt_mh_rd_h2_unadj_j,glm.gau.tt.h2[[i]]$TR)
 }
 
-rownames(al_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(hw_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(tt_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(al_mh_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(hw_mh_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(tt_mh_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 
-rownames(al_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(hw_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(tt_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(al_mh_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(hw_mh_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(tt_mh_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 
 #----------------------------------------------
 # H3: Unadjusted prevalence ratios; combined WSH Nvs. 
@@ -176,34 +176,34 @@ glm.gau.tt.h3=lapply(trlist ,function(x) washb_glm(Y=df$ttmh,tr=df$tr,pair=df$bl
      family="gaussian", pval=0.2, print=TRUE))
 
 
-al_rr_h3_unadj_j=rbind(glm.bin.al.h3[[1]]$TR,glm.bin.al.h3[[2]]$TR)
-hw_rr_h3_unadj_j=rbind(glm.bin.hw.h3[[1]]$TR,glm.bin.hw.h3[[2]]$TR)
-tt_rr_h3_unadj_j=rbind(glm.bin.tt.h3[[1]]$TR,glm.bin.tt.h3[[2]]$TR)
+al_mh_rr_h3_unadj_j=rbind(glm.bin.al.h3[[1]]$TR,glm.bin.al.h3[[2]]$TR)
+hw_mh_rr_h3_unadj_j=rbind(glm.bin.hw.h3[[1]]$TR,glm.bin.hw.h3[[2]]$TR)
+tt_mh_rr_h3_unadj_j=rbind(glm.bin.tt.h3[[1]]$TR,glm.bin.tt.h3[[2]]$TR)
 
-al_rd_h3_unadj_j=rbind(glm.gau.al.h3[[1]]$TR,glm.gau.al.h3[[2]]$TR)
-hw_rd_h3_unadj_j=rbind(glm.gau.hw.h3[[1]]$TR,glm.gau.hw.h3[[2]]$TR)
-tt_rd_h3_unadj_j=rbind(glm.gau.tt.h3[[1]]$TR,glm.gau.tt.h3[[2]]$TR)
+al_mh_rd_h3_unadj_j=rbind(glm.gau.al.h3[[1]]$TR,glm.gau.al.h3[[2]]$TR)
+hw_mh_rd_h3_unadj_j=rbind(glm.gau.hw.h3[[1]]$TR,glm.gau.hw.h3[[2]]$TR)
+tt_mh_rd_h3_unadj_j=rbind(glm.gau.tt.h3[[1]]$TR,glm.gau.tt.h3[[2]]$TR)
 
-rownames(al_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(hw_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(tt_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(al_mh_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(hw_mh_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(tt_mh_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 
-rownames(al_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(hw_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(tt_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(al_mh_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(hw_mh_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(tt_mh_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 
 #----------------------------------------------
 # save objects
 #----------------------------------------------
 
-save(al_rr_h1_unadj_j,hw_rr_h1_unadj_j,tt_rr_h1_unadj_j,
-     al_rd_h1_unadj_j,hw_rd_h1_unadj_j,tt_rd_h1_unadj_j,
+save(al_mh_rr_h1_unadj_j,hw_mh_rr_h1_unadj_j,tt_mh_rr_h1_unadj_j,
+     al_mh_rd_h1_unadj_j,hw_mh_rd_h1_unadj_j,tt_mh_rd_h1_unadj_j,
 
-     al_rr_h2_unadj_j,hw_rr_h2_unadj_j,tt_rr_h2_unadj_j,
-     al_rd_h2_unadj_j,hw_rd_h2_unadj_j,tt_rd_h2_unadj_j,
+     al_mh_rr_h2_unadj_j,hw_mh_rr_h2_unadj_j,tt_mh_rr_h2_unadj_j,
+     al_mh_rd_h2_unadj_j,hw_mh_rd_h2_unadj_j,tt_mh_rd_h2_unadj_j,
 
-     al_rr_h3_unadj_j,hw_rr_h3_unadj_j,tt_rr_h3_unadj_j,
-     al_rd_h3_unadj_j,hw_rd_h3_unadj_j,tt_rd_h3_unadj_j,
+     al_mh_rr_h3_unadj_j,hw_mh_rr_h3_unadj_j,tt_mh_rr_h3_unadj_j,
+     al_mh_rd_h3_unadj_j,hw_mh_rd_h3_unadj_j,tt_mh_rd_h3_unadj_j,
      
      file="~/Dropbox/WASHB Parasites/Results/Jade/sth_mh_pr_unadj.RData")
 
