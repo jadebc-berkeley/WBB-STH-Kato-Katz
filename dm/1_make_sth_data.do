@@ -119,7 +119,23 @@ drop _m
 *--------------------------------------------
 merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
 * drop if no KK data
+
+* THIS IS WHERE BLOCK SHOULD BE MERGED IN ; TEMPORARILY
+* UNTIL WE FIGURE OUT A BETTER PLACE FOR IT TO BE
+
 drop if _m==2
+drop _m
+
+* TEMP MERGING IN BLOCK HERE
+preserve
+use "~/Dropbox/WBB-primary-analysis/Data/Untouched/3_Endline/02. WASHB_Endline_Arm_Identification.dta", clear
+drop cluster arm
+tempfile bl
+save `bl'
+restore 
+
+merge m:1 dataid using `bl'
+drop if _m!=3
 drop _m
 
 * create variable for any sth infection
@@ -127,7 +143,7 @@ gen sth=.
 replace sth=1 if al==1 | hw==1 | tt==1
 replace sth=0 if al==0 & hw==0 & tt==0
 
-order dataid personid tr
+order dataid personid block tr
 
 save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma

@@ -1,9 +1,9 @@
----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
-> 1_make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
+> /1_make_sth_data.log
   log type:  text
- opened on:  12 Sep 2016, 13:19:02
+ opened on:  26 Sep 2016, 08:37:01
 
 . 
 . *********************************************
@@ -24,7 +24,8 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta"
+. use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta
+> "
 
 . 
 . * drop spillover children
@@ -138,8 +139,8 @@ xij variables:
 (0 real changes made)
 
 . 
-. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "
-> High intensity"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 
+> "High intensity"
 
 . label values alint ttint hwint intl
 
@@ -207,8 +208,8 @@ xij variables:
 . * Merge with baseline covariates
 . *--------------------------------------------
 . * CHANGE THIS directory later
-. merge m:1 dataid using "~/Dropbox/WASHB Parasites/Temp Data/primary/washb-bangl
-> adesh-hbgdki-enrol.dta"
+. merge m:1 dataid using "~/Dropbox/WASHB Parasites/Temp Data/primary/washb-bang
+> ladesh-hbgdki-enrol.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -230,8 +231,8 @@ xij variables:
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main
-> -survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Mai
+> n-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -243,7 +244,44 @@ xij variables:
     -----------------------------------------
 
 . * drop if no KK data
+. 
+. * THIS IS WHERE BLOCK SHOULD BE MERGED IN ; TEMPORARILY
+. * UNTIL WE FIGURE OUT A BETTER PLACE FOR IT TO BE
+. 
 . drop if _m==2
+(1,643 observations deleted)
+
+. drop _m
+
+. 
+. * TEMP MERGING IN BLOCK HERE
+. preserve
+
+. use "~/Dropbox/WBB-primary-analysis/Data/Untouched/3_Endline/02. WASHB_Endline
+> _Arm_Identification.dta", clear
+
+. drop cluster arm
+
+. tempfile bl
+
+. save `bl'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_11128.000002 saved
+
+. restore 
+
+. 
+. merge m:1 dataid using `bl'
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         1,643
+        from master                         0  (_merge==1)
+        from using                      1,643  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. drop if _m!=3
 (1,643 observations deleted)
 
 . drop _m
@@ -260,20 +298,20 @@ xij variables:
 (4,142 real changes made)
 
 . 
-. order dataid personid tr
+. order dataid personid block tr
 
 . 
 . save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", repl
-> ace comma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", rep
+> lace comma
 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/
-> 1_make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
+> /1_make_sth_data.log
   log type:  text
- closed on:  12 Sep 2016, 13:19:03
----------------------------------------------------------------------------------
+ closed on:  26 Sep 2016, 08:37:02
+--------------------------------------------------------------------------------
