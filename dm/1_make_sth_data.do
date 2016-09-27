@@ -85,6 +85,10 @@ gen hwmh=0
 replace hwmh=1 if hwint==2 | hwint==3
 replace hwmh=. if hwint==. 
 
+gen sthmh=0
+replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttint==3
+replace sthmh=. if alint==. & ttint==. & hwint==.
+
 label variable alepg "Ascaris eggs per gram"
 label variable ttepg "Trichuris eggs per gram"
 label variable hwepg "Hookworm eggs per gram"
@@ -100,6 +104,7 @@ label variable hwint "Any infection intensity"
 label variable almh "Moderate/heavy Ascaris infection"
 label variable ttmh "Moderate/heavy Trichuris infection"
 label variable hwmh "Moderate/heavy hookworm infection"
+label variable sthmh "Any moderate/heavy infection"
 
 drop al1 al2 tt1 tt2 hw1 hw2
 

@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- opened on:  26 Sep 2016, 11:28:35
+ opened on:  26 Sep 2016, 15:53:16
 
 . 
 . *********************************************
@@ -172,6 +172,16 @@ xij variables:
 (0 real changes made)
 
 . 
+. gen sthmh=0
+
+. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttin
+> t==3
+(349 real changes made)
+
+. replace sthmh=. if alint==. & ttint==. & hwint==.
+(0 real changes made)
+
+. 
 . label variable alepg "Ascaris eggs per gram"
 
 . label variable ttepg "Trichuris eggs per gram"
@@ -198,6 +208,8 @@ xij variables:
 . label variable ttmh "Moderate/heavy Trichuris infection"
 
 . label variable hwmh "Moderate/heavy hookworm infection"
+
+. label variable sthmh "Any moderate/heavy infection"
 
 . 
 . drop al1 al2 tt1 tt2 hw1 hw2
@@ -278,5 +290,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- closed on:  26 Sep 2016, 11:28:35
+ closed on:  26 Sep 2016, 15:53:17
 --------------------------------------------------------------------------------
