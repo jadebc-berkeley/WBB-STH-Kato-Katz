@@ -1,9 +1,9 @@
---------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
-> /1_make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_
+> make_sth_data.log
   log type:  text
- opened on:  26 Sep 2016, 15:53:16
+ opened on:  29 Sep 2016, 12:43:29
 
 . 
 . *********************************************
@@ -24,8 +24,7 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta
-> "
+. use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta"
 
 . 
 . * drop spillover children
@@ -94,6 +93,17 @@ xij variables:
 . gen hw = (hw1>0 | hw2>0)
 
 . 
+. * create variable for any sth infection
+. gen sth=.
+(7,187 missing values generated)
+
+. replace sth=1 if al==1 | hw==1 | tt==1
+(3,045 real changes made)
+
+. replace sth=0 if al==0 & hw==0 & tt==0
+(4,142 real changes made)
+
+. 
 . gen alint=0
 
 . replace alint=1 if alepg>=1 & alepg<5000
@@ -139,8 +149,8 @@ xij variables:
 (0 real changes made)
 
 . 
-. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 
-> "High intensity"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "Hi
+> gh intensity"
 
 . label values alint ttint hwint intl
 
@@ -174,8 +184,8 @@ xij variables:
 . 
 . gen sthmh=0
 
-. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttin
-> t==3
+. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttint==
+> 3
 (349 real changes made)
 
 . replace sthmh=. if alint==. & ttint==. & hwint==.
@@ -215,13 +225,197 @@ xij variables:
 . drop al1 al2 tt1 tt2 hw1 hw2
 
 . 
+. tempfile sth
+
+. save `sth'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000001 saved
+
+. 
+. * ---------------------------------------------
+. * Child age and sex at endline
+. * ---------------------------------------------
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-
+> Day1survey_STHCohort.dta", clear
+
+. ren col1 persondesc
+
+. ren col3 sex
+
+. ren col4 dob
+
+. ren col5 birthorder
+
+. ren col6 dobsource
+
+. ren col7_1 pcohort
+
+. ren col7_2 sthcohort
+
+. ren col8 personid
+
+. ren col9 previousid
+
+. 
+. * clean dob
+. gen day=substr(dob,1,2) if strlen(dob)==10
+(5,217 missing values generated)
+
+. replace day=substr(dob,1,1) if strlen(dob)==9
+(5,217 real changes made)
+
+. gen month = substr(dob,4,2) if strlen(dob)==10
+(5,217 missing values generated)
+
+. replace month = substr(dob,3,2) if strlen(dob)==9
+(5,217 real changes made)
+
+. gen year = substr(dob,7,4) if strlen(dob)==10
+(5,217 missing values generated)
+
+. replace year = substr(dob,6,4) if strlen(dob)==9
+(5,217 real changes made)
+
+. 
+. replace month="1" if month=="/1"
+(73 real changes made)
+
+. replace month="2" if month=="/2"
+(34 real changes made)
+
+. replace month="3" if month=="/3"
+(40 real changes made)
+
+. replace month="4" if month=="/4"
+(55 real changes made)
+
+. replace month="5" if month=="/5"
+(33 real changes made)
+
+. replace month="6" if month=="/6"
+(30 real changes made)
+
+. replace month="7" if month=="/7"
+(44 real changes made)
+
+. replace month="8" if month=="/8"
+(58 real changes made)
+
+. replace month="9" if month=="/9"
+(43 real changes made)
+
+. 
+. destring month day year, replace
+month has all characters numeric; replaced as byte
+day has all characters numeric; replaced as byte
+year has all characters numeric; replaced as int
+
+. 
+. gen dobnew=mdy(month,day,year)
+(138 missing values generated)
+
+. format dobnew %d
+
+. drop day month year dob
+
+. ren dobnew dob
+
+. 
+. * clean entry date
+. gen day=substr(EntryDate,9,2) 
+
+. gen month = substr(EntryDate,6,2) 
+
+. gen year = substr(EntryDate,1,4) 
+
+. 
+. destring month day year, replace
+month has all characters numeric; replaced as byte
+day has all characters numeric; replaced as byte
+year has all characters numeric; replaced as int
+
+. 
+. gen date=mdy(month,day,year)
+
+. format date %d
+
+. drop EntryDate
+
+. 
+. * clean sex variable
+. label define sexl 1 "Male" 0 "Female"
+
+. label values sex sexl 
+
+. codebook sex
+
+-----------------------------------------------------------------------------------
+sex                                                                             Sex
+-----------------------------------------------------------------------------------
+
+                  type:  numeric (byte)
+                 label:  sexl
+
+                 range:  [0,1]                        units:  1
+         unique values:  2                        missing .:  0/11,970
+
+            tabulation:  Freq.   Numeric  Label
+                         7,710         0  Female
+                         4,260         1  Male
+
+. list dataid if sex==.
+
+. 
+. * create age at each time point
+. gen double aged=(date-dob)
+(138 missing values generated)
+
+. gen double agem=(date-dob)/30.4167
+(138 missing values generated)
+
+. gen double agey=(date-dob)/365.25
+(138 missing values generated)
+
+. 
+. * dropping age vars that came with dataset - not sure how calculated
+. drop agemonth age
+
+. 
+. keep dataid personid sex dob date age*  
+
+. order dataid personid
+
+. tempfile agesex
+
+. save `agesex'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000002 saved
+
+. 
+. use `sth', clear
+
+. merge 1:1 dataid personid using `agesex'
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         4,783
+        from master                         0  (_merge==1)
+        from using                      4,783  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. 
+. * drop if no KK data
+. drop if _m==2
+(4,783 observations deleted)
+
+. drop _m
+
 . 
 . *--------------------------------------------
 . * Merge with baseline covariates
 . *--------------------------------------------
-. * CHANGE THIS directory later
-. merge m:1 dataid using "~/Dropbox/WASHB Parasites/Temp Data/primary/washb-bang
-> ladesh-hbgdki-enrol.dta"
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-dataset
+> s/washb-bangladesh-enrol.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -243,8 +437,9 @@ xij variables:
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-d
-> atasets/washb-bangladesh-blind-tr.dta"
+. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-data
+> sets/washb-bangladesh-blind-tr.dta"
+(note: variable block was byte, now long to accommodate using data's values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -263,32 +458,20 @@ xij variables:
 . drop _m
 
 . 
-. 
-. * create variable for any sth infection
-. gen sth=.
-(7,187 missing values generated)
-
-. replace sth=1 if al==1 | hw==1 | tt==1
-(3,045 real changes made)
-
-. replace sth=0 if al==0 & hw==0 & tt==0
-(4,142 real changes made)
-
-. 
-. order dataid personid block tr
+. order dataid personid block clusterid hhid tr sex dob age* 
 
 . 
 . save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", rep
-> lace comma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replac
+> e comma
 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
-> /1_make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_
+> make_sth_data.log
   log type:  text
- closed on:  26 Sep 2016, 15:53:17
---------------------------------------------------------------------------------
+ closed on:  29 Sep 2016, 12:43:31
+-----------------------------------------------------------------------------------
