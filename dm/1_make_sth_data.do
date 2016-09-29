@@ -197,6 +197,8 @@ drop _m
 *--------------------------------------------
 merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta"
 
+gen month=month(svydate)
+
 * drop if no KK data
 drop if _m==2
 drop _m

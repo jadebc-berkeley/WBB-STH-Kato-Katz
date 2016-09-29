@@ -17,10 +17,11 @@ d=preprocess.sth(data)
 
 d$block=as.factor(d$block)
 
-W=c("month","hfias","aged","sex","mother_age","motherht","mother_edu",
-    "u18","Ncomp","water_time","floor","roof","walls","cow",
-    "goat","chicken","dog","elec","radio","tv","mobilephone",
-    "clock","bicycle","motorcycle","stove","cooker","car")
+W=c("month","hfias","aged","sex","momage","momheight","momedu",
+    "Nlt18","Ncomp","watmin","roof","walls","floor",
+    "elec","asset_wardrobe","n_asset_table","n_asset_chair","asset_khat","asset_chouki",
+    "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile",
+    "month","mother_age","motherht","Ncomp","u18")
 
 dW=d[,c("sth","al","hw","tt","block","tr","clusterid",W)]
 

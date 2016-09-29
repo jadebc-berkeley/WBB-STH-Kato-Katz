@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_
 > make_sth_data.log
   log type:  text
- opened on:  29 Sep 2016, 12:43:29
+ opened on:  29 Sep 2016, 12:50:33
 
 . 
 . *********************************************
@@ -427,6 +427,9 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000002 saved
     -----------------------------------------
 
 . 
+. gen month=month(svydate)
+
+. 
 . * drop if no KK data
 . drop if _m==2
 (1,643 observations deleted)
@@ -473,5 +476,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_
 > make_sth_data.log
   log type:  text
- closed on:  29 Sep 2016, 12:43:31
+ closed on:  29 Sep 2016, 12:50:34
 -----------------------------------------------------------------------------------
