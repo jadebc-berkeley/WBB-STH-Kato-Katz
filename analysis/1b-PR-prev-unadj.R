@@ -90,13 +90,13 @@ rownames(tt_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 rownames(sth_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-rownames(al_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(sth_h1_rd_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(sth_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
   
 #----------------------------------------------
