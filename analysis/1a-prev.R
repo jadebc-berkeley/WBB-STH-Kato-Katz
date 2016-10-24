@@ -28,8 +28,8 @@ n.hw=table(d$hw,d$tr)[2,]
 n.tt=table(d$tt,d$tr)[2,]
 n.sth=table(d$sth,d$tr)[2,]
 
-psth_n_prev_j=data.frame(cbind(n.al,n.hw,n.tt,n.sth,
-                               N.al,N.hw,N.tt,N.sth))
+psth_n_prev_j=data.frame(cbind(n.al,N.al,n.hw,N.hw,
+                               n.tt,N.tt,n.sth,N.sth))
 
 #----------------------------------------------
 # n and N for intensity by arm

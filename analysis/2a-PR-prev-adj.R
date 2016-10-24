@@ -31,61 +31,39 @@ dW=d[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
-# Poisson regression for RRs
-glm.bin.al.h1=lapply(trlist ,function(x) washb_glm(Y=dW$al,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+SL.library=c("SL.mean","SL.glm","SL.bayesglm","SL.gam","SL.glmnet")
 
-glm.bin.hw.h1=lapply(trlist ,function(x) washb_glm(Y=dW$hw,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.al.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$al,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.tt.h1=lapply(trlist ,function(x) washb_glm(Y=dW$tt,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.hw.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hw,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.sth.h1=lapply(trlist ,function(x) washb_glm(Y=dW$sth,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.tt.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$tt,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-# Linear regression for RDs
-glm.gau.al.h1=lapply(trlist ,function(x) washb_glm(Y=dW$al,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+est.sth.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.gau.hw.h1=lapply(trlist ,function(x) washb_glm(Y=dW$hw,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+al_rr_h1_adj_j=format.tmle(est.al.h1,family="binomial")$rr
+al_rd_h1_adj_j=format.tmle(est.al.h1,family="binomial")$rd
 
-glm.gau.tt.h1=lapply(trlist ,function(x) washb_glm(Y=dW$tt,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+hw_rr_h1_adj_j=format.tmle(est.hw.h1,family="binomial")$rr
+hw_rd_h1_adj_j=format.tmle(est.hw.h1,family="binomial")$rd
 
-glm.gau.sth.h1=lapply(trlist ,function(x) washb_glm(Y=dW$sth,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+tt_rr_h1_adj_j=format.tmle(est.tt.h1,family="binomial")$rr
+tt_rd_h1_adj_j=format.tmle(est.tt.h1,family="binomial")$rd
 
-al_rr_h1_adj_j=glm.bin.al.h1[[1]]$TR
-hw_rr_h1_adj_j=glm.bin.hw.h1[[1]]$TR
-tt_rr_h1_adj_j=glm.bin.tt.h1[[1]]$TR
-sth_rr_h1_adj_j=glm.bin.sth.h1[[1]]$TR
-for(i in 2:6){
-  al_rr_h1_adj_j=rbind(al_rr_h1_adj_j,glm.bin.al.h1[[i]]$TR)
-  hw_rr_h1_adj_j=rbind(hw_rr_h1_adj_j,glm.bin.hw.h1[[i]]$TR)
-  tt_rr_h1_adj_j=rbind(tt_rr_h1_adj_j,glm.bin.tt.h1[[i]]$TR)
-  sth_rr_h1_adj_j=rbind(sth_rr_h1_adj_j,glm.bin.sth.h1[[i]]$TR)
-}
-
-al_rd_h1_adj_j=glm.gau.al.h1[[1]]$TR
-hw_rd_h1_adj_j=glm.gau.hw.h1[[1]]$TR
-tt_rd_h1_adj_j=glm.gau.tt.h1[[1]]$TR
-sth_rd_h1_adj_j=glm.gau.sth.h1[[1]]$TR
-for(i in 2:6){
-  al_rd_h1_adj_j=rbind(al_rd_h1_adj_j,glm.gau.al.h1[[i]]$TR)
-  hw_rd_h1_adj_j=rbind(hw_rd_h1_adj_j,glm.gau.hw.h1[[i]]$TR)
-  tt_rd_h1_adj_j=rbind(tt_rd_h1_adj_j,glm.gau.tt.h1[[i]]$TR)
-  sth_rd_h1_adj_j=rbind(sth_rd_h1_adj_j,glm.gau.sth.h1[[i]]$TR)
-}
+sth_rr_h1_adj_j=format.tmle(est.sth.h1,family="binomial")$rr
+sth_rd_h1_adj_j=format.tmle(est.sth.h1,family="binomial")$rd
 
 rownames(al_rr_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
@@ -111,61 +89,37 @@ rownames(sth_rd_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 #----------------------------------------------
 trlist=c("Water","Sanitation","Handwashing")
 
-# Poisson regression for RRs
-glm.bin.al.h2=lapply(trlist ,function(x) washb_glm(Y=dW$al,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.al.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$al,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.hw.h2=lapply(trlist ,function(x) washb_glm(Y=dW$hw,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.hw.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hw,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.tt.h2=lapply(trlist ,function(x) washb_glm(Y=dW$tt,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.tt.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$tt,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.sth.h2=lapply(trlist ,function(x) washb_glm(Y=dW$sth,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.sth.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-# Linear regression for RDs
-glm.gau.al.h2=lapply(trlist ,function(x) washb_glm(Y=dW$al,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+al_rr_h2_adj_j=format.tmle(est.al.h2,family="binomial")$rr
+al_rd_h2_adj_j=format.tmle(est.al.h2,family="binomial")$rd
 
-glm.gau.hw.h2=lapply(trlist ,function(x) washb_glm(Y=dW$hw,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+hw_rr_h2_adj_j=format.tmle(est.hw.h2,family="binomial")$rr
+hw_rd_h2_adj_j=format.tmle(est.hw.h2,family="binomial")$rd
 
-glm.gau.tt.h2=lapply(trlist ,function(x) washb_glm(Y=dW$tt,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+tt_rr_h2_adj_j=format.tmle(est.tt.h2,family="binomial")$rr
+tt_rd_h2_adj_j=format.tmle(est.tt.h2,family="binomial")$rd
 
-glm.gau.sth.h2=lapply(trlist ,function(x) washb_glm(Y=dW$sth,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
-
-al_rr_h2_adj_j=glm.bin.al.h2[[1]]$TR
-hw_rr_h2_adj_j=glm.bin.hw.h2[[1]]$TR
-tt_rr_h2_adj_j=glm.bin.tt.h2[[1]]$TR
-sth_rr_h2_adj_j=glm.bin.sth.h2[[1]]$TR
-for(i in 2:3){
-  al_rr_h2_adj_j=rbind(al_rr_h2_adj_j,glm.bin.al.h2[[i]]$TR)
-  hw_rr_h2_adj_j=rbind(hw_rr_h2_adj_j,glm.bin.hw.h2[[i]]$TR)
-  tt_rr_h2_adj_j=rbind(tt_rr_h2_adj_j,glm.bin.tt.h2[[i]]$TR)
-  sth_rr_h2_adj_j=rbind(sth_rr_h2_adj_j,glm.bin.sth.h2[[i]]$TR)
-}
-
-al_rd_h2_adj_j=glm.gau.al.h2[[1]]$TR
-hw_rd_h2_adj_j=glm.gau.hw.h2[[1]]$TR
-tt_rd_h2_adj_j=glm.gau.tt.h2[[1]]$TR
-sth_rd_h2_adj_j=glm.gau.sth.h2[[1]]$TR
-for(i in 2:3){
-  al_rd_h2_adj_j=rbind(al_rd_h2_adj_j,glm.gau.al.h2[[i]]$TR)
-  hw_rd_h2_adj_j=rbind(hw_rd_h2_adj_j,glm.gau.hw.h2[[i]]$TR)
-  tt_rd_h2_adj_j=rbind(tt_rd_h2_adj_j,glm.gau.tt.h2[[i]]$TR)
-  sth_rd_h2_adj_j=rbind(sth_rd_h2_adj_j,glm.gau.sth.h2[[i]]$TR)
-}
+sth_rr_h2_adj_j=format.tmle(est.sth.h2,family="binomial")$rr
+sth_rd_h2_adj_j=format.tmle(est.sth.h2,family="binomial")$rd
 
 rownames(al_rr_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 rownames(hw_rr_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
@@ -183,50 +137,37 @@ rownames(sth_rd_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashi
 #----------------------------------------------
 trlist=c("WSH","Nutrition")
 
-# Poisson regression for RRs
-glm.bin.al.h3=lapply(trlist ,function(x) washb_glm(Y=dW$al,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.al.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$al,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.hw.h3=lapply(trlist ,function(x) washb_glm(Y=dW$hw,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.hw.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hw,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.tt.h3=lapply(trlist ,function(x) washb_glm(Y=dW$tt,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.tt.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$tt,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-glm.bin.sth.h3=lapply(trlist ,function(x) washb_glm(Y=dW$sth,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+est.sth.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
+   pair=dW$block, id=dW$block,W=dW[,W],
+   family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
+   g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-# Linear regression for RDs
-glm.gau.al.h3=lapply(trlist ,function(x) washb_glm(Y=dW$al,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+al_rr_h3_adj_j=format.tmle(est.al.h3,family="binomial")$rr
+al_rd_h3_adj_j=format.tmle(est.al.h3,family="binomial")$rd
 
-glm.gau.hw.h3=lapply(trlist ,function(x) washb_glm(Y=dW$hw,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+hw_rr_h3_adj_j=format.tmle(est.hw.h3,family="binomial")$rr
+hw_rd_h3_adj_j=format.tmle(est.hw.h3,family="binomial")$rd
 
-glm.gau.tt.h3=lapply(trlist ,function(x) washb_glm(Y=dW$tt,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+tt_rr_h3_adj_j=format.tmle(est.tt.h3,family="binomial")$rr
+tt_rd_h3_adj_j=format.tmle(est.tt.h3,family="binomial")$rd
 
-glm.gau.sth.h3=lapply(trlist ,function(x) washb_glm(Y=dW$sth,tr=dW$tr,pair=dW$block,
-     id=dW$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
-
-
-al_rr_h3_adj_j=rbind(glm.bin.al.h3[[1]]$TR,glm.bin.al.h3[[2]]$TR)
-hw_rr_h3_adj_j=rbind(glm.bin.hw.h3[[1]]$TR,glm.bin.hw.h3[[2]]$TR)
-tt_rr_h3_adj_j=rbind(glm.bin.tt.h3[[1]]$TR,glm.bin.tt.h3[[2]]$TR)
-sth_rr_h3_adj_j=rbind(glm.bin.sth.h3[[1]]$TR,glm.bin.sth.h3[[2]]$TR)
-
-al_rd_h3_adj_j=rbind(glm.gau.al.h3[[1]]$TR,glm.gau.al.h3[[2]]$TR)
-hw_rd_h3_adj_j=rbind(glm.gau.hw.h3[[1]]$TR,glm.gau.hw.h3[[2]]$TR)
-tt_rd_h3_adj_j=rbind(glm.gau.tt.h3[[1]]$TR,glm.gau.tt.h3[[2]]$TR)
-sth_rd_h3_adj_j=rbind(glm.gau.sth.h3[[1]]$TR,glm.gau.sth.h3[[2]]$TR)
+sth_rr_h3_adj_j=format.tmle(est.sth.h3,family="binomial")$rr
+sth_rd_h3_adj_j=format.tmle(est.sth.h3,family="binomial")$rd
 
 rownames(al_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 rownames(hw_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")

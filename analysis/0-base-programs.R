@@ -65,3 +65,35 @@ extract.mh=function(out, type){
   colnames(out)[1]=type
   return(out)
 }
+
+
+#----------------------------------------------------
+# Format TMLE results
+#----------------------------------------------------
+format.tmle=function(out,family){
+  if(family=="binomial"){
+    rr.res=matrix(NA,length(out),3)
+    for(i in 1:length(out)){
+      rr.res[i,1]=out[[i]]$estimates$RR$psi
+      rr.res[i,2]=out[[i]]$estimates$RR$CI[1]
+      rr.res[i,3]=out[[i]]$estimates$RR$CI[2]
+    }
+    rr.res=as.data.frame(rr.res)
+    colnames(rr.res)=c("rr","lb","ub") 
+  }
+  rd.res=matrix(NA,length(out),3)
+  for(i in 1:length(out)){
+    rd.res[i,1]=out[[i]]$estimates$ATE$psi
+    rd.res[i,2]=out[[i]]$estimates$ATE$CI[1]
+    rd.res[i,3]=out[[i]]$estimates$ATE$CI[2]
+  }
+  
+  rd.res=as.data.frame(rd.res)
+  colnames(rd.res)=c("rd","lb","ub")  
+  
+  if(family=="binomial"){
+    return(list(rr=rr.res,rd=rd.res))
+  }
+  return(list(rd=rd.res))
+  
+}
