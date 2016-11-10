@@ -252,6 +252,6 @@ save(al_mh_rr_h1_adj_j,hw_mh_rr_h1_adj_j,tt_mh_rr_h1_adj_j,sth_mh_rr_h1_adj_j,
      al_mh_rr_h3_adj_j,hw_mh_rr_h3_adj_j,tt_mh_rr_h3_adj_j,sth_mh_rr_h3_adj_j,
      al_mh_rd_h3_adj_j,hw_mh_rd_h3_adj_j,tt_mh_rd_h3_adj_j,sth_mh_rd_h3_adj_j,
      
-     file="~/Dropbox/WASHB Parasites/Results/Jade/sth_pr_adj.RData")
+     file="~/Dropbox/WASHB Parasites/Results/Jade/sth_pr_mh_adj.RData")
 
 
