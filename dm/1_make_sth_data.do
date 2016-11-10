@@ -117,14 +117,45 @@ tempfile sth
 save `sth'
 
 * ---------------------------------------------
-* Child age and sex at endline
+* Child age and sex at endline and birth order
+
+* If data available from primary analysis dataset, 
+* use that. If not, use PSTH dataset. 
 * ---------------------------------------------
+use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-diar.dta", clear
+keep dataid childid clusterid sex dob 
+ren childid personid
+keep if personid=="T1" | personid=="T2" | personid=="C1" 
+duplicates drop 
+tempfile primdob
+save `primdob'
+
+* merge primary analysis dob with sth dataset to identify
+* who is missing dob and needs dob to be merged from psth
+use `sth', clear
+merge 1:1 dataid personid using `primdob'
+drop _m
+
+* merge in birth order for T1 from anthro dataset
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-anthro.dta", clear
+keep dataid childid clusterid birthord
+ren childid personid
+duplicates drop
+tempfile primbirthord
+save `primbirthord'
+restore
+
+merge 1:1 dataid personid using `primbirthord'
+drop _m
+
+preserve
 use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_STHCohort.dta", clear
 ren col1 persondesc
-ren col3 sex
+ren col3 sex_psth
 ren col4 dob
-ren col5 birthorder
-ren col6 dobsource
+ren col5 birthorder_psth
+ren col6 dobsource_psth
 ren col7_1 pcohort
 ren col7_2 sthcohort
 ren col8 personid
@@ -153,7 +184,7 @@ destring month day year, replace
 gen dobnew=mdy(month,day,year)
 format dobnew %d
 drop day month year dob
-ren dobnew dob
+ren dobnew dob_psth
 
 * clean entry date
 gen day=substr(EntryDate,9,2) 
@@ -172,25 +203,45 @@ label values sex sexl
 codebook sex
 list dataid if sex==.
 
+drop if personid=="A1"
+
+keep dataid personid sex dob_psth date birthorder_psth
+order dataid personid
+tempfile agesex
+save `agesex'
+restore
+
+merge 1:1 dataid personid using `agesex'
+
+* drop if no KK data
+drop if _m==2
+drop if labdate==. & alepg==. & hwepg==. & ttepg==. 
+drop _m
+
+
+* use psth dob if primary dob not available for T1 T2
+replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid=="C1")
+replace dob = dob_psth if  personid=="O1" 
+drop dob_psth
+
+* use psth sex if primary sex not available for T1 T2
+replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" | personid=="C1")
+replace sex = sex_psth if personid=="O1" 
+drop sex_psth 
+
+* use psth birth order if primary dob not available for T1 T2
+replace birthord = birthorder_psth if birthord==. & (personid=="T1" | personid=="T2" | personid=="C1")
+replace birthord = birthorder_psth if  personid=="O1" 
+drop birthorder_psth
+
+
 * create age at each time point
 gen double aged=(date-dob)
 gen double agem=(date-dob)/30.4167
 gen double agey=(date-dob)/365.25
 
-* dropping age vars that came with dataset - not sure how calculated
-drop agemonth age
-
-keep dataid personid sex dob date age*  
-order dataid personid
-tempfile agesex
-save `agesex'
-
-use `sth', clear
-merge 1:1 dataid personid using `agesex'
-
-* drop if no KK data
-drop if _m==2
-drop _m
+* fill in missing clusterid
+replace clusterid = substr(dataid,1,3) if clusterid==""
 
 *--------------------------------------------
 * Merge with baseline covariates

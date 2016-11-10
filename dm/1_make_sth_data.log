@@ -1,9 +1,9 @@
------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_
-> make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
+> th_data.log
   log type:  text
- opened on:  29 Sep 2016, 12:50:33
+ opened on:   9 Nov 2016, 16:23:40
 
 . 
 . *********************************************
@@ -42,9 +42,9 @@
 . * Take average of KK egg counts, create binary variables
 . *--------------------------------------------
 . destring original*, replace
-originalAL has all characters numeric; replaced as int
-originalTT has all characters numeric; replaced as int
-originalHW has all characters numeric; replaced as int
+originalAL: all characters numeric; replaced as int
+originalTT: all characters numeric; replaced as int
+originalHW: all characters numeric; replaced as int
 
 . 
 . * convert long to wide for duplicate slides
@@ -58,7 +58,7 @@ originalHW has all characters numeric; replaced as int
 
 . 
 . destring slide, replace
-slide has all characters numeric; replaced as byte
+slide: all characters numeric; replaced as byte
 
 . 
 . reshape wide al hw tt, i(dataid personid) j(slide)
@@ -149,8 +149,8 @@ xij variables:
 (0 real changes made)
 
 . 
-. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "Hi
-> gh intensity"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "High int
+> ensity"
 
 . label values alint ttint hwint intl
 
@@ -184,8 +184,7 @@ xij variables:
 . 
 . gen sthmh=0
 
-. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttint==
-> 3
+. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttint==3
 (349 real changes made)
 
 . replace sthmh=. if alint==. & ttint==. & hwint==.
@@ -228,24 +227,110 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000001 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000001 saved
 
 . 
 . * ---------------------------------------------
-. * Child age and sex at endline
+. * Child age and sex at endline and birth order
+. 
+. * If data available from primary analysis dataset, 
+. * use that. If not, use PSTH dataset. 
 . * ---------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-
-> Day1survey_STHCohort.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-diar.d
+> ta", clear
+(Bangladesh diarrhea dataset, created by 3-bangladesh-dm-diar.do)
+
+. keep dataid childid clusterid sex dob 
+
+. ren childid personid
+
+. keep if personid=="T1" | personid=="T2" | personid=="C1" 
+(5,194 observations deleted)
+
+. duplicates drop 
+
+Duplicates in terms of all variables
+
+(9,184 observations deleted)
+
+. tempfile primdob
+
+. save `primdob'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000002 saved
+
+. 
+. * merge primary analysis dob with sth dataset to identify
+. * who is missing dob and needs dob to be merged from psth
+. use `sth', clear
+
+. merge 1:1 dataid personid using `primdob'
+(note: variable personid was str2, now str3 to accommodate using data's values)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         6,723
+        from master                     2,847  (_merge==1)
+        from using                      3,876  (_merge==2)
+
+    matched                             4,340  (_merge==3)
+    -----------------------------------------
+
+. drop _m
+
+. 
+. * merge in birth order for T1 from anthro dataset
+. preserve
+
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-anthro
+> .dta", clear
+(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-dm-anthro.do)
+
+. keep dataid childid clusterid birthord
+
+. ren childid personid
+
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(4,465 observations deleted)
+
+. tempfile primbirthord
+
+. save `primbirthord'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000004 saved
+
+. restore
+
+. 
+. merge 1:1 dataid personid using `primbirthord'
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         6,187
+        from master                     6,187  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             4,876  (_merge==3)
+    -----------------------------------------
+
+. drop _m
+
+. 
+. preserve
+
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1su
+> rvey_STHCohort.dta", clear
 
 . ren col1 persondesc
 
-. ren col3 sex
+. ren col3 sex_psth
 
 . ren col4 dob
 
-. ren col5 birthorder
+. ren col5 birthorder_psth
 
-. ren col6 dobsource
+. ren col6 dobsource_psth
 
 . ren col7_1 pcohort
 
@@ -305,9 +390,9 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000001 saved
 
 . 
 . destring month day year, replace
-month has all characters numeric; replaced as byte
-day has all characters numeric; replaced as byte
-year has all characters numeric; replaced as int
+month: all characters numeric; replaced as byte
+day: all characters numeric; replaced as byte
+year: all characters numeric; replaced as int
 
 . 
 . gen dobnew=mdy(month,day,year)
@@ -317,7 +402,7 @@ year has all characters numeric; replaced as int
 
 . drop day month year dob
 
-. ren dobnew dob
+. ren dobnew dob_psth
 
 . 
 . * clean entry date
@@ -329,9 +414,9 @@ year has all characters numeric; replaced as int
 
 . 
 . destring month day year, replace
-month has all characters numeric; replaced as byte
-day has all characters numeric; replaced as byte
-year has all characters numeric; replaced as int
+month: all characters numeric; replaced as byte
+day: all characters numeric; replaced as byte
+year: all characters numeric; replaced as int
 
 . 
 . gen date=mdy(month,day,year)
@@ -348,9 +433,9 @@ year has all characters numeric; replaced as int
 
 . codebook sex
 
------------------------------------------------------------------------------------
-sex                                                                             Sex
------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+sex_psth                                                                              Sex
+-----------------------------------------------------------------------------------------
 
                   type:  numeric (byte)
                  label:  sexl
@@ -365,57 +450,95 @@ sex                                                                             
 . list dataid if sex==.
 
 . 
-. * create age at each time point
-. gen double aged=(date-dob)
-(138 missing values generated)
-
-. gen double agem=(date-dob)/30.4167
-(138 missing values generated)
-
-. gen double agey=(date-dob)/365.25
-(138 missing values generated)
+. drop if personid=="A1"
+(4,102 observations deleted)
 
 . 
-. * dropping age vars that came with dataset - not sure how calculated
-. drop agemonth age
-
-. 
-. keep dataid personid sex dob date age*  
+. keep dataid personid sex dob_psth date birthorder_psth
 
 . order dataid personid
 
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000006 saved
+
+. restore
 
 . 
-. use `sth', clear
-
 . merge 1:1 dataid personid using `agesex'
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         4,783
-        from master                         0  (_merge==1)
-        from using                      4,783  (_merge==2)
+    not matched                         3,811
+        from master                     3,503  (_merge==1)
+        from using                        308  (_merge==2)
 
-    matched                             7,187  (_merge==3)
+    matched                             7,560  (_merge==3)
     -----------------------------------------
 
 . 
 . * drop if no KK data
 . drop if _m==2
-(4,783 observations deleted)
+(308 observations deleted)
+
+. drop if labdate==. & alepg==. & hwepg==. & ttepg==. 
+(3,876 observations deleted)
 
 . drop _m
+
+. 
+. 
+. * use psth dob if primary dob not available for T1 T2
+. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid=="C1")
+(8 real changes made)
+
+. replace dob = dob_psth if  personid=="O1" 
+(2,839 real changes made)
+
+. drop dob_psth
+
+. 
+. * use psth sex if primary sex not available for T1 T2
+. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" | personid=="C1")
+(8 real changes made)
+
+. replace sex = sex_psth if personid=="O1" 
+(2,839 real changes made)
+
+. drop sex_psth 
+
+. 
+. * use psth birth order if primary dob not available for T1 T2
+. replace birthord = birthorder_psth if birthord==. & (personid=="T1" | personid=="T2" | 
+> personid=="C1")
+(562 real changes made)
+
+. replace birthord = birthorder_psth if  personid=="O1" 
+(2,839 real changes made)
+
+. drop birthorder_psth
+
+. 
+. 
+. * create age at each time point
+. gen double aged=(date-dob)
+
+. gen double agem=(date-dob)/30.4167
+
+. gen double agey=(date-dob)/365.25
+
+. 
+. * fill in missing clusterid
+. replace clusterid = substr(dataid,1,3) if clusterid==""
+(2,847 real changes made)
 
 . 
 . *--------------------------------------------
 . * Merge with baseline covariates
 . *--------------------------------------------
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-dataset
-> s/washb-bangladesh-enrol.dta"
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wash
+> b-bangladesh-enrol.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -440,8 +563,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000002 saved
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-data
-> sets/washb-bangladesh-blind-tr.dta"
+. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/w
+> ashb-bangladesh-blind-tr.dta"
 (note: variable block was byte, now long to accommodate using data's values)
 
     Result                           # of obs.
@@ -467,14 +590,14 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_20251.000002 saved
 . save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replac
-> e comma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comm
+> a
 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_
-> make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
+> th_data.log
   log type:  text
- closed on:  29 Sep 2016, 12:50:34
------------------------------------------------------------------------------------
+ closed on:   9 Nov 2016, 16:23:42
+-----------------------------------------------------------------------------------------
