@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- opened on:  15 Nov 2016, 13:44:45
+ opened on:  15 Nov 2016, 15:47:49
 
 . 
 . *********************************************
@@ -295,38 +295,16 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000001 saved
 
 . ren childid personid
 
-. keep if personid=="T1" | personid=="T2" | personid=="C1" 
-(5,194 observations deleted)
-
 . duplicates drop 
 
 Duplicates in terms of all variables
 
-(9,184 observations deleted)
+(11,736 observations deleted)
 
 . tempfile primdob
 
 . save `primdob'
 file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000002 saved
-
-. 
-. * merge primary analysis dob with sth dataset to identify
-. * who is missing dob and needs dob to be merged from psth
-. use `sth', clear
-
-. merge 1:1 dataid personid using `primdob'
-(note: variable personid was str2, now str3 to accommodate using data's values)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                         6,723
-        from master                     2,847  (_merge==1)
-        from using                      3,876  (_merge==2)
-
-    matched                             4,340  (_merge==3)
-    -----------------------------------------
-
-. drop _m
 
 . 
 . * merge in birth order for T1 from anthro dataset
@@ -358,8 +336,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000004 saved
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         6,187
-        from master                     6,187  (_merge==1)
+    not matched                         5,982
+        from master                     5,982  (_merge==1)
         from using                          0  (_merge==2)
 
     matched                             4,876  (_merge==3)
@@ -389,7 +367,11 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000004 saved
 
 . ren col8 personid
 
-. ren col9 previousid
+. ren col9 previousCid
+
+. 
+. replace personid = previousCid if personid=="C1"
+(67 real changes made)
 
 . 
 . * clean dob
@@ -495,7 +477,7 @@ sex_psth                                                                        
 (4,102 observations deleted)
 
 . 
-. keep dataid personid sex dob_psth birthorder_psth
+. keep dataid personid sex dob_psth birthorder_psth previousCid
 
 . order dataid personid
 
@@ -511,24 +493,62 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000006 saved
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         3,811
-        from master                     3,503  (_merge==1)
-        from using                        308  (_merge==2)
+    not matched                         9,300
+        from master                     6,145  (_merge==1)
+        from using                      3,155  (_merge==2)
 
-    matched                             7,560  (_merge==3)
+    matched                             4,713  (_merge==3)
+    -----------------------------------------
+
+. drop _m
+
+. 
+. * drop other "C" children
+. gen keep = (personid=="T1" | personid=="T2" | personid=="O1")
+
+. replace keep = 1 if previousCid!=""
+(593 real changes made)
+
+. keep if keep==1
+(5,373 observations deleted)
+
+. replace personid="C1" if personid=="C1" | personid=="C2" | personid=="C3" | personid=="
+> C4" 
+(67 real changes made)
+
+. 
+. tempfile agesex2
+
+. save `agesex2'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000007 saved
+
+. 
+. * merge primary analysis dob with sth dataset to identify
+. * who is missing dob and needs dob to be merged from psth
+. use `sth', clear
+
+. merge 1:1 dataid personid using `agesex2'
+(note: variable personid was str2, now str3 to accommodate using data's values)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         1,453
+        from master                         0  (_merge==1)
+        from using                      1,453  (_merge==2)
+
+    matched                             7,187  (_merge==3)
     -----------------------------------------
 
 . 
 . * drop if no KK data
 . drop if _m==2
-(308 observations deleted)
+(1,453 observations deleted)
 
 . drop if labdate==. & alepg==. & hwepg==. & ttepg==. 
-(3,876 observations deleted)
+(0 observations deleted)
 
 . drop _m
 
-. 
 . 
 . * use psth dob if primary dob not available for T1 T2
 . replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid=="C1")
@@ -641,5 +661,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- closed on:  15 Nov 2016, 13:44:47
+ closed on:  15 Nov 2016, 15:47:50
 -----------------------------------------------------------------------------------------

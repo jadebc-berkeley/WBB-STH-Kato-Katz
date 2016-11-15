@@ -141,16 +141,9 @@ save `sth'
 use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-diar.dta", clear
 keep dataid childid clusterid sex dob 
 ren childid personid
-keep if personid=="T1" | personid=="T2" | personid=="C1" 
 duplicates drop 
 tempfile primdob
 save `primdob'
-
-* merge primary analysis dob with sth dataset to identify
-* who is missing dob and needs dob to be merged from psth
-use `sth', clear
-merge 1:1 dataid personid using `primdob'
-drop _m
 
 * merge in birth order for T1 from anthro dataset
 preserve
@@ -175,7 +168,9 @@ ren col6 dobsource_psth
 ren col7_1 pcohort
 ren col7_2 sthcohort
 ren col8 personid
-ren col9 previousid
+ren col9 previousCid
+
+replace personid = previousCid if personid=="C1"
 
 * clean dob
 gen day=substr(dob,1,2) if strlen(dob)==10
@@ -221,19 +216,33 @@ list dataid if sex==.
 
 drop if personid=="A1"
 
-keep dataid personid sex dob_psth birthorder_psth
+keep dataid personid sex dob_psth birthorder_psth previousCid
 order dataid personid
 tempfile agesex
 save `agesex'
 restore
 
 merge 1:1 dataid personid using `agesex'
+drop _m
+
+* drop other "C" children
+gen keep = (personid=="T1" | personid=="T2" | personid=="O1")
+replace keep = 1 if previousCid!=""
+keep if keep==1
+replace personid="C1" if personid=="C1" | personid=="C2" | personid=="C3" | personid=="C4" 
+
+tempfile agesex2
+save `agesex2'
+
+* merge primary analysis dob with sth dataset to identify
+* who is missing dob and needs dob to be merged from psth
+use `sth', clear
+merge 1:1 dataid personid using `agesex2'
 
 * drop if no KK data
 drop if _m==2
 drop if labdate==. & alepg==. & hwepg==. & ttepg==. 
 drop _m
-
 
 * use psth dob if primary dob not available for T1 T2
 replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid=="C1")
