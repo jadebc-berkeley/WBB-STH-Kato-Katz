@@ -34,7 +34,7 @@ replace originalAL="0" if dataid=="30607" & personid=="O1"
 destring original*, replace
 
 * convert long to wide for duplicate slides
-keep dataid labdate personid slide originalAL originalTT originalHW
+keep dataid labdate personid slide originalAL originalTT originalHW counter
 ren originalAL al
 ren originalTT tt
 ren originalHW hw
@@ -43,7 +43,19 @@ destring slide, replace
 
 drop if slide==.
 
-reshape wide al hw tt, i(dataid personid) j(slide)
+reshape wide al hw tt counter, i(dataid personid) j(slide)
+
+* counter 
+replace counter1="HKC" if counter1=="HKC "
+
+gen counter = .
+replace counter= 1 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter2=="HKC") 
+replace counter= 2 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=="HKC") 
+replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="HKC") 
+replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="RK" & counter2=="MHR") 
+replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="MHR") 
+replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="RK") 
+replace counter= 7 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2=="RK") 
 
 * eggs per gram of stool (EPG) =  sum of the two fecal egg counts
 * from duplicate Kato-Katz thick smears times 12

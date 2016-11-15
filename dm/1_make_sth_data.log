@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- opened on:  15 Nov 2016, 13:23:41
+ opened on:  15 Nov 2016, 13:36:52
 
 . 
 . *********************************************
@@ -56,7 +56,7 @@ originalHW: all characters numeric; replaced as int
 
 . 
 . * convert long to wide for duplicate slides
-. keep dataid labdate personid slide originalAL originalTT originalHW
+. keep dataid labdate personid slide originalAL originalTT originalHW counter
 
 . ren originalAL al
 
@@ -74,19 +74,57 @@ slide: all characters numeric; replaced as byte
 (681 observations deleted)
 
 . 
-. reshape wide al hw tt, i(dataid personid) j(slide)
+. reshape wide al hw tt counter, i(dataid personid) j(slide)
 (note: j = 1 2)
 
 Data                               long   ->   wide
 -----------------------------------------------------------------------------
 Number of obs.                    14374   ->    7187
-Number of variables                   7   ->       9
+Number of variables                   8   ->      11
 j variable (2 values)             slide   ->   (dropped)
 xij variables:
                                      al   ->   al1 al2
                                      hw   ->   hw1 hw2
                                      tt   ->   tt1 tt2
+                                counter   ->   counter1 counter2
 -----------------------------------------------------------------------------
+
+. 
+. * counter 
+. replace counter1="HKC" if counter1=="HKC "
+(1 real change made)
+
+. 
+. gen counter = .
+(7,187 missing values generated)
+
+. replace counter= 1 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter
+> 2=="HKC") 
+(863 real changes made)
+
+. replace counter= 2 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=
+> ="HKC") 
+(593 real changes made)
+
+. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" & counter
+> 2=="HKC") 
+(1,296 real changes made)
+
+. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="RK" & counter2=
+> ="MHR") 
+(1,865 real changes made)
+
+. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="SNJ" & counter
+> 2=="MHR") 
+(1,254 real changes made)
+
+. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="SNJ" & counter2
+> =="RK") 
+(1,315 real changes made)
+
+. replace counter= 7 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2==
+> "RK") 
+(1 real change made)
 
 . 
 . * eggs per gram of stool (EPG) =  sum of the two fecal egg counts
@@ -612,5 +650,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- closed on:  15 Nov 2016, 13:23:42
+ closed on:  15 Nov 2016, 13:36:53
 -----------------------------------------------------------------------------------------
