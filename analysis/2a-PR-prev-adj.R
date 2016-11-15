@@ -10,13 +10,13 @@ library(devtools)
 library(washb)
 
 rm(list=ls())
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
+data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
 source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
-W=c("counter","month","hfias","aged","sex","momage","momheight","momedu",
+W=c("counter","birthord","month","hfias","aged","sex","momage","momheight","momedu",
     "Nlt18","Ncomp","watmin","roof","walls","floor",
     "elec","asset_wardrobe","n_asset_table","n_asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
