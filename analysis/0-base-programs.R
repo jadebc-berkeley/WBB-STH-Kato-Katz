@@ -1,5 +1,5 @@
 #----------------------------------------------------
-# function to prepare data for diarrhea analysis in R
+# function to prepare data for sth analysis in R
 #----------------------------------------------------
 preprocess.sth=function(d){
   
@@ -14,6 +14,17 @@ preprocess.sth=function(d){
   return(d)
 }
 
+#----------------------------------------------------
+# function to prepare data for sth adjusted analysis in R
+#----------------------------------------------------
+preprocess.adj.sth=function(d){
+  
+  # reorder tr labels
+  d$month=as.factor(d$month)
+  d$block=as.factor(d$block)
+  d$counter=as.factor(d$counter)
+  return(d)
+}
 
 
 #----------------------------------------------
