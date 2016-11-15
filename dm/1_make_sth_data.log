@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- opened on:  15 Nov 2016, 13:36:52
+ opened on:  15 Nov 2016, 13:44:45
 
 . 
 . *********************************************
@@ -98,13 +98,13 @@ xij variables:
 . gen counter = .
 (7,187 missing values generated)
 
-. replace counter= 1 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter
-> 2=="HKC") 
-(863 real changes made)
-
-. replace counter= 2 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=
+. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=
 > ="HKC") 
 (593 real changes made)
+
+. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter
+> 2=="HKC") 
+(863 real changes made)
 
 . replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" & counter
 > 2=="HKC") 
@@ -122,7 +122,7 @@ xij variables:
 > =="RK") 
 (1,315 real changes made)
 
-. replace counter= 7 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2==
+. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2==
 > "RK") 
 (1 real change made)
 
@@ -456,26 +456,16 @@ year: all characters numeric; replaced as int
 . ren dobnew dob_psth
 
 . 
-. * clean entry date
-. gen day=substr(EntryDate,9,2) 
-
-. gen month = substr(EntryDate,6,2) 
-
-. gen year = substr(EntryDate,1,4) 
-
-. 
-. destring month day year, replace
-month: all characters numeric; replaced as byte
-day: all characters numeric; replaced as byte
-year: all characters numeric; replaced as int
-
-. 
-. gen date=mdy(month,day,year)
-
-. format date %d
-
-. drop EntryDate
-
+. /* clean entry date
+> gen day=substr(EntryDate,9,2) 
+> gen month = substr(EntryDate,6,2) 
+> gen year = substr(EntryDate,1,4) 
+> 
+> destring month day year, replace
+> 
+> gen date=mdy(month,day,year)
+> format date %d
+> drop EntryDate*/
 . 
 . * clean sex variable
 . label define sexl 1 "Male" 0 "Female"
@@ -505,7 +495,7 @@ sex_psth                                                                        
 (4,102 observations deleted)
 
 . 
-. keep dataid personid sex dob_psth date birthorder_psth
+. keep dataid personid sex dob_psth birthorder_psth
 
 . order dataid personid
 
@@ -573,11 +563,11 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000006 saved
 . 
 . 
 . * create age at each time point
-. gen double aged=(date-dob)
+. gen double aged=(labdate-dob)
 
-. gen double agem=(date-dob)/30.4167
+. gen double agem=(labdate-dob)/30.4167
 
-. gen double agey=(date-dob)/365.25
+. gen double agey=(labdate-dob)/365.25
 
 . 
 . * fill in missing clusterid
@@ -601,7 +591,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000006 saved
     -----------------------------------------
 
 . 
-. gen month=month(svydate)
+. gen month=month(labdate)
+(1,643 missing values generated)
 
 . 
 . * drop if no KK data
@@ -650,5 +641,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- closed on:  15 Nov 2016, 13:36:53
+ closed on:  15 Nov 2016, 13:44:47
 -----------------------------------------------------------------------------------------

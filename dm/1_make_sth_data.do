@@ -49,13 +49,13 @@ reshape wide al hw tt counter, i(dataid personid) j(slide)
 replace counter1="HKC" if counter1=="HKC "
 
 gen counter = .
-replace counter= 1 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter2=="HKC") 
-replace counter= 2 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=="HKC") 
+replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=="HKC") 
+replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter2=="HKC") 
 replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="HKC") 
 replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="RK" & counter2=="MHR") 
 replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="MHR") 
 replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="RK") 
-replace counter= 7 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2=="RK") 
+replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2=="RK") 
 
 * eggs per gram of stool (EPG) =  sum of the two fecal egg counts
 * from duplicate Kato-Katz thick smears times 12
@@ -202,7 +202,7 @@ format dobnew %d
 drop day month year dob
 ren dobnew dob_psth
 
-* clean entry date
+/* clean entry date
 gen day=substr(EntryDate,9,2) 
 gen month = substr(EntryDate,6,2) 
 gen year = substr(EntryDate,1,4) 
@@ -211,7 +211,7 @@ destring month day year, replace
 
 gen date=mdy(month,day,year)
 format date %d
-drop EntryDate
+drop EntryDate*/
 
 * clean sex variable
 label define sexl 1 "Male" 0 "Female"
@@ -221,7 +221,7 @@ list dataid if sex==.
 
 drop if personid=="A1"
 
-keep dataid personid sex dob_psth date birthorder_psth
+keep dataid personid sex dob_psth birthorder_psth
 order dataid personid
 tempfile agesex
 save `agesex'
@@ -252,9 +252,9 @@ drop birthorder_psth
 
 
 * create age at each time point
-gen double aged=(date-dob)
-gen double agem=(date-dob)/30.4167
-gen double agey=(date-dob)/365.25
+gen double aged=(labdate-dob)
+gen double agem=(labdate-dob)/30.4167
+gen double agey=(labdate-dob)/365.25
 
 * fill in missing clusterid
 replace clusterid = substr(dataid,1,3) if clusterid==""
@@ -264,7 +264,7 @@ replace clusterid = substr(dataid,1,3) if clusterid==""
 *--------------------------------------------
 merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta"
 
-gen month=month(svydate)
+gen month=month(labdate)
 
 * drop if no KK data
 drop if _m==2
