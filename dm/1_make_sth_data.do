@@ -17,10 +17,12 @@ set more off
 *--------------------------------------------
 * Read in KK data 
 *--------------------------------------------
-use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta"
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta"
 
 * drop spillover children
 drop if personid=="S1"
+* drop adults
+drop if personid=="A1"
 
 * one child had a missing for one slide and 0 for second slide
 * reassigning the missing to zero
@@ -38,6 +40,8 @@ ren originalTT tt
 ren originalHW hw
 
 destring slide, replace
+
+drop if slide==.
 
 reshape wide al hw tt, i(dataid personid) j(slide)
 

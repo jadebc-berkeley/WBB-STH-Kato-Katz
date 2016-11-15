@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- opened on:   9 Nov 2016, 16:23:40
+ opened on:  15 Nov 2016, 13:23:41
 
 . 
 . *********************************************
@@ -24,12 +24,17 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "/Users/jadederong/Dropbox/WASHB Parasites/Temp Data/2-WASHB-P-kk-temp.dta"
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dt
+> a"
 
 . 
 . * drop spillover children
 . drop if personid=="S1"
-(2,690 observations deleted)
+(2,905 observations deleted)
+
+. * drop adults
+. drop if personid=="A1"
+(4,099 observations deleted)
 
 . 
 . * one child had a missing for one slide and 0 for second slide
@@ -43,8 +48,11 @@
 . *--------------------------------------------
 . destring original*, replace
 originalAL: all characters numeric; replaced as int
+(681 missing values generated)
 originalTT: all characters numeric; replaced as int
+(681 missing values generated)
 originalHW: all characters numeric; replaced as int
+(681 missing values generated)
 
 . 
 . * convert long to wide for duplicate slides
@@ -59,6 +67,11 @@ originalHW: all characters numeric; replaced as int
 . 
 . destring slide, replace
 slide: all characters numeric; replaced as byte
+(681 missing values generated)
+
+. 
+. drop if slide==.
+(681 observations deleted)
 
 . 
 . reshape wide al hw tt, i(dataid personid) j(slide)
@@ -227,7 +240,7 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000001 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000001 saved
 
 . 
 . * ---------------------------------------------
@@ -256,7 +269,7 @@ Duplicates in terms of all variables
 . tempfile primdob
 
 . save `primdob'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000002 saved
 
 . 
 . * merge primary analysis dob with sth dataset to identify
@@ -298,7 +311,7 @@ Duplicates in terms of all variables
 . tempfile primbirthord
 
 . save `primbirthord'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000004 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000004 saved
 
 . restore
 
@@ -461,7 +474,7 @@ sex_psth                                                                        
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01552.000006 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_14805.000006 saved
 
 . restore
 
@@ -599,5 +612,5 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_s
 > th_data.log
   log type:  text
- closed on:   9 Nov 2016, 16:23:42
+ closed on:  15 Nov 2016, 13:23:42
 -----------------------------------------------------------------------------------------
