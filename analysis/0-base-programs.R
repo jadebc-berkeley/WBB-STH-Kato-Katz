@@ -72,24 +72,26 @@ extract.mh=function(out, type){
 #----------------------------------------------------
 format.tmle=function(out,family){
   if(family=="binomial"){
-    rr.res=matrix(NA,length(out),3)
+    rr.res=matrix(NA,length(out),4)
     for(i in 1:length(out)){
       rr.res[i,1]=out[[i]]$estimates$RR$psi
       rr.res[i,2]=out[[i]]$estimates$RR$CI[1]
       rr.res[i,3]=out[[i]]$estimates$RR$CI[2]
+      rr.res[i,4]=out[[i]]$estimates$RR$pvalue
     }
     rr.res=as.data.frame(rr.res)
-    colnames(rr.res)=c("rr","lb","ub") 
+    colnames(rr.res)=c("rr","lb","ub","p-value") 
   }
-  rd.res=matrix(NA,length(out),3)
+  rd.res=matrix(NA,length(out),4)
   for(i in 1:length(out)){
     rd.res[i,1]=out[[i]]$estimates$ATE$psi
     rd.res[i,2]=out[[i]]$estimates$ATE$CI[1]
     rd.res[i,3]=out[[i]]$estimates$ATE$CI[2]
+    rd.res[i,4]=out[[i]]$estimates$ATE$pvalue
   }
   
   rd.res=as.data.frame(rd.res)
-  colnames(rd.res)=c("rd","lb","ub")  
+  colnames(rd.res)=c("rd","lb","ub","p-value")  
   
   if(family=="binomial"){
     return(list(rr=rr.res,rd=rd.res))
