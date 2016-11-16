@@ -57,15 +57,15 @@ colnames(hw_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(tt_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(sth_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 
-psth_prev_j=cbind(al_prev[,c("Prev","Robust SE","lb","ub")],
-                  hw_prev[,c("Prev","Robust SE","lb","ub")],
-                  tt_prev[,c("Prev","Robust SE","lb","ub")],
-                  sth_prev[,c("Prev","Robust SE","lb","ub")])
+psth_prev_j=cbind(al_prev[,c("Prev","lb","ub")],
+                  hw_prev[,c("Prev","lb","ub")],
+                  tt_prev[,c("Prev","lb","ub")],
+                  sth_prev[,c("Prev","lb","ub")])
 
-colnames(psth_prev_j)=c("al-prev","al-se","al-lb","al-ub",
-                        "hw-prev","hw-se","hw-lb","hw-ub",
-                        "tt-prev","tt-se","tt-lb","tt-ub",
-                        "sth-prev","sth-se","sth-lb","sth-ub")
+colnames(psth_prev_j)=c("al-prev","al-lb","al-ub",
+                        "hw-prev","hw-lb","hw-ub",
+                        "tt-prev","tt-lb","tt-ub",
+                        "sth-prev","sth-lb","sth-ub")
 
 #----------------------------------------------
 # prevalence of moderate/heavy infection by arm and time point
@@ -76,18 +76,24 @@ hw_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
   Y=d$hwmh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
 tt_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
   Y=d$ttmh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+sth_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
+  Y=d$sthmh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
 
 colnames(al_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(hw_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(tt_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+colnames(sth_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
 
-psth_prev_mh_j=cbind(al_mh_prev[,c("Prev","Robust SE","lb","ub")],
-                     hw_mh_prev[,c("Prev","Robust SE","lb","ub")],
-                      tt_mh_prev[,c("Prev","Robust SE","lb","ub")])
+psth_prev_mh_j=cbind(al_mh_prev[,c("Prev","lb","ub")],
+                     hw_mh_prev[,c("Prev","lb","ub")],
+                      tt_mh_prev[,c("Prev","lb","ub")],
+                     sth_mh_prev[,c("Prev","lb","ub")])
 
-colnames(psth_prev_mh_j)=c("al-prev","al-se","al-lb","al-ub",
-                           "hw-prev","hw-se","hw-lb","hw-ub",
-                           "tt-prev","tt-se","tt-lb","tt-ub")
+colnames(psth_prev_mh_j)=c("al-prev","al-lb","al-ub",
+                           "hw-prev","hw-lb","hw-ub",
+                           "tt-prev","tt-lb","tt-ub",
+                           "sth-prev","sth-lb","sth-ub")
+
 
 #----------------------------------------------
 # arithmetic mean of intensity by arm and time point
@@ -104,12 +110,12 @@ colnames(al_int_mn)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(hw_int_mn)=c("N","Prev","SD","Robust SE","lb","ub")
 colnames(tt_int_mn)=c("N","Prev","SD","Robust SE","lb","ub")
 
-psth_mean_j=cbind(al_int_mn[,c("Prev","SD")],
-                  hw_int_mn[,c("Prev","SD")],
-                  tt_int_mn[,c("Prev","SD")])
+psth_mean_j=cbind(al_int_mn[,c("Prev","lb","ub")],
+                  hw_int_mn[,c("Prev","lb","ub")],
+                  tt_int_mn[,c("Prev","lb","ub")])
 
-colnames(psth_mean_j)=c("al-mean","al-sd","hw-mean",
-                           "hw-sd","tt-mean","tt-sd")
+colnames(psth_mean_j)=c("al-mean","al-lb","al-ub","hw-mean",
+      "hw-lb","hw-ub","tt-mean","tt-lb","tt-ub")
 rownames(psth_mean_j)=levels(d$tr)
 
 
@@ -121,20 +127,39 @@ d$ln.alepg=log(d$alepg+1)
 d$ln.hwepg=log(d$hwepg+1)
 d$ln.ttepg=log(d$ttepg+1)
 
-al_int_gmn=sapply(levels(d$tr), function(x) exp(mean(d$ln.alepg[d$tr==x]))-1)
-hw_int_gmn=sapply(levels(d$tr), function(x) exp(mean(d$ln.hwepg[d$tr==x]))-1)
-tt_int_gmn=sapply(levels(d$tr), function(x) exp(mean(d$ln.ttepg[d$tr==x]))-1)
+al_int_gmn=t(sapply(levels(d$tr), function(x) washb_mean(
+  Y=d$ln.alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+hw_int_gmn=t(sapply(levels(d$tr), function(x) washb_mean(
+  Y=d$ln.hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+tt_int_gmn=t(sapply(levels(d$tr), function(x) washb_mean(
+  Y=d$ln.ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
 
-al_int_sd=sapply(levels(d$tr), function(x) exp(sd(d$ln.alepg[d$tr==x]))-1)
-hw_int_sd=sapply(levels(d$tr), function(x) exp(sd(d$ln.hwepg[d$tr==x]))-1)
-tt_int_sd=sapply(levels(d$tr), function(x) exp(sd(d$ln.ttepg[d$tr==x]))-1)
+colnames(al_int_gmn)=c("N","Prev","SD","Robust SE","lb","ub")
+colnames(hw_int_gmn)=c("N","Prev","SD","Robust SE","lb","ub")
+colnames(tt_int_gmn)=c("N","Prev","SD","Robust SE","lb","ub")
 
-psth_geomean_j=cbind(al_int_gmn,al_int_sd,
-                      hw_int_gmn,hw_int_sd,
-                      tt_int_gmn,tt_int_sd)
+al_int_gmn=data.frame(al_int_gmn[,c("Prev","Robust SE")])
+al_int_gmn$lb=al_int_gmn$Prev - (qnorm(0.975)*al_int_gmn[,"Robust.SE"])
+al_int_gmn$ub=al_int_gmn$Prev + (qnorm(0.975)*al_int_gmn[,"Robust.SE"])
+al_int_gmn[,"Robust.SE"]=NULL
+al_int_gmn=exp(al_int_gmn)-1
 
-colnames(psth_geomean_j)=c("al-geomean","al-sd","hw-geomean",
-                           "hw-sd","tt-geomean","tt-sd")
+hw_int_gmn=data.frame(hw_int_gmn[,c("Prev","Robust SE")])
+hw_int_gmn$lb=hw_int_gmn$Prev - (qnorm(0.975)*hw_int_gmn[,"Robust.SE"])
+hw_int_gmn$ub=hw_int_gmn$Prev + (qnorm(0.975)*hw_int_gmn[,"Robust.SE"])
+hw_int_gmn[,"Robust.SE"]=NULL
+hw_int_gmn=exp(hw_int_gmn)-1
+
+tt_int_gmn=data.frame(tt_int_gmn[,c("Prev","Robust SE")])
+tt_int_gmn$lb=tt_int_gmn$Prev - (qnorm(0.975)*tt_int_gmn[,"Robust.SE"])
+tt_int_gmn$ub=tt_int_gmn$Prev + (qnorm(0.975)*tt_int_gmn[,"Robust.SE"])
+tt_int_gmn[,"Robust.SE"]=NULL
+tt_int_gmn=exp(tt_int_gmn)-1
+
+psth_geomean_j=cbind(al_int_gmn,hw_int_gmn,tt_int_gmn)
+
+colnames(psth_geomean_j)=c("al-geomean","al-lb","al-ub","hw-geomean",
+    "hw-lb","hw-ub","tt-geomean","tt-lb","tt-ub")
 rownames(psth_geomean_j)=levels(d$tr)
 
 psth_n_prev_j
