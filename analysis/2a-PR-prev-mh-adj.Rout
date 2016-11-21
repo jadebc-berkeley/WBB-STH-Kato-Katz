@@ -48,8 +48,10 @@ https://ben-arnold.github.io/washb
 > 
 > d$block=as.factor(d$block)
 > 
+> # roof and landphone excluded due to low prevalence
+> 
 > W=c("month","hfiacat","aged","sex","momage","momheight","momedu",
-+     "Nlt18","Ncomp","watmin","roof","walls","floor",
++     "Nlt18","Ncomp","watmin","walls","floor",
 +     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
 +     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 > 
@@ -138,7 +140,6 @@ momedu         0.00009
 Nlt18          0.46008
 Ncomp          0.00760
 watmin         0.47868
-roof           0.41154
 walls          0.08095
 floor          0.00073
 elec           0.00010
@@ -285,7 +286,6 @@ momedu         0.00019
 Nlt18          0.82281
 Ncomp          0.05350
 watmin         0.64879
-roof           0.33285
 walls          0.03498
 floor          0.00584
 elec           0.00057
@@ -415,7 +415,6 @@ momedu         0.00046
 Nlt18          0.93731
 Ncomp          0.07495
 watmin         0.92652
-roof           0.35828
 walls          0.34594
 floor          0.00014
 elec           0.00170
@@ -544,7 +543,6 @@ momedu         0.00000
 Nlt18          0.05364
 Ncomp          0.00039
 watmin         0.78297
-roof           0.04992
 walls          0.03039
 floor          0.00003
 elec           0.00201
@@ -570,7 +568,6 @@ momheight      9.880167e-03
 momedu         1.560286e-07
 Nlt18          5.364308e-02
 Ncomp          3.927170e-04
-roof           4.992474e-02
 walls          3.038576e-02
 floor          3.113886e-05
 elec           2.011687e-03
@@ -596,10 +593,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5833867 
+	     SL.mean_All    0.55507 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.4166133 
+	      SL.gam_All    0.44493 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -623,26 +620,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0050533
-   Estimated Variance:  0.00013383
-              p-value:  0.66225
-    95% Conf Interval: (-0.017621, 0.027728) 
+   Parameter Estimate:  0.0054018
+   Estimated Variance:  0.00013368
+              p-value:  0.64035
+    95% Conf Interval: (-0.01726, 0.028063) 
 
  Relative Risk
-   Parameter Estimate:  1.0999
-              p-value:  0.65817
-    95% Conf Interval: (0.7214, 1.6769) 
+   Parameter Estimate:  1.107
+              p-value:  0.63581
+    95% Conf Interval: (0.72681, 1.6861) 
 
-              log(RR):  0.095205
-    variance(log(RR)):  0.046304 
+              log(RR):  0.10166
+    variance(log(RR)):  0.046081 
 
  Odds Ratio
-   Parameter Estimate:  1.1058
-              p-value:  0.65838
-    95% Conf Interval: (0.70811, 1.7267) 
+   Parameter Estimate:  1.1133
+              p-value:  0.63604
+    95% Conf Interval: (0.71369, 1.7368) 
 
-              log(OR):  0.10054
-    variance(log(OR)):  0.051709 
+              log(OR):  0.10736
+    variance(log(OR)):  0.051469 
 
 -----------------------------------------
 
@@ -676,7 +673,6 @@ momedu         0.00166
 Nlt18          0.93625
 Ncomp          0.05650
 watmin         0.64364
-roof           0.62898
 walls          0.12615
 floor          0.00210
 elec           0.00001
@@ -807,7 +803,6 @@ momedu         0.00000
 Nlt18          0.25566
 Ncomp          0.01697
 watmin         0.90761
-roof           0.12509
 walls          0.08865
 floor          0.00012
 elec           0.00053
@@ -833,7 +828,6 @@ momage         2.268630e-02
 momheight      1.146924e-01
 momedu         2.475729e-07
 Ncomp          1.696893e-02
-roof           1.250852e-01
 walls          8.865315e-02
 floor          1.248543e-04
 elec           5.285461e-04
@@ -860,11 +854,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6259819 
+	     SL.mean_All    0.6381756 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.08931261 
-	   SL.glmnet_All    0.2847055 
+	      SL.gam_All    0.2023004 
+	   SL.glmnet_All    0.159524 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -872,10 +866,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    1 
+	     SL.mean_All    0.9927014 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0 
+	      SL.gam_All    0.007298607 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -887,26 +881,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.010901
-   Estimated Variance:  9.6152e-05
-              p-value:  0.26628
-    95% Conf Interval: (-0.03012, 0.0083184) 
+   Parameter Estimate:  -0.010754
+   Estimated Variance:  9.5821e-05
+              p-value:  0.27194
+    95% Conf Interval: (-0.02994, 0.0084321) 
 
  Relative Risk
-   Parameter Estimate:  0.78403
-              p-value:  0.28407
-    95% Conf Interval: (0.50233, 1.2237) 
+   Parameter Estimate:  0.78666
+              p-value:  0.28943
+    95% Conf Interval: (0.50464, 1.2263) 
 
-              log(RR):  -0.24331
-    variance(log(RR)):  0.05159 
+              log(RR):  -0.23996
+    variance(log(RR)):  0.051306 
 
  Odds Ratio
-   Parameter Estimate:  0.77513
-              p-value:  0.28306
-    95% Conf Interval: (0.48684, 1.2341) 
+   Parameter Estimate:  0.77785
+              p-value:  0.28844
+    95% Conf Interval: (0.48916, 1.2369) 
 
-              log(OR):  -0.25473
-    variance(log(OR)):  0.056309 
+              log(OR):  -0.25122
+    variance(log(OR)):  0.056005 
 
 -----------------------------------------
 > 
@@ -958,7 +952,6 @@ momedu         0.34489
 Nlt18          0.83888
 Ncomp          0.62865
 watmin         0.17520
-roof           0.80091
 walls          0.27585
 floor          0.50182
 elec           0.77953
@@ -1091,7 +1084,6 @@ momedu         0.29014
 Nlt18          0.63420
 Ncomp          0.30699
 watmin         0.05752
-roof           0.69491
 walls          0.09548
 floor          0.37894
 elec           0.71894
@@ -1216,7 +1208,6 @@ momedu         0.44992
 Nlt18          0.58049
 Ncomp          0.63105
 watmin         0.83066
-roof           0.71931
 walls          0.51510
 floor          0.29080
 elec           0.36469
@@ -1335,7 +1326,6 @@ momedu         0.55502
 Nlt18          0.92785
 Ncomp          0.94465
 watmin         0.71098
-roof           0.70551
 walls          0.12231
 floor          0.36739
 elec           0.71626
@@ -1456,7 +1446,6 @@ momedu         0.29802
 Nlt18          0.20349
 Ncomp          0.90927
 watmin         0.52047
-roof           0.74342
 walls          0.17115
 floor          0.42432
 elec           0.39963
@@ -1596,7 +1585,6 @@ momedu         0.33185
 Nlt18          0.82013
 Ncomp          0.61225
 watmin         0.18246
-roof           0.81467
 walls          0.26350
 floor          0.52297
 elec           0.79710
@@ -1748,7 +1736,6 @@ momedu         0.11537
 Nlt18          0.83580
 Ncomp          0.29837
 watmin         0.97022
-roof           0.48928
 walls          0.93008
 floor          0.06551
 elec           0.61120
@@ -1869,7 +1856,6 @@ momedu         0.03607
 Nlt18          0.99781
 Ncomp          0.29326
 watmin         0.63136
-roof           0.05817
 walls          0.58241
 floor          0.04878
 elec           0.03063
@@ -1893,7 +1879,6 @@ sex          0.1685159998
 momage       0.1350136945
 momheight    0.1461899711
 momedu       0.0360656351
-roof         0.0581731184
 floor        0.0487802108
 elec         0.0306298719
 asset_chair  0.0125196715
@@ -1915,11 +1900,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.8279643 
+	     SL.mean_All    0.475379 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
+	 SL.bayesglm_All    0.05486704 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1720357 
+	   SL.glmnet_All    0.469754 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -1927,10 +1912,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.7171725 
+	     SL.mean_All    0.647377 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.2828275 
+	      SL.gam_All    0.352623 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -1942,26 +1927,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0009129
-   Estimated Variance:  1.5462e-05
-              p-value:  0.81641
-    95% Conf Interval: (-0.0067942, 0.00862) 
+   Parameter Estimate:  0.0011379
+   Estimated Variance:  1.5913e-05
+              p-value:  0.77546
+    95% Conf Interval: (-0.0066808, 0.0089565) 
 
  Relative Risk
-   Parameter Estimate:  1.1275
-              p-value:  0.81575
-    95% Conf Interval: (0.41091, 3.0938) 
+   Parameter Estimate:  1.1592
+              p-value:  0.77431
+    95% Conf Interval: (0.4223, 3.1819) 
 
-              log(RR):  0.12
-    variance(log(RR)):  0.26522 
+              log(RR):  0.14772
+    variance(log(RR)):  0.26541 
 
  Odds Ratio
-   Parameter Estimate:  1.1285
-              p-value:  0.81575
-    95% Conf Interval: (0.40811, 3.1207) 
+   Parameter Estimate:  1.1605
+              p-value:  0.77432
+    95% Conf Interval: (0.41948, 3.2107) 
 
-              log(OR):  0.12092
-    variance(log(OR)):  0.26931 
+              log(OR):  0.14887
+    variance(log(OR)):  0.26956 
 
 -----------------------------------------
 
@@ -1995,7 +1980,6 @@ momedu         0.39696
 Nlt18          0.75242
 Ncomp          0.58892
 watmin         0.68056
-roof           0.54727
 walls          0.86763
 floor          0.07686
 elec           0.44339
@@ -2114,7 +2098,6 @@ momedu         0.02598
 Nlt18          0.16318
 Ncomp          0.12657
 watmin         0.52372
-roof           0.05008
 walls          0.67030
 floor          0.04352
 elec           0.41497
@@ -2139,7 +2122,6 @@ momheight      0.074032071
 momedu         0.025976187
 Nlt18          0.163179972
 Ncomp          0.126571269
-roof           0.050079195
 floor          0.043521628
 asset_wardrobe 0.191030604
 asset_chair    0.080945491
@@ -2160,9 +2142,9 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.9414507 
+	     SL.mean_All    0.8775092 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.05854927 
+	 SL.bayesglm_All    0.1224908 
 	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
@@ -2187,26 +2169,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.00054148
-   Estimated Variance:  1.7971e-05
-              p-value:  0.89836
-    95% Conf Interval: (-0.0077674, 0.0088504) 
+   Parameter Estimate:  0.00056921
+   Estimated Variance:  1.8007e-05
+              p-value:  0.89329
+    95% Conf Interval: (-0.0077481, 0.0088865) 
 
  Relative Risk
-   Parameter Estimate:  1.0754
-              p-value:  0.89719
-    95% Conf Interval: (0.35725, 3.2369) 
+   Parameter Estimate:  1.0793
+              p-value:  0.89201
+    95% Conf Interval: (0.35862, 3.2483) 
 
-              log(RR):  0.072649
-    variance(log(RR)):  0.3161 
+              log(RR):  0.076317
+    variance(log(RR)):  0.31601 
 
  Odds Ratio
-   Parameter Estimate:  1.0759
-              p-value:  0.89719
-    95% Conf Interval: (0.35447, 3.2659) 
+   Parameter Estimate:  1.0799
+              p-value:  0.89202
+    95% Conf Interval: (0.35583, 3.2775) 
 
-              log(OR):  0.073195
-    variance(log(OR)):  0.32092 
+              log(OR):  0.076891
+    variance(log(OR)):  0.32083 
 
 -----------------------------------------
 
@@ -2240,7 +2222,6 @@ momedu         0.45862
 Nlt18          0.88769
 Ncomp          0.60546
 watmin         0.72959
-roof           0.47903
 walls          0.88133
 floor          0.08402
 elec           0.57294
@@ -2357,7 +2338,6 @@ momedu         0.32475
 Nlt18          0.44781
 Ncomp          0.32554
 watmin         0.71276
-roof           0.50677
 walls          0.86716
 floor          0.07042
 elec           0.08249
@@ -2495,7 +2475,6 @@ momedu         0.00002
 Nlt18          0.40622
 Ncomp          0.00540
 watmin         0.59171
-roof           0.49575
 walls          0.10364
 floor          0.00025
 elec           0.00012
@@ -2626,7 +2605,6 @@ momedu         0.00002
 Nlt18          0.94911
 Ncomp          0.04808
 watmin         0.87678
-roof           0.20030
 walls          0.04820
 floor          0.00157
 elec           0.00017
@@ -2756,7 +2734,6 @@ momedu         0.00031
 Nlt18          0.95949
 Ncomp          0.06971
 watmin         0.87033
-roof           0.43027
 walls          0.34636
 floor          0.00004
 elec           0.00127
@@ -2885,7 +2862,6 @@ momedu         0.00000
 Nlt18          0.03951
 Ncomp          0.00017
 watmin         0.98665
-roof           0.07572
 walls          0.02878
 floor          0.00001
 elec           0.00155
@@ -2911,7 +2887,6 @@ momheight      6.795398e-03
 momedu         4.229910e-08
 Nlt18          3.951377e-02
 Ncomp          1.689947e-04
-roof           7.572492e-02
 walls          2.877948e-02
 floor          7.909193e-06
 elec           1.552526e-03
@@ -2936,10 +2911,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.4562403 
+	     SL.mean_All    0.425663 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.5437597 
+	      SL.gam_All    0.574337 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -2963,26 +2938,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0040113
-   Estimated Variance:  0.000145
-              p-value:  0.73904
-    95% Conf Interval: (-0.01959, 0.027613) 
+   Parameter Estimate:  0.0043699
+   Estimated Variance:  0.00014474
+              p-value:  0.71643
+    95% Conf Interval: (-0.01921, 0.02795) 
 
  Relative Risk
-   Parameter Estimate:  1.0715
-              p-value:  0.7364
-    95% Conf Interval: (0.71675, 1.6018) 
+   Parameter Estimate:  1.078
+              p-value:  0.71337
+    95% Conf Interval: (0.72193, 1.6098) 
 
-              log(RR):  0.069056
-    variance(log(RR)):  0.042085 
+              log(RR):  0.075151
+    variance(log(RR)):  0.041855 
 
  Odds Ratio
-   Parameter Estimate:  1.0761
-              p-value:  0.73656
-    95% Conf Interval: (0.70199, 1.6495) 
+   Parameter Estimate:  1.0831
+              p-value:  0.71355
+    95% Conf Interval: (0.70735, 1.6583) 
 
-              log(OR):  0.073315
-    variance(log(OR)):  0.047494 
+              log(OR):  0.079791
+    variance(log(OR)):  0.047244 
 
 -----------------------------------------
 
@@ -3016,7 +2991,6 @@ momedu         0.00107
 Nlt18          0.96359
 Ncomp          0.05401
 watmin         0.79100
-roof           0.72892
 walls          0.14515
 floor          0.00081
 elec           0.00001
@@ -3146,7 +3120,6 @@ momedu         0.00000
 Nlt18          0.25598
 Ncomp          0.01730
 watmin         0.95815
-roof           0.16497
 walls          0.09447
 floor          0.00004
 elec           0.00023
@@ -3171,7 +3144,6 @@ sex            1.059066e-01
 momage         6.029542e-03
 momedu         4.371429e-07
 Ncomp          1.730283e-02
-roof           1.649746e-01
 walls          9.446978e-02
 floor          3.911809e-05
 elec           2.282801e-04
@@ -3198,10 +3170,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6178116 
+	     SL.mean_All    0.5510489 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3821884 
+	      SL.gam_All    0.4489511 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -3210,10 +3182,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9332803 
+	     SL.mean_All    0.9110138 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.06671966 
+	      SL.gam_All    0.08898616 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -3225,26 +3197,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.013577
-   Estimated Variance:  9.4934e-05
-              p-value:  0.16349
-    95% Conf Interval: (-0.032674, 0.0055203) 
+   Parameter Estimate:  -0.013542
+   Estimated Variance:  9.4095e-05
+              p-value:  0.1627
+    95% Conf Interval: (-0.032554, 0.0054706) 
 
  Relative Risk
-   Parameter Estimate:  0.75619
-              p-value:  0.18012
-    95% Conf Interval: (0.50253, 1.1379) 
+   Parameter Estimate:  0.75668
+              p-value:  0.17911
+    95% Conf Interval: (0.5038, 1.1365) 
 
-              log(RR):  -0.27946
-    variance(log(RR)):  0.043468 
+              log(RR):  -0.27882
+    variance(log(RR)):  0.04307 
 
  Odds Ratio
-   Parameter Estimate:  0.74547
-              p-value:  0.17901
-    95% Conf Interval: (0.4857, 1.1442) 
+   Parameter Estimate:  0.74598
+              p-value:  0.17802
+    95% Conf Interval: (0.48699, 1.1427) 
 
-              log(OR):  -0.29374
-    variance(log(OR)):  0.047779 
+              log(OR):  -0.29306
+    variance(log(OR)):  0.047341 
 
 -----------------------------------------
 > 
@@ -3332,7 +3304,6 @@ momedu         0.00000
 Nlt18          0.00150
 Ncomp          0.01376
 watmin         0.70112
-roof           0.21103
 walls          0.02125
 floor          0.00141
 elec           0.03655
@@ -3462,7 +3433,6 @@ momedu         0.00000
 Nlt18          0.05481
 Ncomp          0.10702
 watmin         0.63896
-roof           0.19443
 walls          0.01035
 floor          0.02726
 elec           0.10257
@@ -3487,7 +3457,6 @@ momheight     3.610867e-02
 momedu        4.163100e-07
 Nlt18         5.480529e-02
 Ncomp         1.070211e-01
-roof          1.944326e-01
 walls         1.034588e-02
 floor         2.726359e-02
 elec          1.025720e-01
@@ -3511,10 +3480,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6211869 
+	     SL.mean_All    0.6130545 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.113648 
-	      SL.gam_All    0.2651651 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.3869455 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -3523,11 +3492,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8996163 
+	     SL.mean_All    0.8614244 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1003837 
+	   SL.glmnet_All    0.1385756 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -3538,26 +3507,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.015039
-   Estimated Variance:  0.00011693
-              p-value:  0.16429
-    95% Conf Interval: (-0.0061554, 0.036234) 
+   Parameter Estimate:  0.015178
+   Estimated Variance:  0.0001164
+              p-value:  0.15947
+    95% Conf Interval: (-0.0059679, 0.036325) 
 
  Relative Risk
-   Parameter Estimate:  1.3641
-              p-value:  0.15117
-    95% Conf Interval: (0.89273, 2.0843) 
+   Parameter Estimate:  1.3679
+              p-value:  0.1466
+    95% Conf Interval: (0.89611, 2.088) 
 
-              log(RR):  0.31049
-    variance(log(RR)):  0.04679 
+              log(RR):  0.31326
+    variance(log(RR)):  0.046566 
 
  Odds Ratio
-   Parameter Estimate:  1.3858
-              p-value:  0.15154
-    95% Conf Interval: (0.88723, 2.1646) 
+   Parameter Estimate:  1.3899
+              p-value:  0.14695
+    95% Conf Interval: (0.89077, 2.1686) 
 
-              log(OR):  0.3263
-    variance(log(OR)):  0.051769 
+              log(OR):  0.32921
+    variance(log(OR)):  0.05152 
 
 -----------------------------------------
 
@@ -3591,7 +3560,6 @@ momedu         0.00000
 Nlt18          0.05264
 Ncomp          0.15127
 watmin         0.23101
-roof           0.17799
 walls          0.28604
 floor          0.00033
 elec           0.18477
@@ -3615,7 +3583,6 @@ momheight      8.883485e-03
 momedu         1.455179e-06
 Nlt18          5.263721e-02
 Ncomp          1.512711e-01
-roof           1.779942e-01
 floor          3.341126e-04
 elec           1.847659e-01
 asset_wardrobe 1.530343e-02
@@ -3640,11 +3607,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.2963768 
+	     SL.mean_All    0.22925 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.5748595 
+	 SL.bayesglm_All    0.4535741 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1287638 
+	   SL.glmnet_All    0.3171759 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -3667,26 +3634,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.011304
-   Estimated Variance:  0.00012071
-              p-value:  0.30353
-    95% Conf Interval: (-0.01023, 0.032838) 
+   Parameter Estimate:  0.01172
+   Estimated Variance:  0.00012016
+              p-value:  0.28497
+    95% Conf Interval: (-0.0097644, 0.033205) 
 
  Relative Risk
-   Parameter Estimate:  1.2459
-              p-value:  0.30554
-    95% Conf Interval: (0.81813, 1.8975) 
+   Parameter Estimate:  1.256
+              p-value:  0.28736
+    95% Conf Interval: (0.82531, 1.9115) 
 
-              log(RR):  0.21989
-    variance(log(RR)):  0.046055 
+              log(RR):  0.22796
+    variance(log(RR)):  0.045908 
 
  Odds Ratio
-   Parameter Estimate:  1.2609
-              p-value:  0.30521
-    95% Conf Interval: (0.80952, 1.9639) 
+   Parameter Estimate:  1.2717
+              p-value:  0.287
+    95% Conf Interval: (0.81704, 1.9792) 
 
-              log(OR):  0.23181
-    variance(log(OR)):  0.051115 
+              log(OR):  0.24032
+    variance(log(OR)):  0.050944 
 
 -----------------------------------------
 > 
@@ -3738,7 +3705,6 @@ momedu         0.08879
 Nlt18          0.73754
 Ncomp          0.65982
 watmin         0.96728
-roof           0.78717
 walls          0.30088
 floor          0.51398
 elec           0.76840
@@ -3872,7 +3838,6 @@ momedu         0.05374
 Nlt18          0.44333
 Ncomp          0.76853
 watmin         0.82984
-roof           0.66546
 walls          0.09894
 floor          0.42632
 elec           0.71533
@@ -3995,7 +3960,6 @@ momedu         0.30534
 Nlt18          0.42665
 Ncomp          0.94732
 watmin         0.37239
-roof           0.71031
 walls          0.45268
 floor          0.31385
 elec           0.34751
@@ -4129,7 +4093,6 @@ momedu         0.05562
 Nlt18          0.03233
 Ncomp          0.04220
 watmin         0.95776
-roof           0.00867
 walls          0.92939
 floor          0.16577
 elec           0.69210
@@ -4155,7 +4118,6 @@ momheight    0.044769543
 momedu       0.055619483
 Nlt18        0.032325849
 Ncomp        0.042195962
-roof         0.008672032
 floor        0.165765817
 asset_khat   0.014574080
 asset_chouki 0.034730833
@@ -4174,9 +4136,9 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.9109634 
+	     SL.mean_All    0.8761561 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.08903663 
+	 SL.bayesglm_All    0.1238439 
 	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
@@ -4186,10 +4148,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9278839 
+	     SL.mean_All    0.930619 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.07211607 
+	      SL.gam_All    0.06938099 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -4201,26 +4163,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0052593
-   Estimated Variance:  1.2836e-05
-              p-value:  0.14212
-    95% Conf Interval: (-0.001763, 0.012282) 
+   Parameter Estimate:  0.0052426
+   Estimated Variance:  1.3029e-05
+              p-value:  0.14639
+    95% Conf Interval: (-0.0018322, 0.012317) 
 
  Relative Risk
-   Parameter Estimate:  3.2631
-              p-value:  0.096569
-    95% Conf Interval: (0.80873, 13.166) 
+   Parameter Estimate:  3.2538
+              p-value:  0.098888
+    95% Conf Interval: (0.80137, 13.212) 
 
-              log(RR):  1.1827
-    variance(log(RR)):  0.50653 
+              log(RR):  1.1798
+    variance(log(RR)):  0.51113 
 
  Odds Ratio
-   Parameter Estimate:  3.2803
-              p-value:  0.096545
-    95% Conf Interval: (0.80805, 13.317) 
+   Parameter Estimate:  3.271
+              p-value:  0.098872
+    95% Conf Interval: (0.80063, 13.364) 
 
-              log(OR):  1.1879
-    variance(log(OR)):  0.511 
+              log(OR):  1.1851
+    variance(log(OR)):  0.51565 
 
 -----------------------------------------
 
@@ -4254,7 +4216,6 @@ momedu         0.00599
 Nlt18          0.12489
 Ncomp          0.06733
 watmin         0.15858
-roof           0.00016
 walls          0.57502
 floor          0.13611
 elec           0.07783
@@ -4272,27 +4233,26 @@ asset_mobile   0.03723
 
 
 Covariates selected (P<0.2):
-                    P-value
-hfiacat        0.1239286481
-aged           0.0431594550
-momage         0.0270917785
-momheight      0.0191219626
-momedu         0.0059868056
-Nlt18          0.1248888911
-Ncomp          0.0673277161
-watmin         0.1585780449
-roof           0.0001627273
-floor          0.1361060182
-elec           0.0778335671
-asset_wardrobe 0.0334488879
-asset_table    0.0590841116
-asset_chair    0.1643054909
-asset_khat     0.0239397838
-asset_chouki   0.1542876620
-asset_tv       0.0438589808
-asset_refrig   0.1555784486
-asset_sewmach  0.1538465770
-asset_mobile   0.0372314576
+                   P-value
+hfiacat        0.123928648
+aged           0.043159455
+momage         0.027091778
+momheight      0.019121963
+momedu         0.005986806
+Nlt18          0.124888891
+Ncomp          0.067327716
+watmin         0.158578045
+floor          0.136106018
+elec           0.077833567
+asset_wardrobe 0.033448888
+asset_table    0.059084112
+asset_chair    0.164305491
+asset_khat     0.023939784
+asset_chouki   0.154287662
+asset_tv       0.043858981
+asset_refrig   0.155578449
+asset_sewmach  0.153846577
+asset_mobile   0.037231458
 
 -----------------------------------------
 
@@ -4305,10 +4265,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.7957755 
-	      SL.glm_All    0.05311974 
+	     SL.mean_All    0.6777177 
+	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1511048 
+	      SL.gam_All    0.3222823 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4332,26 +4292,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.00069872
-   Estimated Variance:  2.0669e-05
-              p-value:  0.87785
-    95% Conf Interval: (-0.0096094, 0.008212) 
+   Parameter Estimate:  -0.00090438
+   Estimated Variance:  2.0129e-05
+              p-value:  0.84025
+    95% Conf Interval: (-0.009698, 0.0078893) 
 
  Relative Risk
-   Parameter Estimate:  0.91532
-              p-value:  0.87806
-    95% Conf Interval: (0.29561, 2.8342) 
+   Parameter Estimate:  0.89185
+              p-value:  0.84059
+    95% Conf Interval: (0.29236, 2.7206) 
 
-              log(RR):  -0.088477
-    variance(log(RR)):  0.33254 
+              log(RR):  -0.11446
+    variance(log(RR)):  0.3238 
 
  Odds Ratio
-   Parameter Estimate:  0.91468
-              p-value:  0.87806
-    95% Conf Interval: (0.29276, 2.8578) 
+   Parameter Estimate:  0.89104
+              p-value:  0.84058
+    95% Conf Interval: (0.28952, 2.7423) 
 
-              log(OR):  -0.089182
-    variance(log(OR)):  0.33784 
+              log(OR):  -0.11537
+    variance(log(OR)):  0.32896 
 
 -----------------------------------------
 
@@ -4385,7 +4345,6 @@ momedu         0.06009
 Nlt18          0.02830
 Ncomp          0.14459
 watmin         0.25763
-roof           0.00358
 walls          0.98639
 floor          0.20247
 elec           0.92162
@@ -4410,7 +4369,6 @@ momheight      0.185643873
 momedu         0.060092589
 Nlt18          0.028297425
 Ncomp          0.144590411
-roof           0.003583704
 asset_wardrobe 0.099745050
 asset_khat     0.152758760
 asset_chouki   0.042337504
@@ -4428,10 +4386,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6458286 
+	     SL.mean_All    0.6280707 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.292176 
-	      SL.gam_All    0.06199536 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.3719293 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4455,26 +4413,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0062835
-   Estimated Variance:  7.0251e-06
-              p-value:  0.017754
-    95% Conf Interval: (0.0010886, 0.011478) 
+   Parameter Estimate:  0.0061789
+   Estimated Variance:  7.2122e-06
+              p-value:  0.021404
+    95% Conf Interval: (0.00091519, 0.011443) 
 
  Relative Risk
-   Parameter Estimate:  6.702
-              p-value:  2.9165e-05
-    95% Conf Interval: (2.7465, 16.354) 
+   Parameter Estimate:  6.5845
+              p-value:  6.5603e-05
+    95% Conf Interval: (2.6098, 16.612) 
 
-              log(RR):  1.9024
-    variance(log(RR)):  0.20715 
+              log(RR):  1.8847
+    variance(log(RR)):  0.22293 
 
  Odds Ratio
-   Parameter Estimate:  6.7444
-              p-value:  2.8218e-05
-    95% Conf Interval: (2.7602, 16.48) 
+   Parameter Estimate:  6.6254
+              p-value:  6.3971e-05
+    95% Conf Interval: (2.6217, 16.744) 
 
-              log(OR):  1.9087
-    variance(log(OR)):  0.20778 
+              log(OR):  1.8909
+    variance(log(OR)):  0.22373 
 
 -----------------------------------------
 > 
@@ -4526,7 +4484,6 @@ momedu         0.00000
 Nlt18          0.00097
 Ncomp          0.00431
 watmin         0.73749
-roof           0.24578
 walls          0.00974
 floor          0.00083
 elec           0.04211
@@ -4654,7 +4611,6 @@ momedu         0.00000
 Nlt18          0.04081
 Ncomp          0.05781
 watmin         0.36655
-roof           0.09786
 walls          0.00687
 floor          0.01276
 elec           0.03897
@@ -4679,7 +4635,6 @@ momheight     1.970574e-02
 momedu        2.018355e-08
 Nlt18         4.080812e-02
 Ncomp         5.780915e-02
-roof          9.785940e-02
 walls         6.872831e-03
 floor         1.276061e-02
 elec          3.897445e-02
@@ -4703,10 +4658,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5451866 
+	     SL.mean_All    0.5274415 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.4548134 
-	      SL.gam_All    0 
+	 SL.bayesglm_All    0.4434018 
+	      SL.gam_All    0.02915671 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4715,11 +4670,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8996163 
+	     SL.mean_All    0.8614244 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1003837 
+	   SL.glmnet_All    0.1385756 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -4730,26 +4685,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.010916
-   Estimated Variance:  0.00015707
-              p-value:  0.38375
-    95% Conf Interval: (-0.013648, 0.035481) 
+   Parameter Estimate:  0.011316
+   Estimated Variance:  0.00015656
+              p-value:  0.36577
+    95% Conf Interval: (-0.013208, 0.035841) 
 
  Relative Risk
-   Parameter Estimate:  1.2202
-              p-value:  0.37756
-    95% Conf Interval: (0.78422, 1.8986) 
+   Parameter Estimate:  1.2291
+              p-value:  0.35957
+    95% Conf Interval: (0.79057, 1.9108) 
 
-              log(RR):  0.19904
-    variance(log(RR)):  0.050878 
+              log(RR):  0.20626
+    variance(log(RR)):  0.050684 
 
  Odds Ratio
-   Parameter Estimate:  1.2344
-              p-value:  0.37778
-    95% Conf Interval: (0.77307, 1.9711) 
+   Parameter Estimate:  1.2439
+              p-value:  0.35979
+    95% Conf Interval: (0.7797, 1.9844) 
 
-              log(OR):  0.21059
-    variance(log(OR)):  0.057009 
+              log(OR):  0.21824
+    variance(log(OR)):  0.056791 
 
 -----------------------------------------
 
@@ -4783,7 +4738,6 @@ momedu         0.00000
 Nlt18          0.03652
 Ncomp          0.09018
 watmin         0.11409
-roof           0.20722
 walls          0.15961
 floor          0.00018
 elec           0.15464
@@ -4945,7 +4899,6 @@ momedu         0.00000
 Nlt18          0.00091
 Ncomp          0.03284
 watmin         0.26705
-roof           0.04589
 walls          0.03795
 floor          0.00008
 elec           0.09711
@@ -4969,7 +4922,6 @@ momheight      1.885552e-01
 momedu         7.109700e-12
 Nlt18          9.118868e-04
 Ncomp          3.284106e-02
-roof           4.588923e-02
 walls          3.794534e-02
 floor          8.029521e-05
 elec           9.710552e-02
@@ -4996,11 +4948,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.3520977 
+	     SL.mean_All    0.33995 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.2101595 
-	   SL.glmnet_All    0.4377428 
+	      SL.gam_All    0.1204338 
+	   SL.glmnet_All    0.5396162 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -5023,26 +4975,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.016079
-   Estimated Variance:  0.00012984
-              p-value:  0.15823
-    95% Conf Interval: (-0.038412, 0.006255) 
+   Parameter Estimate:  -0.016666
+   Estimated Variance:  0.0001307
+              p-value:  0.14491
+    95% Conf Interval: (-0.039074, 0.0057419) 
 
  Relative Risk
-   Parameter Estimate:  0.71323
-              p-value:  0.14785
-    95% Conf Interval: (0.45128, 1.1272) 
+   Parameter Estimate:  0.70456
+              p-value:  0.13494
+    95% Conf Interval: (0.44517, 1.1151) 
 
-              log(RR):  -0.33795
-    variance(log(RR)):  0.054536 
+              log(RR):  -0.35018
+    variance(log(RR)):  0.054873 
 
  Odds Ratio
-   Parameter Estimate:  0.70128
-              p-value:  0.14798
-    95% Conf Interval: (0.43362, 1.1342) 
+   Parameter Estimate:  0.69233
+              p-value:  0.13503
+    95% Conf Interval: (0.42746, 1.1213) 
 
-              log(OR):  -0.35484
-    variance(log(OR)):  0.06016 
+              log(OR):  -0.36769
+    variance(log(OR)):  0.060526 
 
 -----------------------------------------
 
@@ -5076,7 +5028,6 @@ momedu         0.00004
 Nlt18          0.24779
 Ncomp          0.94414
 watmin         0.72625
-roof           0.93351
 walls          0.21995
 floor          0.02853
 elec           0.00049
@@ -5207,7 +5158,6 @@ momedu         0.11558
 Nlt18          0.77644
 Ncomp          0.72827
 watmin         0.86657
-roof           0.80626
 walls          0.28232
 floor          0.55488
 elec           0.79350
@@ -5342,7 +5292,6 @@ momedu         0.48787
 Nlt18          0.03954
 Ncomp          0.65628
 watmin         0.96827
-roof           0.86269
 walls          0.43155
 floor          0.66473
 elec           0.19470
@@ -5479,7 +5428,6 @@ momedu         0.02289
 Nlt18          0.01245
 Ncomp          0.06906
 watmin         0.29927
-roof           0.00735
 walls          0.70311
 floor          0.18622
 elec           0.22136
@@ -5503,7 +5451,6 @@ momage         0.002331838
 momedu         0.022894767
 Nlt18          0.012454329
 Ncomp          0.069056783
-roof           0.007347663
 floor          0.186218481
 asset_wardrobe 0.065814040
 asset_khat     0.166679819
@@ -5522,10 +5469,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.7623094 
+	     SL.mean_All    0.8025787 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.2376906 
+	      SL.gam_All    0.1974213 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -5549,26 +5496,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0037891
-   Estimated Variance:  1.8433e-05
-              p-value:  0.37748
-    95% Conf Interval: (-0.012204, 0.0046259) 
+   Parameter Estimate:  -0.0041412
+   Estimated Variance:  1.9423e-05
+              p-value:  0.34739
+    95% Conf Interval: (-0.012779, 0.0044967) 
 
  Relative Risk
-   Parameter Estimate:  0.47971
-              p-value:  0.3318
-    95% Conf Interval: (0.10882, 2.1148) 
+   Parameter Estimate:  0.44884
+              p-value:  0.30274
+    95% Conf Interval: (0.097819, 2.0595) 
 
-              log(RR):  -0.73457
-    variance(log(RR)):  0.5729 
+              log(RR):  -0.80109
+    variance(log(RR)):  0.60423 
 
  Odds Ratio
-   Parameter Estimate:  0.47789
-              p-value:  0.33188
-    95% Conf Interval: (0.10754, 2.1236) 
+   Parameter Estimate:  0.44697
+              p-value:  0.30279
+    95% Conf Interval: (0.096627, 2.0676) 
 
-              log(OR):  -0.73838
-    variance(log(OR)):  0.57905 
+              log(OR):  -0.80526
+    variance(log(OR)):  0.61066 
 
 -----------------------------------------
 
@@ -5602,7 +5549,6 @@ momedu         0.19202
 Nlt18          0.25182
 Ncomp          0.48375
 watmin         0.41119
-roof           0.72931
 walls          0.11552
 floor          0.38585
 elec           0.19526
@@ -5732,7 +5678,6 @@ momedu         0.00000
 Nlt18          0.00082
 Ncomp          0.01871
 watmin         0.20302
-roof           0.05773
 walls          0.01582
 floor          0.00004
 elec           0.05245
@@ -5756,7 +5701,6 @@ momage         1.431650e-01
 momedu         2.842294e-11
 Nlt18          8.234346e-04
 Ncomp          1.870995e-02
-roof           5.772942e-02
 walls          1.581583e-02
 floor          4.485658e-05
 elec           5.244755e-02
@@ -5783,11 +5727,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.3809996 
+	     SL.mean_All    0.3454998 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3471185 
-	   SL.glmnet_All    0.2718819 
+	      SL.gam_All    0.3054531 
+	   SL.glmnet_All    0.3490471 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -5810,26 +5754,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.017386
-   Estimated Variance:  0.0001413
-              p-value:  0.14356
-    95% Conf Interval: (-0.040685, 0.005912) 
+   Parameter Estimate:  -0.018043
+   Estimated Variance:  0.00014087
+              p-value:  0.12846
+    95% Conf Interval: (-0.041306, 0.00522) 
 
  Relative Risk
-   Parameter Estimate:  0.70997
-              p-value:  0.12577
-    95% Conf Interval: (0.45793, 1.1007) 
+   Parameter Estimate:  0.70092
+              p-value:  0.11139
+    95% Conf Interval: (0.45255, 1.0856) 
 
-              log(RR):  -0.34253
-    variance(log(RR)):  0.050056 
+              log(RR):  -0.35536
+    variance(log(RR)):  0.049826 
 
  Odds Ratio
-   Parameter Estimate:  0.69708
-              p-value:  0.12629
-    95% Conf Interval: (0.43891, 1.1071) 
+   Parameter Estimate:  0.68772
+              p-value:  0.11185
+    95% Conf Interval: (0.43349, 1.0911) 
 
-              log(OR):  -0.36086
-    variance(log(OR)):  0.055707 
+              log(OR):  -0.37438
+    variance(log(OR)):  0.055445 
 
 -----------------------------------------
 
@@ -5863,7 +5807,6 @@ momedu         0.00025
 Nlt18          0.30378
 Ncomp          0.88690
 watmin         0.78087
-roof           0.89947
 walls          0.15378
 floor          0.02240
 elec           0.00034
@@ -5900,3 +5843,105 @@ asset_moto     0.0009414824
 asset_mobile   0.0048457481
 
 -----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.4458705 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.5541295 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.9711059 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.02889415 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0029087
+   Estimated Variance:  0.00011497
+              p-value:  0.78618
+    95% Conf Interval: (-0.023924, 0.018107) 
+
+ Relative Risk
+   Parameter Estimate:  0.93519
+              p-value:  0.78683
+    95% Conf Interval: (0.57544, 1.5198) 
+
+              log(RR):  -0.067003
+    variance(log(RR)):  0.061385 
+
+ Odds Ratio
+   Parameter Estimate:  0.93235
+              p-value:  0.78679
+    95% Conf Interval: (0.56124, 1.5489) 
+
+              log(OR):  -0.070044
+    variance(log(OR)):  0.06706 
+
+-----------------------------------------
+> 
+> al_mh_rr_h3_adj_j=format.tmle(est.al.h3,family="binomial")$rr
+> al_mh_rd_h3_adj_j=format.tmle(est.al.h3,family="binomial")$rd
+> 
+> hw_mh_rr_h3_adj_j=format.tmle(est.hw.h3,family="binomial")$rr
+> hw_mh_rd_h3_adj_j=format.tmle(est.hw.h3,family="binomial")$rd
+> 
+> tt_mh_rr_h3_adj_j=format.tmle(est.tt.h3,family="binomial")$rr
+> tt_mh_rd_h3_adj_j=format.tmle(est.tt.h3,family="binomial")$rd
+> 
+> sth_mh_rr_h3_adj_j=format.tmle(est.sth.h3,family="binomial")$rr
+> sth_mh_rd_h3_adj_j=format.tmle(est.sth.h3,family="binomial")$rd
+> 
+> rownames(al_mh_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(hw_mh_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(tt_mh_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(sth_mh_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> 
+> rownames(al_mh_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(hw_mh_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(tt_mh_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(sth_mh_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> 
+> #----------------------------------------------
+> # save objects
+> #----------------------------------------------
+> 
+> save(al_mh_rr_h1_adj_j,hw_mh_rr_h1_adj_j,tt_mh_rr_h1_adj_j,sth_mh_rr_h1_adj_j,
++      al_mh_rd_h1_adj_j,hw_mh_rd_h1_adj_j,tt_mh_rd_h1_adj_j,sth_mh_rd_h1_adj_j,
++ 
++      al_mh_rr_h2_adj_j,hw_mh_rr_h2_adj_j,tt_mh_rr_h2_adj_j,sth_mh_rr_h2_adj_j,
++      al_mh_rd_h2_adj_j,hw_mh_rd_h2_adj_j,tt_mh_rd_h2_adj_j,sth_mh_rd_h2_adj_j,
++ 
++      al_mh_rr_h3_adj_j,hw_mh_rr_h3_adj_j,tt_mh_rr_h3_adj_j,sth_mh_rr_h3_adj_j,
++      al_mh_rd_h3_adj_j,hw_mh_rd_h3_adj_j,tt_mh_rd_h3_adj_j,sth_mh_rd_h3_adj_j,
++      
++      file="~/Dropbox/WASHB Parasites/Results/Jade/sth_pr_mh_adj.RData")
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+452.432  22.134 486.377 
