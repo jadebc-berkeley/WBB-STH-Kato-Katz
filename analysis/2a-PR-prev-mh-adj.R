@@ -18,8 +18,10 @@ d=preprocess.sth(data)
 
 d$block=as.factor(d$block)
 
+# roof and landphone excluded due to low prevalence
+
 W=c("month","hfiacat","aged","sex","momage","momheight","momedu",
-    "Nlt18","Ncomp","watmin","roof","walls","floor",
+    "Nlt18","Ncomp","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
