@@ -50,7 +50,7 @@ https://ben-arnold.github.io/washb
 > 
 > # roof and landphone excluded due to low prevalence
 > 
-> W=c("month","hfiacat","aged","sex","momage","momheight","momedu",
+> W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
 +     "Nlt18","Ncomp","watmin","walls","floor",
 +     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
 +     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
@@ -130,6 +130,8 @@ The following objects are masked from ‘package:base’:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.96200
+birthord       0.00376
 month          0.05316
 hfiacat        0.01173
 aged           0.94719
@@ -158,6 +160,7 @@ asset_mobile   0.00369
 
 Covariates selected (P<0.2):
                     P-value
+birthord       3.758288e-03
 month          5.315850e-02
 hfiacat        1.172974e-02
 sex            7.826708e-02
@@ -206,10 +209,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6002048 
+	     SL.mean_All    0.6220649 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3997952 
+	 SL.bayesglm_All    0.1294717 
+	      SL.gam_All    0.2484634 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -218,11 +221,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8227276 
+	     SL.mean_All    0.8200995 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1772724 
+	   SL.glmnet_All    0.1799005 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -233,26 +236,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.02102
-   Estimated Variance:  7.9642e-05
-              p-value:  0.018502
-    95% Conf Interval: (-0.038512, -0.0035288) 
+   Parameter Estimate:  -0.021085
+   Estimated Variance:  7.9812e-05
+              p-value:  0.01827
+    95% Conf Interval: (-0.038595, -0.0035744) 
 
  Relative Risk
-   Parameter Estimate:  0.58186
-              p-value:  0.021792
-    95% Conf Interval: (0.36634, 0.92419) 
+   Parameter Estimate:  0.58086
+              p-value:  0.021605
+    95% Conf Interval: (0.3654, 0.92335) 
 
-              log(RR):  -0.54152
-    variance(log(RR)):  0.055726 
+              log(RR):  -0.54325
+    variance(log(RR)):  0.055923 
 
  Odds Ratio
-   Parameter Estimate:  0.56926
-              p-value:  0.021454
-    95% Conf Interval: (0.3522, 0.9201) 
+   Parameter Estimate:  0.56824
+              p-value:  0.021266
+    95% Conf Interval: (0.35127, 0.91922) 
 
-              log(OR):  -0.56341
-    variance(log(OR)):  0.060012 
+              log(OR):  -0.56521
+    variance(log(OR)):  0.060221 
 
 -----------------------------------------
 
@@ -276,6 +279,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.55667
+birthord       0.00274
 month          0.00163
 hfiacat        0.00017
 aged           0.89623
@@ -304,6 +309,7 @@ asset_mobile   0.02597
 
 Covariates selected (P<0.2):
                     P-value
+birthord       2.744102e-03
 month          1.632973e-03
 hfiacat        1.726551e-04
 sex            6.262609e-02
@@ -335,10 +341,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6528822 
+	     SL.mean_All    0.7174766 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3471178 
+	 SL.bayesglm_All    0.0296126 
+	      SL.gam_All    0.2529108 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -347,11 +353,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.5817385 
+	     SL.mean_All    0.7133465 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1971368 
-	   SL.glmnet_All    0.2211248 
+	      SL.gam_All    0.262354 
+	   SL.glmnet_All    0.02429953 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -362,26 +368,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0093257
-   Estimated Variance:  8.4007e-05
-              p-value:  0.30893
-    95% Conf Interval: (-0.02729, 0.0086387) 
+   Parameter Estimate:  -0.0092862
+   Estimated Variance:  8.4205e-05
+              p-value:  0.31155
+    95% Conf Interval: (-0.027272, 0.0086994) 
 
  Relative Risk
-   Parameter Estimate:  0.81441
-              p-value:  0.31244
-    95% Conf Interval: (0.54683, 1.2129) 
+   Parameter Estimate:  0.81506
+              p-value:  0.31515
+    95% Conf Interval: (0.54689, 1.2147) 
 
-              log(RR):  -0.20529
-    variance(log(RR)):  0.041304 
+              log(RR):  -0.20449
+    variance(log(RR)):  0.041446 
 
  Odds Ratio
-   Parameter Estimate:  0.80649
-              p-value:  0.31213
-    95% Conf Interval: (0.53148, 1.2238) 
+   Parameter Estimate:  0.80717
+              p-value:  0.31483
+    95% Conf Interval: (0.53155, 1.2257) 
 
-              log(OR):  -0.21506
-    variance(log(OR)):  0.04527 
+              log(OR):  -0.21422
+    variance(log(OR)):  0.045424 
 
 -----------------------------------------
 
@@ -405,6 +411,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.78546
+birthord       0.06847
 month          0.10141
 hfiacat        0.07022
 aged           0.49811
@@ -433,6 +441,7 @@ asset_mobile   0.00508
 
 Covariates selected (P<0.2):
                     P-value
+birthord       6.847458e-02
 month          1.014145e-01
 hfiacat        7.022320e-02
 sex            1.756448e-01
@@ -463,9 +472,9 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.7654689 
+	     SL.mean_All    0.808106 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.2345311 
+	 SL.bayesglm_All    0.191894 
 	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
@@ -475,10 +484,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9832325 
+	     SL.mean_All    0.9913113 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.01676749 
+	      SL.gam_All    0.008688704 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -490,26 +499,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0029491
-   Estimated Variance:  0.00010106
-              p-value:  0.76925
-    95% Conf Interval: (-0.022653, 0.016755) 
+   Parameter Estimate:  -0.0030882
+   Estimated Variance:  0.00010142
+              p-value:  0.75911
+    95% Conf Interval: (-0.022827, 0.01665) 
 
  Relative Risk
-   Parameter Estimate:  0.94109
-              p-value:  0.76992
-    95% Conf Interval: (0.62651, 1.4136) 
+   Parameter Estimate:  0.93838
+              p-value:  0.75984
+    95% Conf Interval: (0.62412, 1.4109) 
 
-              log(RR):  -0.060717
-    variance(log(RR)):  0.043094 
+              log(RR):  -0.063605
+    variance(log(RR)):  0.043292 
 
  Odds Ratio
-   Parameter Estimate:  0.93818
-              p-value:  0.76988
-    95% Conf Interval: (0.61177, 1.4387) 
+   Parameter Estimate:  0.93533
+              p-value:  0.75979
+    95% Conf Interval: (0.60933, 1.4358) 
 
-              log(OR):  -0.063816
-    variance(log(OR)):  0.04759 
+              log(OR):  -0.066851
+    variance(log(OR)):  0.047806 
 
 -----------------------------------------
 
@@ -533,6 +542,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.49284
+birthord       0.00029
 month          0.15269
 hfiacat        0.00003
 aged           0.87890
@@ -561,6 +572,7 @@ asset_mobile   0.06770
 
 Covariates selected (P<0.2):
                     P-value
+birthord       2.907642e-04
 month          1.526867e-01
 hfiacat        3.009168e-05
 momage         2.241435e-02
@@ -593,11 +605,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.55507 
+	     SL.mean_All    0.4944293 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.44493 
-	   SL.glmnet_All    0 
+	      SL.gam_All    0.2661334 
+	   SL.glmnet_All    0.2394373 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -620,26 +632,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0054018
-   Estimated Variance:  0.00013368
-              p-value:  0.64035
-    95% Conf Interval: (-0.01726, 0.028063) 
+   Parameter Estimate:  0.0052916
+   Estimated Variance:  0.00013434
+              p-value:  0.648
+    95% Conf Interval: (-0.017426, 0.028009) 
 
  Relative Risk
-   Parameter Estimate:  1.107
-              p-value:  0.63581
-    95% Conf Interval: (0.72681, 1.6861) 
+   Parameter Estimate:  1.1047
+              p-value:  0.64364
+    95% Conf Interval: (0.72439, 1.6848) 
 
-              log(RR):  0.10166
-    variance(log(RR)):  0.046081 
+              log(RR):  0.099612
+    variance(log(RR)):  0.046365 
 
  Odds Ratio
-   Parameter Estimate:  1.1133
-              p-value:  0.63604
-    95% Conf Interval: (0.71369, 1.7368) 
+   Parameter Estimate:  1.1109
+              p-value:  0.64387
+    95% Conf Interval: (0.71119, 1.7354) 
 
-              log(OR):  0.10736
-    variance(log(OR)):  0.051469 
+              log(OR):  0.1052
+    variance(log(OR)):  0.051784 
 
 -----------------------------------------
 
@@ -663,6 +675,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.98773
+birthord       0.00015
 month          0.01960
 hfiacat        0.00017
 aged           0.90618
@@ -691,6 +705,7 @@ asset_mobile   0.01261
 
 Covariates selected (P<0.2):
                     P-value
+birthord       1.504626e-04
 month          1.960198e-02
 hfiacat        1.662383e-04
 momage         6.784917e-02
@@ -723,10 +738,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5708928 
+	     SL.mean_All    0.5803436 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.4291072 
+	      SL.gam_All    0.4196564 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -735,10 +750,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9412446 
+	     SL.mean_All    0.9584198 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.05875536 
+	      SL.gam_All    0.04158017 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -750,26 +765,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.005858
-   Estimated Variance:  8.1613e-05
-              p-value:  0.5167
-    95% Conf Interval: (-0.023565, 0.011849) 
+   Parameter Estimate:  -0.005778
+   Estimated Variance:  8.0998e-05
+              p-value:  0.52087
+    95% Conf Interval: (-0.023418, 0.011862) 
 
  Relative Risk
-   Parameter Estimate:  0.88287
-              p-value:  0.52274
-    95% Conf Interval: (0.60252, 1.2937) 
+   Parameter Estimate:  0.88439
+              p-value:  0.52673
+    95% Conf Interval: (0.60457, 1.2937) 
 
-              log(RR):  -0.12458
-    variance(log(RR)):  0.037996 
+              log(RR):  -0.12285
+    variance(log(RR)):  0.037666 
 
  Odds Ratio
-   Parameter Estimate:  0.87745
-              p-value:  0.52238
-    95% Conf Interval: (0.58785, 1.3097) 
+   Parameter Estimate:  0.87905
+              p-value:  0.52638
+    95% Conf Interval: (0.58993, 1.3098) 
 
-              log(OR):  -0.13073
-    variance(log(OR)):  0.041766 
+              log(OR):  -0.12892
+    variance(log(OR)):  0.041406 
 
 -----------------------------------------
 
@@ -793,6 +808,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.37083
+birthord       0.00005
 month          0.02194
 hfiacat        0.00002
 aged           0.85531
@@ -821,6 +838,7 @@ asset_mobile   0.00385
 
 Covariates selected (P<0.2):
                     P-value
+birthord       5.202788e-05
 month          2.194168e-02
 hfiacat        2.457841e-05
 sex            3.961345e-02
@@ -854,11 +872,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6381756 
+	     SL.mean_All    0.4872621 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.2023004 
-	   SL.glmnet_All    0.159524 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.5127379 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -866,10 +884,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9927014 
+	     SL.mean_All    0.9643846 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.007298607 
+	      SL.gam_All    0.03561541 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -881,26 +899,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.010754
-   Estimated Variance:  9.5821e-05
-              p-value:  0.27194
-    95% Conf Interval: (-0.02994, 0.0084321) 
+   Parameter Estimate:  -0.010962
+   Estimated Variance:  9.3486e-05
+              p-value:  0.25689
+    95% Conf Interval: (-0.029913, 0.0079886) 
 
  Relative Risk
-   Parameter Estimate:  0.78666
-              p-value:  0.28943
-    95% Conf Interval: (0.50464, 1.2263) 
+   Parameter Estimate:  0.78289
+              p-value:  0.27457
+    95% Conf Interval: (0.50468, 1.2145) 
 
-              log(RR):  -0.23996
-    variance(log(RR)):  0.051306 
+              log(RR):  -0.24476
+    variance(log(RR)):  0.050183 
 
  Odds Ratio
-   Parameter Estimate:  0.77785
-              p-value:  0.28844
-    95% Conf Interval: (0.48916, 1.2369) 
+   Parameter Estimate:  0.77396
+              p-value:  0.27356
+    95% Conf Interval: (0.48922, 1.2244) 
 
-              log(OR):  -0.25122
-    variance(log(OR)):  0.056005 
+              log(OR):  -0.25624
+    variance(log(OR)):  0.05477 
 
 -----------------------------------------
 > 
@@ -942,6 +960,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.27034
+birthord       0.81094
 month          0.42942
 hfiacat        0.72904
 aged           0.06761
@@ -1074,6 +1094,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.12126
+birthord       0.76329
 month          0.90169
 hfiacat        0.42722
 aged           0.00968
@@ -1102,6 +1124,7 @@ asset_mobile   0.62293
 
 Covariates selected (P<0.2):
                  P-value
+counter      0.121261143
 aged         0.009681052
 momage       0.065458150
 watmin       0.057524672
@@ -1128,10 +1151,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.7269268 
-	      SL.glm_All    0.2355243 
+	     SL.mean_All    0.7759498 
+	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.03754896 
+	      SL.gam_All    0.2240502 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -1140,10 +1163,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.3509641 
+	     SL.mean_All    0.4202469 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.6490359 
+	      SL.gam_All    0.5797531 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -1155,26 +1178,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0011573
-   Estimated Variance:  3.7369e-06
-              p-value:  0.54938
-    95% Conf Interval: (-0.0026316, 0.0049462) 
+   Parameter Estimate:  0.0011042
+   Estimated Variance:  3.5096e-06
+              p-value:  0.55559
+    95% Conf Interval: (-0.0025677, 0.004776) 
 
  Relative Risk
-   Parameter Estimate:  2.0169
-              p-value:  0.4928
-    95% Conf Interval: (0.27164, 14.975) 
+   Parameter Estimate:  1.9749
+              p-value:  0.50193
+    95% Conf Interval: (0.27092, 14.397) 
 
-              log(RR):  0.70155
-    variance(log(RR)):  1.0462 
+              log(RR):  0.68053
+    variance(log(RR)):  1.0272 
 
  Odds Ratio
-   Parameter Estimate:  2.0192
-              p-value:  0.49286
-    95% Conf Interval: (0.27098, 15.046) 
+   Parameter Estimate:  1.9771
+              p-value:  0.50199
+    95% Conf Interval: (0.27027, 14.463) 
 
-              log(OR):  0.70271
-    variance(log(OR)):  1.05 
+              log(OR):  0.68163
+    variance(log(OR)):  1.0308 
 
 -----------------------------------------
 
@@ -1198,6 +1221,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.27929
+birthord       0.88770
 month          0.81101
 hfiacat        0.73646
 aged           0.00032
@@ -1316,6 +1341,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.42347
+birthord       0.14976
 month          0.69016
 hfiacat        0.44873
 aged           0.00756
@@ -1344,6 +1371,7 @@ asset_mobile   0.59753
 
 Covariates selected (P<0.2):
                 P-value
+birthord    0.149761927
 aged        0.007564441
 sex         0.016820086
 momage      0.058624412
@@ -1366,9 +1394,9 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5496578 
-	      SL.glm_All    0.2430481 
-	 SL.bayesglm_All    0.2072941 
+	     SL.mean_All    0.5413354 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0.4586646 
 	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
@@ -1393,26 +1421,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0010162
-   Estimated Variance:  2.5619e-06
-              p-value:  0.52549
-    95% Conf Interval: (-0.002121, 0.0041534) 
+   Parameter Estimate:  0.0010695
+   Estimated Variance:  2.559e-06
+              p-value:  0.50378
+    95% Conf Interval: (-0.0020659, 0.0042049) 
 
  Relative Risk
-   Parameter Estimate:  1.9073
-              p-value:  0.48888
-    95% Conf Interval: (0.30639, 11.873) 
+   Parameter Estimate:  1.9637
+              p-value:  0.46649
+    95% Conf Interval: (0.31933, 12.076) 
 
-              log(RR):  0.6457
-    variance(log(RR)):  0.87042 
+              log(RR):  0.67483
+    variance(log(RR)):  0.8588 
 
  Odds Ratio
-   Parameter Estimate:  1.9093
-              p-value:  0.48891
-    95% Conf Interval: (0.30578, 11.921) 
+   Parameter Estimate:  1.9658
+              p-value:  0.46652
+    95% Conf Interval: (0.31872, 12.125) 
 
-              log(OR):  0.64672
-    variance(log(OR)):  0.87328 
+              log(OR):  0.6759
+    variance(log(OR)):  0.86164 
 
 -----------------------------------------
 
@@ -1436,6 +1464,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.07599
+birthord       0.43282
 month          0.74578
 hfiacat        0.24014
 aged           0.02514
@@ -1464,6 +1494,7 @@ asset_mobile   0.43652
 
 Covariates selected (P<0.2):
                P-value
+counter     0.07598715
 aged        0.02514061
 sex         0.03922498
 momage      0.13568542
@@ -1495,21 +1526,22 @@ Estimation Results:
  Initial estimation of Q
 	 Procedure: glm, main terms model
 	 Model:
-		 Y ~  (Intercept) + Z + A + aged + momage + walls + asset_table + asset_chair + asset_khat + asset_tv + asset_bike + sexmale
+		 Y ~  (Intercept) + Z + A + counter + aged + momage + walls + asset_table + asset_chair + asset_khat + asset_tv + asset_bike + sexmale
 
 	 Coefficients: 
-	     (Intercept)   -89.30479 
+	     (Intercept)   -95.78195 
 	               Z NA NA 
-	               A   -0.3802263 
-	            aged    0.001354143 
-	          momage    0.1295903 
-	           walls    19.62896 
-	     asset_table    19.62909 
-	     asset_chair    19.71615 
-	      asset_khat   -20.35077 
-	        asset_tv   -18.39641 
-	      asset_bike   -18.78103 
-	         sexmale    20.47452 
+	               A    0.2018187 
+	         counter    0.9866429 
+	            aged    0.001394081 
+	          momage    0.1139435 
+	           walls    19.99595 
+	     asset_table    20.29793 
+	     asset_chair    20.16021 
+	      asset_khat   -20.77317 
+	        asset_tv   -19.19448 
+	      asset_bike   -18.24799 
+	         sexmale    20.87031 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -1532,26 +1564,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -2.0756e-05
-   Estimated Variance:  1.7014e-06
-              p-value:  0.9873
-    95% Conf Interval: (-0.0025773, 0.0025358) 
+   Parameter Estimate:  0.00018631
+   Estimated Variance:  1.6106e-06
+              p-value:  0.88328
+    95% Conf Interval: (-0.0023011, 0.0026737) 
 
  Relative Risk
-   Parameter Estimate:  0.98183
-              p-value:  0.98735
-    95% Conf Interval: (0.10173, 9.4763) 
+   Parameter Estimate:  1.1735
+              p-value:  0.8805
+    95% Conf Interval: (0.14574, 9.4489) 
 
-              log(RR):  -0.018336
-    variance(log(RR)):  1.338 
+              log(RR):  0.15999
+    variance(log(RR)):  1.1326 
 
  Odds Ratio
-   Parameter Estimate:  0.98181
-              p-value:  0.98735
-    95% Conf Interval: (0.10146, 9.5004) 
+   Parameter Estimate:  1.1737
+              p-value:  0.88051
+    95% Conf Interval: (0.14541, 9.4742) 
 
-              log(OR):  -0.018357
-    variance(log(OR)):  1.341 
+              log(OR):  0.16017
+    variance(log(OR)):  1.1353 
 
 -----------------------------------------
 
@@ -1575,6 +1607,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.27595
+birthord       0.81818
 month          0.46266
 hfiacat        0.72775
 aged           0.06564
@@ -1726,6 +1760,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.76026
+birthord       0.73962
 month          0.19958
 hfiacat        0.47889
 aged           0.13357
@@ -1846,6 +1882,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.68613
+birthord       0.67629
 month          0.15683
 hfiacat        0.20514
 aged           0.38549
@@ -1970,6 +2008,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.81233
+birthord       0.69339
 month          0.17155
 hfiacat        0.41477
 aged           0.02635
@@ -2088,6 +2128,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.50494
+birthord       0.05398
 month          0.37134
 hfiacat        0.30852
 aged           0.27973
@@ -2116,6 +2158,7 @@ asset_mobile   0.23617
 
 Covariates selected (P<0.2):
                    P-value
+birthord       0.053981882
 sex            0.083430900
 momage         0.019282373
 momheight      0.074032071
@@ -2142,9 +2185,9 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.8775092 
+	     SL.mean_All    1 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.1224908 
+	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
@@ -2169,26 +2212,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.00056921
-   Estimated Variance:  1.8007e-05
-              p-value:  0.89329
-    95% Conf Interval: (-0.0077481, 0.0088865) 
+   Parameter Estimate:  0.00053998
+   Estimated Variance:  1.8045e-05
+              p-value:  0.89885
+    95% Conf Interval: (-0.0077861, 0.0088661) 
 
  Relative Risk
-   Parameter Estimate:  1.0793
-              p-value:  0.89201
-    95% Conf Interval: (0.35862, 3.2483) 
+   Parameter Estimate:  1.0751
+              p-value:  0.89767
+    95% Conf Interval: (0.35638, 3.2435) 
 
-              log(RR):  0.076317
-    variance(log(RR)):  0.31601 
+              log(RR):  0.072451
+    variance(log(RR)):  0.31738 
 
  Odds Ratio
-   Parameter Estimate:  1.0799
-              p-value:  0.89202
-    95% Conf Interval: (0.35583, 3.2775) 
+   Parameter Estimate:  1.0757
+              p-value:  0.89768
+    95% Conf Interval: (0.3536, 3.2726) 
 
-              log(OR):  0.076891
-    variance(log(OR)):  0.32083 
+              log(OR):  0.072995
+    variance(log(OR)):  0.32222 
 
 -----------------------------------------
 
@@ -2212,6 +2255,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.88408
+birthord       0.55333
 month          0.47793
 hfiacat        0.40938
 aged           0.04127
@@ -2328,6 +2373,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.73397
+birthord       0.62462
 month          0.20003
 hfiacat        0.52533
 aged           0.04069
@@ -2465,6 +2512,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.85392
+birthord       0.00503
 month          0.01956
 hfiacat        0.02638
 aged           0.72149
@@ -2493,6 +2542,7 @@ asset_mobile   0.00043
 
 Covariates selected (P<0.2):
                     P-value
+birthord       5.028546e-03
 month          1.956160e-02
 hfiacat        2.638412e-02
 sex            1.514653e-01
@@ -2525,10 +2575,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5305993 
+	     SL.mean_All    0.5568595 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.4694007 
+	 SL.bayesglm_All    0.1339535 
+	      SL.gam_All    0.3091869 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -2537,11 +2587,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8250443 
+	     SL.mean_All    0.8212466 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1749557 
+	   SL.glmnet_All    0.1787534 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -2552,26 +2602,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.025041
-   Estimated Variance:  8.9281e-05
-              p-value:  0.008045
-    95% Conf Interval: (-0.043561, -0.0065214) 
+   Parameter Estimate:  -0.025151
+   Estimated Variance:  8.9542e-05
+              p-value:  0.0078636
+    95% Conf Interval: (-0.043697, -0.0066037) 
 
  Relative Risk
-   Parameter Estimate:  0.54974
-              p-value:  0.010897
-    95% Conf Interval: (0.34683, 0.87135) 
+   Parameter Estimate:  0.54823
+              p-value:  0.010738
+    95% Conf Interval: (0.34547, 0.86999) 
 
-              log(RR):  -0.59831
-    variance(log(RR)):  0.055226 
+              log(RR):  -0.60106
+    variance(log(RR)):  0.055511 
 
  Odds Ratio
-   Parameter Estimate:  0.53554
-              p-value:  0.010609
-    95% Conf Interval: (0.33171, 0.8646) 
+   Parameter Estimate:  0.53401
+              p-value:  0.01045
+    95% Conf Interval: (0.33037, 0.86317) 
 
-              log(OR):  -0.62448
-    variance(log(OR)):  0.059725 
+              log(OR):  -0.62735
+    variance(log(OR)):  0.060026 
 
 -----------------------------------------
 
@@ -2595,6 +2645,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.48801
+birthord       0.00427
 month          0.00045
 hfiacat        0.00041
 aged           0.84085
@@ -2623,6 +2675,7 @@ asset_mobile   0.00114
 
 Covariates selected (P<0.2):
                     P-value
+birthord       4.271411e-03
 month          4.521285e-04
 hfiacat        4.083822e-04
 sex            1.878968e-01
@@ -2654,10 +2707,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5175082 
+	     SL.mean_All    0.5645443 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.4824918 
+	 SL.bayesglm_All    0.2323036 
+	      SL.gam_All    0.203152 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -2666,11 +2719,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.5817385 
+	     SL.mean_All    0.7133465 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1971368 
-	   SL.glmnet_All    0.2211248 
+	      SL.gam_All    0.262354 
+	   SL.glmnet_All    0.02429953 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -2681,26 +2734,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0062658
-   Estimated Variance:  8.7962e-05
-              p-value:  0.50408
-    95% Conf Interval: (-0.024648, 0.012117) 
+   Parameter Estimate:  -0.0061387
+   Estimated Variance:  8.8313e-05
+              p-value:  0.51361
+    95% Conf Interval: (-0.024558, 0.01228) 
 
  Relative Risk
-   Parameter Estimate:  0.88738
-              p-value:  0.50729
-    95% Conf Interval: (0.62334, 1.2633) 
+   Parameter Estimate:  0.88953
+              p-value:  0.5167
+    95% Conf Interval: (0.62445, 1.2671) 
 
-              log(RR):  -0.11948
-    variance(log(RR)):  0.03247 
+              log(RR):  -0.11706
+    variance(log(RR)):  0.032589 
 
  Odds Ratio
-   Parameter Estimate:  0.88153
-              p-value:  0.50705
-    95% Conf Interval: (0.60737, 1.2794) 
+   Parameter Estimate:  0.88379
+              p-value:  0.51647
+    95% Conf Interval: (0.60851, 1.2836) 
 
-              log(OR):  -0.12609
-    variance(log(OR)):  0.036123 
+              log(OR):  -0.12354
+    variance(log(OR)):  0.036257 
 
 -----------------------------------------
 
@@ -2724,6 +2777,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.98084
+birthord       0.07424
 month          0.03605
 hfiacat        0.14970
 aged           0.21128
@@ -2752,6 +2807,7 @@ asset_mobile   0.00036
 
 Covariates selected (P<0.2):
                     P-value
+birthord       7.424477e-02
 month          3.604916e-02
 hfiacat        1.497015e-01
 momage         9.217378e-02
@@ -2782,11 +2838,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5992177 
+	     SL.mean_All    0.6112995 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.2549754 
-	      SL.gam_All    0.01373267 
-	   SL.glmnet_All    0.1320742 
+	 SL.bayesglm_All    0.2299485 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.158752 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -2794,10 +2850,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.963773 
+	     SL.mean_All    0.9654923 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.03622698 
+	      SL.gam_All    0.03450775 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -2809,26 +2865,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.005926
-   Estimated Variance:  0.00010376
-              p-value:  0.56073
-    95% Conf Interval: (-0.025891, 0.014039) 
+   Parameter Estimate:  -0.0060062
+   Estimated Variance:  0.00010398
+              p-value:  0.55585
+    95% Conf Interval: (-0.025992, 0.01398) 
 
  Relative Risk
-   Parameter Estimate:  0.89308
-              p-value:  0.56226
-    95% Conf Interval: (0.60923, 1.3092) 
+   Parameter Estimate:  0.89169
+              p-value:  0.55744
+    95% Conf Interval: (0.60796, 1.3078) 
 
-              log(RR):  -0.11308
-    variance(log(RR)):  0.038081 
+              log(RR):  -0.11464
+    variance(log(RR)):  0.038187 
 
  Odds Ratio
-   Parameter Estimate:  0.88751
-              p-value:  0.56214
-    95% Conf Interval: (0.59283, 1.3287) 
+   Parameter Estimate:  0.88605
+              p-value:  0.55732
+    95% Conf Interval: (0.59153, 1.3272) 
 
-              log(OR):  -0.11934
-    variance(log(OR)):  0.042384 
+              log(OR):  -0.12098
+    variance(log(OR)):  0.0425 
 
 -----------------------------------------
 
@@ -2852,6 +2908,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.55185
+birthord       0.00009
 month          0.04053
 hfiacat        0.00013
 aged           0.54337
@@ -2880,6 +2938,7 @@ asset_mobile   0.01755
 
 Covariates selected (P<0.2):
                     P-value
+birthord       9.260271e-05
 month          4.053267e-02
 hfiacat        1.261407e-04
 momage         2.971782e-03
@@ -2911,11 +2970,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.425663 
+	     SL.mean_All    0.3722805 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.574337 
-	   SL.glmnet_All    0 
+	      SL.gam_All    0.3310706 
+	   SL.glmnet_All    0.2966489 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -2938,26 +2997,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0043699
-   Estimated Variance:  0.00014474
-              p-value:  0.71643
-    95% Conf Interval: (-0.01921, 0.02795) 
+   Parameter Estimate:  0.0041969
+   Estimated Variance:  0.00014542
+              p-value:  0.72782
+    95% Conf Interval: (-0.019439, 0.027833) 
 
  Relative Risk
-   Parameter Estimate:  1.078
-              p-value:  0.71337
-    95% Conf Interval: (0.72193, 1.6098) 
+   Parameter Estimate:  1.0749
+              p-value:  0.72498
+    95% Conf Interval: (0.71887, 1.6072) 
 
-              log(RR):  0.075151
-    variance(log(RR)):  0.041855 
+              log(RR):  0.072209
+    variance(log(RR)):  0.042128 
 
  Odds Ratio
-   Parameter Estimate:  1.0831
-              p-value:  0.71355
-    95% Conf Interval: (0.70735, 1.6583) 
+   Parameter Estimate:  1.0797
+              p-value:  0.72515
+    95% Conf Interval: (0.70418, 1.6554) 
 
-              log(OR):  0.079791
-    variance(log(OR)):  0.047244 
+              log(OR):  0.076665
+    variance(log(OR)):  0.047547 
 
 -----------------------------------------
 
@@ -2981,6 +3040,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.96942
+birthord       0.00025
 month          0.01073
 hfiacat        0.00061
 aged           0.62427
@@ -3009,6 +3070,7 @@ asset_mobile   0.00175
 
 Covariates selected (P<0.2):
                     P-value
+birthord       2.526693e-04
 month          1.073102e-02
 hfiacat        6.055738e-04
 momage         3.027084e-02
@@ -3040,10 +3102,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5061437 
+	     SL.mean_All    0.5325732 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.4938563 
+	      SL.gam_All    0.4674268 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -3052,10 +3114,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8855757 
+	     SL.mean_All    0.9032618 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1144243 
+	      SL.gam_All    0.09673818 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -3067,26 +3129,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0098521
-   Estimated Variance:  8.025e-05
-              p-value:  0.27143
-    95% Conf Interval: (-0.02741, 0.0077061) 
+   Parameter Estimate:  -0.0097212
+   Estimated Variance:  7.9603e-05
+              p-value:  0.2759
+    95% Conf Interval: (-0.027208, 0.007766) 
 
  Relative Risk
-   Parameter Estimate:  0.82206
-              p-value:  0.28538
-    95% Conf Interval: (0.57382, 1.1777) 
+   Parameter Estimate:  0.82427
+              p-value:  0.28963
+    95% Conf Interval: (0.57639, 1.1787) 
 
-              log(RR):  -0.19595
-    variance(log(RR)):  0.033641 
+              log(RR):  -0.19326
+    variance(log(RR)):  0.033308 
 
  Odds Ratio
-   Parameter Estimate:  0.81357
-              p-value:  0.28441
-    95% Conf Interval: (0.55761, 1.187) 
+   Parameter Estimate:  0.81587
+              p-value:  0.28868
+    95% Conf Interval: (0.56022, 1.1882) 
 
-              log(OR):  -0.20632
-    variance(log(OR)):  0.037149 
+              log(OR):  -0.2035
+    variance(log(OR)):  0.036786 
 
 -----------------------------------------
 
@@ -3110,6 +3172,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.44260
+birthord       0.00008
 month          0.00913
 hfiacat        0.00032
 aged           0.89317
@@ -3138,6 +3202,7 @@ asset_mobile   0.00011
 
 Covariates selected (P<0.2):
                     P-value
+birthord       7.723849e-05
 month          9.130950e-03
 hfiacat        3.164447e-04
 sex            1.059066e-01
@@ -3170,10 +3235,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5510489 
+	     SL.mean_All    0.5955969 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.4489511 
+	 SL.bayesglm_All    0.1565551 
+	      SL.gam_All    0.247848 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -3182,10 +3247,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9110138 
+	     SL.mean_All    0.8860706 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.08898616 
+	      SL.gam_All    0.1139294 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -3197,26 +3262,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.013542
-   Estimated Variance:  9.4095e-05
-              p-value:  0.1627
-    95% Conf Interval: (-0.032554, 0.0054706) 
+   Parameter Estimate:  -0.013661
+   Estimated Variance:  9.3144e-05
+              p-value:  0.15693
+    95% Conf Interval: (-0.032577, 0.0052554) 
 
  Relative Risk
-   Parameter Estimate:  0.75668
-              p-value:  0.17911
-    95% Conf Interval: (0.5038, 1.1365) 
+   Parameter Estimate:  0.75491
+              p-value:  0.1734
+    95% Conf Interval: (0.50361, 1.1316) 
 
-              log(RR):  -0.27882
-    variance(log(RR)):  0.04307 
+              log(RR):  -0.28116
+    variance(log(RR)):  0.042654 
 
  Odds Ratio
-   Parameter Estimate:  0.74598
-              p-value:  0.17802
-    95% Conf Interval: (0.48699, 1.1427) 
+   Parameter Estimate:  0.74414
+              p-value:  0.1723
+    95% Conf Interval: (0.4868, 1.1375) 
 
-              log(OR):  -0.29306
-    variance(log(OR)):  0.047341 
+              log(OR):  -0.29552
+    variance(log(OR)):  0.046882 
 
 -----------------------------------------
 > 
@@ -3294,6 +3359,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.95768
+birthord       0.00599
 month          0.79215
 hfiacat        0.00771
 aged           0.61326
@@ -3322,6 +3389,7 @@ asset_mobile   0.15014
 
 Covariates selected (P<0.2):
                     P-value
+birthord       5.989539e-03
 hfiacat        7.713898e-03
 momheight      1.063126e-01
 momedu         1.142991e-07
@@ -3353,11 +3421,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.302765 
+	     SL.mean_All    0.2562156 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.05362056 
-	   SL.glmnet_All    0.6436144 
+	      SL.gam_All    0.002848021 
+	   SL.glmnet_All    0.7409364 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -3365,10 +3433,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9159488 
+	     SL.mean_All    0.9499831 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.08405118 
+	      SL.gam_All    0.05001695 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -3380,26 +3448,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.025769
-   Estimated Variance:  0.00011021
-              p-value:  0.014101
-    95% Conf Interval: (0.0051932, 0.046345) 
+   Parameter Estimate:  0.025633
+   Estimated Variance:  0.00011079
+              p-value:  0.014878
+    95% Conf Interval: (0.0050032, 0.046263) 
 
  Relative Risk
-   Parameter Estimate:  1.8764
-              p-value:  0.011118
-    95% Conf Interval: (1.1543, 3.0502) 
+   Parameter Estimate:  1.8703
+              p-value:  0.011715
+    95% Conf Interval: (1.1494, 3.0432) 
 
-              log(RR):  0.62936
-    variance(log(RR)):  0.061445 
+              log(RR):  0.62608
+    variance(log(RR)):  0.061695 
 
  Odds Ratio
-   Parameter Estimate:  1.9276
-              p-value:  0.011005
-    95% Conf Interval: (1.1623, 3.1969) 
+   Parameter Estimate:  1.921
+              p-value:  0.011602
+    95% Conf Interval: (1.1571, 3.1893) 
 
-              log(OR):  0.65627
-    variance(log(OR)):  0.066623 
+              log(OR):  0.65285
+    variance(log(OR)):  0.066903 
 
 -----------------------------------------
 
@@ -3423,6 +3491,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.53752
+birthord       0.00425
 month          0.07957
 hfiacat        0.00004
 aged           0.46862
@@ -3451,6 +3521,7 @@ asset_mobile   0.51040
 
 Covariates selected (P<0.2):
                    P-value
+birthord      4.253326e-03
 month         7.957344e-02
 hfiacat       4.187281e-05
 momheight     3.610867e-02
@@ -3480,10 +3551,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6130545 
+	     SL.mean_All    0.6475231 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3869455 
+	 SL.bayesglm_All    0.05077792 
+	      SL.gam_All    0.301699 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -3492,11 +3563,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8614244 
+	     SL.mean_All    0.8136549 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1385756 
+	   SL.glmnet_All    0.1863451 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -3507,26 +3578,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.015178
-   Estimated Variance:  0.0001164
-              p-value:  0.15947
-    95% Conf Interval: (-0.0059679, 0.036325) 
+   Parameter Estimate:  0.015185
+   Estimated Variance:  0.00011731
+              p-value:  0.16093
+    95% Conf Interval: (-0.0060442, 0.036414) 
 
  Relative Risk
    Parameter Estimate:  1.3679
-              p-value:  0.1466
-    95% Conf Interval: (0.89611, 2.088) 
+              p-value:  0.14804
+    95% Conf Interval: (0.89474, 2.0914) 
 
-              log(RR):  0.31326
-    variance(log(RR)):  0.046566 
+              log(RR):  0.3133
+    variance(log(RR)):  0.046912 
 
  Odds Ratio
    Parameter Estimate:  1.3899
-              p-value:  0.14695
-    95% Conf Interval: (0.89077, 2.1686) 
+              p-value:  0.14839
+    95% Conf Interval: (0.88934, 2.1723) 
 
-              log(OR):  0.32921
-    variance(log(OR)):  0.05152 
+              log(OR):  0.32926
+    variance(log(OR)):  0.051905 
 
 -----------------------------------------
 
@@ -3550,6 +3621,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.67089
+birthord       0.15169
 month          0.99542
 hfiacat        0.04856
 aged           0.79596
@@ -3578,6 +3651,7 @@ asset_mobile   0.13936
 
 Covariates selected (P<0.2):
                     P-value
+birthord       1.516907e-01
 hfiacat        4.855863e-02
 momheight      8.883485e-03
 momedu         1.455179e-06
@@ -3607,11 +3681,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.22925 
-	      SL.glm_All    0 
-	 SL.bayesglm_All    0.4535741 
+	     SL.mean_All    0.2955171 
+	      SL.glm_All    0.3809607 
+	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.3171759 
+	   SL.glmnet_All    0.3235223 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -3634,26 +3708,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.01172
-   Estimated Variance:  0.00012016
-              p-value:  0.28497
-    95% Conf Interval: (-0.0097644, 0.033205) 
+   Parameter Estimate:  0.011533
+   Estimated Variance:  0.00012114
+              p-value:  0.29471
+    95% Conf Interval: (-0.010039, 0.033105) 
 
  Relative Risk
-   Parameter Estimate:  1.256
-              p-value:  0.28736
-    95% Conf Interval: (0.82531, 1.9115) 
+   Parameter Estimate:  1.2515
+              p-value:  0.29645
+    95% Conf Interval: (0.82137, 1.9068) 
 
-              log(RR):  0.22796
-    variance(log(RR)):  0.045908 
+              log(RR):  0.22431
+    variance(log(RR)):  0.046157 
 
  Odds Ratio
-   Parameter Estimate:  1.2717
-              p-value:  0.287
-    95% Conf Interval: (0.81704, 1.9792) 
+   Parameter Estimate:  1.2668
+              p-value:  0.29613
+    95% Conf Interval: (0.81289, 1.9741) 
 
-              log(OR):  0.24032
-    variance(log(OR)):  0.050944 
+              log(OR):  0.23648
+    variance(log(OR)):  0.05123 
 
 -----------------------------------------
 > 
@@ -3695,6 +3769,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.88861
+birthord       0.08165
 month          0.12044
 hfiacat        0.77344
 aged           0.06577
@@ -3723,6 +3799,7 @@ asset_mobile   0.43941
 
 Covariates selected (P<0.2):
               P-value
+birthord   0.08165392
 month      0.12044477
 aged       0.06576729
 sex        0.08179154
@@ -3750,19 +3827,20 @@ Estimation Results:
  Initial estimation of Q
 	 Procedure: glm, main terms model
 	 Model:
-		 Y ~  (Intercept) + Z + A + month + aged + momage + asset_khat + sexmale + momeduPrimary.1.5y. + momeduSecondary..5y.
+		 Y ~  (Intercept) + Z + A + birthord + month + aged + momage + asset_khat + sexmale + momeduPrimary.1.5y. + momeduSecondary..5y.
 
 	 Coefficients: 
-	     (Intercept)   -86.82322 
+	     (Intercept)   -87.52558 
 	               Z NA NA 
-	               A    18.71453 
-	           month   -0.4570632 
-	            aged    0.001193562 
-	          momage    0.1594046 
-	      asset_khat    19.29534 
-	         sexmale    19.18943 
-	 momeduPrimary.1.5y.    20.11502 
-	 momeduSecondary..5y.    0.9133914 
+	               A    18.77245 
+	        birthord    0.9598787 
+	           month   -0.5237713 
+	            aged    0.001775624 
+	          momage    0.06065067 
+	      asset_khat    18.33956 
+	         sexmale    19.56066 
+	 momeduPrimary.1.5y.    19.02443 
+	 momeduSecondary..5y.    1.360318 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -3770,11 +3848,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8524623 
+	     SL.mean_All    1 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1475377 
+	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -3785,26 +3863,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0019716
-   Estimated Variance:  1.924e-06
-              p-value:  0.15521
-    95% Conf Interval: (-0.00074716, 0.0046903) 
+   Parameter Estimate:  0.0019846
+   Estimated Variance:  1.8824e-06
+              p-value:  0.14803
+    95% Conf Interval: (-0.0007045, 0.0046738) 
 
  Relative Risk
-   Parameter Estimate:  34010000
+   Parameter Estimate:  92596000
               p-value:  <2e-16
-    95% Conf Interval: (8571100, 134950000) 
+    95% Conf Interval: (23939000, 358160000) 
 
-              log(RR):  17.342
-    variance(log(RR)):  0.49449 
+              log(RR):  18.344
+    variance(log(RR)):  0.47634 
 
  Odds Ratio
-   Parameter Estimate:  34078000
+   Parameter Estimate:  92780000
               p-value:  <2e-16
-    95% Conf Interval: (8564700, 135590000) 
+    95% Conf Interval: (23922000, 359840000) 
 
-              log(OR):  17.344
-    variance(log(OR)):  0.49645 
+              log(OR):  18.346
+    variance(log(OR)):  0.47824 
 
 -----------------------------------------
 
@@ -3828,6 +3906,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.40459
+birthord       0.13425
 month          0.12114
 hfiacat        0.48467
 aged           0.00983
@@ -3856,6 +3936,7 @@ asset_mobile   0.27780
 
 Covariates selected (P<0.2):
                 P-value
+birthord    0.134251667
 month       0.121140812
 aged        0.009834329
 momage      0.064036907
@@ -3880,9 +3961,9 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6340908 
+	     SL.mean_All    0.6601107 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.3659092 
+	 SL.bayesglm_All    0.3398893 
 	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
@@ -3892,11 +3973,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.316347 
+	     SL.mean_All    0.3373912 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.683653 
+	   SL.glmnet_All    0.6626088 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -3907,26 +3988,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.00033996
-   Estimated Variance:  8.939e-06
-              p-value:  0.90947
-    95% Conf Interval: (-0.0062, 0.0055201) 
+   Parameter Estimate:  -0.00034206
+   Estimated Variance:  8.9117e-06
+              p-value:  0.90878
+    95% Conf Interval: (-0.0061931, 0.005509) 
 
  Relative Risk
-   Parameter Estimate:  0.86074
-              p-value:  0.90698
-    95% Conf Interval: (0.06956, 10.651) 
+   Parameter Estimate:  0.86004
+              p-value:  0.90625
+    95% Conf Interval: (0.069949, 10.575) 
 
-              log(RR):  -0.14997
-    variance(log(RR)):  1.6473 
+              log(RR):  -0.15077
+    variance(log(RR)):  1.6389 
 
  Odds Ratio
-   Parameter Estimate:  0.86044
-              p-value:  0.90699
-    95% Conf Interval: (0.06913, 10.71) 
+   Parameter Estimate:  0.85975
+              p-value:  0.90625
+    95% Conf Interval: (0.069517, 10.633) 
 
-              log(OR):  -0.15031
-    variance(log(OR)):  1.655 
+              log(OR):  -0.15111
+    variance(log(OR)):  1.6466 
 
 -----------------------------------------
 
@@ -3950,6 +4031,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.62964
+birthord       0.29835
 month          0.22949
 hfiacat        0.76178
 aged           0.00035
@@ -4083,6 +4166,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.88407
+birthord       0.00391
 month          0.89557
 hfiacat        0.15852
 aged           0.08520
@@ -4111,6 +4196,7 @@ asset_mobile   0.10060
 
 Covariates selected (P<0.2):
                  P-value
+birthord     0.003906211
 hfiacat      0.158521351
 aged         0.085199022
 momage       0.076000462
@@ -4136,10 +4222,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.8761561 
+	     SL.mean_All    0.9954552 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.1238439 
-	      SL.gam_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.004544775 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4148,10 +4234,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.930619 
+	     SL.mean_All    0.984031 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.06938099 
+	      SL.gam_All    0.01596902 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -4163,26 +4249,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0052426
-   Estimated Variance:  1.3029e-05
-              p-value:  0.14639
-    95% Conf Interval: (-0.0018322, 0.012317) 
+   Parameter Estimate:  0.0054999
+   Estimated Variance:  1.3269e-05
+              p-value:  0.13108
+    95% Conf Interval: (-0.0016396, 0.012639) 
 
  Relative Risk
-   Parameter Estimate:  3.2538
-              p-value:  0.098888
-    95% Conf Interval: (0.80137, 13.212) 
+   Parameter Estimate:  3.4051
+              p-value:  0.087488
+    95% Conf Interval: (0.83517, 13.883) 
 
-              log(RR):  1.1798
-    variance(log(RR)):  0.51113 
+              log(RR):  1.2253
+    variance(log(RR)):  0.51414 
 
  Odds Ratio
-   Parameter Estimate:  3.271
-              p-value:  0.098872
-    95% Conf Interval: (0.80063, 13.364) 
+   Parameter Estimate:  3.424
+              p-value:  0.087452
+    95% Conf Interval: (0.83463, 14.046) 
 
-              log(OR):  1.1851
-    variance(log(OR)):  0.51565 
+              log(OR):  1.2308
+    variance(log(OR)):  0.51867 
 
 -----------------------------------------
 
@@ -4206,6 +4292,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.95292
+birthord       0.01692
 month          0.64665
 hfiacat        0.12393
 aged           0.04316
@@ -4234,6 +4322,7 @@ asset_mobile   0.03723
 
 Covariates selected (P<0.2):
                    P-value
+birthord       0.016915495
 hfiacat        0.123928648
 aged           0.043159455
 momage         0.027091778
@@ -4265,10 +4354,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6777177 
+	     SL.mean_All    1 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3222823 
+	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4292,26 +4381,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.00090438
-   Estimated Variance:  2.0129e-05
-              p-value:  0.84025
-    95% Conf Interval: (-0.009698, 0.0078893) 
+   Parameter Estimate:  -0.00031047
+   Estimated Variance:  2.2897e-05
+              p-value:  0.94827
+    95% Conf Interval: (-0.0096893, 0.0090684) 
 
  Relative Risk
-   Parameter Estimate:  0.89185
-              p-value:  0.84059
-    95% Conf Interval: (0.29236, 2.7206) 
+   Parameter Estimate:  0.96137
+              p-value:  0.94829
+    95% Conf Interval: (0.29225, 3.1624) 
 
-              log(RR):  -0.11446
-    variance(log(RR)):  0.3238 
+              log(RR):  -0.039397
+    variance(log(RR)):  0.36908 
 
  Odds Ratio
-   Parameter Estimate:  0.89104
-              p-value:  0.84058
-    95% Conf Interval: (0.28952, 2.7423) 
+   Parameter Estimate:  0.96107
+              p-value:  0.94829
+    95% Conf Interval: (0.28941, 3.1915) 
 
-              log(OR):  -0.11537
-    variance(log(OR)):  0.32896 
+              log(OR):  -0.03971
+    variance(log(OR)):  0.37497 
 
 -----------------------------------------
 
@@ -4335,6 +4424,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.78212
+birthord       0.00283
 month          0.88767
 hfiacat        0.18625
 aged           0.46261
@@ -4363,6 +4454,7 @@ asset_mobile   0.12287
 
 Covariates selected (P<0.2):
                    P-value
+birthord       0.002831676
 hfiacat        0.186246834
 momage         0.006513948
 momheight      0.185643873
@@ -4386,10 +4478,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.6280707 
+	     SL.mean_All    1 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3719293 
+	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4413,26 +4505,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.0061789
-   Estimated Variance:  7.2122e-06
-              p-value:  0.021404
-    95% Conf Interval: (0.00091519, 0.011443) 
+   Parameter Estimate:  0.0066405
+   Estimated Variance:  8.0909e-06
+              p-value:  0.019567
+    95% Conf Interval: (0.0010654, 0.012216) 
 
  Relative Risk
-   Parameter Estimate:  6.5845
-              p-value:  6.5603e-05
-    95% Conf Interval: (2.6098, 16.612) 
+   Parameter Estimate:  7.1159
+              p-value:  4.1134e-05
+    95% Conf Interval: (2.7856, 18.178) 
 
-              log(RR):  1.8847
-    variance(log(RR)):  0.22293 
+              log(RR):  1.9623
+    variance(log(RR)):  0.22896 
 
  Odds Ratio
-   Parameter Estimate:  6.6254
-              p-value:  6.3971e-05
-    95% Conf Interval: (2.6217, 16.744) 
+   Parameter Estimate:  7.1635
+              p-value:  3.9929e-05
+    95% Conf Interval: (2.7997, 18.329) 
 
-              log(OR):  1.8909
-    variance(log(OR)):  0.22373 
+              log(OR):  1.969
+    variance(log(OR)):  0.22975 
 
 -----------------------------------------
 > 
@@ -4474,6 +4566,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.93629
+birthord       0.00193
 month          0.53429
 hfiacat        0.00193
 aged           0.65833
@@ -4502,6 +4596,7 @@ asset_mobile   0.23424
 
 Covariates selected (P<0.2):
                    P-value
+birthord      1.928607e-03
 hfiacat       1.928704e-03
 momheight     6.619003e-02
 momedu        3.469796e-08
@@ -4531,11 +4626,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.3690084 
+	     SL.mean_All    0.3835021 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.2444596 
-	      SL.gam_All    0 
-	   SL.glmnet_All    0.386532 
+	 SL.bayesglm_All    0.1368426 
+	      SL.gam_All    0.03293641 
+	   SL.glmnet_All    0.4467189 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -4543,10 +4638,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8839124 
+	     SL.mean_All    0.9201501 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1160876 
+	      SL.gam_All    0.07984987 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -4558,26 +4653,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.02883
-   Estimated Variance:  0.00012667
-              p-value:  0.010419
-    95% Conf Interval: (0.0067709, 0.050889) 
+   Parameter Estimate:  0.028874
+   Estimated Variance:  0.00012686
+              p-value:  0.010359
+    95% Conf Interval: (0.0067984, 0.05095) 
 
  Relative Risk
-   Parameter Estimate:  1.9421
-              p-value:  0.0080832
-    95% Conf Interval: (1.1884, 3.174) 
+   Parameter Estimate:  1.9446
+              p-value:  0.0080428
+    95% Conf Interval: (1.1891, 3.1802) 
 
-              log(RR):  0.66379
-    variance(log(RR)):  0.062811 
+              log(RR):  0.66508
+    variance(log(RR)):  0.062975 
 
  Odds Ratio
-   Parameter Estimate:  2.0017
-              p-value:  0.0079799
-    95% Conf Interval: (1.1987, 3.3424) 
+   Parameter Estimate:  2.0043
+              p-value:  0.007939
+    95% Conf Interval: (1.1995, 3.3491) 
 
-              log(OR):  0.69398
-    variance(log(OR)):  0.06843 
+              log(OR):  0.69531
+    variance(log(OR)):  0.068604 
 
 -----------------------------------------
 
@@ -4601,6 +4696,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.46682
+birthord       0.00174
 month          0.03634
 hfiacat        0.00002
 aged           0.55136
@@ -4629,6 +4726,7 @@ asset_mobile   0.29189
 
 Covariates selected (P<0.2):
                    P-value
+birthord      1.744674e-03
 month         3.634404e-02
 hfiacat       2.365504e-05
 momheight     1.970574e-02
@@ -4658,10 +4756,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.5274415 
+	     SL.mean_All    0.5476892 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0.4434018 
-	      SL.gam_All    0.02915671 
+	 SL.bayesglm_All    0.4523108 
+	      SL.gam_All    0 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -4670,11 +4768,11 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.8614244 
+	     SL.mean_All    0.8136549 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
 	      SL.gam_All    0 
-	   SL.glmnet_All    0.1385756 
+	   SL.glmnet_All    0.1863451 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
 	 Procedure: No intermediate variable 
@@ -4685,26 +4783,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.011316
-   Estimated Variance:  0.00015656
-              p-value:  0.36577
-    95% Conf Interval: (-0.013208, 0.035841) 
+   Parameter Estimate:  0.011355
+   Estimated Variance:  0.00015652
+              p-value:  0.36408
+    95% Conf Interval: (-0.013166, 0.035876) 
 
  Relative Risk
-   Parameter Estimate:  1.2291
-              p-value:  0.35957
-    95% Conf Interval: (0.79057, 1.9108) 
+   Parameter Estimate:  1.2299
+              p-value:  0.35789
+    95% Conf Interval: (0.79121, 1.9117) 
 
-              log(RR):  0.20626
-    variance(log(RR)):  0.050684 
+              log(RR):  0.20691
+    variance(log(RR)):  0.050648 
 
  Odds Ratio
-   Parameter Estimate:  1.2439
-              p-value:  0.35979
-    95% Conf Interval: (0.7797, 1.9844) 
+   Parameter Estimate:  1.2447
+              p-value:  0.3581
+    95% Conf Interval: (0.78036, 1.9855) 
 
-              log(OR):  0.21824
-    variance(log(OR)):  0.056791 
+              log(OR):  0.21893
+    variance(log(OR)):  0.056752 
 
 -----------------------------------------
 
@@ -4728,6 +4826,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.87785
+birthord       0.06740
 month          0.67979
 hfiacat        0.03206
 aged           0.49416
@@ -4756,6 +4856,7 @@ asset_mobile   0.13709
 
 Covariates selected (P<0.2):
                     P-value
+birthord       6.739627e-02
 hfiacat        3.205586e-02
 momheight      4.128201e-03
 momedu         1.385467e-06
@@ -4786,11 +4887,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.3048805 
+	     SL.mean_All    0.2849248 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.6149162 
-	   SL.glmnet_All    0.08020327 
+	      SL.gam_All    0.4562422 
+	   SL.glmnet_All    0.258833 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -4813,26 +4914,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  0.01351
-   Estimated Variance:  0.00012375
-              p-value:  0.22456
-    95% Conf Interval: (-0.0082932, 0.035313) 
+   Parameter Estimate:  0.013025
+   Estimated Variance:  0.00012666
+              p-value:  0.24714
+    95% Conf Interval: (-0.0090335, 0.035083) 
 
  Relative Risk
-   Parameter Estimate:  1.2805
-              p-value:  0.22176
-    95% Conf Interval: (0.86125, 1.9039) 
+   Parameter Estimate:  1.2693
+              p-value:  0.24357
+    95% Conf Interval: (0.85014, 1.8951) 
 
-              log(RR):  0.24726
-    variance(log(RR)):  0.040949 
+              log(RR):  0.23847
+    variance(log(RR)):  0.04182 
 
  Odds Ratio
-   Parameter Estimate:  1.2989
-              p-value:  0.22162
-    95% Conf Interval: (0.85396, 1.9758) 
+   Parameter Estimate:  1.2869
+              p-value:  0.24349
+    95% Conf Interval: (0.84226, 1.9663) 
 
-              log(OR):  0.26155
-    variance(log(OR)):  0.045793 
+              log(OR):  0.25225
+    variance(log(OR)):  0.046778 
 
 -----------------------------------------
 > 
@@ -4889,6 +4990,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.32336
+birthord       0.00004
 month          0.46103
 hfiacat        0.00001
 aged           0.43177
@@ -4917,6 +5020,7 @@ asset_mobile   0.12620
 
 Covariates selected (P<0.2):
                     P-value
+birthord       4.059773e-05
 hfiacat        8.111746e-06
 momheight      1.885552e-01
 momedu         7.109700e-12
@@ -4948,11 +5052,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.33995 
+	     SL.mean_All    0.3382796 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1204338 
-	   SL.glmnet_All    0.5396162 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.6617204 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -4975,26 +5079,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.016666
-   Estimated Variance:  0.0001307
-              p-value:  0.14491
-    95% Conf Interval: (-0.039074, 0.0057419) 
+   Parameter Estimate:  -0.016659
+   Estimated Variance:  0.00013086
+              p-value:  0.14531
+    95% Conf Interval: (-0.03908, 0.0057619) 
 
  Relative Risk
-   Parameter Estimate:  0.70456
-              p-value:  0.13494
-    95% Conf Interval: (0.44517, 1.1151) 
+   Parameter Estimate:  0.70466
+              p-value:  0.13539
+    95% Conf Interval: (0.44508, 1.1156) 
 
-              log(RR):  -0.35018
-    variance(log(RR)):  0.054873 
+              log(RR):  -0.35003
+    variance(log(RR)):  0.054953 
 
  Odds Ratio
-   Parameter Estimate:  0.69233
-              p-value:  0.13503
-    95% Conf Interval: (0.42746, 1.1213) 
+   Parameter Estimate:  0.69244
+              p-value:  0.13548
+    95% Conf Interval: (0.42738, 1.1219) 
 
-              log(OR):  -0.36769
-    variance(log(OR)):  0.060526 
+              log(OR):  -0.36754
+    variance(log(OR)):  0.060613 
 
 -----------------------------------------
 
@@ -5018,6 +5122,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.06374
+birthord       0.00001
 month          0.06982
 hfiacat        0.00010
 aged           0.36967
@@ -5046,6 +5152,8 @@ asset_mobile   0.01635
 
 Covariates selected (P<0.2):
                     P-value
+counter        6.374066e-02
+birthord       9.497297e-06
 month          6.982370e-02
 hfiacat        1.006134e-04
 momedu         4.205651e-05
@@ -5073,11 +5181,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.3970808 
+	     SL.mean_All    0.2869562 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.6029192 
-	   SL.glmnet_All    0 
+	      SL.gam_All    0.3299995 
+	   SL.glmnet_All    0.3830443 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -5085,10 +5193,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9034172 
+	     SL.mean_All    0.8945228 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.09658281 
+	      SL.gam_All    0.1054772 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -5100,26 +5208,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0037531
-   Estimated Variance:  0.00010713
-              p-value:  0.71689
-    95% Conf Interval: (-0.024039, 0.016533) 
+   Parameter Estimate:  -0.0034592
+   Estimated Variance:  0.00010078
+              p-value:  0.73041
+    95% Conf Interval: (-0.023135, 0.016217) 
 
  Relative Risk
-   Parameter Estimate:  0.91394
-              p-value:  0.71862
-    95% Conf Interval: (0.56015, 1.4912) 
+   Parameter Estimate:  0.92054
+              p-value:  0.73182
+    95% Conf Interval: (0.57332, 1.478) 
 
-              log(RR):  -0.089995
-    variance(log(RR)):  0.062387 
+              log(RR):  -0.082795
+    variance(log(RR)):  0.058366 
 
  Odds Ratio
-   Parameter Estimate:  0.91036
-              p-value:  0.71853
-    95% Conf Interval: (0.54629, 1.5171) 
+   Parameter Estimate:  0.91722
+              p-value:  0.73174
+    95% Conf Interval: (0.55966, 1.5032) 
 
-              log(OR):  -0.093912
-    variance(log(OR)):  0.067889 
+              log(OR):  -0.086405
+    variance(log(OR)):  0.063529 
 
 -----------------------------------------
 > 
@@ -5148,6 +5256,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.89216
+birthord       0.08885
 month          0.09647
 hfiacat        0.77294
 aged           0.06288
@@ -5176,6 +5286,7 @@ asset_mobile   0.44151
 
 Covariates selected (P<0.2):
               P-value
+birthord   0.08884519
 month      0.09647434
 aged       0.06288080
 sex        0.09056565
@@ -5204,19 +5315,20 @@ Estimation Results:
  Initial estimation of Q
 	 Procedure: glm, main terms model
 	 Model:
-		 Y ~  (Intercept) + Z + A + month + aged + momage + asset_khat + sexmale + momeduPrimary.1.5y. + momeduSecondary..5y.
+		 Y ~  (Intercept) + Z + A + birthord + month + aged + momage + asset_khat + sexmale + momeduPrimary.1.5y. + momeduSecondary..5y.
 
 	 Coefficients: 
-	     (Intercept)   -68.06927 
+	     (Intercept)   -68.68334 
 	               Z NA NA 
-	               A   -18.47468 
-	           month   -0.4575863 
-	            aged    0.001193779 
-	          momage    0.1594837 
-	      asset_khat    19.2727 
-	         sexmale    19.21339 
-	 momeduPrimary.1.5y.    20.07251 
-	 momeduSecondary..5y.    0.7693509 
+	               A   -22.70747 
+	        birthord    0.9599024 
+	           month   -0.5238212 
+	            aged    0.001775672 
+	          momage    0.06065662 
+	      asset_khat    18.40941 
+	         sexmale    19.53836 
+	 momeduPrimary.1.5y.    18.9068 
+	 momeduSecondary..5y.    1.21161 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -5239,26 +5351,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0019331
-   Estimated Variance:  1.7794e-06
-              p-value:  0.14728
-    95% Conf Interval: (-0.0045477, 0.00068136) 
+   Parameter Estimate:  -0.0028187
+   Estimated Variance:  1.9482e-06
+              p-value:  0.043443
+    95% Conf Interval: (-0.0055544, -8.2948e-05) 
 
  Relative Risk
-   Parameter Estimate:  1.1087e-08
+   Parameter Estimate:  7.6041e-09
               p-value:  <2e-16
-    95% Conf Interval: (2.8651e-09, 4.2906e-08) 
+    95% Conf Interval: (2.8727e-09, 2.0129e-08) 
 
-              log(RR):  -18.317
-    variance(log(RR)):  0.47667 
+              log(RR):  -18.695
+    variance(log(RR)):  0.24667 
 
  Odds Ratio
-   Parameter Estimate:  1.1066e-08
+   Parameter Estimate:  7.5827e-09
               p-value:  <2e-16
-    95% Conf Interval: (2.8521e-09, 4.2935e-08) 
+    95% Conf Interval: (2.8567e-09, 2.0127e-08) 
 
-              log(OR):  -18.319
-    variance(log(OR)):  0.47851 
+              log(OR):  -18.697
+    variance(log(OR)):  0.24806 
 
 -----------------------------------------
 
@@ -5282,6 +5394,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.07310
+birthord       0.31968
 month          0.53349
 hfiacat        0.09266
 aged           0.23194
@@ -5310,12 +5424,15 @@ asset_mobile   0.57890
 
 Covariates selected (P<0.2):
               P-value
+counter    0.07309843
 hfiacat    0.09265766
 Nlt18      0.03953638
 elec       0.19469922
 asset_khat 0.16449879
 
 -----------------------------------------
+Warning message:
+glm.fit: fitted probabilities numerically 0 or 1 occurred 
 Error in drop(y %*% rep(1, nc)) : 
   error in evaluating the argument 'x' in selecting a method for function 'drop': Error in y %*% rep(1, nc) : non-conformable arguments
 
@@ -5336,18 +5453,19 @@ Estimation Results:
  Initial estimation of Q
 	 Procedure: glm, main terms model
 	 Model:
-		 Y ~  (Intercept) + Z + A + Nlt18 + elec + asset_khat + hfiacatMildlyFoodInsecure + hfiacatModeratelyFoodInsecure + hfiacatSeverelyFoodInsecure
+		 Y ~  (Intercept) + Z + A + counter + Nlt18 + elec + asset_khat + hfiacatMildlyFoodInsecure + hfiacatModeratelyFoodInsecure + hfiacatSeverelyFoodInsecure
 
 	 Coefficients: 
-	     (Intercept)   -60.49062 
+	     (Intercept)   -67.37341 
 	               Z NA NA 
-	               A   -20.22402 
-	           Nlt18    9.089531 
-	            elec   -7.535455 
-	      asset_khat   -6.073658 
-	 hfiacatMildlyFoodInsecure    1.079578 
-	 hfiacatModeratelyFoodInsecure   -6.286763 
-	 hfiacatSeverelyFoodInsecure    15.04297 
+	               A   -18.828 
+	         counter    4.017583 
+	           Nlt18    5.591054 
+	            elec   -4.347454 
+	      asset_khat   -1.420127 
+	 hfiacatMildlyFoodInsecure    8.513527 
+	 hfiacatModeratelyFoodInsecure    1.101681 
+	 hfiacatSeverelyFoodInsecure    15.31264 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -5370,26 +5488,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0013423
-   Estimated Variance:  1.5536e-06
-              p-value:  0.28153
-    95% Conf Interval: (-0.0037853, 0.0011007) 
+   Parameter Estimate:  -0.0010876
+   Estimated Variance:  1.5178e-06
+              p-value:  0.37735
+    95% Conf Interval: (-0.0035023, 0.0013271) 
 
  Relative Risk
-   Parameter Estimate:  5.8742e-09
+   Parameter Estimate:  7.2499e-09
               p-value:  <2e-16
-    95% Conf Interval: (9.372e-10, 3.6818e-08) 
+    95% Conf Interval: (7.7459e-10, 6.7856e-08) 
 
-              log(RR):  -18.953
-    variance(log(RR)):  0.87692 
+              log(RR):  -18.742
+    variance(log(RR)):  1.3019 
 
  Odds Ratio
-   Parameter Estimate:  5.8663e-09
+   Parameter Estimate:  7.242e-09
               p-value:  <2e-16
-    95% Conf Interval: (9.3366e-10, 3.6859e-08) 
+    95% Conf Interval: (7.7188e-10, 6.7946e-08) 
 
-              log(OR):  -18.954
-    variance(log(OR)):  0.87926 
+              log(OR):  -18.743
+    variance(log(OR)):  1.3047 
 
 -----------------------------------------
 > 
@@ -5418,6 +5536,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.35797
+birthord       0.00064
 month          0.88584
 hfiacat        0.13222
 aged           0.46186
@@ -5446,6 +5566,7 @@ asset_mobile   0.18352
 
 Covariates selected (P<0.2):
                    P-value
+birthord       0.000637073
 hfiacat        0.132224600
 momage         0.002331838
 momedu         0.022894767
@@ -5469,10 +5590,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.8025787 
+	     SL.mean_All    0.9299486 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.1974213 
+	      SL.gam_All    0.0700514 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -5496,26 +5617,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0041412
-   Estimated Variance:  1.9423e-05
-              p-value:  0.34739
-    95% Conf Interval: (-0.012779, 0.0044967) 
+   Parameter Estimate:  -0.0042938
+   Estimated Variance:  2.0118e-05
+              p-value:  0.33841
+    95% Conf Interval: (-0.013085, 0.0044974) 
 
  Relative Risk
-   Parameter Estimate:  0.44884
-              p-value:  0.30274
-    95% Conf Interval: (0.097819, 2.0595) 
+   Parameter Estimate:  0.43753
+              p-value:  0.29457
+    95% Conf Interval: (0.093265, 2.0526) 
 
-              log(RR):  -0.80109
-    variance(log(RR)):  0.60423 
+              log(RR):  -0.8266
+    variance(log(RR)):  0.62194 
 
  Odds Ratio
-   Parameter Estimate:  0.44697
-              p-value:  0.30279
-    95% Conf Interval: (0.096627, 2.0676) 
+   Parameter Estimate:  0.43565
+              p-value:  0.29461
+    95% Conf Interval: (0.092103, 2.0606) 
 
-              log(OR):  -0.80526
-    variance(log(OR)):  0.61066 
+              log(OR):  -0.83092
+    variance(log(OR)):  0.62856 
 
 -----------------------------------------
 
@@ -5539,6 +5660,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.66935
+birthord       0.33846
 month          0.56499
 hfiacat        0.78127
 aged           0.68621
@@ -5668,6 +5791,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.41812
+birthord       0.00001
 month          0.32723
 hfiacat        0.00001
 aged           0.49124
@@ -5696,6 +5821,7 @@ asset_mobile   0.06931
 
 Covariates selected (P<0.2):
                     P-value
+birthord       1.000742e-05
 hfiacat        8.310730e-06
 momage         1.431650e-01
 momedu         2.842294e-11
@@ -5727,11 +5853,11 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.3454998 
+	     SL.mean_All    0.3514179 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.3054531 
-	   SL.glmnet_All    0.3490471 
+	      SL.gam_All    0.1368178 
+	   SL.glmnet_All    0.5117643 
 
  Estimation of g (treatment mechanism)
 	 Procedure: SuperLearner 
@@ -5754,26 +5880,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.018043
-   Estimated Variance:  0.00014087
-              p-value:  0.12846
-    95% Conf Interval: (-0.041306, 0.00522) 
+   Parameter Estimate:  -0.018117
+   Estimated Variance:  0.00013985
+              p-value:  0.12553
+    95% Conf Interval: (-0.041295, 0.0050616) 
 
  Relative Risk
-   Parameter Estimate:  0.70092
-              p-value:  0.11139
-    95% Conf Interval: (0.45255, 1.0856) 
+   Parameter Estimate:  0.69992
+              p-value:  0.10899
+    95% Conf Interval: (0.45244, 1.0828) 
 
-              log(RR):  -0.35536
-    variance(log(RR)):  0.049826 
+              log(RR):  -0.35679
+    variance(log(RR)):  0.049556 
 
  Odds Ratio
-   Parameter Estimate:  0.68772
-              p-value:  0.11185
-    95% Conf Interval: (0.43349, 1.0911) 
+   Parameter Estimate:  0.68668
+              p-value:  0.10942
+    95% Conf Interval: (0.43339, 1.088) 
 
-              log(OR):  -0.37438
-    variance(log(OR)):  0.055445 
+              log(OR):  -0.37589
+    variance(log(OR)):  0.055137 
 
 -----------------------------------------
 
@@ -5797,6 +5923,8 @@ using a univariate liklihood ratio test:
 
 Likelihood Ratio Test P-values:
                P-value
+counter        0.10347
+birthord       0.00002
 month          0.13281
 hfiacat        0.00039
 aged           0.34249
@@ -5825,22 +5953,24 @@ asset_mobile   0.00485
 
 Covariates selected (P<0.2):
                     P-value
-month          0.1328125563
-hfiacat        0.0003850731
-momedu         0.0002491195
-walls          0.1537766362
-floor          0.0224014007
-elec           0.0003387761
-asset_wardrobe 0.0557273280
-asset_table    0.1770312788
-asset_chair    0.0234255081
-asset_khat     0.0008442427
-asset_chouki   0.0021733412
-asset_tv       0.0363755811
-asset_refrig   0.0157453037
-asset_bike     0.0105119944
-asset_moto     0.0009414824
-asset_mobile   0.0048457481
+counter        1.034663e-01
+birthord       2.228684e-05
+month          1.328126e-01
+hfiacat        3.850731e-04
+momedu         2.491195e-04
+walls          1.537766e-01
+floor          2.240140e-02
+elec           3.387761e-04
+asset_wardrobe 5.572733e-02
+asset_table    1.770313e-01
+asset_chair    2.342551e-02
+asset_khat     8.442427e-04
+asset_chouki   2.173341e-03
+asset_tv       3.637558e-02
+asset_refrig   1.574530e-02
+asset_bike     1.051199e-02
+asset_moto     9.414824e-04
+asset_mobile   4.845748e-03
 
 -----------------------------------------
 
@@ -5853,10 +5983,10 @@ Estimation Results:
 		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
 
 	 Coefficients: 
-	     SL.mean_All    0.4458705 
+	     SL.mean_All    0.4481502 
 	      SL.glm_All    0 
-	 SL.bayesglm_All    0 
-	      SL.gam_All    0.5541295 
+	 SL.bayesglm_All    0.235329 
+	      SL.gam_All    0.3165209 
 	   SL.glmnet_All    0 
 
  Estimation of g (treatment mechanism)
@@ -5865,10 +5995,10 @@ Estimation Results:
 		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
 
 	 Coefficients: 
-	     SL.mean_All    0.9711059 
+	     SL.mean_All    0.9610558 
 	      SL.glm_All    0 
 	 SL.bayesglm_All    0 
-	      SL.gam_All    0.02889415 
+	      SL.gam_All    0.03894416 
 	   SL.glmnet_All    0 
 
  Estimation of g.Z (intermediate variable assignment mechanism)
@@ -5880,26 +6010,26 @@ Estimation Results:
  Bounds on g: ( 0.025 0.975 )
 
  Additive Effect
-   Parameter Estimate:  -0.0029087
-   Estimated Variance:  0.00011497
-              p-value:  0.78618
-    95% Conf Interval: (-0.023924, 0.018107) 
+   Parameter Estimate:  -0.0026977
+   Estimated Variance:  0.00010984
+              p-value:  0.79687
+    95% Conf Interval: (-0.02324, 0.017844) 
 
  Relative Risk
-   Parameter Estimate:  0.93519
-              p-value:  0.78683
-    95% Conf Interval: (0.57544, 1.5198) 
+   Parameter Estimate:  0.93978
+              p-value:  0.7974
+    95% Conf Interval: (0.5849, 1.51) 
 
-              log(RR):  -0.067003
-    variance(log(RR)):  0.061385 
+              log(RR):  -0.062111
+    variance(log(RR)):  0.058535 
 
  Odds Ratio
-   Parameter Estimate:  0.93235
-              p-value:  0.78679
-    95% Conf Interval: (0.56124, 1.5489) 
+   Parameter Estimate:  0.93713
+              p-value:  0.79737
+    95% Conf Interval: (0.57087, 1.5384) 
 
-              log(OR):  -0.070044
-    variance(log(OR)):  0.06706 
+              log(OR):  -0.064931
+    variance(log(OR)):  0.063952 
 
 -----------------------------------------
 > 
@@ -5944,4 +6074,4 @@ Estimation Results:
 > 
 > proc.time()
    user  system elapsed 
-452.432  22.134 486.377 
+498.155  11.927 525.005 
