@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- opened on:  28 Nov 2016, 14:31:14
+ opened on:  28 Nov 2016, 15:29:31
 
 . 
 . *********************************************
@@ -278,7 +278,7 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000001 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000001 saved
 
 . 
 . * ---------------------------------------------
@@ -304,7 +304,7 @@ Duplicates in terms of all variables
 . tempfile primdob
 
 . save `primdob'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000002 saved
 
 . 
 . * merge in birth order for T1 from anthro dataset
@@ -328,7 +328,7 @@ Duplicates in terms of all variables
 . tempfile primbirthord
 
 . save `primbirthord'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000004 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000004 saved
 
 . restore
 
@@ -485,7 +485,7 @@ sex_psth                                                                     Sex
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000006 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000006 saved
 
 . restore
 
@@ -521,7 +521,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000006 saved
 . tempfile agesex2
 
 . save `agesex2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000007 saved
 
 . 
 . * merge primary analysis dob with sth dataset to identify
@@ -629,7 +629,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000008 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000008 saved
 
 . 
 . *--------------------------------------------
@@ -667,7 +667,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000008 saved
 . tempfile t1t2
 
 . save `t1t2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000a saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000a saved
 
 . restore
 
@@ -703,7 +703,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000a saved
 . tempfile c1
 
 . save `c1'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000c saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000c saved
 
 . restore
 
@@ -741,7 +741,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000c saved
 . tempfile lb
 
 . save `lb'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000d saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000d saved
 
 . 
 . *--------------------------------------------
@@ -843,7 +843,7 @@ Duplicates in terms of all variables
 . tempfile fustool
 
 . save `fustool'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000e saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000e saved
 
 . 
 . use `lb', clear
@@ -897,7 +897,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000e saved
 . tempfile allfu
 
 . save `allfu'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000f saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000f saved
 
 . 
 . use `sth', clear
@@ -931,11 +931,64 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000f saved
 . drop _m
 
 . 
+. drop clusterid
+
+. gen clusterid=substr(dataid, 1,3)
+
+. 
+. order clusterid 
+
+. 
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000g saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000g saved
 
+. 
+. /*--------------------------------------------
+> * calculate age for missing T1 in PSTH round
+> *--------------------------------------------
+> preserve
+> keep clusterid labdate
+> sort clusterid labdate 
+> 
+> * get date
+> capture drop datecount
+> egen imputedate = mode(labdate), by(clusterid) minmode
+> format imputedate %d
+> keep clusterid imputedate
+> duplicates drop
+> tempfile imputedate
+> save `imputedate'
+> restore
+> 
+> merge m:1 clusterid using `imputedate'
+> drop _m
+> 
+> * get dob 
+> preserve
+> use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-banglade
+> sh-anthro.dta", clear
+> ren childid personid 
+> keep dataid personid dob
+> keep if personid=="T1" | personid=="T2"
+> ren dob imputedob 
+> duplicates drop 
+> tempfile imputedob
+> save `imputedob'
+> restore
+> 
+> merge m:1 dataid personid using `imputedob'
+> * drop 2 twins in the anthro dataset that we didn't consider for enrollment
+> * in PSTH (by accident)
+> drop if _m==2 
+> stop 
+> 
+> * calculate age 
+> replace aged=(imputedate-dob) if personid=="T1" & aged==.
+> gen double agem=(imputedate-dob)/30.4167
+> gen double agey=(imputedate-dob)/365.25 */ 
+. 
 . 
 . * ---------------------------------------------
 . * Create effect modifier variables 
@@ -959,17 +1012,14 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000g saved
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         1,990
-        from master                     1,989  (_merge==1)
-        from using                          1  (_merge==2)
-
-    matched                             7,187  (_merge==3)
+    not matched                             0
+    matched                             9,176  (_merge==3)
     -----------------------------------------
 
 . * drop if no KK data
 . 
 . drop if _m==2
-(1 observation deleted)
+(0 observations deleted)
 
 . drop _m
 
@@ -992,5 +1042,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- closed on:  28 Nov 2016, 14:31:15
+ closed on:  28 Nov 2016, 15:29:33
 --------------------------------------------------------------------------------

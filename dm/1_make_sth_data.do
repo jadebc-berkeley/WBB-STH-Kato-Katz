@@ -409,8 +409,57 @@ gen loss2fu = (fu_reason==2 | fu_reason==3 | fu_reason==4)
 
 drop _m
 
+drop clusterid
+gen clusterid=substr(dataid, 1,3)
+
+order clusterid 
+
 tempfile sth
 save `sth'
+
+/*--------------------------------------------
+* calculate age for missing T1 in PSTH round
+*--------------------------------------------
+preserve
+keep clusterid labdate
+sort clusterid labdate 
+
+* get date
+capture drop datecount
+egen imputedate = mode(labdate), by(clusterid) minmode
+format imputedate %d
+keep clusterid imputedate
+duplicates drop
+tempfile imputedate
+save `imputedate'
+restore
+
+merge m:1 clusterid using `imputedate'
+drop _m
+
+* get dob 
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-anthro.dta", clear
+ren childid personid 
+keep dataid personid dob
+keep if personid=="T1" | personid=="T2"
+ren dob imputedob 
+duplicates drop 
+tempfile imputedob
+save `imputedob'
+restore
+
+merge m:1 dataid personid using `imputedob'
+* drop 2 twins in the anthro dataset that we didn't consider for enrollment
+* in PSTH (by accident)
+drop if _m==2 
+stop 
+
+* calculate age 
+replace aged=(imputedate-dob) if personid=="T1" & aged==.
+gen double agem=(imputedate-dob)/30.4167
+gen double agey=(imputedate-dob)/365.25 */ 
+
 
 * ---------------------------------------------
 * Create effect modifier variables 
