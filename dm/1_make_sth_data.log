@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_sth_d
 > ata.log
   log type:  text
- opened on:  28 Nov 2016, 09:25:08
+ opened on:  28 Nov 2016, 14:07:45
 
 . 
 . *********************************************
@@ -23,7 +23,8 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta"
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta", 
+> clear
 
 . 
 . * drop spillover children
@@ -276,7 +277,7 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000001 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000001 saved
 
 . 
 . * ---------------------------------------------
@@ -302,7 +303,7 @@ Duplicates in terms of all variables
 . tempfile primdob
 
 . save `primdob'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000002 saved
 
 . 
 . * merge in birth order for T1 from anthro dataset
@@ -325,7 +326,7 @@ Duplicates in terms of all variables
 . tempfile primbirthord
 
 . save `primbirthord'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000004 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000004 saved
 
 . restore
 
@@ -482,7 +483,7 @@ sex_psth                                                                        
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000006 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000006 saved
 
 . restore
 
@@ -517,7 +518,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000006 saved
 . tempfile agesex2
 
 . save `agesex2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000007 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 
 . 
 . * merge primary analysis dob with sth dataset to identify
@@ -619,111 +620,342 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000007 saved
 . drop _m
 
 . 
+. tempfile sth
+
+. save `sth'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000008 saved
+
+. 
 . *--------------------------------------------
 . * Impute households lost to FU that had live births
 . * after baseline
 . *--------------------------------------------
-. preserve
-
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Mid
-> line_Endline_data_count_cleaned.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-track-comp
+> ound.dta", clear
+(WASH Benefits Bangladesh tracking file, compounds)
 
 . gen lb = 1
 
-. #delimit;
-delimiter now ;
-. replace lb = 0 if reason_midline=="ABORTION" | reason_midline=="FALSE PREGNANCY" |
->         reason_midline=="MISCARRIAGE" |reason_midline=="STILL BIRTH";
-(363 real changes made)
+. replace lb = 0 if miss1r==1
+(361 real changes made)
 
-. #delimit cr
-delimiter now cr
 . keep dataid lb
 
-. keep if lb==1
-(363 observations deleted)
+. 
+. * impute T1 and T2 from baseline list of twins
+. preserve 
 
-. tempfile lb
+. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline survey info/Twin Child lis
+> t.xlsx", clear firstrow
 
-. save `lb'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03338.000009 saved
+. gen newdataid=string(dataid,"%05.0f")
+
+. drop dataid
+
+. ren newdataid dataid
+
+. keep dataid childid
+
+. ren childid personid
+
+. tempfile t1t2
+
+. save `t1t2'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000a saved
 
 . restore
 
 . 
-. merge m:1 dataid using `lb'
+. merge 1:m dataid using `t1t2'
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         1,283
-        from master                         2  (_merge==1)
-        from using                      1,281  (_merge==2)
+    not matched                         5,517
+        from master                     5,517  (_merge==1)
+        from using                          0  (_merge==2)
 
-    matched                             7,185  (_merge==3)
+    matched                                68  (_merge==3)
     -----------------------------------------
 
-. tab lb _m, mis
-
-           |              _merge
-        lb | master on  using onl  matched ( |     Total
------------+---------------------------------+----------
-         1 |         0      1,281      7,185 |     8,466 
-         . |         2          0          0 |         2 
------------+---------------------------------+----------
-     Total |         2      1,281      7,185 |     8,468 
-
+. drop _m
 
 . 
-. * for dataid 02604, there was a miscarriage after baseline
-. * but the target child was still tracked and enrolled, 
-. * so perhaps the miscarriage record was an error? 
-. drop lb
-
-. ren _m fu
+. * impute T1 for all others
+. replace personid="T1" if personid==""
+(5,517 real changes made)
 
 . 
-. recode fu (3=1) 
-(fu: 7185 changes made)
+. * impute C1 from baseline list
+. preserve
 
-. label define ful 1 "In STH sample" 2 "Loss to FU"
+. use "~/Dropbox/WASHB-PSTH/Sampling Frame/IT_c1info.dta", clear
+
+. gen hasc1=2
+
+. keep dataid hasc1
+
+. tempfile c1
+
+. save `c1'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000c saved
+
+. restore
+
+. 
+. merge m:1 dataid using `c1'
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         4,585
+        from master                     4,583  (_merge==1)
+        from using                          2  (_merge==2)
+
+    matched                             1,002  (_merge==3)
+    -----------------------------------------
+
+. 
+. expand hasc1 if personid=="T1", gen(newrow)
+(4,555 missing counts ignored; observations not deleted)
+(996 observations created)
+
+. sort dataid
+
+. replace personid="C1" if newrow==1 & hasc1==2 
+(996 real changes made)
+
+. 
+. drop newrow hasc1 _m
+
+. 
+. * drop the two ids that are in C1 but not in the main study tracking file
+. drop if personid==""
+(2 observations deleted)
+
+. 
+. tempfile lb
+
+. save `lb'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000d saved
+
+. 
+. *--------------------------------------------
+. * Impute individuals lost to FU at PSTH round
+. *--------------------------------------------
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldt
+> rack.dta", clear
+
+. keep dataid personid stoolever hhstatus
+
+. * drop duplicated slides
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(7,187 observations deleted)
+
+. 
+. * for the rows with hhstatus!=E, there is one row per possible personid
+. * need to delete the irrelevant ones
+. gen keeppersonid=0
+
+. replace keeppersonid=1 if hhstatus=="E"
+(7,868 real changes made)
+
+. replace keeppersonid=1 if personid=="T1"
+(1,658 real changes made)
+
+. replace keeppersonid=1 if personid=="O1"
+(1,658 real changes made)
+
+. 
+. * merge in which dataid has c1 from baseline list
+. merge m:1 dataid using `c1'
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                        11,481
+        from master                    11,481  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             3,019  (_merge==3)
+    -----------------------------------------
+
+. 
+. replace keeppersonid=1 if hasc1==2 & personid=="C1" 
+(284 real changes made)
+
+. order dataid personid keepp
+
+. drop hasc1 _m
+
+. 
+. * merge in which dataid has t1t2 from baseline list
+. count
+  14,500
+
+. merge m:1 dataid personid using `t1t2'
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                        14,436
+        from master                    14,434  (_merge==1)
+        from using                          2  (_merge==2)
+
+    matched                                66  (_merge==3)
+    -----------------------------------------
+
+. count
+  14,502
+
+. 
+. replace keeppersonid=1 if personid=="T2" & _m==3 & hhstatus!="E"
+(6 real changes made)
+
+. replace keeppersonid=1 if personid=="T2" & _m==2
+(2 real changes made)
+
+. 
+. drop _m
+
+. 
+. * drop extra personid rows
+. keep if keeppersonid==1
+(3,026 observations deleted)
+
+. 
+. * only keep rows for O1 with HHstatus=="E"
+. drop if hhstatus!="E"  & personid=="O1"
+(1,658 observations deleted)
+
+. 
+. duplicates drop
+
+Duplicates in terms of all variables
+
+(0 observations are duplicates)
+
+. tempfile fustool
+
+. save `fustool'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000e saved
+
+. 
+. use `lb', clear
+(WASH Benefits Bangladesh tracking file, compounds)
+
+. merge 1:1 dataid personid using `fustool'
+(note: variable dataid was str5, now str32 to accommodate using data's values)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         3,489
+        from master                       126  (_merge==1)
+        from using                      3,363  (_merge==2)
+
+    matched                             6,455  (_merge==3)
+    -----------------------------------------
+
+. 
+. gen fu = 1
+
+. replace fu = 2 if hhstatus!="E"  & hhstatus!=""
+(1,948 real changes made)
+
+. replace fu = 3 if stoolever==0
+(678 real changes made)
+
+. replace fu = 9 if hhstatus==""
+(128 real changes made)
+
+. 
+. label define ful 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK" 9 "Excluded from P
+> STH"
 
 . label values fu ful
 
 . 
-. stop
-command stop is unrecognized
-r(199);
-
-end of do-file
-
-r(199);
-
-. tab fu
-
-           fu |      Freq.     Percent        Cum.
---------------+-----------------------------------
-In STH sample |      7,187       84.87       84.87
-   Loss to FU |      1,281       15.13      100.00
---------------+-----------------------------------
-        Total |      8,468      100.00
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD03338.000000"
-
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta"
-no; data in memory would be lost
-r(4);
-
-end of do-file
-
-r(4);
-
-. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD03338.000000"
-
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta", 
-> clear
+. drop if lb == 0 
+(429 observations deleted)
 
 . 
-end of do-file
+. drop _m
 
-. br
+. *drop lb hhstatus keepp stoolever
+. 
+. tempfile allfu
 
+. save `allfu'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000f saved
+
+. 
+. use `sth', clear
+
+. merge 1:1 dataid personid using `allfu'
+(note: variable dataid was str7, now str32 to accommodate using data's values)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         2,328
+        from master                         0  (_merge==1)
+        from using                      2,328  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. 
+. replace fu = 4 if labdate==. & fu==1
+(3 real changes made)
+
+. 
+. 
+. * t1 should be 5551
+. 
+. drop _m
+
+. 
+. 
+. 
+. 
+. *--------------------------------------------
+. * Merge in treatment assignment
+. *--------------------------------------------
+. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb
+> -bangladesh-blind-tr.dta"
+(note: variable block was byte, now long to accommodate using data's values)
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         2,329
+        from master                     2,328  (_merge==1)
+        from using                          1  (_merge==2)
+
+    matched                             7,187  (_merge==3)
+    -----------------------------------------
+
+. * drop if no KK data
+. 
+. drop if _m==2
+(1 observation deleted)
+
+. drop _m
+
+. 
+. order dataid personid block clusterid hhid tr sex dob age* 
+
+. 
+. save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
+file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
+
+. save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
+file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
+
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_sth_d
+> ata.log
+  log type:  text
+ closed on:  28 Nov 2016, 14:07:47
+---------------------------------------------------------------------------------------------

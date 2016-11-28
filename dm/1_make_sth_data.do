@@ -278,37 +278,126 @@ gen month=month(labdate)
 drop if _m==2
 drop _m
 
+tempfile sth
+save `sth'
+
 *--------------------------------------------
 * Impute households lost to FU that had live births
 * after baseline
 *--------------------------------------------
-preserve
-use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
+use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-track-compound.dta", clear
 gen lb = 1
-#delimit;
-replace lb = 0 if reason_midline=="ABORTION" | reason_midline=="FALSE PREGNANCY" |
-	reason_midline=="MISCARRIAGE" |reason_midline=="STILL BIRTH";
-#delimit cr
+replace lb = 0 if miss1r==1
 keep dataid lb
-keep if lb==1
-tempfile lb
-save `lb'
+
+* impute T1 and T2 from baseline list of twins
+preserve 
+import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline survey info/Twin Child list.xlsx", clear firstrow
+gen newdataid=string(dataid,"%05.0f")
+drop dataid
+ren newdataid dataid
+keep dataid childid
+ren childid personid
+tempfile t1t2
+save `t1t2'
 restore
 
-merge m:1 dataid using `lb'
-tab lb _m, mis
+merge 1:m dataid using `t1t2'
+drop _m
 
-* for dataid 02604, there was a miscarriage after baseline
-* but the target child was still tracked and enrolled, 
-* so perhaps the miscarriage record was an error? 
-drop lb
-ren _m fu
+* impute T1 for all others
+replace personid="T1" if personid==""
 
-recode fu (3=1) 
-label define ful 1 "In STH sample" 2 "Loss to FU"
+* impute C1 from baseline list
+preserve
+use "~/Dropbox/WASHB-PSTH/Sampling Frame/IT_c1info.dta", clear
+gen hasc1=2
+keep dataid hasc1
+tempfile c1
+save `c1'
+restore
+
+merge m:1 dataid using `c1'
+
+expand hasc1 if personid=="T1", gen(newrow)
+sort dataid
+replace personid="C1" if newrow==1 & hasc1==2 
+
+drop newrow hasc1 _m
+
+* drop the two ids that are in C1 but not in the main study tracking file
+drop if personid==""
+
+tempfile lb
+save `lb'
+
+*--------------------------------------------
+* Impute individuals lost to FU at PSTH round
+*--------------------------------------------
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
+keep dataid personid stoolever hhstatus
+* drop duplicated slides
+duplicates drop
+
+* for the rows with hhstatus!=E, there is one row per possible personid
+* need to delete the irrelevant ones
+gen keeppersonid=0
+replace keeppersonid=1 if hhstatus=="E"
+replace keeppersonid=1 if personid=="T1"
+replace keeppersonid=1 if personid=="O1"
+
+* merge in which dataid has c1 from baseline list
+merge m:1 dataid using `c1'
+
+replace keeppersonid=1 if hasc1==2 & personid=="C1" 
+order dataid personid keepp
+drop hasc1 _m
+
+* merge in which dataid has t1t2 from baseline list
+count
+merge m:1 dataid personid using `t1t2'
+count
+
+replace keeppersonid=1 if personid=="T2" & _m==3 & hhstatus!="E"
+replace keeppersonid=1 if personid=="T2" & _m==2
+
+drop _m
+
+* drop extra personid rows
+keep if keeppersonid==1
+
+* only keep rows for O1 with HHstatus=="E"
+drop if hhstatus!="E"  & personid=="O1"
+
+duplicates drop
+tempfile fustool
+save `fustool'
+
+use `lb', clear
+merge 1:1 dataid personid using `fustool'
+
+gen fu = 1
+replace fu = 2 if hhstatus!="E"  & hhstatus!=""
+replace fu = 3 if stoolever==0
+replace fu = 9 if hhstatus==""
+
+label define ful 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK" 9 "Excluded from PSTH"
 label values fu ful
 
-stop
+drop if lb == 0 
+
+drop _m
+*drop lb hhstatus keepp stoolever
+
+tempfile allfu
+save `allfu'
+
+use `sth', clear
+merge 1:1 dataid personid using `allfu'
+
+replace fu = 4 if labdate==. & fu==1
+
+drop _m
 
 *--------------------------------------------
 * Merge in treatment assignment
@@ -322,6 +411,7 @@ drop _m
 order dataid personid block clusterid hhid tr sex dob age* 
 
 save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
+save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma
 
 log close
