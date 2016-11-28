@@ -1,9 +1,9 @@
----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_sth_d
-> ata.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
+> /1_make_sth_data.log
   log type:  text
- opened on:  28 Nov 2016, 14:07:45
+ opened on:  28 Nov 2016, 14:31:14
 
 . 
 . *********************************************
@@ -23,8 +23,8 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta", 
-> clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-
+> P-sckk.dta", clear
 
 . 
 . * drop spillover children
@@ -97,32 +97,32 @@ xij variables:
 . gen counter = .
 (7,187 missing values generated)
 
-. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter2=="HK
-> C") 
+. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & 
+> counter2=="HKC") 
 (593 real changes made)
 
-. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & counter2=="
-> HKC") 
+. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" 
+> & counter2=="HKC") 
 (863 real changes made)
 
-. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="
-> HKC") 
+. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" 
+> & counter2=="HKC") 
 (1,296 real changes made)
 
-. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="RK" & counter2=="MH
-> R") 
+. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="RK" & 
+> counter2=="MHR") 
 (1,865 real changes made)
 
-. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="
-> MHR") 
+. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="SNJ" 
+> & counter2=="MHR") 
 (1,254 real changes made)
 
-. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="SNJ" & counter2=="R
-> K") 
+. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="SNJ" &
+>  counter2=="RK") 
 (1,315 real changes made)
 
-. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2=="RK"
-> ) 
+. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & c
+> ounter2=="RK") 
 (1 real change made)
 
 . 
@@ -199,8 +199,8 @@ xij variables:
 (0 real changes made)
 
 . 
-. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "High intensi
-> ty"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 
+> "High intensity"
 
 . label values alint ttint hwint intl
 
@@ -234,7 +234,8 @@ xij variables:
 . 
 . gen sthmh=0
 
-. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttint==3
+. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttin
+> t==3
 (349 real changes made)
 
 . replace sthmh=. if alint==. & ttint==. & hwint==.
@@ -286,8 +287,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000001 saved
 . * If data available from primary analysis dataset, 
 . * use that. If not, use PSTH dataset. 
 . * ---------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-diar.dta",
->  clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-banglade
+> sh-diar.dta", clear
 (Bangladesh diarrhea dataset, created by 3-bangladesh-dm-diar.do)
 
 . keep dataid childid clusterid sex dob 
@@ -309,9 +310,10 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000002 saved
 . * merge in birth order for T1 from anthro dataset
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-anthro.dta
-> ", clear
-(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-dm-anthro.do)
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-banglade
+> sh-anthro.dta", clear
+(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-dm-anthro.do
+> )
 
 . keep dataid childid clusterid birthord
 
@@ -347,8 +349,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000004 saved
 . 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey
-> _STHCohort.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PS
+> TH-Day1survey_STHCohort.dta", clear
 
 . ren col1 persondesc
 
@@ -455,9 +457,9 @@ year: all characters numeric; replaced as int
 
 . codebook sex
 
----------------------------------------------------------------------------------------------
-sex_psth                                                                                  Sex
----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+sex_psth                                                                     Sex
+--------------------------------------------------------------------------------
 
                   type:  numeric (byte)
                  label:  sexl
@@ -511,7 +513,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000006 saved
 . keep if keep==1
 (5,373 observations deleted)
 
-. replace personid="C1" if personid=="C1" | personid=="C2" | personid=="C3" | personid=="C4" 
+. replace personid="C1" if personid=="C1" | personid=="C2" | personid=="C3" | pe
+> rsonid=="C4" 
 (67 real changes made)
 
 . 
@@ -526,7 +529,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 . use `sth', clear
 
 . merge 1:1 dataid personid using `agesex2'
-(note: variable personid was str2, now str3 to accommodate using data's values)
+(note: variable personid was str2, now str3 to accommodate using data's
+       values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -549,7 +553,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 
 . 
 . * use psth dob if primary dob not available for T1 T2
-. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid=="C1")
+. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid
+> =="C1")
 (8 real changes made)
 
 . replace dob = dob_psth if  personid=="O1" 
@@ -559,7 +564,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 
 . 
 . * use psth sex if primary sex not available for T1 T2
-. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" | personid=="C1")
+. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" | personid
+> =="C1")
 (8 real changes made)
 
 . replace sex = sex_psth if personid=="O1" 
@@ -569,8 +575,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 
 . 
 . * use psth birth order if primary dob not available for T1 T2
-. replace birthord = birthorder_psth if birthord==. & (personid=="T1" | personid=="T2" | pers
-> onid=="C1")
+. replace birthord = birthorder_psth if birthord==. & (personid=="T1" | personid
+> =="T2" | personid=="C1")
 (562 real changes made)
 
 . replace birthord = birthorder_psth if  personid=="O1" 
@@ -596,8 +602,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000007 saved
 . *--------------------------------------------
 . * Merge with baseline covariates
 . *--------------------------------------------
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-ba
-> ngladesh-enrol.dta"
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-data
+> sets/washb-bangladesh-enrol.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -630,8 +636,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000008 saved
 . * Impute households lost to FU that had live births
 . * after baseline
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-track-comp
-> ound.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-banglade
+> sh-track-compound.dta", clear
 (WASH Benefits Bangladesh tracking file, compounds)
 
 . gen lb = 1
@@ -645,8 +651,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.000008 saved
 . * impute T1 and T2 from baseline list of twins
 . preserve 
 
-. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline survey info/Twin Child lis
-> t.xlsx", clear firstrow
+. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline survey info/T
+> win Child list.xlsx", clear firstrow
 
 . gen newdataid=string(dataid,"%05.0f")
 
@@ -741,8 +747,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000d saved
 . *--------------------------------------------
 . * Impute individuals lost to FU at PSTH round
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldt
-> rack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-
+> P-sckk-fieldtrack.dta", clear
 
 . keep dataid personid stoolever hhstatus
 
@@ -856,22 +862,28 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000e saved
     -----------------------------------------
 
 . 
-. gen fu = 1
+. * drop the compounds that were not enrolled at baseline
+. * and are coded as L in the PSTH file
+. drop if hhstatus =="L" & _m < 3
+(211 observations deleted)
 
-. replace fu = 2 if hhstatus!="E"  & hhstatus!=""
-(1,948 real changes made)
+. 
+. gen fu_reason = 1
 
-. replace fu = 3 if stoolever==0
+. replace fu_reason = 2 if hhstatus!="E"  & hhstatus!=""
+(1,737 real changes made)
+
+. replace fu_reason = 3 if stoolever==0
 (678 real changes made)
 
-. replace fu = 9 if hhstatus==""
+. replace fu_reason = 9 if hhstatus==""
 (128 real changes made)
 
 . 
-. label define ful 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK" 9 "Excluded from P
-> STH"
+. label define fu_reasonl 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK
+> " 9 "Excluded from PSTH"
 
-. label values fu ful
+. label values fu_reason fu_reasonl
 
 . 
 . drop if lb == 0 
@@ -895,38 +907,60 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000f saved
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         2,328
+    not matched                         2,117
         from master                         0  (_merge==1)
-        from using                      2,328  (_merge==2)
+        from using                      2,117  (_merge==2)
 
     matched                             7,187  (_merge==3)
     -----------------------------------------
 
 . 
-. replace fu = 4 if labdate==. & fu==1
+. replace fu_reason = 4 if labdate==. & fu_reason==1
 (3 real changes made)
 
 . 
+. * drop the kids that we accidentally didn't enroll at endline
+. drop if fu_reason==9
+(128 observations deleted)
+
 . 
-. * t1 should be 5551
+. * generate overall loss to fu variable
+. gen loss2fu = (fu_reason==2 | fu_reason==3 | fu_reason==4)
+
 . 
 . drop _m
 
 . 
+. tempfile sth
+
+. save `sth'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_07210.00000g saved
+
 . 
-. 
+. * ---------------------------------------------
+. * Create effect modifier variables 
+. * ---------------------------------------------
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PS
+> TH-Day1survey_HHCensus.dta", clear
+
+. gen ncompover10 = (col7 >10) 
+
+. gen n5to14 = col3
+
 . 
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb
-> -bangladesh-blind-tr.dta"
+. use `sth', clear
+
+. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-d
+> atasets/washb-bangladesh-blind-tr.dta"
 (note: variable block was byte, now long to accommodate using data's values)
 
     Result                           # of obs.
     -----------------------------------------
-    not matched                         2,329
-        from master                     2,328  (_merge==1)
+    not matched                         1,990
+        from master                     1,989  (_merge==1)
         from using                          1  (_merge==2)
 
     matched                             7,187  (_merge==3)
@@ -949,13 +983,14 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 . save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", rep
+> lace comma
 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_sth_d
-> ata.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
+> /1_make_sth_data.log
   log type:  text
- closed on:  28 Nov 2016, 14:07:47
----------------------------------------------------------------------------------------------
+ closed on:  28 Nov 2016, 14:31:15
+--------------------------------------------------------------------------------

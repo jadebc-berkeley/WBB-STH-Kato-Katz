@@ -376,13 +376,17 @@ save `fustool'
 use `lb', clear
 merge 1:1 dataid personid using `fustool'
 
-gen fu = 1
-replace fu = 2 if hhstatus!="E"  & hhstatus!=""
-replace fu = 3 if stoolever==0
-replace fu = 9 if hhstatus==""
+* drop the compounds that were not enrolled at baseline
+* and are coded as L in the PSTH file
+drop if hhstatus =="L" & _m < 3
 
-label define ful 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK" 9 "Excluded from PSTH"
-label values fu ful
+gen fu_reason = 1
+replace fu_reason = 2 if hhstatus!="E"  & hhstatus!=""
+replace fu_reason = 3 if stoolever==0
+replace fu_reason = 9 if hhstatus==""
+
+label define fu_reasonl 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK" 9 "Excluded from PSTH"
+label values fu_reason fu_reasonl
 
 drop if lb == 0 
 
@@ -395,13 +399,30 @@ save `allfu'
 use `sth', clear
 merge 1:1 dataid personid using `allfu'
 
-replace fu = 4 if labdate==. & fu==1
+replace fu_reason = 4 if labdate==. & fu_reason==1
+
+* drop the kids that we accidentally didn't enroll at endline
+drop if fu_reason==9
+
+* generate overall loss to fu variable
+gen loss2fu = (fu_reason==2 | fu_reason==3 | fu_reason==4)
 
 drop _m
+
+tempfile sth
+save `sth'
+
+* ---------------------------------------------
+* Create effect modifier variables 
+* ---------------------------------------------
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_HHCensus.dta", clear
+gen ncompover10 = (col7 >10) 
+gen n5to14 = col3
 
 *--------------------------------------------
 * Merge in treatment assignment
 *--------------------------------------------
+use `sth', clear
 merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-blind-tr.dta"
 * drop if no KK data
 
