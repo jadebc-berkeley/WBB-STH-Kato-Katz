@@ -11,13 +11,12 @@ log using "~/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make_sth_data.l
 *********************************************
 clear all
 set more off
-*cd "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/"
 
 
 *--------------------------------------------
 * Read in KK data 
 *--------------------------------------------
-use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta"
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.dta", clear
 
 * drop spillover children
 drop if personid=="S1"
@@ -278,6 +277,38 @@ gen month=month(labdate)
 * drop if no KK data
 drop if _m==2
 drop _m
+
+*--------------------------------------------
+* Impute households lost to FU that had live births
+* after baseline
+*--------------------------------------------
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/3_Endline/01. WASHB_Midline_Endline_data_count_cleaned.dta", clear
+gen lb = 1
+#delimit;
+replace lb = 0 if reason_midline=="ABORTION" | reason_midline=="FALSE PREGNANCY" |
+	reason_midline=="MISCARRIAGE" |reason_midline=="STILL BIRTH";
+#delimit cr
+keep dataid lb
+keep if lb==1
+tempfile lb
+save `lb'
+restore
+
+merge m:1 dataid using `lb'
+tab lb _m, mis
+
+* for dataid 02604, there was a miscarriage after baseline
+* but the target child was still tracked and enrolled, 
+* so perhaps the miscarriage record was an error? 
+drop lb
+ren _m fu
+
+recode fu (3=1) 
+label define ful 1 "In STH sample" 2 "Loss to FU"
+label values fu ful
+
+stop
 
 *--------------------------------------------
 * Merge in treatment assignment
