@@ -4217,3 +4217,137 @@ asset_refrig 0.192844658
 asset_mobile 0.100599700
 
 -----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8418822 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.03525311 
+	   SL.glmnet_All    0.1228647 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.0056495
+   Estimated Variance:  1.3807e-05
+              p-value:  0.12841
+    95% Conf Interval: (-0.0016335, 0.012932) 
+
+ Relative Risk
+   Parameter Estimate:  3.4453
+              p-value:  0.084733
+    95% Conf Interval: (0.84413, 14.062) 
+
+              log(RR):  1.237
+    variance(log(RR)):  0.51491 
+
+ Odds Ratio
+   Parameter Estimate:  3.4649
+              p-value:  0.084696
+    95% Conf Interval: (0.84362, 14.231) 
+
+              log(OR):  1.2427
+    variance(log(OR)):  0.51953 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 7 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1777 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00508
+birthord       0.01692
+month          0.16994
+hfiacat        0.12393
+aged           0.04316
+sex            0.31581
+momage         0.02709
+momheight      0.01912
+momedu         0.00599
+Nlt18          0.12489
+Ncomp          0.06733
+watmin         0.15858
+walls          0.57502
+floor          0.13611
+elec           0.07783
+asset_wardrobe 0.03345
+asset_table    0.05908
+asset_chair    0.16431
+asset_khat     0.02394
+asset_chouki   0.15429
+asset_tv       0.04386
+asset_refrig   0.15558
+asset_bike     0.31888
+asset_moto     0.22674
+asset_sewmach  0.15385
+asset_mobile   0.03723
+
+
+Covariates selected (P<0.2):
+                   P-value
+counter        0.005076055
+birthord       0.016915495
+month          0.169941052
+hfiacat        0.123928648
+aged           0.043159455
+momage         0.027091778
+momheight      0.019121963
+momedu         0.005986806
+Nlt18          0.124888891
+Ncomp          0.067327716
+watmin         0.158578045
+floor          0.136106018
+elec           0.077833567
+asset_wardrobe 0.033448888
+asset_table    0.059084112
+asset_chair    0.164305491
+asset_khat     0.023939784
+asset_chouki   0.154287662
+asset_tv       0.043858981
+asset_refrig   0.155578449
+asset_sewmach  0.153846577
+asset_mobile   0.037231458
+
+-----------------------------------------

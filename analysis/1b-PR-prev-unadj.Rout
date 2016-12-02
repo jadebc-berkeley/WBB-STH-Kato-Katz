@@ -141,3 +141,1027 @@ N after block dropping:  2688
 
 Dropping 22 observations due to missing pairs. 
 -----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+               PR      2.5%    97.5%   Estimate Std. Error  z value  Pr(>|z|)
+trWater 0.8089697 0.6150787 1.063981 -0.2119939  0.1398017 -1.51639 0.1294207
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                    PR      2.5%    97.5%    Estimate Std. Error    z value
+trSanitation 0.9779369 0.7445177 1.284537 -0.02231012   0.139137 -0.1603464
+              Pr(>|z|)
+trSanitation 0.8726082
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                   PR      2.5%    97.5%  Estimate Std. Error  z value Pr(>|z|)
+trHandwashing 1.18884 0.9563344 1.477874 0.1729785  0.1110337 1.557892 0.119259
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+            PR      2.5%   97.5%  Estimate Std. Error  z value  Pr(>|z|)
+trWSH 1.160317 0.8963558 1.50201 0.1486931  0.1316893 1.129121 0.2588468
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                   PR      2.5%    97.5%   Estimate Std. Error    z value
+trNutrition 0.9017569 0.6663196 1.220384 -0.1034103  0.1543753 -0.6698627
+             Pr(>|z|)
+trNutrition 0.5029453
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                         PR      2.5%    97.5%   Estimate Std. Error   z value
+trNutrition + WSH 0.8578904 0.6427664 1.145013 -0.1532789  0.1472934 -1.040637
+                  Pr(>|z|)
+trNutrition + WSH 0.298044
+Warning messages:
+1: In sqrt(diag(se)) : NaNs produced
+2: In sqrt(diag(se)) : NaNs produced
+3: In sqrt(diag(se)) : NaNs produced
+4: In sqrt(diag(se)) : NaNs produced
+5: In sqrt(diag(se)) : NaNs produced
+> 
+> glm.bin.tt.h1=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c("Control",x),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   2710 
+N after block dropping:  2688
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 22 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+               PR      2.5%     97.5%   Estimate Std. Error   z value
+trWater 0.6425824 0.4642607 0.8893973 -0.4422602  0.1658413 -2.666767
+           Pr(>|z|)
+trWater 0.007658465
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                    PR      2.5%   97.5%  Estimate Std. Error   z value
+trSanitation 0.8107942 0.6051676 1.08629 -0.209741  0.1492392 -1.405402
+              Pr(>|z|)
+trSanitation 0.1599019
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                     PR      2.5%     97.5%   Estimate Std. Error   z value
+trHandwashing 0.5969426 0.4358217 0.8176289 -0.5159344  0.1605039 -3.214466
+                 Pr(>|z|)
+trHandwashing 0.001306875
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+             PR      2.5%   97.5%   Estimate Std. Error    z value  Pr(>|z|)
+trWSH 0.9011097 0.6769531 1.19949 -0.1041282  0.1459312 -0.7135436 0.4755095
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                   PR      2.5%   97.5%   Estimate Std. Error  z value
+trNutrition 0.7434245 0.5149544 1.07326 -0.2964881  0.1873413 -1.58261
+             Pr(>|z|)
+trNutrition 0.1135105
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                         PR      2.5%    97.5%   Estimate Std. Error    z value
+trNutrition + WSH 0.8793133 0.6551959 1.180093 -0.1286141  0.1501056 -0.8568241
+                   Pr(>|z|)
+trNutrition + WSH 0.3915421
+> 
+> glm.bin.sth.h1=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c("Control",x),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   2710 
+N after block dropping:  2688
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 22 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+               PR      2.5%     97.5%    Estimate Std. Error   z value
+trWater 0.9159929 0.8398779 0.9990058 -0.08774671 0.04426122 -1.982474
+         Pr(>|z|)
+trWater 0.0474262
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                    PR      2.5%    97.5%   Estimate Std. Error  z value
+trSanitation 0.8869823 0.8138419 0.966696 -0.1199302 0.04390765 -2.73142
+                Pr(>|z|)
+trSanitation 0.006306211
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                     PR      2.5%    97.5%    Estimate Std. Error    z value
+trHandwashing 0.9879675 0.9107445 1.071738 -0.01210548 0.04152419 -0.2915283
+               Pr(>|z|)
+trHandwashing 0.7706473
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+            PR      2.5%    97.5%    Estimate Std. Error   z value  Pr(>|z|)
+trWSH 0.935317 0.8610273 1.016016 -0.06686978  0.0422241 -1.583688 0.1132648
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                   PR      2.5%     97.5%    Estimate Std. Error   z value
+trNutrition 0.9053427 0.8285822 0.9892144 -0.09944175 0.04520282 -2.199901
+              Pr(>|z|)
+trNutrition 0.02781389
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                         PR      2.5%    97.5%    Estimate Std. Error
+trNutrition + WSH 0.9703127 0.8920702 1.055418 -0.03013687 0.04289467
+                     z value  Pr(>|z|)
+trNutrition + WSH -0.7025786 0.4823184
+> 
+> # Linear regression for RDs
+> glm.gau.al.h1=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c("Control",x),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   2710 
+N after block dropping:  2688
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 22 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+            Coef.        2.5%      97.5% Std. Error   z value   Pr(>|z|)
+trWater -0.031075 -0.06575943 0.00360942 0.01769614 -1.756033 0.07908272
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                   Coef.        2.5%      97.5% Std. Error   z value
+trSanitation -0.04810099 -0.08390358 -0.0122984 0.01826663 -2.633272
+                Pr(>|z|)
+trSanitation 0.008456671
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                   Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trHandwashing 0.00369486 -0.03314741 0.04053713 0.01879708 0.1965656 0.8441675
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+           Coef.        2.5%      97.5% Std. Error   z value   Pr(>|z|)
+trWSH -0.0307486 -0.06549431 0.00399711 0.01772741 -1.734523 0.08282525
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                  Coef.      2.5%     97.5% Std. Error   z value   Pr(>|z|)
+trNutrition -0.03027085 -0.064356 0.0038143 0.01739038 -1.740666 0.08174211
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                        Coef.        2.5%      97.5% Std. Error   z value
+trNutrition + WSH -0.02118366 -0.05455067 0.01218335 0.01702398 -1.244342
+                   Pr(>|z|)
+trNutrition + WSH 0.2133736
+> 
+> glm.gau.hw.h1=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c("Control",x),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   2710 
+N after block dropping:  2688
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 22 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+              Coef.       2.5%      97.5%  Std. Error   z value  Pr(>|z|)
+trWater -0.01518168 -0.0342923 0.00392893 0.009750315 -1.557045 0.1194597
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                   Coef.        2.5%      97.5% Std. Error    z value  Pr(>|z|)
+trSanitation -0.00170766 -0.02247434 0.01905902 0.01059525 -0.1611723 0.8719577
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                   Coef.        2.5%     97.5%  Std. Error  z value  Pr(>|z|)
+trHandwashing 0.01436166 -0.00379627 0.0325196 0.009264252 1.550224 0.1210878
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+           Coef.       2.5%      97.5% Std. Error  z value  Pr(>|z|)
+trWSH 0.01299246 -0.0100322 0.03601713 0.01174728 1.105998 0.2687275
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                  Coef.        2.5%      97.5% Std. Error    z value  Pr(>|z|)
+trNutrition -0.00768604 -0.02984309 0.01447101 0.01130462 -0.6799031 0.4965658
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                        Coef.        2.5%     97.5% Std. Error  z value
+trNutrition + WSH -0.01130208 -0.03204587 0.0094417 0.01058356 -1.06789
+                  Pr(>|z|)
+trNutrition + WSH  0.28557
+> 
+> glm.gau.tt.h1=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c("Control",x),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   2710 
+N after block dropping:  2688
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 22 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+              Coef.        2.5%       97.5% Std. Error   z value    Pr(>|z|)
+trWater -0.03015367 -0.05156269 -0.00874465 0.01092297 -2.760575 0.005769975
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                  Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trSanitation -0.0158411 -0.03703308 0.00535087 0.01081223 -1.465109 0.1428911
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                    Coef.        2.5%       97.5% Std. Error   z value
+trHandwashing -0.03492138 -0.05575995 -0.01408281 0.01063192 -3.284578
+                 Pr(>|z|)
+trHandwashing 0.001021353
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+            Coef.        2.5%      97.5% Std. Error    z value Pr(>|z|)
+trWSH -0.00875994 -0.03251505 0.01499517 0.01211995 -0.7227703 0.469821
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                  Coef.        2.5%      97.5% Std. Error   z value   Pr(>|z|)
+trNutrition -0.02107264 -0.04560334 0.00345805 0.01251566 -1.683702 0.09223928
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                        Coef.        2.5%      97.5% Std. Error    z value
+trNutrition + WSH -0.01042469 -0.03405911 0.01320973 0.01205838 -0.8645186
+                   Pr(>|z|)
+trNutrition + WSH 0.3873031
+> 
+> glm.gau.sth.h1=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c("Control",x),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   2710 
+N after block dropping:  2688
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 22 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: Water vs. Control 
+-----------------------------------------
+              Coef.        2.5%       97.5% Std. Error   z value   Pr(>|z|)
+trWater -0.03717901 -0.07326961 -0.00108841 0.01841357 -2.019109 0.04347587
+
+
+-----------------------------------------
+ GLM Fit: Sanitation vs. Control 
+-----------------------------------------
+                 Coef.        2.5%       97.5% Std. Error   z value    Pr(>|z|)
+trSanitation -0.050655 -0.08605557 -0.01525444 0.01806151 -2.804582 0.005038181
+
+
+-----------------------------------------
+ GLM Fit: Handwashing vs. Control 
+-----------------------------------------
+                    Coef.        2.5%      97.5% Std. Error    z value
+trHandwashing -0.00532401 -0.04108311 0.03043509 0.01824444 -0.2918155
+               Pr(>|z|)
+trHandwashing 0.7704277
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Control 
+-----------------------------------------
+            Coef.       2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trWSH -0.02934861 -0.0653716 0.00667437 0.01837907 -1.596849 0.1102993
+
+
+-----------------------------------------
+ GLM Fit: Nutrition vs. Control 
+-----------------------------------------
+                 Coef.        2.5%       97.5% Std. Error   z value   Pr(>|z|)
+trNutrition -0.0421005 -0.07922936 -0.00497164  0.0189433 -2.222448 0.02625302
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Control 
+-----------------------------------------
+                        Coef.        2.5%      97.5% Std. Error    z value
+trNutrition + WSH -0.01321006 -0.04994011 0.02351999 0.01873982 -0.7049191
+                   Pr(>|z|)
+trNutrition + WSH 0.4808606
+> 
+> al_rr_h1_unadj_j=glm.bin.al.h1[[1]]$TR
+> hw_rr_h1_unadj_j=glm.bin.hw.h1[[1]]$TR
+> tt_rr_h1_unadj_j=glm.bin.tt.h1[[1]]$TR
+> sth_rr_h1_unadj_j=glm.bin.sth.h1[[1]]$TR
+> for(i in 2:6){
++   al_rr_h1_unadj_j=rbind(al_rr_h1_unadj_j,glm.bin.al.h1[[i]]$TR)
++   hw_rr_h1_unadj_j=rbind(hw_rr_h1_unadj_j,glm.bin.hw.h1[[i]]$TR)
++   tt_rr_h1_unadj_j=rbind(tt_rr_h1_unadj_j,glm.bin.tt.h1[[i]]$TR)
++   sth_rr_h1_unadj_j=rbind(sth_rr_h1_unadj_j,glm.bin.sth.h1[[i]]$TR)
++ }
+> 
+> al_rd_h1_unadj_j=glm.gau.al.h1[[1]]$TR
+> hw_rd_h1_unadj_j=glm.gau.hw.h1[[1]]$TR
+> tt_rd_h1_unadj_j=glm.gau.tt.h1[[1]]$TR
+> sth_rd_h1_unadj_j=glm.gau.sth.h1[[1]]$TR
+> for(i in 2:6){
++   al_rd_h1_unadj_j=rbind(al_rd_h1_unadj_j,glm.gau.al.h1[[i]]$TR)
++   hw_rd_h1_unadj_j=rbind(hw_rd_h1_unadj_j,glm.gau.hw.h1[[i]]$TR)
++   tt_rd_h1_unadj_j=rbind(tt_rd_h1_unadj_j,glm.gau.tt.h1[[i]]$TR)
++   sth_rd_h1_unadj_j=rbind(sth_rd_h1_unadj_j,glm.gau.sth.h1[[i]]$TR)
++ }
+> 
+> rownames(al_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(hw_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(tt_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(sth_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> 
+> rownames(al_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(hw_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(tt_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(sth_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+>   
+> #----------------------------------------------
+> # H2: Unadjusted prevalence ratios; combined WSH vs. 
+> # single arms.  PR, CI, P-value
+> #----------------------------------------------
+> 
+> trlist=c("Water","Sanitation","Handwashing")
+> 
+> # Poisson regression for RRs
+> glm.bin.al.h2=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+            PR     2.5%    97.5%    Estimate Std. Error   z value  Pr(>|z|)
+trWSH 1.009994 0.912129 1.118359 0.009944471 0.05199912 0.1912431 0.8483352
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+            PR     2.5%    97.5%   Estimate Std. Error   z value  Pr(>|z|)
+trWSH 1.022774 0.935037 1.118744 0.02251853 0.04575904 0.4921111 0.6226408
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+             PR     2.5%    97.5%    Estimate Std. Error   z value   Pr(>|z|)
+trWSH 0.9211107 0.835507 1.015485 -0.08217508 0.04976603 -1.651228 0.09869197
+> 
+> glm.bin.hw.h2=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+            PR     2.5%   97.5%  Estimate Std. Error  z value   Pr(>|z|)
+trWSH 1.413046 1.074424 1.85839 0.3457477  0.1397768 2.473569 0.01337708
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+            PR      2.5%    97.5%  Estimate Std. Error  z value  Pr(>|z|)
+trWSH 1.189716 0.8890493 1.592064 0.1737143  0.1486311 1.168762 0.2424997
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+            PR      2.5%    97.5%   Estimate Std. Error   z value  Pr(>|z|)
+trWSH 1.048026 0.8338609 1.317197 0.04690862  0.1166313 0.4021959 0.6875398
+Warning messages:
+1: In sqrt(diag(se)) : NaNs produced
+2: In sqrt(diag(se)) : NaNs produced
+3: In sqrt(diag(se)) : NaNs produced
+> 
+> glm.bin.tt.h2=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+           PR    2.5%    97.5%  Estimate Std. Error  z value   Pr(>|z|)
+trWSH 1.33836 1.00706 1.778651 0.2914452  0.1451071 2.008483 0.04459199
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+            PR      2.5%    97.5%  Estimate Std. Error   z value Pr(>|z|)
+trWSH 1.092041 0.7998587 1.490955 0.0880485  0.1588616 0.5542467  0.57941
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+            PR     2.5%    97.5%  Estimate Std. Error  z value    Pr(>|z|)
+trWSH 1.549253 1.149177 2.088611 0.4377727  0.1524115 2.872308 0.004074859
+Warning messages:
+1: In sqrt(diag(se)) : NaNs produced
+2: In sqrt(diag(se)) : NaNs produced
+> 
+> glm.bin.sth.h2=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+            PR      2.5%    97.5%   Estimate Std. Error   z value  Pr(>|z|)
+trWSH 1.024759 0.9299527 1.129232 0.02445791 0.04953033 0.4937966 0.6214499
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+            PR      2.5%    97.5%   Estimate Std. Error   z value  Pr(>|z|)
+trWSH 1.029866 0.9476418 1.119224 0.02942854 0.04245267 0.6932083 0.4881788
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+             PR      2.5%    97.5%    Estimate Std. Error   z value  Pr(>|z|)
+trWSH 0.9493232 0.8728491 1.032497 -0.05200603 0.04285032 -1.213667 0.2248748
+> 
+> # Linear regression for RDs
+> glm.gau.al.h2=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+          Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trWSH 0.0035559 -0.03286904 0.03998084 0.01858415 0.1913404 0.8482589
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+           Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trWSH 0.00803149 -0.02389857 0.03996154 0.01629084 0.4930062 0.6220082
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+            Coef.        2.5%      97.5% Std. Error   z value   Pr(>|z|)
+trWSH -0.03100548 -0.06776021 0.00574926 0.01875242 -1.653412 0.09824695
+> 
+> glm.gau.hw.h2=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+           Coef.       2.5%     97.5% Std. Error  z value   Pr(>|z|)
+trWSH 0.02695633 0.00567005 0.0482426 0.01086035 2.482087 0.01306153
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+           Coef.        2.5%      97.5% Std. Error  z value  Pr(>|z|)
+trWSH 0.01462464 -0.00938408 0.03863337 0.01224935 1.193912 0.2325125
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+           Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trWSH 0.00427671 -0.01664253 0.02519595 0.01067308 0.4007002 0.6886409
+> 
+> glm.gau.tt.h2=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+           Coef.       2.5%     97.5%  Std. Error z value   Pr(>|z|)
+trWSH 0.01945846 0.00003003 0.0388869 0.009912466 1.96303 0.04964272
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+           Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trWSH 0.00650301 -0.01646675 0.02947276 0.01171926 0.5548991 0.5789637
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+           Coef.       2.5%      97.5% Std. Error  z value    Pr(>|z|)
+trWSH 0.02903304 0.00861148 0.04945461 0.01041916 2.786504 0.005327996
+> 
+> glm.gau.sth.h2=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+-----------------------------------------
+ Starting N:   1793 
+N after block dropping:  1783
+-----------------------------------------
+ Pairs/blocks dropped due to missingness in at least one treatment level:
+ 19 
+
+Dropping 10 observations due to missing pairs. 
+-----------------------------------------
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Water 
+-----------------------------------------
+           Coef.        2.5%     97.5% Std. Error   z value  Pr(>|z|)
+trWSH 0.01015251 -0.03009519 0.0504002 0.02053454 0.4944112 0.6210158
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Sanitation 
+-----------------------------------------
+           Coef.        2.5%     97.5% Std. Error   z value  Pr(>|z|)
+trWSH 0.01221604 -0.02225502 0.0466871 0.01758727 0.6945955 0.4873088
+
+
+-----------------------------------------
+ GLM Fit: WSH vs. Handwashing 
+-----------------------------------------
+            Coef.        2.5%      97.5% Std. Error   z value  Pr(>|z|)
+trWSH -0.02255763 -0.05889692 0.01378165 0.01854045 -1.216671 0.2237294
+> 
+> al_rr_h2_unadj_j=glm.bin.al.h2[[1]]$TR
+> hw_rr_h2_unadj_j=glm.bin.hw.h2[[1]]$TR
+> tt_rr_h2_unadj_j=glm.bin.tt.h2[[1]]$TR
+> sth_rr_h2_unadj_j=glm.bin.sth.h2[[1]]$TR
+> for(i in 2:3){
++   al_rr_h2_unadj_j=rbind(al_rr_h2_unadj_j,glm.bin.al.h2[[i]]$TR)
++   hw_rr_h2_unadj_j=rbind(hw_rr_h2_unadj_j,glm.bin.hw.h2[[i]]$TR)
++   tt_rr_h2_unadj_j=rbind(tt_rr_h2_unadj_j,glm.bin.tt.h2[[i]]$TR)
++   sth_rr_h2_unadj_j=rbind(sth_rr_h2_unadj_j,glm.bin.sth.h2[[i]]$TR)
++ }
+> 
+> al_rd_h2_unadj_j=glm.gau.al.h2[[1]]$TR
+> hw_rd_h2_unadj_j=glm.gau.hw.h2[[1]]$TR
+> tt_rd_h2_unadj_j=glm.gau.tt.h2[[1]]$TR
+> sth_rd_h2_unadj_j=glm.gau.sth.h2[[1]]$TR
+> for(i in 2:3){
++   al_rd_h2_unadj_j=rbind(al_rd_h2_unadj_j,glm.gau.al.h2[[i]]$TR)
++   hw_rd_h2_unadj_j=rbind(hw_rd_h2_unadj_j,glm.gau.hw.h2[[i]]$TR)
++   tt_rd_h2_unadj_j=rbind(tt_rd_h2_unadj_j,glm.gau.tt.h2[[i]]$TR)
++   sth_rd_h2_unadj_j=rbind(sth_rd_h2_unadj_j,glm.gau.sth.h2[[i]]$TR)
++ }
+> 
+> rownames(al_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(hw_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(tt_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(sth_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> 
+> rownames(al_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(hw_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(tt_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(sth_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> 
+> #----------------------------------------------
+> # H3: Unadjusted prevalence ratios; combined WSH Nvs. 
+> # single arms.  PR, CI, P-value
+> #----------------------------------------------
+> trlist=c("WSH","Nutrition")
+> 
+> # Poisson regression for RRs
+> glm.bin.al.h3=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                        PR      2.5%   97.5%   Estimate Std. Error   z value
+trNutrition + WSH 1.027109 0.9268846 1.13817 0.02674796 0.05238475 0.5106057
+                   Pr(>|z|)
+trNutrition + WSH 0.6096272
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                        PR      2.5%    97.5%    Estimate Std. Error   z value
+trNutrition + WSH 1.008857 0.9132945 1.114418 0.008817887 0.05077285 0.1736733
+                   Pr(>|z|)
+trNutrition + WSH 0.8621222
+> 
+> glm.bin.hw.h3=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                         PR      2.5%     97.5%   Estimate Std. Error   z value
+trNutrition + WSH 0.7261049 0.5419623 0.9728137 -0.3200607  0.1492337 -2.144695
+                    Pr(>|z|)
+trNutrition + WSH 0.03197727
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                        PR      2.5%    97.5%    Estimate Std. Error    z value
+trNutrition + WSH 0.940997 0.6916473 1.280241 -0.06081535  0.1570734 -0.3871779
+                   Pr(>|z|)
+trNutrition + WSH 0.6986245
+Warning messages:
+1: In sqrt(diag(se)) : NaNs produced
+2: In sqrt(diag(se)) : NaNs produced
+> 
+> glm.bin.tt.h3=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                        PR      2.5%    97.5%   Estimate Std. Error   z value
+trNutrition + WSH 1.058122 0.8251566 1.356861 0.05649607  0.1268766 0.4452837
+                   Pr(>|z|)
+trNutrition + WSH 0.6561148
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                        PR      2.5%    97.5%  Estimate Std. Error   z value
+trNutrition + WSH 1.159296 0.8206812 1.637623 0.1478126  0.1762414 0.8386941
+                  Pr(>|z|)
+trNutrition + WSH 0.401641
+Warning messages:
+1: In sqrt(diag(se)) : NaNs produced
+2: In sqrt(diag(se)) : NaNs produced
+> 
+> glm.bin.sth.h3=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family=poisson(link='log'), pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                        PR      2.5%    97.5%   Estimate Std. Error   z value
+trNutrition + WSH 1.046842 0.9546491 1.147937 0.04577763 0.04703525 0.9732622
+                  Pr(>|z|)
+trNutrition + WSH 0.330423
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                        PR      2.5%    97.5%   Estimate Std. Error  z value
+trNutrition + WSH 1.058066 0.9691555 1.155133 0.05644283 0.04478218 1.260386
+                   Pr(>|z|)
+trNutrition + WSH 0.2075302
+> 
+> # Linear regression for RDs
+> glm.gau.al.h3=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                       Coef.       2.5%      97.5% Std. Error   z value
+trNutrition + WSH 0.00979801 -0.0277781 0.04737411 0.01917148 0.5110719
+                   Pr(>|z|)
+trNutrition + WSH 0.6093007
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                       Coef.        2.5%      97.5% Std. Error   z value
+trNutrition + WSH 0.00316209 -0.03251559 0.03883977  0.0182029 0.1737134
+                   Pr(>|z|)
+trNutrition + WSH 0.8620907
+> 
+> glm.gau.hw.h3=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                        Coef.        2.5%       97.5% Std. Error   z value
+trNutrition + WSH -0.02557442 -0.04849114 -0.00265771  0.0116922 -2.187306
+                    Pr(>|z|)
+trNutrition + WSH 0.02872018
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                        Coef.        2.5%      97.5% Std. Error    z value
+trNutrition + WSH -0.00419397 -0.02532662 0.01693868 0.01078196 -0.3889804
+                   Pr(>|z|)
+trNutrition + WSH 0.6972907
+> 
+> glm.gau.tt.h3=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                       Coef.        2.5%      97.5%  Std. Error   z value
+trNutrition + WSH 0.00439512 -0.01486157 0.02365181 0.009824843 0.4473474
+                   Pr(>|z|)
+trNutrition + WSH 0.6546242
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                       Coef.        2.5%      97.5% Std. Error   z value
+trNutrition + WSH 0.00998294 -0.01276124 0.03272711 0.01160417 0.8602885
+                  Pr(>|z|)
+trNutrition + WSH  0.38963
+> 
+> glm.gau.sth.h3=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
++      id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
++      family="gaussian", pval=0.2, print=TRUE))
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. WSH 
+-----------------------------------------
+                       Coef.        2.5%      97.5% Std. Error   z value
+trNutrition + WSH 0.01970837 -0.01993992 0.05935666 0.02022872 0.9742765
+                   Pr(>|z|)
+trNutrition + WSH 0.3299192
+
+
+-----------------------------------------
+ GLM Fit: Nutrition + WSH vs. Nutrition 
+-----------------------------------------
+                      Coef.        2.5%      97.5% Std. Error  z value
+trNutrition + WSH 0.0234365 -0.01296433 0.05983733 0.01857185 1.261937
+                   Pr(>|z|)
+trNutrition + WSH 0.2069716
+> 
+> 
+> al_rr_h3_unadj_j=rbind(glm.bin.al.h3[[1]]$TR,glm.bin.al.h3[[2]]$TR)
+> hw_rr_h3_unadj_j=rbind(glm.bin.hw.h3[[1]]$TR,glm.bin.hw.h3[[2]]$TR)
+> tt_rr_h3_unadj_j=rbind(glm.bin.tt.h3[[1]]$TR,glm.bin.tt.h3[[2]]$TR)
+> sth_rr_h3_unadj_j=rbind(glm.bin.sth.h3[[1]]$TR,glm.bin.sth.h3[[2]]$TR)
+> 
+> al_rd_h3_unadj_j=rbind(glm.gau.al.h3[[1]]$TR,glm.gau.al.h3[[2]]$TR)
+> hw_rd_h3_unadj_j=rbind(glm.gau.hw.h3[[1]]$TR,glm.gau.hw.h3[[2]]$TR)
+> tt_rd_h3_unadj_j=rbind(glm.gau.tt.h3[[1]]$TR,glm.gau.tt.h3[[2]]$TR)
+> sth_rd_h3_unadj_j=rbind(glm.gau.sth.h3[[1]]$TR,glm.gau.sth.h3[[2]]$TR)
+> 
+> rownames(al_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(hw_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(tt_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(sth_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> 
+> rownames(al_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(hw_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(tt_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(sth_rd_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> 
+> #----------------------------------------------
+> # save objects
+> #----------------------------------------------
+> 
+> save(al_rr_h1_unadj_j,hw_rr_h1_unadj_j,tt_rr_h1_unadj_j,sth_rr_h1_unadj_j,
++      al_rd_h1_unadj_j,hw_rd_h1_unadj_j,tt_rd_h1_unadj_j,sth_rd_h1_unadj_j,
++ 
++      al_rr_h2_unadj_j,hw_rr_h2_unadj_j,tt_rr_h2_unadj_j,sth_rr_h2_unadj_j,
++      al_rd_h2_unadj_j,hw_rd_h2_unadj_j,tt_rd_h2_unadj_j,sth_rd_h2_unadj_j,
++ 
++      al_rr_h3_unadj_j,hw_rr_h3_unadj_j,tt_rr_h3_unadj_j,sth_rr_h3_unadj_j,
++      al_rd_h3_unadj_j,hw_rd_h3_unadj_j,tt_rd_h3_unadj_j,sth_rd_h3_unadj_j,
++      
++      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_unadj.RData")
+> 
+> 
+> proc.time()
+   user  system elapsed 
+ 36.824   1.184  54.339 
