@@ -1,0 +1,302 @@
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> ##############################################
+> # WASH Benefits Bangladesh STH Kato-Katz Study
+> # Primary outcome analysis  
+> 
+> # STH 
+> # n, N, prevalence, and 95% CI by arm 
+> 
+> # by Jade
+> ##############################################
+> rm(list=ls())
+> library(washb)
+Welcome to the washb package
+Version: 0.2.0
+Created on 2016-10-12
+
+The package's reference manual and vignette are also online:
+https://ben-arnold.github.io/washb
+
+> 
+> data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
+> source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+> 
+> d=preprocess.sth(data)
+> 
+> #----------------------------------------------
+> # n and N for prevalence by arm
+> #----------------------------------------------
+> N.al=table(d$tr[!is.na(d$al)])
+> N.hw=table(d$tr[!is.na(d$hw)])
+> N.tt=table(d$tr[!is.na(d$tt)])
+> N.sth=table(d$tr[!is.na(d$sth)])
+> 
+> n.al=table(d$al,d$tr)[2,]
+> n.hw=table(d$hw,d$tr)[2,]
+> n.tt=table(d$tt,d$tr)[2,]
+> n.sth=table(d$sth,d$tr)[2,]
+> 
+> psth_n_prev_j=data.frame(cbind(n.al,N.al,n.hw,N.hw,
++                                n.tt,N.tt,n.sth,N.sth))
+> 
+> #----------------------------------------------
+> # n and N for intensity by arm
+> #----------------------------------------------
+> N.int.al=table(d$tr[!is.na(d$alepg)])
+> N.int.hw=table(d$tr[!is.na(d$hwepg)])
+> N.int.tt=table(d$tr[!is.na(d$ttepg)])
+> 
+> psth_n_int_j=data.frame(cbind(N.int.al,N.int.hw,N.int.tt))
+> 
+> #----------------------------------------------
+> # prevalence by arm and time point
+> #----------------------------------------------
+> al_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$al[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+
+Attaching package: ‘zoo’
+
+The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+> hw_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$hw[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> tt_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$tt[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> sth_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$sth[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> 
+> colnames(al_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(hw_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(tt_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(sth_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> 
+> psth_prev_j=cbind(al_prev[,c("Prev","lb","ub")],
++                   hw_prev[,c("Prev","lb","ub")],
++                   tt_prev[,c("Prev","lb","ub")],
++                   sth_prev[,c("Prev","lb","ub")])
+> 
+> colnames(psth_prev_j)=c("al-prev","al-lb","al-ub",
++                         "hw-prev","hw-lb","hw-ub",
++                         "tt-prev","tt-lb","tt-ub",
++                         "sth-prev","sth-lb","sth-ub")
+> 
+> #----------------------------------------------
+> # prevalence of moderate/heavy infection by arm and time point
+> #----------------------------------------------
+> al_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$almh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> hw_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$hwmh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> tt_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$ttmh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> sth_mh_prev=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$sthmh[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> 
+> colnames(al_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(hw_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(tt_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(sth_mh_prev)=c("N","Prev","SD","Robust SE","lb","ub")
+> 
+> psth_prev_mh_j=cbind(al_mh_prev[,c("Prev","lb","ub")],
++                      hw_mh_prev[,c("Prev","lb","ub")],
++                       tt_mh_prev[,c("Prev","lb","ub")],
++                      sth_mh_prev[,c("Prev","lb","ub")])
+> 
+> colnames(psth_prev_mh_j)=c("al-prev","al-lb","al-ub",
++                            "hw-prev","hw-lb","hw-ub",
++                            "tt-prev","tt-lb","tt-ub",
++                            "sth-prev","sth-lb","sth-ub")
+> 
+> 
+> #----------------------------------------------
+> # arithmetic mean of intensity by arm and time point
+> # geo mean = exp[Sum(log_e(c+1))/n] – 1
+> #----------------------------------------------
+> al_int_mn=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> hw_int_mn=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> tt_int_mn=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> 
+> colnames(al_int_mn)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(hw_int_mn)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(tt_int_mn)=c("N","Prev","SD","Robust SE","lb","ub")
+> 
+> psth_mean_j=cbind(al_int_mn[,c("Prev","lb","ub")],
++                   hw_int_mn[,c("Prev","lb","ub")],
++                   tt_int_mn[,c("Prev","lb","ub")])
+> 
+> colnames(psth_mean_j)=c("al-mean","al-lb","al-ub","hw-mean",
++       "hw-lb","hw-ub","tt-mean","tt-lb","tt-ub")
+> rownames(psth_mean_j)=levels(d$tr)
+> 
+> 
+> #----------------------------------------------
+> # geometric mean of intensity by arm and time point
+> # geo mean = exp[Sum(log_e(c+1))/n] – 1
+> #----------------------------------------------
+> d$ln.alepg=log(d$alepg+1)
+> d$ln.hwepg=log(d$hwepg+1)
+> d$ln.ttepg=log(d$ttepg+1)
+> 
+> al_int_gmn=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$ln.alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> hw_int_gmn=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$ln.hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> tt_int_gmn=t(sapply(levels(d$tr), function(x) washb_mean(
++   Y=d$ln.ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+> 
+> colnames(al_int_gmn)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(hw_int_gmn)=c("N","Prev","SD","Robust SE","lb","ub")
+> colnames(tt_int_gmn)=c("N","Prev","SD","Robust SE","lb","ub")
+> 
+> al_int_gmn=data.frame(al_int_gmn[,c("Prev","Robust SE")])
+> al_int_gmn$lb=al_int_gmn$Prev - (qnorm(0.975)*al_int_gmn[,"Robust.SE"])
+> al_int_gmn$ub=al_int_gmn$Prev + (qnorm(0.975)*al_int_gmn[,"Robust.SE"])
+> al_int_gmn[,"Robust.SE"]=NULL
+> al_int_gmn=exp(al_int_gmn)-1
+> 
+> hw_int_gmn=data.frame(hw_int_gmn[,c("Prev","Robust SE")])
+> hw_int_gmn$lb=hw_int_gmn$Prev - (qnorm(0.975)*hw_int_gmn[,"Robust.SE"])
+> hw_int_gmn$ub=hw_int_gmn$Prev + (qnorm(0.975)*hw_int_gmn[,"Robust.SE"])
+> hw_int_gmn[,"Robust.SE"]=NULL
+> hw_int_gmn=exp(hw_int_gmn)-1
+> 
+> tt_int_gmn=data.frame(tt_int_gmn[,c("Prev","Robust SE")])
+> tt_int_gmn$lb=tt_int_gmn$Prev - (qnorm(0.975)*tt_int_gmn[,"Robust.SE"])
+> tt_int_gmn$ub=tt_int_gmn$Prev + (qnorm(0.975)*tt_int_gmn[,"Robust.SE"])
+> tt_int_gmn[,"Robust.SE"]=NULL
+> tt_int_gmn=exp(tt_int_gmn)-1
+> 
+> psth_geomean_j=cbind(al_int_gmn,hw_int_gmn,tt_int_gmn)
+> 
+> colnames(psth_geomean_j)=c("al-geomean","al-lb","al-ub","hw-geomean",
++     "hw-lb","hw-ub","tt-geomean","tt-lb","tt-ub")
+> rownames(psth_geomean_j)=levels(d$tr)
+> 
+> psth_n_prev_j
+                n.al N.al n.hw N.hw n.tt N.tt n.sth N.sth
+Control          702 1827  144 1827  155 1827   812  1827
+Water            309  883   56  883   47  883   356   883
+Sanitation       299  874   65  874   58  874   347   874
+Handwashing      355  923   82  923   48  923   403   923
+WSH              334  910   85  910   73  910   389   910
+Nutrition        305  856   60  856   52  856   345   856
+Nutrition + WSH  331  914   62  914   69  914   393   914
+> psth_n_int_j
+                N.int.al N.int.hw N.int.tt
+Control             1827     1827     1827
+Water                883      883      883
+Sanitation           874      874      874
+Handwashing          923      923      923
+WSH                  910      910      910
+Nutrition            856      856      856
+Nutrition + WSH      914      914      914
+> psth_prev_j
+                  al-prev     al-lb     al-ub    hw-prev      hw-lb      hw-ub
+Control         0.3842365 0.3520438 0.4164291 0.07881773 0.06308428 0.09455119
+Water           0.3499434 0.3072339 0.3926529 0.06342016 0.04458810 0.08225221
+Sanitation      0.3421053 0.2992007 0.3850098 0.07437071 0.04956794 0.09917348
+Handwashing     0.3846154 0.3408291 0.4284016 0.08884074 0.06732070 0.11036077
+WSH             0.3670330 0.3259795 0.4080864 0.09340659 0.06845405 0.11835914
+Nutrition       0.3563084 0.3179328 0.3946840 0.07009346 0.04973542 0.09045150
+Nutrition + WSH 0.3621444 0.3247816 0.3995072 0.06783370 0.04582622 0.08984118
+                   tt-prev      tt-lb      tt-ub  sth-prev    sth-lb    sth-ub
+Control         0.08483853 0.06482066 0.10485640 0.4444444 0.4132848 0.4756041
+Water           0.05322763 0.03396620 0.07248906 0.4031710 0.3592311 0.4471109
+Sanitation      0.06636156 0.04097736 0.09174576 0.3970252 0.3532971 0.4407533
+Handwashing     0.05200433 0.03117926 0.07282940 0.4366197 0.3937241 0.4795153
+WSH             0.08021978 0.04969401 0.11074555 0.4274725 0.3852658 0.4696792
+Nutrition       0.06074766 0.03695105 0.08454428 0.4030374 0.3641076 0.4419672
+Nutrition + WSH 0.07549234 0.05164704 0.09933765 0.4299781 0.3890428 0.4709135
+> psth_prev_mh_j
+                   al-prev      al-lb      al-ub     hw-prev         hw-lb
+Control         0.05035577 0.03538924 0.06532231 0.001094691 -0.0004168024
+Water           0.02944507 0.01758824 0.04130191 0.000000000           NaN
+Sanitation      0.04118993 0.02640724 0.05597262 0.002288330 -0.0008814357
+Handwashing     0.04658722 0.03229801 0.06087643 0.003250271 -0.0004246228
+WSH             0.05604396 0.03480298 0.07728493 0.002197802 -0.0008180541
+Nutrition       0.04439252 0.02721520 0.06156984 0.001168224 -0.0011433209
+Nutrition + WSH 0.03938731 0.02325941 0.05551521 0.000000000           NaN
+                      hw-ub     tt-prev         tt-lb       tt-ub   sth-prev
+Control         0.002606184 0.007115490  0.0027804483 0.011450531 0.05582923
+Water                   NaN 0.002265006 -0.0008402760 0.005370287 0.03057758
+Sanitation      0.005458095 0.008009153  0.0008219751 0.015196332 0.04919908
+Handwashing     0.006925165 0.001083424 -0.0010256740 0.003192521 0.04875406
+WSH             0.005213658 0.007692308 -0.0004375463 0.015822162 0.06043956
+Nutrition       0.003479770 0.001168224 -0.0011217853 0.003458234 0.04556075
+Nutrition + WSH         NaN 0.003282276 -0.0003934134 0.006957965 0.04157549
+                    sth-lb     sth-ub
+Control         0.03978298 0.07187547
+Water           0.01786254 0.04329261
+Sanitation      0.03220903 0.06618914
+Handwashing     0.03463147 0.06287665
+WSH             0.03737447 0.08350465
+Nutrition       0.02776289 0.06335860
+Nutrition + WSH 0.02543108 0.05771991
+> psth_mean_j
+                  al-mean    al-lb     al-ub  hw-mean      hw-lb    hw-ub
+Control         1257.7537 824.7886 1690.7188 18.25944 11.4091361 25.10975
+Water            690.4824 386.6458  994.3191 14.17441  8.3614860 19.98732
+Sanitation      1053.1579 554.4976 1551.8182 23.47826  7.3882653 39.56826
+Handwashing     1331.9610 635.6691 2028.2529 31.60563 13.5293705 49.68190
+WSH             1634.9934 935.0991 2334.8878 28.29890 14.3629699 42.23483
+Nutrition       1262.8178 493.1267 2032.5088 24.86916 -0.9872497 50.72557
+Nutrition + WSH  769.5230 392.7288 1146.3172 16.71335  8.4388291 24.98787
+                 tt-mean     tt-lb    tt-ub
+Control         29.16256 15.042779 43.28234
+Water           12.92412  5.033311 20.81493
+Sanitation      41.05263  4.732495 77.37277
+Handwashing     10.28386  4.054021 16.51369
+WSH             24.13187  4.355701 43.90804
+Nutrition       12.68692  5.657373 19.71646
+Nutrition + WSH 15.84683  6.891500 24.80215
+> psth_geomean_j
+                al-geomean    al-lb    al-ub hw-geomean     hw-lb     hw-ub
+Control           6.379120 5.042871 8.010851  0.4571498 0.3459711 0.5775120
+Water             4.178689 3.214086 5.364089  0.3616941 0.2399254 0.4954214
+Sanitation        4.637287 3.468436 6.111886  0.4363733 0.2622500 0.6345164
+Handwashing       5.992767 4.525301 7.849978  0.5476833 0.3845403 0.7300497
+WSH               5.976705 4.417442 7.984759  0.5829393 0.3940679 0.7973995
+Nutrition         4.932165 3.713665 6.465653  0.3906068 0.2614662 0.5329681
+Nutrition + WSH   4.885439 3.790642 6.230429  0.3866487 0.2433014 0.5465232
+                tt-geomean     tt-lb     tt-ub
+Control          0.5124703 0.3614222 0.6802770
+Water            0.2903857 0.1683732 0.4251398
+Sanitation       0.3966002 0.2197308 0.5991170
+Handwashing      0.2830945 0.1558313 0.4243700
+WSH              0.4709440 0.2437367 0.7396578
+Nutrition        0.3349244 0.1848737 0.5039774
+Nutrition + WSH  0.4087148 0.2622933 0.5721207
+> 
+> save(psth_n_prev_j,psth_n_int_j,psth_prev_j,psth_prev_mh_j,psth_mean_j,psth_geomean_j,
++      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_prev.RData")
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  5.474   0.522   6.271 

@@ -170,6 +170,6 @@ psth_mean_j
 psth_geomean_j
 
 save(psth_n_prev_j,psth_n_int_j,psth_prev_j,psth_prev_mh_j,psth_mean_j,psth_geomean_j,
-     file="~/Dropbox/WASHB Parasites/Results/Jade/sth_prev.RData")
+     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_prev.RData")
 
 

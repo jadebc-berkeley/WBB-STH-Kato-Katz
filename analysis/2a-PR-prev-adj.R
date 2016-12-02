@@ -193,6 +193,6 @@ save(al_rr_h1_adj_j,hw_rr_h1_adj_j,tt_rr_h1_adj_j,sth_rr_h1_adj_j,
      al_rr_h3_adj_j,hw_rr_h3_adj_j,tt_rr_h3_adj_j,sth_rr_h3_adj_j,
      al_rd_h3_adj_j,hw_rd_h3_adj_j,tt_rd_h3_adj_j,sth_rd_h3_adj_j,
      
-     file="~/Dropbox/WASHB Parasites/Results/Jade/sth_pr_adj.RData")
+     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj.RData")
 
 
