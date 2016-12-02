@@ -5056,3 +5056,535 @@ asset_sewmach  4.672300e-02
 asset_mobile   1.262044e-01
 
 -----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.3809505 
+	      SL.glm_All    0.2599723 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.3590772 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.017495
+   Estimated Variance:  0.00011801
+              p-value:  0.1073
+    95% Conf Interval: (-0.038787, 0.0037974) 
+
+ Relative Risk
+   Parameter Estimate:  0.69255
+              p-value:  0.10181
+    95% Conf Interval: (0.44598, 1.0754) 
+
+              log(RR):  -0.36738
+    variance(log(RR)):  0.050418 
+
+ Odds Ratio
+   Parameter Estimate:  0.67993
+              p-value:  0.10165
+    95% Conf Interval: (0.42841, 1.0791) 
+
+              log(OR):  -0.38576
+    variance(log(OR)):  0.055539 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 18 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1752 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00895
+birthord       0.00001
+month          0.00004
+hfiacat        0.00010
+aged           0.36967
+sex            0.81096
+momage         0.87766
+momheight      0.24990
+momedu         0.00004
+Nlt18          0.24779
+Ncomp          0.94414
+watmin         0.72625
+walls          0.21995
+floor          0.02853
+elec           0.00049
+asset_wardrobe 0.07662
+asset_table    0.18738
+asset_chair    0.01238
+asset_khat     0.00024
+asset_chouki   0.00110
+asset_tv       0.02929
+asset_refrig   0.01951
+asset_bike     0.01889
+asset_moto     0.00120
+asset_sewmach  0.27408
+asset_mobile   0.01635
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        8.948370e-03
+birthord       9.497297e-06
+month          4.360270e-05
+hfiacat        1.006134e-04
+momedu         4.205651e-05
+floor          2.852707e-02
+elec           4.947840e-04
+asset_wardrobe 7.662452e-02
+asset_table    1.873802e-01
+asset_chair    1.238174e-02
+asset_khat     2.364164e-04
+asset_chouki   1.099386e-03
+asset_tv       2.928779e-02
+asset_refrig   1.950921e-02
+asset_bike     1.889072e-02
+asset_moto     1.195190e-03
+asset_mobile   1.634874e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.3291311 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0.4764674 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.1944015 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.912926 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.08707395 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0013869
+   Estimated Variance:  9.6915e-05
+              p-value:  0.88796
+    95% Conf Interval: (-0.020682, 0.017908) 
+
+ Relative Risk
+   Parameter Estimate:  0.96727
+              p-value:  0.88813
+    95% Conf Interval: (0.60838, 1.5379) 
+
+              log(RR):  -0.033278
+    variance(log(RR)):  0.055966 
+
+ Odds Ratio
+   Parameter Estimate:  0.96587
+              p-value:  0.88812
+    95% Conf Interval: (0.59539, 1.5669) 
+
+              log(OR):  -0.034725
+    variance(log(OR)):  0.06093 
+
+-----------------------------------------
+> 
+> est.hw.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hwmh,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 14 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1810 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.52316
+birthord       0.08885
+month          0.82602
+hfiacat        0.77294
+aged           0.06288
+sex            0.09057
+momage         0.18292
+momheight      0.91932
+momedu         0.11558
+Nlt18          0.77644
+Ncomp          0.72827
+watmin         0.86657
+walls          0.28232
+floor          0.55488
+elec           0.79350
+asset_wardrobe 0.41122
+asset_table    0.27684
+asset_chair    0.41372
+asset_khat     0.16375
+asset_chouki   0.38170
+asset_tv       0.23422
+asset_refrig   0.58345
+asset_bike     0.57617
+asset_moto     0.58345
+asset_sewmach  0.59253
+asset_mobile   0.44151
+
+
+Covariates selected (P<0.2):
+              P-value
+birthord   0.08884519
+aged       0.06288080
+sex        0.09056565
+momage     0.18291536
+momedu     0.11557737
+asset_khat 0.16374798
+
+-----------------------------------------
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: glm, main terms model
+	 Model:
+		 Y ~  (Intercept) + Z + A + birthord + aged + momage + asset_khat + sexmale + momeduPrimary.1.5y. + momeduSecondary..5y.
+
+	 Coefficients: 
+	     (Intercept)   -72.97778 
+	               Z NA NA 
+	               A   -23.21746 
+	        birthord    0.923122 
+	            aged    0.001948451 
+	          momage    0.03069215 
+	      asset_khat    20.73584 
+	         sexmale    19.92935 
+	 momeduPrimary.1.5y.    19.46108 
+	 momeduSecondary..5y.   -0.2434772 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0033733
+   Estimated Variance:  2.1854e-06
+              p-value:  0.0225
+    95% Conf Interval: (-0.0062708, -0.00047574) 
+
+ Relative Risk
+   Parameter Estimate:  6.3539e-09
+              p-value:  <2e-16
+    95% Conf Interval: (2.6832e-09, 1.5046e-08) 
+
+              log(RR):  -18.874
+    variance(log(RR)):  0.19345 
+
+ Odds Ratio
+   Parameter Estimate:  6.3325e-09
+              p-value:  <2e-16
+    95% Conf Interval: (2.6664e-09, 1.5039e-08) 
+
+              log(OR):  -18.878
+    variance(log(OR)):  0.19475 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 18 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1752 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.66733
+birthord       0.31968
+month          0.96370
+hfiacat        0.09266
+aged           0.23194
+sex            0.23432
+momage         0.61954
+momheight      0.58219
+momedu         0.48787
+Nlt18          0.03954
+Ncomp          0.65628
+watmin         0.96827
+walls          0.43155
+floor          0.66473
+elec           0.19470
+asset_wardrobe 0.54588
+asset_table    0.43679
+asset_chair    0.44447
+asset_khat     0.16450
+asset_chouki   0.47785
+asset_tv       0.41171
+asset_refrig   0.70156
+asset_bike     0.38791
+asset_moto     0.70757
+asset_sewmach  0.74115
+asset_mobile   0.57890
+
+
+Covariates selected (P<0.2):
+              P-value
+hfiacat    0.09265766
+Nlt18      0.03953638
+elec       0.19469922
+asset_khat 0.16449879
+
+-----------------------------------------
+Error in drop(y %*% rep(1, nc)) : 
+  error in evaluating the argument 'x' in selecting a method for function 'drop': Error in y %*% rep(1, nc) : non-conformable arguments
+
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+Error in lognet(x, is.sparse, ix, jx, y, weights, offset, alpha, nobs,  : 
+  one multinomial or binomial class has 1 or 0 observations; not allowed
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: glm, main terms model
+	 Model:
+		 Y ~  (Intercept) + Z + A + Nlt18 + elec + asset_khat + hfiacatMildlyFoodInsecure + hfiacatModeratelyFoodInsecure + hfiacatSeverelyFoodInsecure
+
+	 Coefficients: 
+	     (Intercept)   -60.49062 
+	               Z NA NA 
+	               A   -20.22402 
+	           Nlt18    9.089531 
+	            elec   -7.535455 
+	      asset_khat   -6.073658 
+	 hfiacatMildlyFoodInsecure    1.079578 
+	 hfiacatModeratelyFoodInsecure   -6.286763 
+	 hfiacatSeverelyFoodInsecure    15.04297 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0013423
+   Estimated Variance:  1.5536e-06
+              p-value:  0.28153
+    95% Conf Interval: (-0.0037853, 0.0011007) 
+
+ Relative Risk
+   Parameter Estimate:  5.8742e-09
+              p-value:  <2e-16
+    95% Conf Interval: (9.372e-10, 3.6818e-08) 
+
+              log(RR):  -18.953
+    variance(log(RR)):  0.87692 
+
+ Odds Ratio
+   Parameter Estimate:  5.8663e-09
+              p-value:  <2e-16
+    95% Conf Interval: (9.3366e-10, 3.6859e-08) 
+
+              log(OR):  -18.954
+    variance(log(OR)):  0.87926 
+
+-----------------------------------------
+> 
+> est.tt.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$ttmh,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 14 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1810 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.09307
+birthord       0.00064
+month          0.54842
+hfiacat        0.13222
+aged           0.46186
+sex            0.57104
+momage         0.00233
+momheight      0.69106
+momedu         0.02289
+Nlt18          0.01245
+Ncomp          0.06906
+watmin         0.29927
+walls          0.70311
+floor          0.18622
+elec           0.22136
+asset_wardrobe 0.06581
+asset_table    0.31778
+asset_chair    0.79713
+asset_khat     0.16668
+asset_chouki   0.02625
+asset_tv       0.00773
+asset_refrig   0.21961
+asset_bike     0.94547
+asset_moto     0.21961
+asset_sewmach  0.23089
+asset_mobile   0.18352
+
+
+Covariates selected (P<0.2):
+                   P-value
+counter        0.093071044
+birthord       0.000637073
+hfiacat        0.132224600
+momage         0.002331838
+momedu         0.022894767
+Nlt18          0.012454329
+Ncomp          0.069056783
+floor          0.186218481
+asset_wardrobe 0.065814040
+asset_khat     0.166679819
+asset_chouki   0.026250635
+asset_tv       0.007734281
+asset_mobile   0.183522073
+
+-----------------------------------------
