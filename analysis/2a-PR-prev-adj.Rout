@@ -2314,3 +2314,3646 @@ asset_sewmach  1.735126e-03
 asset_mobile   1.935969e-01
 
 -----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.423055 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.576945 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.02455
+   Estimated Variance:  0.00014506
+              p-value:  0.041519
+    95% Conf Interval: (-0.048156, -0.00094318) 
+
+ Relative Risk
+   Parameter Estimate:  0.71271
+              p-value:  0.056779
+    95% Conf Interval: (0.50301, 1.0098) 
+
+              log(RR):  -0.33869
+    variance(log(RR)):  0.031609 
+
+ Odds Ratio
+   Parameter Estimate:  0.69407
+              p-value:  0.05502
+    95% Conf Interval: (0.47797, 1.0079) 
+
+              log(OR):  -0.36518
+    variance(log(OR)):  0.036223 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 28 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2713 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00486
+birthord       0.00042
+month          0.00000
+hfiacat        0.00165
+aged           0.00149
+sex            0.92948
+momage         0.13878
+momheight      0.08299
+momedu         0.00001
+Nlt18          0.13648
+Ncomp          0.00217
+watmin         0.84382
+walls          0.00235
+floor          0.00100
+elec           0.00000
+asset_wardrobe 0.00503
+asset_table    0.00031
+asset_chair    0.00003
+asset_khat     0.00587
+asset_chouki   0.43033
+asset_tv       0.00001
+asset_refrig   0.00240
+asset_bike     0.00660
+asset_moto     0.03136
+asset_sewmach  0.09235
+asset_mobile   0.00018
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        4.864020e-03
+birthord       4.176780e-04
+month          2.090889e-15
+hfiacat        1.645612e-03
+aged           1.485762e-03
+momage         1.387788e-01
+momheight      8.299409e-02
+momedu         9.754902e-06
+Nlt18          1.364756e-01
+Ncomp          2.168971e-03
+walls          2.348752e-03
+floor          1.002144e-03
+elec           1.803107e-07
+asset_wardrobe 5.032671e-03
+asset_table    3.133468e-04
+asset_chair    2.532356e-05
+asset_khat     5.873302e-03
+asset_tv       5.782861e-06
+asset_refrig   2.395696e-03
+asset_bike     6.598348e-03
+asset_moto     3.135695e-02
+asset_sewmach  9.234881e-02
+asset_mobile   1.816196e-04
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.4849101 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.5150899 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8896639 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1103361 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0063318
+   Estimated Variance:  0.00016136
+              p-value:  0.61816
+    95% Conf Interval: (-0.031229, 0.018566) 
+
+ Relative Risk
+   Parameter Estimate:  0.92454
+              p-value:  0.6221
+    95% Conf Interval: (0.67673, 1.2631) 
+
+              log(RR):  -0.078462
+    variance(log(RR)):  0.025342 
+
+ Odds Ratio
+   Parameter Estimate:  0.91819
+              p-value:  0.62171
+    95% Conf Interval: (0.65418, 1.2888) 
+
+              log(OR):  -0.08535
+    variance(log(OR)):  0.02992 
+
+-----------------------------------------
+> 
+> est.sth.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+----------------------------------------- 
+There were 1 pairs dropped because they were
+missing at least one treatment level.
+This is the list of their IDs:
+ 19
+----------------------------------------- 
+Starting N:   2710 
+N after dropping incomplete blocks:  2688 
+
+Total of 22 observations dropped
+ because of unmatched pairs. 
+-----------------------------------------
+
+-----------------------------------------
+Total of 24 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2664 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.01250
+birthord       0.62344
+month          0.00000
+hfiacat        0.42665
+aged           0.00000
+sex            0.72853
+momage         0.00974
+momheight      0.52496
+momedu         0.01259
+Nlt18          0.16942
+Ncomp          0.00002
+watmin         0.23666
+walls          0.01119
+floor          0.26588
+elec           0.11252
+asset_wardrobe 0.07499
+asset_table    0.00959
+asset_chair    0.02398
+asset_khat     0.69341
+asset_chouki   0.99529
+asset_tv       0.01169
+asset_refrig   0.00774
+asset_bike     0.41920
+asset_moto     0.96246
+asset_sewmach  0.37387
+asset_mobile   0.05739
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        1.250369e-02
+month          3.556963e-14
+aged           6.460348e-13
+momage         9.742205e-03
+momedu         1.258751e-02
+Nlt18          1.694243e-01
+Ncomp          1.716181e-05
+walls          1.119382e-02
+elec           1.125159e-01
+asset_wardrobe 7.498696e-02
+asset_table    9.592026e-03
+asset_chair    2.397541e-02
+asset_tv       1.168710e-02
+asset_refrig   7.738772e-03
+asset_mobile   5.739448e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2615978 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.7384022 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8710979 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1289021 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.038248
+   Estimated Variance:  0.00045819
+              p-value:  0.07396
+    95% Conf Interval: (-0.080203, 0.0037061) 
+
+ Relative Risk
+   Parameter Estimate:  0.91334
+              p-value:  0.081877
+    95% Conf Interval: (0.82468, 1.0115) 
+
+              log(RR):  -0.090644
+    variance(log(RR)):  0.0027141 
+
+ Odds Ratio
+   Parameter Estimate:  0.85481
+              p-value:  0.076135
+    95% Conf Interval: (0.71876, 1.0166) 
+
+              log(OR):  -0.15687
+    variance(log(OR)):  0.0078233 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 21 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2680 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00622
+birthord       0.07732
+month          0.00000
+hfiacat        0.08878
+aged           0.00000
+sex            0.30748
+momage         0.00022
+momheight      0.60942
+momedu         0.00580
+Nlt18          0.09720
+Ncomp          0.01448
+watmin         0.66400
+walls          0.00996
+floor          0.77670
+elec           0.04773
+asset_wardrobe 0.13038
+asset_table    0.01157
+asset_chair    0.01303
+asset_khat     0.71788
+asset_chouki   0.46755
+asset_tv       0.00245
+asset_refrig   0.14372
+asset_bike     0.73987
+asset_moto     0.89839
+asset_sewmach  0.67715
+asset_mobile   0.04016
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        6.224016e-03
+birthord       7.732151e-02
+month          1.032336e-12
+hfiacat        8.878033e-02
+aged           7.478236e-14
+momage         2.198500e-04
+momedu         5.801481e-03
+Nlt18          9.720385e-02
+Ncomp          1.447877e-02
+walls          9.961122e-03
+elec           4.773298e-02
+asset_wardrobe 1.303823e-01
+asset_table    1.157403e-02
+asset_chair    1.303340e-02
+asset_tv       2.454676e-03
+asset_refrig   1.437153e-01
+asset_mobile   4.016419e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1661936 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.0760641 
+	   SL.glmnet_All    0.7577423 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8730281 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0.1269719 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.052216
+   Estimated Variance:  0.00048394
+              p-value:  0.017614
+    95% Conf Interval: (-0.095334, -0.0090991) 
+
+ Relative Risk
+   Parameter Estimate:  0.88289
+              p-value:  0.022025
+    95% Conf Interval: (0.79361, 0.98221) 
+
+              log(RR):  -0.12455
+    variance(log(RR)):  0.0029585 
+
+ Odds Ratio
+   Parameter Estimate:  0.80686
+              p-value:  0.018834
+    95% Conf Interval: (0.67456, 0.9651) 
+
+              log(OR):  -0.21461
+    variance(log(OR)):  0.0083483 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 20 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2730 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00061
+birthord       0.08379
+month          0.00000
+hfiacat        0.44414
+aged           0.00000
+sex            0.50074
+momage         0.00020
+momheight      0.75770
+momedu         0.06472
+Nlt18          0.01365
+Ncomp          0.00001
+watmin         0.77788
+walls          0.01745
+floor          0.70493
+elec           0.01004
+asset_wardrobe 0.20139
+asset_table    0.14849
+asset_chair    0.04604
+asset_khat     0.78103
+asset_chouki   0.24303
+asset_tv       0.06701
+asset_refrig   0.20691
+asset_bike     0.24829
+asset_moto     0.68946
+asset_sewmach  0.44938
+asset_mobile   0.20210
+
+
+Covariates selected (P<0.2):
+                 P-value
+counter     6.121510e-04
+birthord    8.379419e-02
+month       6.545950e-20
+aged        4.342176e-17
+momage      1.962128e-04
+momedu      6.471522e-02
+Nlt18       1.364890e-02
+Ncomp       1.023356e-05
+walls       1.744738e-02
+elec        1.003781e-02
+asset_table 1.484932e-01
+asset_chair 4.604009e-02
+asset_tv    6.701362e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.119337 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.2821765 
+	   SL.glmnet_All    0.5984865 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0093869
+   Estimated Variance:  0.00040453
+              p-value:  0.64071
+    95% Conf Interval: (-0.048808, 0.030034) 
+
+ Relative Risk
+   Parameter Estimate:  0.97887
+              p-value:  0.64182
+    95% Conf Interval: (0.89461, 1.0711) 
+
+              log(RR):  -0.02136
+    variance(log(RR)):  0.0021086 
+
+ Odds Ratio
+   Parameter Estimate:  0.96261
+              p-value:  0.64096
+    95% Conf Interval: (0.82016, 1.1298) 
+
+              log(OR):  -0.038107
+    variance(log(OR)):  0.0066767 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 22 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2715 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00004
+birthord       0.12192
+month          0.00000
+hfiacat        0.16722
+aged           0.00000
+sex            0.75266
+momage         0.01380
+momheight      0.45819
+momedu         0.00911
+Nlt18          0.01132
+Ncomp          0.00000
+watmin         0.63659
+walls          0.07178
+floor          0.03474
+elec           0.19884
+asset_wardrobe 0.04400
+asset_table    0.25526
+asset_chair    0.01493
+asset_khat     0.82428
+asset_chouki   0.91757
+asset_tv       0.00545
+asset_refrig   0.00189
+asset_bike     0.80666
+asset_moto     0.95046
+asset_sewmach  0.75242
+asset_mobile   0.61539
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        3.567216e-05
+birthord       1.219239e-01
+month          4.009377e-15
+hfiacat        1.672201e-01
+aged           5.512681e-17
+momage         1.379823e-02
+momedu         9.113450e-03
+Nlt18          1.132495e-02
+Ncomp          6.688903e-08
+walls          7.178303e-02
+floor          3.473819e-02
+elec           1.988356e-01
+asset_wardrobe 4.399797e-02
+asset_chair    1.493481e-02
+asset_tv       5.446970e-03
+asset_refrig   1.887498e-03
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1662529 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.4131209 
+	   SL.glmnet_All    0.4206262 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.018274
+   Estimated Variance:  0.00048507
+              p-value:  0.40669
+    95% Conf Interval: (-0.061442, 0.024893) 
+
+ Relative Risk
+   Parameter Estimate:  0.95895
+              p-value:  0.41064
+    95% Conf Interval: (0.86781, 1.0597) 
+
+              log(RR):  -0.041919
+    variance(log(RR)):  0.0025958 
+
+ Odds Ratio
+   Parameter Estimate:  0.92837
+              p-value:  0.40763
+    95% Conf Interval: (0.77861, 1.1069) 
+
+              log(OR):  -0.074324
+    variance(log(OR)):  0.0080559 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 26 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2657 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00042
+birthord       0.26356
+month          0.00000
+hfiacat        0.07657
+aged           0.00000
+sex            0.74819
+momage         0.03352
+momheight      0.95132
+momedu         0.09006
+Nlt18          0.95456
+Ncomp          0.00251
+watmin         0.72915
+walls          0.09526
+floor          0.10259
+elec           0.34012
+asset_wardrobe 0.00011
+asset_table    0.03848
+asset_chair    0.00333
+asset_khat     0.79586
+asset_chouki   0.35255
+asset_tv       0.26560
+asset_refrig   0.00010
+asset_bike     0.86949
+asset_moto     0.03427
+asset_sewmach  0.51759
+asset_mobile   0.09258
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        4.175276e-04
+month          3.879946e-15
+hfiacat        7.657181e-02
+aged           2.591511e-17
+momage         3.352372e-02
+momedu         9.005659e-02
+Ncomp          2.510451e-03
+walls          9.526339e-02
+floor          1.025882e-01
+asset_wardrobe 1.067027e-04
+asset_table    3.848224e-02
+asset_chair    3.328343e-03
+asset_refrig   9.527252e-05
+asset_moto     3.426861e-02
+asset_mobile   9.257815e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2358671 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.7641329 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.046466
+   Estimated Variance:  0.00053426
+              p-value:  0.044401
+    95% Conf Interval: (-0.091769, -0.0011624) 
+
+ Relative Risk
+   Parameter Estimate:  0.89578
+              p-value:  0.048247
+    95% Conf Interval: (0.80309, 0.99915) 
+
+              log(RR):  -0.11006
+    variance(log(RR)):  0.0031051 
+
+ Odds Ratio
+   Parameter Estimate:  0.82648
+              p-value:  0.045532
+    95% Conf Interval: (0.68566, 0.99622) 
+
+              log(OR):  -0.19058
+    variance(log(OR)):  0.0090831 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 28 observations dropped due to missing
+values in one or more variables
+  Final sample size: 2713 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00200
+birthord       0.19942
+month          0.00000
+hfiacat        0.09650
+aged           0.00000
+sex            0.41757
+momage         0.02928
+momheight      0.98192
+momedu         0.00401
+Nlt18          0.15710
+Ncomp          0.00369
+watmin         0.74034
+walls          0.00373
+floor          0.02855
+elec           0.00464
+asset_wardrobe 0.01516
+asset_table    0.04157
+asset_chair    0.01961
+asset_khat     0.43182
+asset_chouki   0.56157
+asset_tv       0.01651
+asset_refrig   0.04999
+asset_bike     0.25032
+asset_moto     0.25765
+asset_sewmach  0.78474
+asset_mobile   0.16986
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        1.997707e-03
+birthord       1.994210e-01
+month          3.975556e-17
+hfiacat        9.649646e-02
+aged           8.188790e-14
+momage         2.927512e-02
+momedu         4.014914e-03
+Nlt18          1.570963e-01
+Ncomp          3.687132e-03
+walls          3.728520e-03
+floor          2.855295e-02
+elec           4.639657e-03
+asset_wardrobe 1.515867e-02
+asset_table    4.157311e-02
+asset_chair    1.960641e-02
+asset_tv       1.651442e-02
+asset_refrig   4.999410e-02
+asset_mobile   1.698632e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2144107 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.3393524 
+	   SL.glmnet_All    0.446237 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8396408 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1603592 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.011421
+   Estimated Variance:  0.00048418
+              p-value:  0.60373
+    95% Conf Interval: (-0.054549, 0.031707) 
+
+ Relative Risk
+   Parameter Estimate:  0.97425
+              p-value:  0.60489
+    95% Conf Interval: (0.88256, 1.0755) 
+
+              log(RR):  -0.02609
+    variance(log(RR)):  0.0025429 
+
+ Odds Ratio
+   Parameter Estimate:  0.95466
+              p-value:  0.604
+    95% Conf Interval: (0.8011, 1.1376) 
+
+              log(OR):  -0.046405
+    variance(log(OR)):  0.0080053 
+
+-----------------------------------------
+> 
+> al_rr_h1_adj_j=format.tmle(est.al.h1,family="binomial")$rr
+> al_rd_h1_adj_j=format.tmle(est.al.h1,family="binomial")$rd
+> 
+> hw_rr_h1_adj_j=format.tmle(est.hw.h1,family="binomial")$rr
+> hw_rd_h1_adj_j=format.tmle(est.hw.h1,family="binomial")$rd
+> 
+> tt_rr_h1_adj_j=format.tmle(est.tt.h1,family="binomial")$rr
+> tt_rd_h1_adj_j=format.tmle(est.tt.h1,family="binomial")$rd
+> 
+> sth_rr_h1_adj_j=format.tmle(est.sth.h1,family="binomial")$rr
+> sth_rd_h1_adj_j=format.tmle(est.sth.h1,family="binomial")$rd
+> 
+> rownames(al_rr_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(hw_rr_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(tt_rr_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(sth_rr_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> 
+> rownames(al_rd_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(hw_rd_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(tt_rd_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+> rownames(sth_rd_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
++                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
+>   
+> #----------------------------------------------
+> # H2: Unadjusted prevalence ratios; combined WSH vs. 
+> # single arms.  PR, CI, P-value
+> #----------------------------------------------
+> trlist=c("Water","Sanitation","Handwashing")
+> 
+> est.al.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$al,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+----------------------------------------- 
+There were 1 pairs dropped because they were
+missing at least one treatment level.
+This is the list of their IDs:
+ 19
+----------------------------------------- 
+Starting N:   1793 
+N after dropping incomplete blocks:  1783 
+
+Total of 10 observations dropped
+ because of unmatched pairs. 
+-----------------------------------------
+
+-----------------------------------------
+Total of 10 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1773 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.02677
+birthord       0.55667
+month          0.00000
+hfiacat        0.30168
+aged           0.00000
+sex            0.51949
+momage         0.88602
+momheight      0.38915
+momedu         0.20298
+Nlt18          0.15327
+Ncomp          0.00294
+watmin         0.25993
+walls          0.42844
+floor          0.86820
+elec           0.23385
+asset_wardrobe 0.73296
+asset_table    0.95499
+asset_chair    0.37767
+asset_khat     0.81085
+asset_chouki   0.07542
+asset_tv       0.08036
+asset_refrig   0.39682
+asset_bike     0.12369
+asset_moto     0.10936
+asset_sewmach  0.02558
+asset_mobile   0.25064
+
+
+Covariates selected (P<0.2):
+                   P-value
+counter       2.676949e-02
+month         9.909096e-08
+aged          2.095914e-07
+Nlt18         1.532681e-01
+Ncomp         2.941938e-03
+asset_chouki  7.541894e-02
+asset_tv      8.036369e-02
+asset_bike    1.236877e-01
+asset_moto    1.093592e-01
+asset_sewmach 2.558178e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.3128301 
+	      SL.glm_All    0.2465978 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.4405721 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8009281 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1990719 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.010116
+   Estimated Variance:  0.0005731
+              p-value:  0.67261
+    95% Conf Interval: (-0.036805, 0.057037) 
+
+ Relative Risk
+   Parameter Estimate:  1.0286
+              p-value:  0.67366
+    95% Conf Interval: (0.902, 1.173) 
+
+              log(RR):  0.028227
+    variance(log(RR)):  0.0044926 
+
+ Odds Ratio
+   Parameter Estimate:  1.045
+              p-value:  0.67307
+    95% Conf Interval: (0.85183, 1.2819) 
+
+              log(OR):  0.043994
+    variance(log(OR)):  0.010872 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 7 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1777 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00690
+birthord       0.76934
+month          0.00000
+hfiacat        0.49756
+aged           0.00000
+sex            0.87557
+momage         0.60387
+momheight      0.37657
+momedu         0.49350
+Nlt18          0.24587
+Ncomp          0.63720
+watmin         0.39520
+walls          0.50413
+floor          0.35417
+elec           0.13222
+asset_wardrobe 0.39663
+asset_table    0.66866
+asset_chair    0.31247
+asset_khat     0.65415
+asset_chouki   0.62967
+asset_tv       0.05620
+asset_refrig   0.52721
+asset_bike     0.88441
+asset_moto     0.04552
+asset_sewmach  0.12854
+asset_mobile   0.17085
+
+
+Covariates selected (P<0.2):
+                   P-value
+counter       6.900028e-03
+month         7.292115e-07
+aged          3.954379e-06
+elec          1.322237e-01
+asset_tv      5.620466e-02
+asset_moto    4.552029e-02
+asset_sewmach 1.285406e-01
+asset_mobile  1.708533e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.4815663 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.5184337 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.9697168 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.03028318 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.024472
+   Estimated Variance:  0.00051674
+              p-value:  0.28169
+    95% Conf Interval: (-0.020083, 0.069026) 
+
+ Relative Risk
+   Parameter Estimate:  1.0713
+              p-value:  0.28669
+    95% Conf Interval: (0.9438, 1.216) 
+
+              log(RR):  0.068881
+    variance(log(RR)):  0.0041799 
+
+ Odds Ratio
+   Parameter Estimate:  1.1128
+              p-value:  0.28388
+    95% Conf Interval: (0.91524, 1.3529) 
+
+              log(OR):  0.10685
+    variance(log(OR)):  0.0099414 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 6 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1827 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.02516
+birthord       0.69389
+month          0.00000
+hfiacat        0.04931
+aged           0.00000
+sex            0.17234
+momage         0.37642
+momheight      0.67490
+momedu         0.91023
+Nlt18          0.18717
+Ncomp          0.00449
+watmin         0.43393
+walls          0.80445
+floor          0.90587
+elec           0.57765
+asset_wardrobe 0.68455
+asset_table    0.08986
+asset_chair    0.15568
+asset_khat     0.66581
+asset_chouki   0.99093
+asset_tv       0.19016
+asset_refrig   0.87451
+asset_bike     0.16666
+asset_moto     0.13710
+asset_sewmach  0.10643
+asset_mobile   0.09317
+
+
+Covariates selected (P<0.2):
+                   P-value
+counter       2.515832e-02
+month         5.165535e-13
+hfiacat       4.931048e-02
+aged          6.444957e-10
+sex           1.723441e-01
+Nlt18         1.871735e-01
+Ncomp         4.490015e-03
+asset_table   8.986030e-02
+asset_chair   1.556800e-01
+asset_tv      1.901562e-01
+asset_bike    1.666627e-01
+asset_moto    1.371013e-01
+asset_sewmach 1.064292e-01
+asset_mobile  9.317473e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.3236051 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.6763949 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.9857642 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.0142358 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.019618
+   Estimated Variance:  0.00060526
+              p-value:  0.42521
+    95% Conf Interval: (-0.067838, 0.028602) 
+
+ Relative Risk
+   Parameter Estimate:  0.94923
+              p-value:  0.42441
+    95% Conf Interval: (0.8353, 1.0787) 
+
+              log(RR):  -0.052106
+    variance(log(RR)):  0.0042551 
+
+ Odds Ratio
+   Parameter Estimate:  0.91982
+              p-value:  0.4249
+    95% Conf Interval: (0.74911, 1.1294) 
+
+              log(OR):  -0.083578
+    variance(log(OR)):  0.01097 
+
+-----------------------------------------
+> 
+> est.hw.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hw,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+----------------------------------------- 
+There were 1 pairs dropped because they were
+missing at least one treatment level.
+This is the list of their IDs:
+ 19
+----------------------------------------- 
+Starting N:   1793 
+N after dropping incomplete blocks:  1783 
+
+Total of 10 observations dropped
+ because of unmatched pairs. 
+-----------------------------------------
+
+-----------------------------------------
+Total of 10 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1773 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.01639
+birthord       0.02226
+month          0.00000
+hfiacat        0.02535
+aged           0.00000
+sex            0.06934
+momage         0.56779
+momheight      0.04242
+momedu         0.00021
+Nlt18          0.00416
+Ncomp          0.03883
+watmin         0.76868
+walls          0.09334
+floor          0.00000
+elec           0.00605
+asset_wardrobe 0.00837
+asset_table    0.01496
+asset_chair    0.00013
+asset_khat     0.00039
+asset_chouki   0.14665
+asset_tv       0.00000
+asset_refrig   0.00000
+asset_bike     0.55928
+asset_moto     0.01759
+asset_sewmach  0.07144
+asset_mobile   0.01100
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        1.638677e-02
+birthord       2.226473e-02
+month          3.118037e-06
+hfiacat        2.535177e-02
+aged           1.281595e-09
+sex            6.934466e-02
+momheight      4.241639e-02
+momedu         2.068275e-04
+Nlt18          4.159349e-03
+Ncomp          3.882707e-02
+walls          9.334368e-02
+floor          1.292740e-06
+elec           6.048411e-03
+asset_wardrobe 8.366710e-03
+asset_table    1.495675e-02
+asset_chair    1.307734e-04
+asset_khat     3.857094e-04
+asset_chouki   1.466498e-01
+asset_tv       4.001761e-11
+asset_refrig   1.602716e-07
+asset_moto     1.758973e-02
+asset_sewmach  7.144010e-02
+asset_mobile   1.100077e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.345971 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.654029 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.883539 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.116461 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.033662
+   Estimated Variance:  0.00018626
+              p-value:  0.013646
+    95% Conf Interval: (0.0069119, 0.060411) 
+
+ Relative Risk
+   Parameter Estimate:  1.5414
+              p-value:  0.012842
+    95% Conf Interval: (1.0962, 2.1674) 
+
+              log(RR):  0.43269
+    variance(log(RR)):  0.030242 
+
+ Odds Ratio
+   Parameter Estimate:  1.5988
+              p-value:  0.012684
+    95% Conf Interval: (1.1054, 2.3123) 
+
+              log(OR):  0.46924
+    variance(log(OR)):  0.035442 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 7 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1777 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00370
+birthord       0.00100
+month          0.00000
+hfiacat        0.02101
+aged           0.00000
+sex            0.43623
+momage         0.77628
+momheight      0.89069
+momedu         0.00154
+Nlt18          0.00104
+Ncomp          0.01741
+watmin         0.69670
+walls          0.54137
+floor          0.00000
+elec           0.01226
+asset_wardrobe 0.06690
+asset_table    0.03108
+asset_chair    0.00029
+asset_khat     0.00001
+asset_chouki   0.02373
+asset_tv       0.00000
+asset_refrig   0.00008
+asset_bike     0.44185
+asset_moto     0.12808
+asset_sewmach  0.04452
+asset_mobile   0.27734
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        3.700748e-03
+birthord       1.004558e-03
+month          8.207652e-08
+hfiacat        2.101467e-02
+aged           2.314943e-13
+momedu         1.542591e-03
+Nlt18          1.040907e-03
+Ncomp          1.740858e-02
+floor          6.327530e-07
+elec           1.226109e-02
+asset_wardrobe 6.689919e-02
+asset_table    3.108343e-02
+asset_chair    2.860110e-04
+asset_khat     1.254591e-05
+asset_chouki   2.373237e-02
+asset_tv       9.114579e-11
+asset_refrig   8.159161e-05
+asset_moto     1.280760e-01
+asset_sewmach  4.452453e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2806574 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.4971233 
+	   SL.glmnet_All    0.2222193 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.021373
+   Estimated Variance:  0.00020723
+              p-value:  0.13763
+    95% Conf Interval: (-0.0068424, 0.049588) 
+
+ Relative Risk
+   Parameter Estimate:  1.29
+              p-value:  0.14605
+    95% Conf Interval: (0.91511, 1.8185) 
+
+              log(RR):  0.25465
+    variance(log(RR)):  0.030689 
+
+ Odds Ratio
+   Parameter Estimate:  1.3205
+              p-value:  0.14487
+    95% Conf Interval: (0.90869, 1.9189) 
+
+              log(OR):  0.27799
+    variance(log(OR)):  0.03636 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 6 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1827 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00616
+birthord       0.00002
+month          0.00000
+hfiacat        0.24085
+aged           0.00000
+sex            0.00453
+momage         0.30502
+momheight      0.30611
+momedu         0.00007
+Nlt18          0.00000
+Ncomp          0.00945
+watmin         0.88686
+walls          0.33261
+floor          0.00200
+elec           0.00307
+asset_wardrobe 0.03782
+asset_table    0.01377
+asset_chair    0.00004
+asset_khat     0.00000
+asset_chouki   0.00556
+asset_tv       0.00001
+asset_refrig   0.00046
+asset_bike     0.25538
+asset_moto     0.07026
+asset_sewmach  0.02181
+asset_mobile   0.10539
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        6.157279e-03
+birthord       1.740868e-05
+month          2.856028e-07
+aged           8.118913e-14
+sex            4.532621e-03
+momedu         6.542405e-05
+Nlt18          1.998456e-07
+Ncomp          9.451604e-03
+floor          2.001462e-03
+elec           3.074396e-03
+asset_wardrobe 3.781868e-02
+asset_table    1.377390e-02
+asset_chair    4.251752e-05
+asset_khat     4.089562e-07
+asset_chouki   5.556279e-03
+asset_tv       5.320868e-06
+asset_refrig   4.571187e-04
+asset_moto     7.026172e-02
+asset_sewmach  2.180606e-02
+asset_mobile   1.053853e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1110693 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.385665 
+	   SL.glmnet_All    0.5032657 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.0061167
+   Estimated Variance:  0.00018493
+              p-value:  0.65286
+    95% Conf Interval: (-0.020537, 0.032771) 
+
+ Relative Risk
+   Parameter Estimate:  1.0696
+              p-value:  0.64984
+    95% Conf Interval: (0.79986, 1.4304) 
+
+              log(RR):  0.067319
+    variance(log(RR)):  0.021988 
+
+ Odds Ratio
+   Parameter Estimate:  1.0769
+              p-value:  0.65011
+    95% Conf Interval: (0.782, 1.4829) 
+
+              log(OR):  0.074047
+    variance(log(OR)):  0.026647 
+
+-----------------------------------------
+> 
+> est.tt.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$tt,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+----------------------------------------- 
+There were 1 pairs dropped because they were
+missing at least one treatment level.
+This is the list of their IDs:
+ 19
+----------------------------------------- 
+Starting N:   1793 
+N after dropping incomplete blocks:  1783 
+
+Total of 10 observations dropped
+ because of unmatched pairs. 
+-----------------------------------------
+
+-----------------------------------------
+Total of 10 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1773 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.04556
+birthord       0.04424
+month          0.00000
+hfiacat        0.01195
+aged           0.12393
+sex            0.74915
+momage         0.83193
+momheight      0.75333
+momedu         0.00000
+Nlt18          0.01608
+Ncomp          0.00000
+watmin         0.95387
+walls          0.15864
+floor          0.00084
+elec           0.65031
+asset_wardrobe 0.17753
+asset_table    0.30011
+asset_chair    0.00044
+asset_khat     0.00004
+asset_chouki   0.02649
+asset_tv       0.00991
+asset_refrig   0.08950
+asset_bike     0.23384
+asset_moto     0.28516
+asset_sewmach  0.17800
+asset_mobile   0.52757
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        4.556105e-02
+birthord       4.423610e-02
+month          9.578511e-09
+hfiacat        1.195157e-02
+aged           1.239280e-01
+momedu         2.700620e-06
+Nlt18          1.607835e-02
+Ncomp          5.366840e-10
+walls          1.586446e-01
+floor          8.405655e-04
+asset_wardrobe 1.775316e-01
+asset_chair    4.357931e-04
+asset_khat     3.996478e-05
+asset_chouki   2.648841e-02
+asset_tv       9.913506e-03
+asset_refrig   8.950029e-02
+asset_sewmach  1.780026e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.4859346 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1814187 
+	   SL.glmnet_All    0.3326467 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8435972 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1564028 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.025738
+   Estimated Variance:  0.00016239
+              p-value:  0.043409
+    95% Conf Interval: (0.00076143, 0.050715) 
+
+ Relative Risk
+   Parameter Estimate:  1.4699
+              p-value:  0.031587
+    95% Conf Interval: (1.0346, 2.0883) 
+
+              log(RR):  0.38517
+    variance(log(RR)):  0.032107 
+
+ Odds Ratio
+   Parameter Estimate:  1.511
+              p-value:  0.0319
+    95% Conf Interval: (1.0364, 2.2031) 
+
+              log(OR):  0.41278
+    variance(log(OR)):  0.03701 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 7 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1777 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00207
+birthord       0.02586
+month          0.00000
+hfiacat        0.00006
+aged           0.00133
+sex            0.19427
+momage         0.32180
+momheight      0.35825
+momedu         0.00000
+Nlt18          0.01149
+Ncomp          0.00000
+watmin         0.25439
+walls          0.07254
+floor          0.00117
+elec           0.00871
+asset_wardrobe 0.14670
+asset_table    0.00006
+asset_chair    0.00000
+asset_khat     0.00278
+asset_chouki   0.05225
+asset_tv       0.00117
+asset_refrig   0.04458
+asset_bike     0.03259
+asset_moto     0.00436
+asset_sewmach  0.01243
+asset_mobile   0.04210
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        2.069287e-03
+birthord       2.585560e-02
+month          9.425867e-12
+hfiacat        5.842841e-05
+aged           1.325543e-03
+sex            1.942740e-01
+momedu         1.389433e-06
+Nlt18          1.149126e-02
+Ncomp          9.157337e-09
+walls          7.253913e-02
+floor          1.171947e-03
+elec           8.714090e-03
+asset_wardrobe 1.466979e-01
+asset_table    5.698658e-05
+asset_chair    9.174753e-08
+asset_khat     2.784443e-03
+asset_chouki   5.225159e-02
+asset_tv       1.174715e-03
+asset_refrig   4.457967e-02
+asset_bike     3.259174e-02
+asset_moto     4.355459e-03
+asset_sewmach  1.242537e-02
+asset_mobile   4.209792e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.3904232 
+	      SL.glm_All    0.3806561 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.2182489 
+	   SL.glmnet_All    0.01067177 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8282301 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.1717699 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.015675
+   Estimated Variance:  0.00014769
+              p-value:  0.19713
+    95% Conf Interval: (-0.0081451, 0.039494) 
+
+ Relative Risk
+   Parameter Estimate:  1.2381
+              p-value:  0.19312
+    95% Conf Interval: (0.89754, 1.7079) 
+
+              log(RR):  0.21359
+    variance(log(RR)):  0.026938 
+
+ Odds Ratio
+   Parameter Estimate:  1.2592
+              p-value:  0.1929
+    95% Conf Interval: (0.89004, 1.7816) 
+
+              log(OR):  0.23052
+    variance(log(OR)):  0.031344 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 6 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1827 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.28728
+birthord       0.00716
+month          0.00000
+hfiacat        0.10479
+aged           0.00146
+sex            0.85308
+momage         0.58025
+momheight      0.75417
+momedu         0.00009
+Nlt18          0.00204
+Ncomp          0.00000
+watmin         0.26824
+walls          0.00122
+floor          0.00021
+elec           0.37971
+asset_wardrobe 0.06207
+asset_table    0.03635
+asset_chair    0.00005
+asset_khat     0.00934
+asset_chouki   0.08461
+asset_tv       0.03827
+asset_refrig   0.10124
+asset_bike     0.38907
+asset_moto     0.01684
+asset_sewmach  0.02451
+asset_mobile   0.25407
+
+
+Covariates selected (P<0.2):
+                    P-value
+birthord       7.162473e-03
+month          1.905386e-09
+hfiacat        1.047854e-01
+aged           1.464099e-03
+momedu         8.675565e-05
+Nlt18          2.042928e-03
+Ncomp          2.990949e-07
+walls          1.218156e-03
+floor          2.135845e-04
+asset_wardrobe 6.206987e-02
+asset_table    3.634946e-02
+asset_chair    4.887924e-05
+asset_khat     9.338322e-03
+asset_chouki   8.460608e-02
+asset_tv       3.826623e-02
+asset_refrig   1.012369e-01
+asset_moto     1.683713e-02
+asset_sewmach  2.450749e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.3496027 
+	      SL.glm_All    0.07665425 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.1903864 
+	   SL.glmnet_All    0.3833567 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.02606
+   Estimated Variance:  0.00017851
+              p-value:  0.051112
+    95% Conf Interval: (-0.00012642, 0.052247) 
+
+ Relative Risk
+   Parameter Estimate:  1.4915
+              p-value:  0.042154
+    95% Conf Interval: (1.0143, 2.1934) 
+
+              log(RR):  0.3998
+    variance(log(RR)):  0.038711 
+
+ Odds Ratio
+   Parameter Estimate:  1.5337
+              p-value:  0.042289
+    95% Conf Interval: (1.015, 2.3176) 
+
+              log(OR):  0.4277
+    variance(log(OR)):  0.044362 
+
+-----------------------------------------
+> 
+> est.sth.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+----------------------------------------- 
+There were 1 pairs dropped because they were
+missing at least one treatment level.
+This is the list of their IDs:
+ 19
+----------------------------------------- 
+Starting N:   1793 
+N after dropping incomplete blocks:  1783 
+
+Total of 10 observations dropped
+ because of unmatched pairs. 
+-----------------------------------------
+
+-----------------------------------------
+Total of 10 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1773 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00634
+birthord       0.80316
+month          0.00000
+hfiacat        0.28314
+aged           0.00000
+sex            0.04642
+momage         0.75224
+momheight      0.92306
+momedu         0.00534
+Nlt18          0.04898
+Ncomp          0.00003
+watmin         0.17423
+walls          0.14788
+floor          0.18151
+elec           0.86248
+asset_wardrobe 0.53897
+asset_table    0.37038
+asset_chair    0.38632
+asset_khat     0.08029
+asset_chouki   0.04574
+asset_tv       0.00042
+asset_refrig   0.06109
+asset_bike     0.44497
+asset_moto     0.26651
+asset_sewmach  0.21968
+asset_mobile   0.90221
+
+
+Covariates selected (P<0.2):
+                  P-value
+counter      6.337173e-03
+month        1.329592e-08
+aged         7.062548e-11
+sex          4.641936e-02
+momedu       5.337570e-03
+Nlt18        4.898138e-02
+Ncomp        3.061851e-05
+watmin       1.742296e-01
+walls        1.478795e-01
+floor        1.815074e-01
+asset_khat   8.029438e-02
+asset_chouki 4.573509e-02
+asset_tv     4.196273e-04
+asset_refrig 6.108584e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1894875 
+	      SL.glm_All    0.4340626 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.3764498 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.7750189 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.2249811 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.019751
+   Estimated Variance:  0.0006773
+              p-value:  0.4479
+    95% Conf Interval: (-0.031258, 0.070759) 
+
+ Relative Risk
+   Parameter Estimate:  1.0487
+              p-value:  0.45046
+    95% Conf Interval: (0.92689, 1.1865) 
+
+              log(RR):  0.04753
+    variance(log(RR)):  0.0039669 
+
+ Odds Ratio
+   Parameter Estimate:  1.0847
+              p-value:  0.44868
+    95% Conf Interval: (0.87891, 1.3388) 
+
+              log(OR):  0.081331
+    variance(log(OR)):  0.011524 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 7 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1777 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00142
+birthord       0.06311
+month          0.00000
+hfiacat        0.06022
+aged           0.00000
+sex            0.68911
+momage         0.25388
+momheight      0.22310
+momedu         0.00785
+Nlt18          0.02872
+Ncomp          0.05307
+watmin         0.50140
+walls          0.20971
+floor          0.87876
+elec           0.63233
+asset_wardrobe 0.87134
+asset_table    0.38177
+asset_chair    0.29300
+asset_khat     0.07076
+asset_chouki   0.21419
+asset_tv       0.00008
+asset_refrig   0.72149
+asset_bike     0.60228
+asset_moto     0.20726
+asset_sewmach  0.48419
+asset_mobile   0.72721
+
+
+Covariates selected (P<0.2):
+                P-value
+counter    1.418090e-03
+birthord   6.311270e-02
+month      3.125766e-07
+hfiacat    6.022160e-02
+aged       7.112958e-12
+momedu     7.847670e-03
+Nlt18      2.872012e-02
+Ncomp      5.307016e-02
+asset_khat 7.076327e-02
+asset_tv   8.085177e-05
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2664656 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.08576549 
+	   SL.glmnet_All    0.647769 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.036992
+   Estimated Variance:  0.00060726
+              p-value:  0.13333
+    95% Conf Interval: (-0.011308, 0.085291) 
+
+ Relative Risk
+   Parameter Estimate:  1.0937
+              p-value:  0.13735
+    95% Conf Interval: (0.97181, 1.2309) 
+
+              log(RR):  0.089564
+    variance(log(RR)):  0.003634 
+
+ Odds Ratio
+   Parameter Estimate:  1.1649
+              p-value:  0.13459
+    95% Conf Interval: (0.9538, 1.4227) 
+
+              log(OR):  0.15263
+    variance(log(OR)):  0.010406 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 6 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1827 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00155
+birthord       0.06637
+month          0.00000
+hfiacat        0.10756
+aged           0.00000
+sex            0.01320
+momage         0.19357
+momheight      0.84329
+momedu         0.14842
+Nlt18          0.00241
+Ncomp          0.00002
+watmin         0.70656
+walls          0.30055
+floor          0.41283
+elec           0.23056
+asset_wardrobe 0.97946
+asset_table    0.60466
+asset_chair    0.61450
+asset_khat     0.36097
+asset_chouki   0.57128
+asset_tv       0.01474
+asset_refrig   0.86544
+asset_bike     0.11486
+asset_moto     0.39054
+asset_sewmach  0.30534
+asset_mobile   0.58659
+
+
+Covariates selected (P<0.2):
+                P-value
+counter    1.547185e-03
+birthord   6.637437e-02
+month      2.661842e-14
+hfiacat    1.075593e-01
+aged       2.032525e-15
+sex        1.320151e-02
+momage     1.935722e-01
+momedu     1.484170e-01
+Nlt18      2.406364e-03
+Ncomp      2.235262e-05
+asset_tv   1.473571e-02
+asset_bike 1.148581e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1306175 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.09604395 
+	   SL.glmnet_All    0.7733385 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.8373016 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0.1626984 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0089025
+   Estimated Variance:  0.00060957
+              p-value:  0.71841
+    95% Conf Interval: (-0.057294, 0.039489) 
+
+ Relative Risk
+   Parameter Estimate:  0.97962
+              p-value:  0.71882
+    95% Conf Interval: (0.87576, 1.0958) 
+
+              log(RR):  -0.020587
+    variance(log(RR)):  0.0032695 
+
+ Odds Ratio
+   Parameter Estimate:  0.96438
+              p-value:  0.71852
+    95% Conf Interval: (0.79174, 1.1747) 
+
+              log(OR):  -0.036273
+    variance(log(OR)):  0.010127 
+
+-----------------------------------------
+> 
+> al_rr_h2_adj_j=format.tmle(est.al.h2,family="binomial")$rr
+> al_rd_h2_adj_j=format.tmle(est.al.h2,family="binomial")$rd
+> 
+> hw_rr_h2_adj_j=format.tmle(est.hw.h2,family="binomial")$rr
+> hw_rd_h2_adj_j=format.tmle(est.hw.h2,family="binomial")$rd
+> 
+> tt_rr_h2_adj_j=format.tmle(est.tt.h2,family="binomial")$rr
+> tt_rd_h2_adj_j=format.tmle(est.tt.h2,family="binomial")$rd
+> 
+> sth_rr_h2_adj_j=format.tmle(est.sth.h2,family="binomial")$rr
+> sth_rd_h2_adj_j=format.tmle(est.sth.h2,family="binomial")$rd
+> 
+> rownames(al_rr_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(hw_rr_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(tt_rr_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(sth_rr_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> 
+> rownames(al_rd_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(hw_rd_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(tt_rd_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> rownames(sth_rd_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+> 
+> #----------------------------------------------
+> # H3: Unadjusted prevalence ratios; combined WSH Nvs. 
+> # single arms.  PR, CI, P-value
+> #----------------------------------------------
+> trlist=c("WSH","Nutrition")
+> 
+> est.al.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$al,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 14 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1810 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.18068
+birthord       0.98332
+month          0.00000
+hfiacat        0.12098
+aged           0.00000
+sex            0.82120
+momage         0.66344
+momheight      0.79065
+momedu         0.04200
+Nlt18          0.05542
+Ncomp          0.07214
+watmin         0.32238
+walls          0.42651
+floor          0.02815
+elec           0.46913
+asset_wardrobe 0.97577
+asset_table    0.24602
+asset_chair    0.26123
+asset_khat     0.16648
+asset_chouki   0.01050
+asset_tv       0.13016
+asset_refrig   0.83797
+asset_bike     0.38706
+asset_moto     0.25510
+asset_sewmach  0.41252
+asset_mobile   0.06151
+
+
+Covariates selected (P<0.2):
+                  P-value
+counter      1.806828e-01
+month        9.269490e-09
+hfiacat      1.209775e-01
+aged         2.755784e-08
+momedu       4.199629e-02
+Nlt18        5.541629e-02
+Ncomp        7.213676e-02
+floor        2.815280e-02
+asset_khat   1.664826e-01
+asset_chouki 1.050400e-02
+asset_tv     1.301554e-01
+asset_mobile 6.151151e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2697142 
+	      SL.glm_All    0.08669257 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.4742177 
+	   SL.glmnet_All    0.1693755 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.00072314
+   Estimated Variance:  0.00055289
+              p-value:  0.97547
+    95% Conf Interval: (-0.04681, 0.045363) 
+
+ Relative Risk
+   Parameter Estimate:  0.99802
+              p-value:  0.97546
+    95% Conf Interval: (0.87988, 1.132) 
+
+              log(RR):  -0.0019772
+    variance(log(RR)):  0.0041319 
+
+ Odds Ratio
+   Parameter Estimate:  0.99689
+              p-value:  0.97546
+    95% Conf Interval: (0.81728, 1.216) 
+
+              log(OR):  -0.0031173
+    variance(log(OR)):  0.010273 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 18 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1752 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.12234
+birthord       0.74375
+month          0.00000
+hfiacat        0.05254
+aged           0.00000
+sex            0.71365
+momage         0.44448
+momheight      0.62260
+momedu         0.32804
+Nlt18          0.16810
+Ncomp          0.56277
+watmin         0.34823
+walls          0.33311
+floor          0.06454
+elec           0.69874
+asset_wardrobe 0.03084
+asset_table    0.76246
+asset_chair    0.61962
+asset_khat     0.07914
+asset_chouki   0.17663
+asset_tv       0.64684
+asset_refrig   0.48343
+asset_bike     0.39021
+asset_moto     0.11788
+asset_sewmach  0.90146
+asset_mobile   0.39925
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        1.223449e-01
+month          1.268692e-08
+hfiacat        5.253978e-02
+aged           2.782384e-08
+Nlt18          1.680971e-01
+floor          6.454388e-02
+asset_wardrobe 3.083775e-02
+asset_khat     7.913769e-02
+asset_chouki   1.766303e-01
+asset_moto     1.178823e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.0185015 
+	   SL.glmnet_All    0.9814985 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.9352462 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.06475383 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.010402
+   Estimated Variance:  0.00051677
+              p-value:  0.64726
+    95% Conf Interval: (-0.034154, 0.054958) 
+
+ Relative Risk
+   Parameter Estimate:  1.0294
+              p-value:  0.64803
+    95% Conf Interval: (0.90907, 1.1656) 
+
+              log(RR):  0.028945
+    variance(log(RR)):  0.0040203 
+
+ Odds Ratio
+   Parameter Estimate:  1.0462
+              p-value:  0.6476
+    95% Conf Interval: (0.86195, 1.2699) 
+
+              log(OR):  0.045182
+    variance(log(OR)):  0.0097704 
+
+-----------------------------------------
+> 
+> est.hw.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hw,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 14 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1810 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.00041
+birthord       0.00058
+month          0.00000
+hfiacat        0.00413
+aged           0.00000
+sex            0.00312
+momage         0.32615
+momheight      0.48734
+momedu         0.00001
+Nlt18          0.00900
+Ncomp          0.07339
+watmin         0.37644
+walls          0.02545
+floor          0.00001
+elec           0.00001
+asset_wardrobe 0.01273
+asset_table    0.02856
+asset_chair    0.00413
+asset_khat     0.00017
+asset_chouki   0.00183
+asset_tv       0.00000
+asset_refrig   0.00000
+asset_bike     0.04446
+asset_moto     0.00333
+asset_sewmach  0.05580
+asset_mobile   0.35608
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        4.079757e-04
+birthord       5.800999e-04
+month          4.024550e-06
+hfiacat        4.127489e-03
+aged           9.200534e-07
+sex            3.121774e-03
+momedu         7.269165e-06
+Nlt18          8.997241e-03
+Ncomp          7.339186e-02
+walls          2.544923e-02
+floor          1.057681e-05
+elec           1.499564e-05
+asset_wardrobe 1.272928e-02
+asset_table    2.855920e-02
+asset_chair    4.126985e-03
+asset_khat     1.707643e-04
+asset_chouki   1.834521e-03
+asset_tv       4.681651e-08
+asset_refrig   1.557860e-06
+asset_bike     4.445976e-02
+asset_moto     3.332528e-03
+asset_sewmach  5.579846e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.2247057 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.372755 
+	   SL.glmnet_All    0.4025393 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.026645
+   Estimated Variance:  0.00020454
+              p-value:  0.062456
+    95% Conf Interval: (-0.054677, 0.0013866) 
+
+ Relative Risk
+   Parameter Estimate:  0.7183
+              p-value:  0.059488
+    95% Conf Interval: (0.50917, 1.0133) 
+
+              log(RR):  -0.33086
+    variance(log(RR)):  0.030823 
+
+ Odds Ratio
+   Parameter Estimate:  0.69777
+              p-value:  0.059353
+    95% Conf Interval: (0.48001, 1.0143) 
+
+              log(OR):  -0.35987
+    variance(log(OR)):  0.036425 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 18 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1752 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.01319
+birthord       0.00009
+month          0.00183
+hfiacat        0.00029
+aged           0.00008
+sex            0.00076
+momage         0.75575
+momheight      0.11276
+momedu         0.00092
+Nlt18          0.21027
+Ncomp          0.38040
+watmin         0.76188
+walls          0.06450
+floor          0.03169
+elec           0.00000
+asset_wardrobe 0.02565
+asset_table    0.03430
+asset_chair    0.13451
+asset_khat     0.00161
+asset_chouki   0.01600
+asset_tv       0.00522
+asset_refrig   0.00002
+asset_bike     0.00030
+asset_moto     0.00582
+asset_sewmach  0.10793
+asset_mobile   0.02886
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        1.318852e-02
+birthord       9.140063e-05
+month          1.832507e-03
+hfiacat        2.864651e-04
+aged           7.880555e-05
+sex            7.595735e-04
+momheight      1.127602e-01
+momedu         9.177500e-04
+walls          6.450357e-02
+floor          3.169262e-02
+elec           1.706495e-06
+asset_wardrobe 2.564860e-02
+asset_table    3.429504e-02
+asset_chair    1.345066e-01
+asset_khat     1.614678e-03
+asset_chouki   1.600407e-02
+asset_tv       5.219091e-03
+asset_refrig   1.619796e-05
+asset_bike     2.993282e-04
+asset_moto     5.821076e-03
+asset_sewmach  1.079288e-01
+asset_mobile   2.886078e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1693215 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.3242435 
+	   SL.glmnet_All    0.5064351 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.9027418 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.09725816 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.00060202
+   Estimated Variance:  0.00014648
+              p-value:  0.96033
+    95% Conf Interval: (-0.02312, 0.024324) 
+
+ Relative Risk
+   Parameter Estimate:  1.0087
+              p-value:  0.96034
+    95% Conf Interval: (0.71757, 1.4179) 
+
+              log(RR):  0.0086393
+    variance(log(RR)):  0.030185 
+
+ Odds Ratio
+   Parameter Estimate:  1.0093
+              p-value:  0.96034
+    95% Conf Interval: (0.69995, 1.4554) 
+
+              log(OR):  0.0092864
+    variance(log(OR)):  0.034875 
+
+-----------------------------------------
+> 
+> est.tt.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$tt,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 14 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1810 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.03038
+birthord       0.00036
+month          0.00000
+hfiacat        0.00551
+aged           0.00432
+sex            0.16277
+momage         0.69719
+momheight      0.84552
+momedu         0.00000
+Nlt18          0.06370
+Ncomp          0.00043
+watmin         0.67979
+walls          0.01683
+floor          0.00517
+elec           0.06449
+asset_wardrobe 0.01023
+asset_table    0.05134
+asset_chair    0.00000
+asset_khat     0.00041
+asset_chouki   0.00853
+asset_tv       0.00280
+asset_refrig   0.05381
+asset_bike     0.19736
+asset_moto     0.00092
+asset_sewmach  0.16823
+asset_mobile   0.10580
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        3.038468e-02
+birthord       3.571140e-04
+month          4.969594e-11
+hfiacat        5.511985e-03
+aged           4.315756e-03
+sex            1.627728e-01
+momedu         1.112655e-06
+Nlt18          6.370318e-02
+Ncomp          4.326682e-04
+walls          1.682908e-02
+floor          5.171839e-03
+elec           6.449030e-02
+asset_wardrobe 1.022779e-02
+asset_table    5.134467e-02
+asset_chair    1.396704e-07
+asset_khat     4.149451e-04
+asset_chouki   8.533235e-03
+asset_tv       2.797286e-03
+asset_refrig   5.380775e-02
+asset_bike     1.973596e-01
+asset_moto     9.190281e-04
+asset_sewmach  1.682254e-01
+asset_mobile   1.058006e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.4247472 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.06579028 
+	   SL.glmnet_All    0.5094626 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  -0.0037407
+   Estimated Variance:  0.00023819
+              p-value:  0.80849
+    95% Conf Interval: (-0.03399, 0.026509) 
+
+ Relative Risk
+   Parameter Estimate:  0.9531
+              p-value:  0.80722
+    95% Conf Interval: (0.64797, 1.4019) 
+
+              log(RR):  -0.04804
+    variance(log(RR)):  0.038759 
+
+ Odds Ratio
+   Parameter Estimate:  0.94924
+              p-value:  0.80732
+    95% Conf Interval: (0.62452, 1.4428) 
+
+              log(OR):  -0.052097
+    variance(log(OR)):  0.04563 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 18 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1752 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.74404
+birthord       0.00473
+month          0.00000
+hfiacat        0.04104
+aged           0.00123
+sex            0.68022
+momage         0.40322
+momheight      0.22900
+momedu         0.00006
+Nlt18          0.98252
+Ncomp          0.52946
+watmin         0.08740
+walls          0.19617
+floor          0.03610
+elec           0.00694
+asset_wardrobe 0.03116
+asset_table    0.02519
+asset_chair    0.00012
+asset_khat     0.00594
+asset_chouki   0.18248
+asset_tv       0.02562
+asset_refrig   0.02150
+asset_bike     0.01694
+asset_moto     0.00662
+asset_sewmach  0.54988
+asset_mobile   0.01199
+
+
+Covariates selected (P<0.2):
+                    P-value
+birthord       4.727497e-03
+month          2.594455e-06
+hfiacat        4.104206e-02
+aged           1.231780e-03
+momedu         5.709214e-05
+watmin         8.740204e-02
+walls          1.961688e-01
+floor          3.609641e-02
+elec           6.935568e-03
+asset_wardrobe 3.116334e-02
+asset_table    2.518879e-02
+asset_chair    1.160612e-04
+asset_khat     5.944633e-03
+asset_chouki   1.824800e-01
+asset_tv       2.562265e-02
+asset_refrig   2.150002e-02
+asset_bike     1.694273e-02
+asset_moto     6.618129e-03
+asset_mobile   1.198799e-02
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.6233587 
+	      SL.glm_All    0.03276978 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.3438715 
+	   SL.glmnet_All    0 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.9351831 
+	      SL.glm_All    0.06481688 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.016024
+   Estimated Variance:  0.00017922
+              p-value:  0.23131
+    95% Conf Interval: (-0.010215, 0.042263) 
+
+ Relative Risk
+   Parameter Estimate:  1.2651
+              p-value:  0.23541
+    95% Conf Interval: (0.85787, 1.8657) 
+
+              log(RR):  0.23517
+    variance(log(RR)):  0.039284 
+
+ Odds Ratio
+   Parameter Estimate:  1.2871
+              p-value:  0.23467
+    95% Conf Interval: (0.84886, 1.9515) 
+
+              log(OR):  0.25238
+    variance(log(OR)):  0.045099 
+
+-----------------------------------------
+> 
+> est.sth.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
++    pair=dW$block, id=dW$block,W=dW[,W],
++    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
++    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 14 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1810 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.01024
+birthord       0.20713
+month          0.00000
+hfiacat        0.04497
+aged           0.00000
+sex            0.49968
+momage         0.48192
+momheight      0.54593
+momedu         0.00188
+Nlt18          0.06884
+Ncomp          0.01335
+watmin         0.61466
+walls          0.09100
+floor          0.00092
+elec           0.12376
+asset_wardrobe 0.19124
+asset_table    0.76644
+asset_chair    0.37325
+asset_khat     0.02565
+asset_chouki   0.00555
+asset_tv       0.00178
+asset_refrig   0.32221
+asset_bike     0.11223
+asset_moto     0.94438
+asset_sewmach  0.88112
+asset_mobile   0.66222
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        1.024411e-02
+month          7.405642e-11
+hfiacat        4.496862e-02
+aged           9.234774e-12
+momedu         1.877489e-03
+Nlt18          6.883691e-02
+Ncomp          1.334630e-02
+walls          9.099690e-02
+floor          9.195621e-04
+elec           1.237613e-01
+asset_wardrobe 1.912414e-01
+asset_khat     2.565059e-02
+asset_chouki   5.550449e-03
+asset_tv       1.782022e-03
+asset_bike     1.122330e-01
+
+-----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.1448292 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0.04225761 
+	      SL.gam_All    0.2406859 
+	   SL.glmnet_All    0.5722274 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    1 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.0065004
+   Estimated Variance:  0.00066876
+              p-value:  0.80153
+    95% Conf Interval: (-0.044186, 0.057187) 
+
+ Relative Risk
+   Parameter Estimate:  1.0152
+              p-value:  0.80175
+    95% Conf Interval: (0.90231, 1.1423) 
+
+              log(RR):  0.015103
+    variance(log(RR)):  0.0036185 
+
+ Odds Ratio
+   Parameter Estimate:  1.0269
+              p-value:  0.80159
+    95% Conf Interval: (0.83502, 1.2628) 
+
+              log(OR):  0.026516
+    variance(log(OR)):  0.011134 
+
+-----------------------------------------
+
+----------------------------------------- 
+By specifying the pair argument,
+you have indicated that this is a matched pair analysis.
+
+Note: the analysis will only include pairs
+that have a contrast in the treatment variable. 
+-----------------------------------------
+-----------------------------------------
+Total of 18 observations dropped due to missing
+values in one or more variables
+  Final sample size: 1752 
+-----------------------------------------
+
+-----------------------------------------
+Pre-screening the adjustment covariates
+using a univariate liklihood ratio test:
+-----------------------------------------
+
+Likelihood Ratio Test P-values:
+               P-value
+counter        0.02077
+birthord       0.47558
+month          0.00000
+hfiacat        0.00057
+aged           0.00000
+sex            0.92387
+momage         0.21690
+momheight      0.67018
+momedu         0.01353
+Nlt18          0.19761
+Ncomp          0.66596
+watmin         0.13656
+walls          0.13224
+floor          0.00733
+elec           0.23538
+asset_wardrobe 0.00064
+asset_table    0.15035
+asset_chair    0.13370
+asset_khat     0.02013
+asset_chouki   0.13055
+asset_tv       0.26778
+asset_refrig   0.06118
+asset_bike     0.07980
+asset_moto     0.01289
+asset_sewmach  0.53569
+asset_mobile   0.29708
+
+
+Covariates selected (P<0.2):
+                    P-value
+counter        2.077400e-02
+month          4.460213e-12
+hfiacat        5.678818e-04
+aged           3.801423e-12
+momedu         1.353269e-02
+Nlt18          1.976051e-01
+watmin         1.365612e-01
+walls          1.322354e-01
+floor          7.331903e-03
+asset_wardrobe 6.361579e-04
+asset_table    1.503519e-01
+asset_chair    1.336997e-01
+asset_khat     2.012893e-02
+asset_chouki   1.305467e-01
+asset_refrig   6.117588e-02
+asset_bike     7.980274e-02
+asset_moto     1.289124e-02
+
+-----------------------------------------
