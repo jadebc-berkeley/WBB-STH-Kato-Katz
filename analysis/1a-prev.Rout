@@ -299,4 +299,4 @@ Nutrition + WSH  0.4087148 0.2622933 0.5721207
 > 
 > proc.time()
    user  system elapsed 
-  5.322   0.390   5.986 
+  2.632   0.100   3.340 

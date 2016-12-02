@@ -5957,3 +5957,105 @@ asset_bike     7.980274e-02
 asset_moto     1.289124e-02
 
 -----------------------------------------
+
+-----------------------------------------
+Estimation Results:
+-----------------------------------------
+ Initial estimation of Q
+	 Procedure: SuperLearner
+	 Model:
+		 Y ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All
+
+	 Coefficients: 
+	     SL.mean_All    0.151136 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.473001 
+	   SL.glmnet_All    0.375863 
+
+ Estimation of g (treatment mechanism)
+	 Procedure: SuperLearner 
+	 Model:
+		 A ~  SL.mean_All + SL.glm_All + SL.bayesglm_All + SL.gam_All + SL.glmnet_All 
+
+	 Coefficients: 
+	     SL.mean_All    0.998292 
+	      SL.glm_All    0 
+	 SL.bayesglm_All    0 
+	      SL.gam_All    0.001708002 
+	   SL.glmnet_All    0 
+
+ Estimation of g.Z (intermediate variable assignment mechanism)
+	 Procedure: No intermediate variable 
+
+ Estimation of g.Delta (missingness mechanism)
+	 Procedure: No missingness 
+
+ Bounds on g: ( 0.025 0.975 )
+
+ Additive Effect
+   Parameter Estimate:  0.034239
+   Estimated Variance:  0.00052842
+              p-value:  0.13636
+    95% Conf Interval: (-0.010816, 0.079295) 
+
+ Relative Risk
+   Parameter Estimate:  1.0855
+              p-value:  0.13723
+    95% Conf Interval: (0.97417, 1.2097) 
+
+              log(RR):  0.082085
+    variance(log(RR)):  0.0030506 
+
+ Odds Ratio
+   Parameter Estimate:  1.1513
+              p-value:  0.13669
+    95% Conf Interval: (0.95633, 1.386) 
+
+              log(OR):  0.14087
+    variance(log(OR)):  0.0089592 
+
+-----------------------------------------
+> 
+> al_rr_h3_adj_j=format.tmle(est.al.h3,family="binomial")$rr
+> al_rd_h3_adj_j=format.tmle(est.al.h3,family="binomial")$rd
+> 
+> hw_rr_h3_adj_j=format.tmle(est.hw.h3,family="binomial")$rr
+> hw_rd_h3_adj_j=format.tmle(est.hw.h3,family="binomial")$rd
+> 
+> tt_rr_h3_adj_j=format.tmle(est.tt.h3,family="binomial")$rr
+> tt_rd_h3_adj_j=format.tmle(est.tt.h3,family="binomial")$rd
+> 
+> sth_rr_h3_adj_j=format.tmle(est.sth.h3,family="binomial")$rr
+> sth_rd_h3_adj_j=format.tmle(est.sth.h3,family="binomial")$rd
+> 
+> rownames(al_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(hw_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(tt_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(sth_rr_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> 
+> rownames(al_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(hw_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(tt_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> rownames(sth_rd_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+> 
+> #----------------------------------------------
+> # save objects
+> #----------------------------------------------
+> 
+> save(al_rr_h1_adj_j,hw_rr_h1_adj_j,tt_rr_h1_adj_j,sth_rr_h1_adj_j,
++      al_rd_h1_adj_j,hw_rd_h1_adj_j,tt_rd_h1_adj_j,sth_rd_h1_adj_j,
++ 
++      al_rr_h2_adj_j,hw_rr_h2_adj_j,tt_rr_h2_adj_j,sth_rr_h2_adj_j,
++      al_rd_h2_adj_j,hw_rd_h2_adj_j,tt_rd_h2_adj_j,sth_rd_h2_adj_j,
++ 
++      al_rr_h3_adj_j,hw_rr_h3_adj_j,tt_rr_h3_adj_j,sth_rr_h3_adj_j,
++      al_rd_h3_adj_j,hw_rd_h3_adj_j,tt_rd_h3_adj_j,sth_rd_h3_adj_j,
++      
++      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj.RData")
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+556.863  17.726 596.216 
