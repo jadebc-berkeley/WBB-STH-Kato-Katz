@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- opened on:  28 Nov 2016, 15:29:31
+ opened on:   2 Dec 2016, 14:13:35
 
 . 
 . *********************************************
@@ -278,7 +278,7 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000001 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000001 saved
 
 . 
 . * ---------------------------------------------
@@ -304,7 +304,7 @@ Duplicates in terms of all variables
 . tempfile primdob
 
 . save `primdob'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000002 saved
 
 . 
 . * merge in birth order for T1 from anthro dataset
@@ -328,7 +328,7 @@ Duplicates in terms of all variables
 . tempfile primbirthord
 
 . save `primbirthord'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000004 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000004 saved
 
 . restore
 
@@ -485,7 +485,7 @@ sex_psth                                                                     Sex
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000006 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000006 saved
 
 . restore
 
@@ -521,7 +521,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000006 saved
 . tempfile agesex2
 
 . save `agesex2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000007 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000007 saved
 
 . 
 . * merge primary analysis dob with sth dataset to identify
@@ -629,7 +629,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000007 saved
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000008 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000008 saved
 
 . 
 . *--------------------------------------------
@@ -667,7 +667,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.000008 saved
 . tempfile t1t2
 
 . save `t1t2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000a saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000a saved
 
 . restore
 
@@ -703,7 +703,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000a saved
 . tempfile c1
 
 . save `c1'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000c saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000c saved
 
 . restore
 
@@ -741,7 +741,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000c saved
 . tempfile lb
 
 . save `lb'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000d saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000d saved
 
 . 
 . *--------------------------------------------
@@ -843,7 +843,7 @@ Duplicates in terms of all variables
 . tempfile fustool
 
 . save `fustool'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000e saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000e saved
 
 . 
 . use `lb', clear
@@ -897,7 +897,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000e saved
 . tempfile allfu
 
 . save `allfu'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000f saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000f saved
 
 . 
 . use `sth', clear
@@ -939,108 +939,158 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000f saved
 . order clusterid 
 
 . 
-. tempfile sth
+. * Impute O1 - first add one for each compound with a T1
+. egen hast1=count(personid) if personid=="T1" & fu==2, by(dataid)
+(8088 missing values generated)
 
-. save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_00662.00000g saved
+. egen o1=count(personid) if personid=="O1" & fu==1, by(dataid)
+(6337 missing values generated)
 
-. 
-. /*--------------------------------------------
-> * calculate age for missing T1 in PSTH round
-> *--------------------------------------------
-> preserve
-> keep clusterid labdate
-> sort clusterid labdate 
-> 
-> * get date
-> capture drop datecount
-> egen imputedate = mode(labdate), by(clusterid) minmode
-> format imputedate %d
-> keep clusterid imputedate
-> duplicates drop
-> tempfile imputedate
-> save `imputedate'
-> restore
-> 
-> merge m:1 clusterid using `imputedate'
-> drop _m
-> 
-> * get dob 
-> preserve
-> use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-banglade
-> sh-anthro.dta", clear
-> ren childid personid 
-> keep dataid personid dob
-> keep if personid=="T1" | personid=="T2"
-> ren dob imputedob 
-> duplicates drop 
-> tempfile imputedob
-> save `imputedob'
-> restore
-> 
-> merge m:1 dataid personid using `imputedob'
-> * drop 2 twins in the anthro dataset that we didn't consider for enrollment
-> * in PSTH (by accident)
-> drop if _m==2 
-> stop 
-> 
-> * calculate age 
-> replace aged=(imputedate-dob) if personid=="T1" & aged==.
-> gen double agem=(imputedate-dob)/30.4167
-> gen double agey=(imputedate-dob)/365.25 */ 
-. 
-. 
-. * ---------------------------------------------
-. * Create effect modifier variables 
-. * ---------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PS
-> TH-Day1survey_HHCensus.dta", clear
-
-. gen ncompover10 = (col7 >10) 
-
-. gen n5to14 = col3
+. egen haso1=max(o1), by(dataid)
+(3039 missing values generated)
 
 . 
-. *--------------------------------------------
-. * Merge in treatment assignment
-. *--------------------------------------------
-. use `sth', clear
+. replace hast1=2 if hast1==1
+(1,088 real changes made)
 
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-d
-> atasets/washb-bangladesh-blind-tr.dta"
-(note: variable block was byte, now long to accommodate using data's values)
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                             0
-    matched                             9,176  (_merge==3)
-    -----------------------------------------
-
-. * drop if no KK data
 . 
-. drop if _m==2
+. expand hast1, gen(flag)
+(8,088 missing counts ignored; observations not deleted)
+(1,088 observations created)
+
+. sort dataid personid
+
+. replace personid="O1" if flag==1 & hast1==2
+(1,088 real changes made)
+
+. drop if personid=="O1" & haso1==1 & flag==1
 (0 observations deleted)
 
-. drop _m
+. replace fu = 2 if personid=="O1" & flag==1
+(0 real changes made)
+
+. stop
+command stop is unrecognized
+r(199);
+
+end of do-file
+
+r(199);
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD06678.000000"
+
+. egen hast1complete =count(personid) if personid=="T1" & fu==1, by(dataid)
+(6458 missing values generated)
+
+. egen hast1complete2 =max(hast1complete) , by(dataid)
+(2958 missing values generated)
+
+. keep if hast1complete2==1
+(2,958 observations deleted)
 
 . 
-. order dataid personid block clusterid hhid tr sex dob age* 
+end of do-file
+
+. br dataid personid fu o1 haso1 flag hast1complete hast1complete2
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD06678.000000"
+
+. use "~/Dropbox/WASHB-Spillover-Data/Data/Untouched/Complete/WashB Spillover_HH
+> _census_clean_all.dta", clear
 
 . 
-. save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
-file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
+end of do-file
 
-. save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
-file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
+. br
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", rep
-> lace comma
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD06678.000000"
+
+. use "~/Dropbox/WASHB-Spillover-Data/Data/Untouched/Complete/WashB Spillover_HH
+> _census_clean_all.dta", clear
+
+. * ASSUMES THAT first hh is spillover hh
+. *keep if hhno=="1"
+. gen dataid1=substr(dataid,1,5)
+
+. gen dataid2=substr(dataid,7,7)
+
+. gen sdataid=dataid1+dataid2
+
+. drop dataid*
+
+. order sdataid
 
 . 
-. log close
-      name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
-> /1_make_sth_data.log
-  log type:  text
- closed on:  28 Nov 2016, 15:29:33
---------------------------------------------------------------------------------
+end of do-file
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD06678.000000"
+
+. 
+. gen u36=a1 if hhno==1
+type mismatch
+r(109);
+
+end of do-file
+
+r(109);
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD06678.000000"
+
+. use "~/Dropbox/WASHB-Spillover-Data/Data/Untouched/Complete/WashB Spillover_HH
+> _census_clean_all.dta", clear
+
+. * ASSUMES THAT first hh is spillover hh
+. *keep if hhno=="1"
+. gen dataid1=substr(dataid,1,5)
+
+. gen dataid2=substr(dataid,7,7)
+
+. gen sdataid=dataid1+dataid2
+
+. drop dataid*
+
+. order sdataid
+
+. 
+. gen u36=a1 if hhno=="1"
+(1,974 missing values generated)
+
+. replace u36=2 if u36==3 & hhno=="1"
+(3 real changes made)
+
+. replace u36
+=exp required
+r(100);
+
+end of do-file
+
+r(100);
+
+. do "/var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//SD06678.000000"
+
+. replace u36=. if hhno!="1"
+(0 real changes made)
+
+. label define u36l 0 "No children under 36m" 1 "One child under 36m" 2 "Two or 
+> more children under 36m"
+
+. label values u36 u36l
+
+. 
+end of do-file
+
+. tab u36
+
+                           u36 |      Freq.     Percent        Cum.
+-------------------------------+-----------------------------------
+         No children under 36m |        483       26.85       26.85
+           One child under 36m |      1,193       66.31       93.16
+Two or more children under 36m |        123        6.84      100.00
+-------------------------------+-----------------------------------
+                         Total |      1,799      100.00
+
+. do "/Users/jadederong/Documents/CRG/washb-spillover/primary/dm/1_wbspill_make_
+> sth.do"
+
+. 
+. capture log close
