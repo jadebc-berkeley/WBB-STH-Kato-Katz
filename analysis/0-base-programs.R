@@ -11,6 +11,8 @@ preprocess.sth=function(d){
   d=d[d$allsth==1,]
   d$allsth=NULL
   
+  d=d[d$loss2fu==0,]
+  
   return(d)
 }
 
