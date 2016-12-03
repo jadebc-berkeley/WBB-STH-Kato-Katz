@@ -1087,3 +1087,14 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 . save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", rep
+> lace comma
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
+> /1_make_sth_data.log
+  log type:  text
+ closed on:   3 Dec 2016, 12:18:01
+--------------------------------------------------------------------------------
