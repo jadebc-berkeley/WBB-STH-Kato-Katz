@@ -426,38 +426,47 @@ sort dataid personid
 replace personid="O1" if flag==1 & hast1==2
 drop if personid=="O1" & haso1==1 & flag==1
 replace fu = 2 if personid=="O1" & flag==1
-stop
 
 * Impute O1 - second, only keep O1s for the proportion of compounds
 * not lost to FU at endline that had O1s 
-
-
-
-/*preserve
-egen hast1complete =count(personid) if personid=="T1" & fu==1, by(dataid)
-egen hast1complete2 =max(hast1complete) , by(dataid)
-keep if hast1complete2==1
-egen hast12=count(personid) if personid=="T1", by(dataid)
-egen hast123= max(hast12), by(dataid)
-drop if hast123==.
-keep dataid haso1
-duplicates drop
-replace hasotab haso1
-1=0 if haso1==.
-* 72% of households with information on T1 had O1
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
+drop if slide=="2"
+keep if enroll!=""
+tab personid
+* proportion =  3,148 /  4,102   =0.77
 restore
-stop*/
+
+* keep the imputed O1s for random subset of 1088 *0.77=835 children
+set seed 12345
+gen rand = runiform()
+
+sort rand
+egen randseq=seq() if personid=="O1" & fu==2
+
+gen keepo1=0
+replace keepo1=1 if fu!=2
+replace keepo1=1 if randseq<=835
+replace keepo1=. if personid!="O1"
+drop if keepo1==0 
+drop keepo1 rand randseq
+
+* create indicator for index child
+gen index = 0
+replace index = 1 if personid=="T1" | personid=="T2" 
+
+drop lb keeppersonid stoolever hhstatus hast1 o1 haso1 flag 
 
 tempfile sth
 save `sth'
 
 
-* ---------------------------------------------
+/* ---------------------------------------------
 * Create effect modifier variables 
 * ---------------------------------------------
 use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_HHCensus.dta", clear
 gen ncompover10 = (col7 >10) 
-gen n5to14 = col3
+gen n5to14 = col3*/
 
 *--------------------------------------------
 * Merge in treatment assignment
