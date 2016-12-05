@@ -458,27 +458,90 @@ gen month=month(labdate)
 drop if _m==2
 drop _m
 
-tempfile sth
-save `sth'
-
-/* ---------------------------------------------
+* ---------------------------------------------
 * Create effect modifier variables 
 * ---------------------------------------------
+preserve
 use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_HHCensus.dta", clear
+* Number of individuals living in the compound (<10 vs. ≥10)
 gen ncompover10 = (col7 >10) 
-gen n5to14 = col3*/
+* Number of children aged 5-14 years living in the compound (0 vs. ≥1)
+gen n5to14 = (col3>=1 & col3<.)
+
+keep dataid ncompover10 n5to14
+tempfile censvar
+save `censvar'
+restore
+
+merge m:1 dataid using `censvar'
+drop _m
+
+* Percentage of mud floors in household and latrine area (0 vs. ≥1)
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey-main.dta", clear
+
+replace qF2=. if qF2==888
+replace qF5=. if qF5==888
+
+gen dirtfloor = (qF2>1 & qF5>1)
+
+keep dataid dirtfloor
+tempfile dirtfloor
+save `dirtfloor'
+restore
+
+merge m:1 dataid using `dirtfloor'
+drop _m
+
+* Caregiver-reported deworming in last six months
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_DiarrheaDeworming.dta", clear
+gen dw=0
+replace dw=1 if c301==1
+replace dw=. if c301==999
+
+* Caregiver-reported geophagia by child in last week
+ren c305_4 geophagia
+recode geophagia (999=.)
+
+ren childno personid
+
+keep dataid personid dw geophagia
+tempfile dw
+save `dw'
+restore
+
+merge m:1 dataid personid using `dw'
+drop if _m==2
+drop _m
+
+* Whether the child is observed to be wearing shoes
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-fieldtrack.dta", clear
+keep if slide=="1"
+recode shoes (2=0) (99=.)
+
+* Samples from same-day vs. previous-day defecation
+recode defday (2=0)
+
+keep dataid personid shoes defday
+tempfile shoedef
+save `shoedef'
+restore
+
+merge m:1 dataid personid using `shoedef'
+drop _m
 
 *--------------------------------------------
 * Merge in treatment assignment
 *--------------------------------------------
-use `sth', clear
 merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-blind-tr.dta"
 * drop if no KK data
 
 drop if _m==2
 drop _m
 
-order dataid personid block clusterid hhid tr sex dob age* 
+order dataid personid block clusterid tr sex dob age* 
 
 save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
