@@ -11,10 +11,29 @@ preprocess.sth=function(d){
   d=d[d$allsth==1,]
   d$allsth=NULL
   
-  d=d[d$loss2fu==0,]
+  d=d[d$hasoutcome==1,]
   
   return(d)
 }
+
+#----------------------------------------------------
+# function to prepare data for sth analysis in R
+# for IPCW - include cases with missing outcome
+#----------------------------------------------------
+preprocess.sth.ipcw=function(d){
+  
+  # reorder tr labels
+  d$tr=factor(d$tr,levels(d$tr)[c(1,6,5,2,7,3,4)])
+  
+  # set missing values in outcome to 9 for binary outcomes
+  d$al[is.na(d$al)]=9
+  d$hw[is.na(d$hw)]=9
+  d$tt[is.na(d$tt)]=9
+  d$sth[is.na(d$sth)]=9
+  
+  return(d)
+}
+
 
 #----------------------------------------------------
 # function to prepare data for sth adjusted analysis in R
