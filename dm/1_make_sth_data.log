@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- opened on:   3 Dec 2016, 12:17:54
+ opened on:   5 Dec 2016, 09:23:28
 
 . 
 . *********************************************
@@ -599,33 +599,6 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.000007 saved
 (2,847 real changes made)
 
 . 
-. *--------------------------------------------
-. * Merge with baseline covariates
-. *--------------------------------------------
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-data
-> sets/washb-bangladesh-enrol.dta"
-
-    Result                           # of obs.
-    -----------------------------------------
-    not matched                         1,643
-        from master                         0  (_merge==1)
-        from using                      1,643  (_merge==2)
-
-    matched                             7,187  (_merge==3)
-    -----------------------------------------
-
-. 
-. gen month=month(labdate)
-(1,643 missing values generated)
-
-. 
-. * drop if no KK data
-. drop if _m==2
-(1,643 observations deleted)
-
-. drop _m
-
-. 
 . tempfile sth
 
 . save `sth'
@@ -925,7 +898,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000f saved
 
 . 
 . * generate overall loss to fu variable
-. gen loss2fu = (fu_reason==2 | fu_reason==3 | fu_reason==4)
+. gen hasoutcome = (fu_reason==1)
 
 . 
 . drop _m
@@ -1040,12 +1013,39 @@ T1, T2, C1, |
 . drop lb keeppersonid stoolever hhstatus hast1 o1 haso1 flag 
 
 . 
+. 
+. *--------------------------------------------
+. * Merge with baseline covariates
+. *--------------------------------------------
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-data
+> sets/washb-bangladesh-enrol.dta"
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                           361
+        from master                         0  (_merge==1)
+        from using                        361  (_merge==2)
+
+    matched                            10,011  (_merge==3)
+    -----------------------------------------
+
+. 
+. gen month=month(labdate)
+(3,185 missing values generated)
+
+. 
+. * drop if no KK data
+. drop if _m==2
+(361 observations deleted)
+
+. drop _m
+
+. 
 . tempfile sth
 
 . save `sth'
 file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_06678.00000h saved
 
-. 
 . 
 . /* ---------------------------------------------
 > * Create effect modifier variables 
@@ -1096,5 +1096,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm
 > /1_make_sth_data.log
   log type:  text
- closed on:   3 Dec 2016, 12:18:01
+ closed on:   5 Dec 2016, 09:23:30
 --------------------------------------------------------------------------------

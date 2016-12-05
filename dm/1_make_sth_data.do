@@ -267,17 +267,6 @@ gen double agey=(labdate-dob)/365.25
 * fill in missing clusterid
 replace clusterid = substr(dataid,1,3) if clusterid==""
 
-*--------------------------------------------
-* Merge with baseline covariates
-*--------------------------------------------
-merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta"
-
-gen month=month(labdate)
-
-* drop if no KK data
-drop if _m==2
-drop _m
-
 tempfile sth
 save `sth'
 
@@ -405,7 +394,7 @@ replace fu_reason = 4 if labdate==. & fu_reason==1
 drop if fu_reason==9
 
 * generate overall loss to fu variable
-gen loss2fu = (fu_reason==2 | fu_reason==3 | fu_reason==4)
+gen hasoutcome = (fu_reason==1)
 
 drop _m
 
@@ -457,9 +446,20 @@ replace index = 1 if personid=="T1" | personid=="T2"
 
 drop lb keeppersonid stoolever hhstatus hast1 o1 haso1 flag 
 
+
+*--------------------------------------------
+* Merge with baseline covariates
+*--------------------------------------------
+merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta"
+
+gen month=month(labdate)
+
+* drop if no KK data
+drop if _m==2
+drop _m
+
 tempfile sth
 save `sth'
-
 
 /* ---------------------------------------------
 * Create effect modifier variables 
