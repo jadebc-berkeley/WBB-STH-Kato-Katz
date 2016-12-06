@@ -54,34 +54,34 @@ est.sth.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_rr_h1_icpw_j=format.tmle(est.al.h1,family="binomial")$rr
-al_rd_h1_icpw_j=format.tmle(est.al.h1,family="binomial")$rd
+al_rr_h1_ipcw_j=format.tmle(est.al.h1,family="binomial")$rr
+al_rd_h1_ipcw_j=format.tmle(est.al.h1,family="binomial")$rd
 
-hw_rr_h1_icpw_j=format.tmle(est.hw.h1,family="binomial")$rr
-hw_rd_h1_icpw_j=format.tmle(est.hw.h1,family="binomial")$rd
+hw_rr_h1_ipcw_j=format.tmle(est.hw.h1,family="binomial")$rr
+hw_rd_h1_ipcw_j=format.tmle(est.hw.h1,family="binomial")$rd
 
-tt_rr_h1_icpw_j=format.tmle(est.tt.h1,family="binomial")$rr
-tt_rd_h1_icpw_j=format.tmle(est.tt.h1,family="binomial")$rd
+tt_rr_h1_ipcw_j=format.tmle(est.tt.h1,family="binomial")$rr
+tt_rd_h1_ipcw_j=format.tmle(est.tt.h1,family="binomial")$rd
 
-sth_rr_h1_icpw_j=format.tmle(est.sth.h1,family="binomial")$rr
-sth_rd_h1_icpw_j=format.tmle(est.sth.h1,family="binomial")$rd
+sth_rr_h1_ipcw_j=format.tmle(est.sth.h1,family="binomial")$rr
+sth_rd_h1_ipcw_j=format.tmle(est.sth.h1,family="binomial")$rd
 
-rownames(al_rr_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_rr_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_rr_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_rr_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_rr_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_rr_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(sth_rr_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(sth_rr_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-rownames(al_rd_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_rd_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_rd_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_rd_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_rd_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_rd_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(sth_rd_h1_icpw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(sth_rd_h1_ipcw_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
   
 #----------------------------------------------
@@ -110,27 +110,27 @@ est.sth.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
    family="binomial",contrast=c(x,"WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_rr_h2_icpw_j=format.tmle(est.al.h2,family="binomial")$rr
-al_rd_h2_icpw_j=format.tmle(est.al.h2,family="binomial")$rd
+al_rr_h2_ipcw_j=format.tmle(est.al.h2,family="binomial")$rr
+al_rd_h2_ipcw_j=format.tmle(est.al.h2,family="binomial")$rd
 
-hw_rr_h2_icpw_j=format.tmle(est.hw.h2,family="binomial")$rr
-hw_rd_h2_icpw_j=format.tmle(est.hw.h2,family="binomial")$rd
+hw_rr_h2_ipcw_j=format.tmle(est.hw.h2,family="binomial")$rr
+hw_rd_h2_ipcw_j=format.tmle(est.hw.h2,family="binomial")$rd
 
-tt_rr_h2_icpw_j=format.tmle(est.tt.h2,family="binomial")$rr
-tt_rd_h2_icpw_j=format.tmle(est.tt.h2,family="binomial")$rd
+tt_rr_h2_ipcw_j=format.tmle(est.tt.h2,family="binomial")$rr
+tt_rd_h2_ipcw_j=format.tmle(est.tt.h2,family="binomial")$rd
 
-sth_rr_h2_icpw_j=format.tmle(est.sth.h2,family="binomial")$rr
-sth_rd_h2_icpw_j=format.tmle(est.sth.h2,family="binomial")$rd
+sth_rr_h2_ipcw_j=format.tmle(est.sth.h2,family="binomial")$rr
+sth_rd_h2_ipcw_j=format.tmle(est.sth.h2,family="binomial")$rd
 
-rownames(al_rr_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(hw_rr_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(tt_rr_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(sth_rr_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(al_rr_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(hw_rr_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(tt_rr_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(sth_rr_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 
-rownames(al_rd_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(hw_rd_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(tt_rd_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(sth_rd_h2_icpw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(al_rd_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(hw_rd_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(tt_rd_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(sth_rd_h2_ipcw_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 
 #----------------------------------------------
 # H3: Unadjusted prevalence ratios; combined WSH Nvs. 
@@ -158,40 +158,40 @@ est.sth.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$sth,tr=dW$tr,
    family="binomial",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_rr_h3_icpw_j=format.tmle(est.al.h3,family="binomial")$rr
-al_rd_h3_icpw_j=format.tmle(est.al.h3,family="binomial")$rd
+al_rr_h3_ipcw_j=format.tmle(est.al.h3,family="binomial")$rr
+al_rd_h3_ipcw_j=format.tmle(est.al.h3,family="binomial")$rd
 
-hw_rr_h3_icpw_j=format.tmle(est.hw.h3,family="binomial")$rr
-hw_rd_h3_icpw_j=format.tmle(est.hw.h3,family="binomial")$rd
+hw_rr_h3_ipcw_j=format.tmle(est.hw.h3,family="binomial")$rr
+hw_rd_h3_ipcw_j=format.tmle(est.hw.h3,family="binomial")$rd
 
-tt_rr_h3_icpw_j=format.tmle(est.tt.h3,family="binomial")$rr
-tt_rd_h3_icpw_j=format.tmle(est.tt.h3,family="binomial")$rd
+tt_rr_h3_ipcw_j=format.tmle(est.tt.h3,family="binomial")$rr
+tt_rd_h3_ipcw_j=format.tmle(est.tt.h3,family="binomial")$rd
 
-sth_rr_h3_icpw_j=format.tmle(est.sth.h3,family="binomial")$rr
-sth_rd_h3_icpw_j=format.tmle(est.sth.h3,family="binomial")$rd
+sth_rr_h3_ipcw_j=format.tmle(est.sth.h3,family="binomial")$rr
+sth_rd_h3_ipcw_j=format.tmle(est.sth.h3,family="binomial")$rd
 
-rownames(al_rr_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(hw_rr_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(tt_rr_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(sth_rr_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(al_rr_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(hw_rr_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(tt_rr_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(sth_rr_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 
-rownames(al_rd_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(hw_rd_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(tt_rd_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
-rownames(sth_rd_h3_icpw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(al_rd_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(hw_rd_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(tt_rd_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
+rownames(sth_rd_h3_ipcw_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 
 #----------------------------------------------
 # save objects
 #----------------------------------------------
 
-save(al_rr_h1_icpw_j,hw_rr_h1_icpw_j,tt_rr_h1_icpw_j,sth_rr_h1_icpw_j,
-     al_rd_h1_icpw_j,hw_rd_h1_icpw_j,tt_rd_h1_icpw_j,sth_rd_h1_icpw_j,
+save(al_rr_h1_ipcw_j,hw_rr_h1_ipcw_j,tt_rr_h1_ipcw_j,sth_rr_h1_ipcw_j,
+     al_rd_h1_ipcw_j,hw_rd_h1_ipcw_j,tt_rd_h1_ipcw_j,sth_rd_h1_ipcw_j,
 
-     al_rr_h2_icpw_j,hw_rr_h2_icpw_j,tt_rr_h2_icpw_j,sth_rr_h2_icpw_j,
-     al_rd_h2_icpw_j,hw_rd_h2_icpw_j,tt_rd_h2_icpw_j,sth_rd_h2_icpw_j,
+     al_rr_h2_ipcw_j,hw_rr_h2_ipcw_j,tt_rr_h2_ipcw_j,sth_rr_h2_ipcw_j,
+     al_rd_h2_ipcw_j,hw_rd_h2_ipcw_j,tt_rd_h2_ipcw_j,sth_rd_h2_ipcw_j,
 
-     al_rr_h3_icpw_j,hw_rr_h3_icpw_j,tt_rr_h3_icpw_j,sth_rr_h3_icpw_j,
-     al_rd_h3_icpw_j,hw_rd_h3_icpw_j,tt_rd_h3_icpw_j,sth_rd_h3_icpw_j,
+     al_rr_h3_ipcw_j,hw_rr_h3_ipcw_j,tt_rr_h3_ipcw_j,sth_rr_h3_ipcw_j,
+     al_rd_h3_ipcw_j,hw_rd_h3_ipcw_j,tt_rd_h3_ipcw_j,sth_rd_h3_ipcw_j,
      
      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_ipcw.RData")
 
