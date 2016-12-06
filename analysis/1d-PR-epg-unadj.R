@@ -31,10 +31,10 @@ glm.bin.al.h1=lapply(trlist ,function(x) washb_glm(Y=df$alepg,tr=df$tr,pair=df$b
      family=gaussian, pval=0.2, print=TRUE))
 
 
-epg.al.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$alepg,tr=df$tr,
+epg.al.h1=washb_tmle(Y=df$alepg,tr=df$tr,FECR="geometric",
      pair=df$block, id=df$block,
-     family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
-     g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
+     family="gaussian",contrast=c("Control","Water"),Q.SL.library=SL.library,
+     g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE)
 
 ### START HERE
 
