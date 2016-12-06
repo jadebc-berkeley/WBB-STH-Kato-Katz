@@ -22,6 +22,9 @@ preprocess.sth=function(d){
 #----------------------------------------------------
 preprocess.sth.ipcw=function(d){
   
+  # order data
+  d=d[order(d$block,d$clusterid,d$dataid,d$personid),]
+  
   # reorder tr labels
   d$tr=factor(d$tr,levels(d$tr)[c(1,6,5,2,7,3,4)])
   
