@@ -29,7 +29,11 @@ preprocess.sth.ipcw=function(d){
   d$al[is.na(d$al)]=9
   d$hw[is.na(d$hw)]=9
   d$tt[is.na(d$tt)]=9
-  d$sth[is.na(d$sth)]=9
+  d$sthmh[is.na(d$sthmh)]=9
+  d$almh[is.na(d$almh)]=9
+  d$hwmh[is.na(d$hwmh)]=9
+  d$ttmh[is.na(d$ttmh)]=9
+  d$sthmh[is.na(d$sthmh)]=9
   
   return(d)
 }
