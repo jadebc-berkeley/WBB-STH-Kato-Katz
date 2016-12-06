@@ -26,38 +26,36 @@ trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
 # Poisson regression for RRs
-glm.bin.al.h1=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.al.h1=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RD"))
 
-glm.bin.hw.h1=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.hw.h1=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c("Control",x))
 
-glm.bin.tt.h1=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.tt.h1=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),
+       print=TRUE))
 
-glm.bin.sth.h1=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.sth.h1=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),
+       print=TRUE))
 
 # Linear regression for RDs
-glm.gau.al.h1=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.al.h1=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),
+     family="gaussian",  print=TRUE))
 
-glm.gau.hw.h1=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.hw.h1=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),
+     family="gaussian",  print=TRUE))
 
-glm.gau.tt.h1=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.tt.h1=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),
+     family="gaussian",  print=TRUE))
 
-glm.gau.sth.h1=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c("Control",x),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.sth.h1=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),
+     family="gaussian",  print=TRUE))
 
 al_rr_h1_unadj_j=glm.bin.al.h1[[1]]$TR
 hw_rr_h1_unadj_j=glm.bin.hw.h1[[1]]$TR
@@ -107,38 +105,38 @@ rownames(sth_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 trlist=c("Water","Sanitation","Handwashing")
 
 # Poisson regression for RRs
-glm.bin.al.h2=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.al.h2=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+       print=TRUE))
 
-glm.bin.hw.h2=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.hw.h2=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+       print=TRUE))
 
-glm.bin.tt.h2=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.tt.h2=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+       print=TRUE))
 
-glm.bin.sth.h2=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.sth.h2=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+       print=TRUE))
 
 # Linear regression for RDs
-glm.gau.al.h2=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.al.h2=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+     family="gaussian",  print=TRUE))
 
-glm.gau.hw.h2=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.hw.h2=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+     family="gaussian",  print=TRUE))
 
-glm.gau.tt.h2=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.tt.h2=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+     family="gaussian",  print=TRUE))
 
-glm.gau.sth.h2=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.sth.h2=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),
+     family="gaussian",  print=TRUE))
 
 al_rr_h2_unadj_j=glm.bin.al.h2[[1]]$TR
 hw_rr_h2_unadj_j=glm.bin.hw.h2[[1]]$TR
@@ -179,38 +177,38 @@ rownames(sth_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwas
 trlist=c("WSH","Nutrition")
 
 # Poisson regression for RRs
-glm.bin.al.h3=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.al.h3=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+       print=TRUE))
 
-glm.bin.hw.h3=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.hw.h3=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+       print=TRUE))
 
-glm.bin.tt.h3=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.tt.h3=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+       print=TRUE))
 
-glm.bin.sth.h3=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family=poisson(link='log'), pval=0.2, print=TRUE))
+glm.bin.sth.h3=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+       print=TRUE))
 
 # Linear regression for RDs
-glm.gau.al.h3=lapply(trlist ,function(x) washb_glm(Y=df$al,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.al.h3=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+     family="gaussian",  print=TRUE))
 
-glm.gau.hw.h3=lapply(trlist ,function(x) washb_glm(Y=df$hw,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.hw.h3=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+     family="gaussian",  print=TRUE))
 
-glm.gau.tt.h3=lapply(trlist ,function(x) washb_glm(Y=df$tt,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.tt.h3=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+     family="gaussian",  print=TRUE))
 
-glm.gau.sth.h3=lapply(trlist ,function(x) washb_glm(Y=df$sth,tr=df$tr,pair=df$block,
-     id=df$clusterid,contrast=c(x,"Nutrition + WSH"),
-     family="gaussian", pval=0.2, print=TRUE))
+glm.gau.sth.h3=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),
+     family="gaussian",  print=TRUE))
 
 
 al_rr_h3_unadj_j=rbind(glm.bin.al.h3[[1]]$TR,glm.bin.al.h3[[2]]$TR)
