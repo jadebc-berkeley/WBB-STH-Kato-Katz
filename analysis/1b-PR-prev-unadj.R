@@ -26,58 +26,31 @@ trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
 # Poisson regression for RRs
-glm.bin.al.h1=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),measure="RD"))
+al_rr_h1_unadj_j=t(apply(matrix(trlist), 1,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RR")))
 
-glm.bin.hw.h1=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
-     contrast=c("Control",x))
+hw_rr_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RR")))
 
-glm.bin.tt.h1=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),
-       print=TRUE))
+tt_rr_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RR")))
 
-glm.bin.sth.h1=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),
-       print=TRUE))
+sth_rr_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RR")))
 
 # Linear regression for RDs
-glm.gau.al.h1=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),
-     family="gaussian",  print=TRUE))
+al_rd_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RD")))
 
-glm.gau.hw.h1=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),
-     family="gaussian",  print=TRUE))
+hw_rd_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RD")))
 
-glm.gau.tt.h1=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),
-     family="gaussian",  print=TRUE))
+tt_rd_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RD")))
 
-glm.gau.sth.h1=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
-     contrast=c("Control",x),
-     family="gaussian",  print=TRUE))
+sth_rd_h1_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c("Control",x),measure="RD")))
 
-al_rr_h1_unadj_j=glm.bin.al.h1[[1]]$TR
-hw_rr_h1_unadj_j=glm.bin.hw.h1[[1]]$TR
-tt_rr_h1_unadj_j=glm.bin.tt.h1[[1]]$TR
-sth_rr_h1_unadj_j=glm.bin.sth.h1[[1]]$TR
-for(i in 2:6){
-  al_rr_h1_unadj_j=rbind(al_rr_h1_unadj_j,glm.bin.al.h1[[i]]$TR)
-  hw_rr_h1_unadj_j=rbind(hw_rr_h1_unadj_j,glm.bin.hw.h1[[i]]$TR)
-  tt_rr_h1_unadj_j=rbind(tt_rr_h1_unadj_j,glm.bin.tt.h1[[i]]$TR)
-  sth_rr_h1_unadj_j=rbind(sth_rr_h1_unadj_j,glm.bin.sth.h1[[i]]$TR)
-}
-
-al_rd_h1_unadj_j=glm.gau.al.h1[[1]]$TR
-hw_rd_h1_unadj_j=glm.gau.hw.h1[[1]]$TR
-tt_rd_h1_unadj_j=glm.gau.tt.h1[[1]]$TR
-sth_rd_h1_unadj_j=glm.gau.sth.h1[[1]]$TR
-for(i in 2:6){
-  al_rd_h1_unadj_j=rbind(al_rd_h1_unadj_j,glm.gau.al.h1[[i]]$TR)
-  hw_rd_h1_unadj_j=rbind(hw_rd_h1_unadj_j,glm.gau.hw.h1[[i]]$TR)
-  tt_rd_h1_unadj_j=rbind(tt_rd_h1_unadj_j,glm.gau.tt.h1[[i]]$TR)
-  sth_rd_h1_unadj_j=rbind(sth_rd_h1_unadj_j,glm.gau.sth.h1[[i]]$TR)
-}
 
 rownames(al_rr_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
@@ -105,60 +78,30 @@ rownames(sth_rd_h1_unadj_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 trlist=c("Water","Sanitation","Handwashing")
 
 # Poisson regression for RRs
-glm.bin.al.h2=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-       print=TRUE))
+al_rr_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RR")))
 
-glm.bin.hw.h2=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-       print=TRUE))
+hw_rr_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RR")))
 
-glm.bin.tt.h2=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-       print=TRUE))
+tt_rr_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RR")))
 
-glm.bin.sth.h2=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-       print=TRUE))
+sth_rr_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RR")))
 
 # Linear regression for RDs
-glm.gau.al.h2=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-     family="gaussian",  print=TRUE))
+al_rd_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RD")))
 
-glm.gau.hw.h2=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-     family="gaussian",  print=TRUE))
+hw_rd_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RD")))
 
-glm.gau.tt.h2=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-     family="gaussian",  print=TRUE))
+tt_rd_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RD")))
 
-glm.gau.sth.h2=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
-     contrast=c(x,"WSH"),
-     family="gaussian",  print=TRUE))
-
-al_rr_h2_unadj_j=glm.bin.al.h2[[1]]$TR
-hw_rr_h2_unadj_j=glm.bin.hw.h2[[1]]$TR
-tt_rr_h2_unadj_j=glm.bin.tt.h2[[1]]$TR
-sth_rr_h2_unadj_j=glm.bin.sth.h2[[1]]$TR
-for(i in 2:3){
-  al_rr_h2_unadj_j=rbind(al_rr_h2_unadj_j,glm.bin.al.h2[[i]]$TR)
-  hw_rr_h2_unadj_j=rbind(hw_rr_h2_unadj_j,glm.bin.hw.h2[[i]]$TR)
-  tt_rr_h2_unadj_j=rbind(tt_rr_h2_unadj_j,glm.bin.tt.h2[[i]]$TR)
-  sth_rr_h2_unadj_j=rbind(sth_rr_h2_unadj_j,glm.bin.sth.h2[[i]]$TR)
-}
-
-al_rd_h2_unadj_j=glm.gau.al.h2[[1]]$TR
-hw_rd_h2_unadj_j=glm.gau.hw.h2[[1]]$TR
-tt_rd_h2_unadj_j=glm.gau.tt.h2[[1]]$TR
-sth_rd_h2_unadj_j=glm.gau.sth.h2[[1]]$TR
-for(i in 2:3){
-  al_rd_h2_unadj_j=rbind(al_rd_h2_unadj_j,glm.gau.al.h2[[i]]$TR)
-  hw_rd_h2_unadj_j=rbind(hw_rd_h2_unadj_j,glm.gau.hw.h2[[i]]$TR)
-  tt_rd_h2_unadj_j=rbind(tt_rd_h2_unadj_j,glm.gau.tt.h2[[i]]$TR)
-  sth_rd_h2_unadj_j=rbind(sth_rd_h2_unadj_j,glm.gau.sth.h2[[i]]$TR)
-}
+sth_rd_h2_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"WSH"),measure="RD")))
 
 rownames(al_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 rownames(hw_rr_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
@@ -177,49 +120,30 @@ rownames(sth_rd_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwas
 trlist=c("WSH","Nutrition")
 
 # Poisson regression for RRs
-glm.bin.al.h3=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-       print=TRUE))
+al_rr_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RR")))
 
-glm.bin.hw.h3=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-       print=TRUE))
+hw_rr_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RR")))
 
-glm.bin.tt.h3=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-       print=TRUE))
+tt_rr_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RR")))
 
-glm.bin.sth.h3=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-       print=TRUE))
+sth_rr_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RR")))
 
 # Linear regression for RDs
-glm.gau.al.h3=lapply(trlist ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-     family="gaussian",  print=TRUE))
+al_rd_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$al,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RD")))
 
-glm.gau.hw.h3=lapply(trlist ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-     family="gaussian",  print=TRUE))
+hw_rd_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$hw,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RD")))
 
-glm.gau.tt.h3=lapply(trlist ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-     family="gaussian",  print=TRUE))
+tt_rd_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$tt,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RD")))
 
-glm.gau.sth.h3=lapply(trlist ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
-     contrast=c(x,"Nutrition + WSH"),
-     family="gaussian",  print=TRUE))
-
-
-al_rr_h3_unadj_j=rbind(glm.bin.al.h3[[1]]$TR,glm.bin.al.h3[[2]]$TR)
-hw_rr_h3_unadj_j=rbind(glm.bin.hw.h3[[1]]$TR,glm.bin.hw.h3[[2]]$TR)
-tt_rr_h3_unadj_j=rbind(glm.bin.tt.h3[[1]]$TR,glm.bin.tt.h3[[2]]$TR)
-sth_rr_h3_unadj_j=rbind(glm.bin.sth.h3[[1]]$TR,glm.bin.sth.h3[[2]]$TR)
-
-al_rd_h3_unadj_j=rbind(glm.gau.al.h3[[1]]$TR,glm.gau.al.h3[[2]]$TR)
-hw_rd_h3_unadj_j=rbind(glm.gau.hw.h3[[1]]$TR,glm.gau.hw.h3[[2]]$TR)
-tt_rd_h3_unadj_j=rbind(glm.gau.tt.h3[[1]]$TR,glm.gau.tt.h3[[2]]$TR)
-sth_rd_h3_unadj_j=rbind(glm.gau.sth.h3[[1]]$TR,glm.gau.sth.h3[[2]]$TR)
+sth_rd_h3_unadj_j=t(apply(matrix(trlist),1 ,function(x) washb_mh(Y=df$sth,tr=df$tr,strat=df$block,
+     contrast=c(x,"Nutrition + WSH"),measure="RD")))
 
 rownames(al_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 rownames(hw_rr_h3_unadj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
