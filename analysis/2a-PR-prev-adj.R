@@ -3,6 +3,7 @@
 # Primary outcome analysis  
 
 # STH adjusted analysis
+# Binary STH outcomes
 
 # by Jade
 ##############################################

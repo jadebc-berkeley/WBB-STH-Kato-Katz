@@ -135,3 +135,24 @@ format.tmle=function(out,family){
   return(list(rd=rd.res))
   
 }
+
+
+#----------------------------------------------------
+# Format TMLEE EPG results
+#----------------------------------------------------
+format.epg.tmle=function(out){
+
+  rr.res=matrix(NA,length(out),4)
+  for(i in 1:length(out)){
+    rr.res[i,1]=out[[i]]$estimates$FECR$psi
+    rr.res[i,2]=out[[i]]$estimates$FECR$CI[1]
+    rr.res[i,3]=out[[i]]$estimates$FECR$CI[2]
+    rr.res[i,4]=out[[i]]$estimates$FECR$pvalue
+  }
+  
+  rr.res=as.data.frame(rr.res)
+  colnames(rr.res)=c("rr","lb","ub","p-value")  
+
+  return(rr.res)
+  
+}
