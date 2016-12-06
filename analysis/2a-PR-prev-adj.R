@@ -26,8 +26,6 @@ W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","mo
 
 dW=d[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 
-# floor, elec, walls integer
-
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
