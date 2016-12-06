@@ -44,6 +44,8 @@ preprocess.sth.ipcw=function(d){
 #----------------------------------------------------
 preprocess.adj.sth=function(d){
   
+  d=d[order(d$block,d$clusterid,d$dataid,d$personid),]
+  
   # reorder tr labels
   d$month=as.factor(d$month)
   d$block=as.factor(d$block)

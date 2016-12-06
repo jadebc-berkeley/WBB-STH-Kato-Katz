@@ -11,7 +11,7 @@ library(devtools)
 library(washb)
 
 rm(list=ls())
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
+data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
 source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
 
 d=preprocess.sth(data)
@@ -25,6 +25,8 @@ W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","mo
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
 dW=d[,c("block","tr","clusterid","sth","al","hw","tt",W)]
+
+# floor, elec, walls integer
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
