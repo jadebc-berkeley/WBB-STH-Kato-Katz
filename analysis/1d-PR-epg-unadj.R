@@ -135,13 +135,13 @@ est.tt.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$ttepg,tr=dW$tr
    family="gaussian",contrast=c(x,"WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_fecr_ari_h2_unadj_j=format.epg.tmle(est.al.h2.geo)
-hw_fecr_ari_h2_unadj_j=format.epg.tmle(est.hw.h2.geo)
-tt_fecr_ari_h2_unadj_j=format.epg.tmle(est.tt.h2.geo)
+al_fecr_geo_h2_unadj_j=format.epg.tmle(est.al.h2.geo)
+hw_fecr_geo_h2_unadj_j=format.epg.tmle(est.hw.h2.geo)
+tt_fecr_geo_h2_unadj_j=format.epg.tmle(est.tt.h2.geo)
 
-rownames(al_fecr_ari_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(hw_fecr_ari_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
-rownames(tt_fecr_ari_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(al_fecr_geo_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(hw_fecr_geo_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
+rownames(tt_fecr_geo_h2_unadj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 
 #----------------------------------------------
 # H3: Unadjusted prevalence ratios; combined WSH Nvs. 
