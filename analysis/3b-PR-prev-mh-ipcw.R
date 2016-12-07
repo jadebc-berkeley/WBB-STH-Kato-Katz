@@ -2,7 +2,7 @@
 # WASH Benefits Bangladesh STH Kato-Katz Study
 # Primary outcome analysis  
 
-# STH adjusted analysis
+# STH IPCW analysis
 # Moderate heavy infection
 
 # by Jade
