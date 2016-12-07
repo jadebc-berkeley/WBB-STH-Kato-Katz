@@ -546,5 +546,6 @@ order dataid personid block clusterid tr sex dob age*
 save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma
+outsheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace comma
 
 log close
