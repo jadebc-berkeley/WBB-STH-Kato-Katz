@@ -38,6 +38,14 @@ preprocess.sth.ipcw=function(d){
   d$ttmh[is.na(d$ttmh)]=9
   d$sthmh[is.na(d$sthmh)]=9
   
+  d$logalepg[d$hasoutcome==0]=99
+  d$loghwepg[d$hasoutcome==0]=99
+  d$logttepg[d$hasoutcome==0]=99
+
+  d$alepg[d$hasoutcome==0]=99999
+  d$hwepg[d$hasoutcome==0]=99999
+  d$ttepg[d$hasoutcome==0]=99999
+  
   return(d)
 }
 

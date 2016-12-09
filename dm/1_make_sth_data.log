@@ -1,9 +1,9 @@
-----------------------------------------------------------------------
+--------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/
-> src/sth/dm/1_make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/banglades
+> h/src/sth/dm/1_make_sth_data.log
   log type:  text
- opened on:   9 Dec 2016, 10:20:29
+ opened on:   9 Dec 2016, 12:34:42
 
 . 
 . *********************************************
@@ -23,8 +23,8 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/4-WASHB-P-sckk.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/4-WASHB-P-sckk.dta", clear
 
 . 
 . * drop spillover children
@@ -55,8 +55,8 @@ originalHW: all characters numeric; replaced as int
 
 . 
 . * convert long to wide for duplicate slides
-. keep dataid labdate personid slide originalAL originalTT originalHW 
-> counter
+. keep dataid labdate personid slide originalAL originalTT originalH
+> W counter
 
 . ren originalAL al
 
@@ -78,8 +78,8 @@ slide: all characters numeric; replaced as byte
 (note: j = 1 2)
 
 Data                               long   ->   wide
-----------------------------------------------------------------------
-> -------
+--------------------------------------------------------------------
+> ---------
 Number of obs.                    14374   ->    7187
 Number of variables                   8   ->      11
 j variable (2 values)             slide   ->   (dropped)
@@ -88,8 +88,8 @@ xij variables:
                                      hw   ->   hw1 hw2
                                      tt   ->   tt1 tt2
                                 counter   ->   counter1 counter2
-----------------------------------------------------------------------
-> -------
+--------------------------------------------------------------------
+> ---------
 
 . 
 . * counter 
@@ -100,32 +100,32 @@ xij variables:
 . gen counter = .
 (7,187 missing values generated)
 
-. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter
-> 1=="RK" & counter2=="HKC") 
+. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (count
+> er1=="RK" & counter2=="HKC") 
 (593 real changes made)
 
-. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counte
-> r1=="MHR" & counter2=="HKC") 
+. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (coun
+> ter1=="MHR" & counter2=="HKC") 
 (863 real changes made)
 
-. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counte
-> r1=="SNJ" & counter2=="HKC") 
+. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (coun
+> ter1=="SNJ" & counter2=="HKC") 
 (1,296 real changes made)
 
-. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter
-> 1=="RK" & counter2=="MHR") 
+. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (count
+> er1=="RK" & counter2=="MHR") 
 (1,865 real changes made)
 
-. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counte
-> r1=="SNJ" & counter2=="MHR") 
+. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (coun
+> ter1=="SNJ" & counter2=="MHR") 
 (1,254 real changes made)
 
-. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter
-> 1=="SNJ" & counter2=="RK") 
+. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (count
+> er1=="SNJ" & counter2=="RK") 
 (1,315 real changes made)
 
-. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1
-> =="RK" & counter2=="RK") 
+. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counte
+> r1=="RK" & counter2=="RK") 
 (1 real change made)
 
 . 
@@ -222,8 +222,8 @@ xij variables:
 (0 real changes made)
 
 . 
-. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate int
-> ensity" 3 "High intensity"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate i
+> ntensity" 3 "High intensity"
 
 . label values alint ttint hwint intl
 
@@ -257,8 +257,8 @@ xij variables:
 . 
 . gen sthmh=0
 
-. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint
-> ==2 | ttint==3
+. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | tti
+> nt==2 | ttint==3
 (349 real changes made)
 
 . replace sthmh=. if alint==. & ttint==. & hwint==.
@@ -301,8 +301,8 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000001 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> 1 saved
 
 . 
 . * ---------------------------------------------
@@ -311,8 +311,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000001
 . * If data available from primary analysis dataset, 
 . * use that. If not, use PSTH dataset. 
 . * ---------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wash
-> b-bangladesh-diar.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wa
+> shb-bangladesh-diar.dta", clear
 (Bangladesh diarrhea dataset, created by 3-bangladesh-dm-diar.do)
 
 . keep dataid childid clusterid sex dob 
@@ -328,17 +328,17 @@ Duplicates in terms of all variables
 . tempfile primdob
 
 . save `primdob'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000002 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> 2 saved
 
 . 
 . * merge in birth order for T1 from anthro dataset
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wash
-> b-bangladesh-anthro.dta", clear
-(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-dm
-> -anthro.do)
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wa
+> shb-bangladesh-anthro.dta", clear
+(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-
+> dm-anthro.do)
 
 . keep dataid childid clusterid birthord
 
@@ -353,8 +353,8 @@ Duplicates in terms of all variables
 . tempfile primbirthord
 
 . save `primbirthord'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000004 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> 4 saved
 
 . restore
 
@@ -375,8 +375,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000004
 . 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/WASHB-PSTH-Day1survey_STHCohort.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/WASHB-PSTH-Day1survey_STHCohort.dta", clear
 
 . ren col1 persondesc
 
@@ -483,15 +483,16 @@ year: all characters numeric; replaced as int
 
 . codebook sex
 
-----------------------------------------------------------------------
-sex_psth                                                           Sex
-----------------------------------------------------------------------
+--------------------------------------------------------------------
+sex_psth                                                         Sex
+--------------------------------------------------------------------
 
                   type:  numeric (byte)
                  label:  sexl
 
                  range:  [0,1]                        units:  1
-         unique values:  2                        missing .:  0/11,970
+         unique values:  2                        missing .:  0/11,9
+> 70
 
             tabulation:  Freq.   Numeric  Label
                          7,710         0  Female
@@ -511,8 +512,8 @@ sex_psth                                                           Sex
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000006 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> 6 saved
 
 . restore
 
@@ -540,16 +541,16 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000006
 . keep if keep==1
 (5,373 observations deleted)
 
-. replace personid="C1" if personid=="C1" | personid=="C2" | personid=
-> ="C3" | personid=="C4" 
+. replace personid="C1" if personid=="C1" | personid=="C2" | personi
+> d=="C3" | personid=="C4" 
 (67 real changes made)
 
 . 
 . tempfile agesex2
 
 . save `agesex2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000007 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> 7 saved
 
 . 
 . * merge primary analysis dob with sth dataset to identify
@@ -581,8 +582,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000007
 
 . 
 . * use psth dob if primary dob not available for T1 T2
-. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" 
-> | personid=="C1")
+. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2
+> " | personid=="C1")
 (8 real changes made)
 
 . replace dob = dob_psth if  personid=="O1" 
@@ -592,8 +593,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000007
 
 . 
 . * use psth sex if primary sex not available for T1 T2
-. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" 
-> | personid=="C1")
+. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2
+> " | personid=="C1")
 (8 real changes made)
 
 . replace sex = sex_psth if personid=="O1" 
@@ -603,8 +604,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000007
 
 . 
 . * use psth birth order if primary dob not available for T1 T2
-. replace birthord = birthorder_psth if birthord==. & (personid=="T1" 
-> | personid=="T2" | personid=="C1")
+. replace birthord = birthorder_psth if birthord==. & (personid=="T1
+> " | personid=="T2" | personid=="C1")
 (562 real changes made)
 
 . replace birthord = birthorder_psth if  personid=="O1" 
@@ -630,16 +631,16 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000007
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000008 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> 8 saved
 
 . 
 . *--------------------------------------------
 . * Impute households lost to FU that had live births
 . * after baseline
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wash
-> b-bangladesh-track-compound.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/wa
+> shb-bangladesh-track-compound.dta", clear
 (WASH Benefits Bangladesh tracking file, compounds)
 
 . gen lb = 1
@@ -653,8 +654,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000008
 . * impute T1 and T2 from baseline list of twins
 . preserve 
 
-. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline sur
-> vey info/Twin Child list.xlsx", clear firstrow
+. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline s
+> urvey info/Twin Child list.xlsx", clear firstrow
 
 . gen newdataid=string(dataid,"%05.0f")
 
@@ -669,8 +670,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.000008
 . tempfile t1t2
 
 . save `t1t2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000a 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> a saved
 
 . restore
 
@@ -706,8 +707,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000a
 . tempfile c1
 
 . save `c1'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000c 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> c saved
 
 . restore
 
@@ -737,8 +738,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000c
 . drop newrow hasc1 _m
 
 . 
-. * drop the two ids that are in C1 but not in the main study tracking
->  file
+. * drop the two ids that are in C1 but not in the main study tracki
+> ng file
 . drop if personid==""
 (2 observations deleted)
 
@@ -746,15 +747,15 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000c
 . tempfile lb
 
 . save `lb'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000d 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> d saved
 
 . 
 . *--------------------------------------------
 . * Impute individuals lost to FU at PSTH round
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/5-WASHB-P-sckk-fieldtrack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/5-WASHB-P-sckk-fieldtrack.dta", clear
 
 . keep dataid personid stoolever hhstatus
 
@@ -766,8 +767,8 @@ Duplicates in terms of all variables
 (7,187 observations deleted)
 
 . 
-. * for the rows with hhstatus!=E, there is one row per possible perso
-> nid
+. * for the rows with hhstatus!=E, there is one row per possible per
+> sonid
 . * need to delete the irrelevant ones
 . gen keeppersonid=0
 
@@ -850,8 +851,8 @@ Duplicates in terms of all variables
 . tempfile fustool
 
 . save `fustool'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000e 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> e saved
 
 . 
 . use `lb', clear
@@ -889,8 +890,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000e
 (128 real changes made)
 
 . 
-. label define fu_reasonl 1 "In STH sample" 2 "Loss to FU" 3 "No stool
-> " 4 "No KK" 9 "Excluded from PSTH"
+. label define fu_reasonl 1 "In STH sample" 2 "Loss to FU" 3 "No sto
+> ol" 4 "No KK" 9 "Excluded from PSTH"
 
 . label values fu_reason fu_reasonl
 
@@ -906,8 +907,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000e
 . tempfile allfu
 
 . save `allfu'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000f 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> f saved
 
 . 
 . use `sth', clear
@@ -981,12 +982,13 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000f
 (0 real changes made)
 
 . 
-. * Impute O1 - second, only keep O1s for the proportion of compounds
+. * Impute O1 - second, only keep O1s for the proportion of compound
+> s
 . * not lost to FU at endline that had O1s 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/5-WASHB-P-sckk-fieldtrack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/5-WASHB-P-sckk-fieldtrack.dta", clear
 
 . drop if slide=="2"
 (7,187 observations deleted)
@@ -1012,7 +1014,8 @@ T1, T2, C1, |
 . restore
 
 . 
-. * keep the imputed O1s for random subset of 1088 *0.77=835 children
+. * keep the imputed O1s for random subset of 1088 *0.77=835 childre
+> n
 . set seed 12345
 
 . gen rand = runiform()
@@ -1055,8 +1058,8 @@ T1, T2, C1, |
 . *--------------------------------------------
 . * Merge with baseline covariates
 . *--------------------------------------------
-. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-ou
-> tcome-datasets/washb-bangladesh-enrol.dta"
+. merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-
+> outcome-datasets/washb-bangladesh-enrol.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -1084,14 +1087,14 @@ T1, T2, C1, |
 . * ---------------------------------------------
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/WASHB-PSTH-Day1survey_HHCensus.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/WASHB-PSTH-Day1survey_HHCensus.dta", clear
 
 . * Number of individuals living in the compound (<10 vs. ≥10)
 . gen ncompover10 = (col7 >10) 
 
-. * Number of children aged 5-14 years living in the compound (0 vs. ≥
-> 1)
+. * Number of children aged 5-14 years living in the compound (0 vs.
+>  ≥1)
 . gen n5to14 = (col3>=1 & col3<.)
 
 . 
@@ -1100,8 +1103,8 @@ T1, T2, C1, |
 . tempfile censvar
 
 . save `censvar'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000i 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> i saved
 
 . restore
 
@@ -1120,11 +1123,12 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000i
 . drop _m
 
 . 
-. * Percentage of mud floors in household and latrine area (0 vs. ≥1)
+. * Percentage of mud floors in household and latrine area (0 vs. ≥1
+> )
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/WASHB-PSTH-Day1survey-main.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/WASHB-PSTH-Day1survey-main.dta", clear
 
 . 
 . replace qF2=. if qF2==888
@@ -1142,8 +1146,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000i
 . tempfile dirtfloor
 
 . save `dirtfloor'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000k 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> k saved
 
 . restore
 
@@ -1165,8 +1169,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000k
 . * Caregiver-reported deworming in last six months
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/WASHB-PSTH-Day1survey_DiarrheaDeworming.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/WASHB-PSTH-Day1survey_DiarrheaDeworming.dta", clear
 
 . gen dw=0
 
@@ -1192,8 +1196,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000k
 . tempfile dw
 
 . save `dw'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000m 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> m saved
 
 . restore
 
@@ -1220,8 +1224,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000m
 . * Whether the child is observed to be wearing shoes
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-kat
-> z/5-WASHB-P-sckk-fieldtrack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-k
+> atz/5-WASHB-P-sckk-fieldtrack.dta", clear
 
 . keep if slide=="1"
 (14,500 observations deleted)
@@ -1240,8 +1244,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000m
 . tempfile shoedef
 
 . save `shoedef'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000o 
-> saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> o saved
 
 . restore
 
@@ -1263,10 +1267,10 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000o
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary
-> -outcome-datasets/washb-bangladesh-blind-tr.dta"
-(note: variable block was byte, now long to accommodate using data's
-       values)
+. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-prima
+> ry-outcome-datasets/washb-bangladesh-blind-tr.dta"
+(note: variable block was byte, now long to accommodate using
+       data's values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -1285,25 +1289,25 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_02626.00000o
 . order dataid personid block clusterid tr sex dob age* 
 
 . 
-. save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", rep
-> lace
+. save "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta", r
+> eplace
 file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", re
-> place
+. save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", 
+> replace
 file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth
-> .csv", replace comma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/s
+> th.csv", replace comma
 
-. outsheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/st
-> h.csv", replace comma
+. outsheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/
+> sth.csv", replace comma
 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/
-> src/sth/dm/1_make_sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/banglades
+> h/src/sth/dm/1_make_sth_data.log
   log type:  text
- closed on:   9 Dec 2016, 10:20:32
-----------------------------------------------------------------------
+ closed on:   9 Dec 2016, 12:34:44
+--------------------------------------------------------------------
