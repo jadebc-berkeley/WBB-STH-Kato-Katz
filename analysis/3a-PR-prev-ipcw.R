@@ -24,6 +24,9 @@ W=c("hfiacat","index","momage","momheight","momedu",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
 dW=d[,c("block","tr","clusterid","sth","al","hw","tt","hasoutcome",W)]
+# dW=d[,c("block","tr","clusterid","dataid","personid","sth","al","hw","tt","hasoutcome",W)]
+
+# dW=dW[order(dW$block,dW$clusterid,dW$dataid,dW$personid),]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -33,6 +36,7 @@ trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
 SL.library=c("SL.mean","SL.glm","SL.bayesglm","SL.gam","SL.glmnet")
+
 
 est.al.h1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$al,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],Delta=dW$hasoutcome,
