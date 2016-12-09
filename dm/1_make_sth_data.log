@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/banglades
 > h/src/sth/dm/1_make_sth_data.log
   log type:  text
- opened on:   9 Dec 2016, 12:52:51
+ opened on:   9 Dec 2016, 15:34:52
 
 . 
 . *********************************************
@@ -1014,34 +1014,61 @@ T1, T2, C1, |
 . restore
 
 . 
-. * keep the imputed O1s for random subset of 1088 *0.77=835 childre
-> n
-. set seed 12345
+. /* keep the imputed O1s for random subset of 1088 *0.77=835 childr
+> en
+> set seed 12345
+> gen rand = runiform()
+> 
+> sort rand
+> egen randseq=seq() if personid=="O1" & fu==2
+> 
+> gen keepo1=0
+> replace keepo1=1 if fu!=2
+> replace keepo1=1 if randseq<=835
+> replace keepo1=. if personid!="O1"
+> drop if keepo1==0 
+> drop keepo1 rand randseq*/
+. 
+. * import the O1s we need to impute from Ayse's list 
+. preserve
 
-. gen rand = runiform()
+. insheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Ayse/2
+> -washb-bangladesh-imputeo1.csv", clear
+(1 var, 835 obs)
+
+. gen imputeo1=1
+
+. gen newdataid=string(dataid,"%05.0f")
+
+. drop dataid
+
+. ren newdataid dataid
+
+. tempfile imputeo1
+
+. save `imputeo1'
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
+> i saved
+
+. restore
 
 . 
-. sort rand
+. merge m:1 dataid using `imputeo1'
 
-. egen randseq=seq() if personid=="O1" & fu==2
-(9176 missing values generated)
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                         8,424
+        from master                     8,424  (_merge==1)
+        from using                          0  (_merge==2)
+
+    matched                             1,840  (_merge==3)
+    -----------------------------------------
 
 . 
-. gen keepo1=0
-
-. replace keepo1=1 if fu!=2
-(7,868 real changes made)
-
-. replace keepo1=1 if randseq<=835
-(835 real changes made)
-
-. replace keepo1=. if personid!="O1"
-(6,028 real changes made, 6,028 to missing)
-
-. drop if keepo1==0 
+. drop if personid=="O1" & imputeo1!=1 & fu==2
 (253 observations deleted)
 
-. drop keepo1 rand randseq
+. drop _m
 
 . 
 . * create indicator for index child
@@ -1104,7 +1131,7 @@ T1, T2, C1, |
 
 . save `censvar'
 file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
-> i saved
+> k saved
 
 . restore
 
@@ -1147,7 +1174,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
 
 . save `dirtfloor'
 file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
-> k saved
+> m saved
 
 . restore
 
@@ -1197,7 +1224,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
 
 . save `dw'
 file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
-> m saved
+> o saved
 
 . restore
 
@@ -1245,7 +1272,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
 
 . save `shoedef'
 file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
-> o saved
+> q saved
 
 . restore
 
@@ -1278,11 +1305,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03685.00000
     matched                            10,011  (_merge==3)
     -----------------------------------------
 
-. * drop if no KK data
 . 
-. drop if _m==2
-(0 observations deleted)
-
 . drop _m
 
 . 
@@ -1309,5 +1332,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/banglades
 > h/src/sth/dm/1_make_sth_data.log
   log type:  text
- closed on:   9 Dec 2016, 12:52:55
+ closed on:   9 Dec 2016, 15:34:55
 --------------------------------------------------------------------

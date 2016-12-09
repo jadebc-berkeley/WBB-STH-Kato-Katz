@@ -434,7 +434,7 @@ tab personid
 * proportion =  3,148 /  4,102   =0.77
 restore
 
-* keep the imputed O1s for random subset of 1088 *0.77=835 children
+/* keep the imputed O1s for random subset of 1088 *0.77=835 children
 set seed 12345
 gen rand = runiform()
 
@@ -446,7 +446,23 @@ replace keepo1=1 if fu!=2
 replace keepo1=1 if randseq<=835
 replace keepo1=. if personid!="O1"
 drop if keepo1==0 
-drop keepo1 rand randseq
+drop keepo1 rand randseq*/
+
+* import the O1s we need to impute from Ayse's list 
+preserve
+insheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Ayse/2-washb-bangladesh-imputeo1.csv", clear
+gen imputeo1=1
+gen newdataid=string(dataid,"%05.0f")
+drop dataid
+ren newdataid dataid
+tempfile imputeo1
+save `imputeo1'
+restore
+
+merge m:1 dataid using `imputeo1'
+
+drop if personid=="O1" & imputeo1!=1 & fu==2
+drop _m
 
 * create indicator for index child
 gen index = 0
@@ -544,9 +560,7 @@ drop _m
 * Merge in treatment assignment
 *--------------------------------------------
 merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-blind-tr.dta"
-* drop if no KK data
 
-drop if _m==2
 drop _m
 
 order dataid personid block clusterid tr sex dob age* 
