@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/banglades
 > h/src/sth/dm/1_make_sth_data.log
   log type:  text
- opened on:   9 Dec 2016, 12:34:42
+ opened on:   9 Dec 2016, 12:52:51
 
 . 
 . *********************************************
@@ -149,13 +149,13 @@ xij variables:
 (6,685 missing values generated)
 
 . 
-. replace logalepg=0 if alepg==0
+. replace logalepg= log(alepg+1) if alepg==0
 (4,552 real changes made)
 
-. replace loghwepg=0 if hwepg==0
+. replace loghwepg= log(hwepg+1) if hwepg==0
 (6,633 real changes made)
 
-. replace logttepg=0 if ttepg==0
+. replace logttepg= log(ttepg+1) if ttepg==0
 (6,685 real changes made)
 
 . 
@@ -1309,5 +1309,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/banglades
 > h/src/sth/dm/1_make_sth_data.log
   log type:  text
- closed on:   9 Dec 2016, 12:34:44
+ closed on:   9 Dec 2016, 12:52:55
 --------------------------------------------------------------------

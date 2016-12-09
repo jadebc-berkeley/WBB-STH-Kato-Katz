@@ -67,9 +67,9 @@ gen logalepg = log(alepg)
 gen loghwepg = log(hwepg)
 gen logttepg = log(ttepg)
 
-replace logalepg=0 if alepg==0
-replace loghwepg=0 if hwepg==0
-replace logttepg=0 if ttepg==0
+replace logalepg= log(alepg+1) if alepg==0
+replace loghwepg= log(hwepg+1) if hwepg==0
+replace logttepg= log(ttepg+1) if ttepg==0
 
 gen al = (al1>0 | al2>0)
 gen tt = (tt1>0 | tt2>0)
