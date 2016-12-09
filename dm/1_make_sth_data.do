@@ -63,6 +63,14 @@ gen alepg = (al1 + al2)*12
 gen hwepg = (hw1 + hw2)*12
 gen ttepg = (tt1 + tt2)*12
 
+gen logalepg = log(alepg)
+gen loghwepg = log(hwepg)
+gen logttepg = log(ttepg)
+
+replace logalepg=0 if alepg==0
+replace loghwepg=0 if hwepg==0
+replace logttepg=0 if ttepg==0
+
 gen al = (al1>0 | al2>0)
 gen tt = (tt1>0 | tt2>0)
 gen hw = (hw1>0 | hw2>0)
