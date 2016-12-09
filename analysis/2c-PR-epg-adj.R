@@ -24,7 +24,8 @@ W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","mo
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
-dW=d[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
+dW=d[,c("block","tr","clusterid","logalepg","loghwepg","logttepg",
+       "alepg","hwepg","ttepg",W)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -63,17 +64,17 @@ rownames(tt_fecr_ari_h1_adj_j)=c("Water vs C","Sanitation vs C","Handwashing vs 
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
 # geometric means --------------------------
-est.al.h1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$alepg,tr=dW$tr,
+est.al.h1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$logalepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hwepg,tr=dW$tr,
+est.hw.h1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$loghwepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$ttepg,tr=dW$tr,
+est.tt.h1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$logttepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
@@ -120,17 +121,17 @@ rownames(hw_fecr_ari_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Hand
 rownames(tt_fecr_ari_h2_adj_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs Handwashing")
 
 # geometric means --------------------------
-est.al.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$alepg,tr=dW$tr,
+est.al.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$logalepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c(x,"WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hwepg,tr=dW$tr,
+est.hw.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$loghwepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c(x,"WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$ttepg,tr=dW$tr,
+est.tt.h2.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$logttepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c(x,"WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
@@ -174,17 +175,17 @@ rownames(hw_fecr_ari_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nu
 rownames(tt_fecr_ari_h3_adj_j)=c("Nutrition + WSH vs WSH","Nutrition + WSH vs Nutrition")
 
 # geometric means --------------------------
-est.al.h3.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$alepg,tr=dW$tr,
+est.al.h3.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$logalepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h3.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$hwepg,tr=dW$tr,
+est.hw.h3.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$loghwepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h3.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$ttepg,tr=dW$tr,
+est.tt.h3.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW$logttepg,tr=dW$tr,
    pair=dW$block, id=dW$block,W=dW[,W],FECR="geometric",
    family="gaussian",contrast=c(x,"Nutrition + WSH"),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
