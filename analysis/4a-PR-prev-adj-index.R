@@ -5,6 +5,8 @@
 # STH adjusted analysis
 # Binary STH outcomes
 
+# Effect modification by index child
+
 # by Jade
 ##############################################
 library(devtools)
