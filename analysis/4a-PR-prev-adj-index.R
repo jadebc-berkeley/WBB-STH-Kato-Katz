@@ -349,6 +349,6 @@ save(al_rr_h1_i1_j,hw_rr_h1_i1_j,tt_rr_h1_i1_j,sth_rr_h1_i1_j,
      al_rr_h3_i0_j,hw_rr_h3_i0_j,tt_rr_h3_i0_j,sth_rr_h3_i0_j,
      al_rd_h3_i0_j,hw_rd_h3_i0_j,tt_rd_h3_i0_j,sth_rd_h3_i0_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj.RData")
+     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_index.RData")
 
 
