@@ -32,8 +32,10 @@ replace originalAL="0" if dataid=="30607" & personid=="O1"
 *--------------------------------------------
 destring original*, replace
 
+replace shoes=. if shoes==99
+
 * convert long to wide for duplicate slides
-keep dataid labdate personid slide originalAL originalTT originalHW counter
+keep dataid labdate personid slide originalAL originalTT originalHW counter shoes defday
 ren originalAL al
 ren originalTT tt
 ren originalHW hw
@@ -474,7 +476,20 @@ drop lb keeppersonid stoolever hhstatus hast1 o1 haso1 flag
 *--------------------------------------------
 * Merge with baseline covariates
 *--------------------------------------------
-merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta"
+
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta", clear
+
+* create wealth index
+pca roof floor walls elec asset_wardrobe asset_table asset_chair asset_khat asset_chouki asset_radio asset_tv asset_refrig asset_bike asset_moto asset_sewmach asset_mobile asset_phone
+predict score1
+xtile wealth = score1, nq(2)
+drop score1
+tempfile base
+save `base'
+restore
+
+merge m:1 dataid using `base'
 
 gen month=month(labdate)
 
@@ -488,7 +503,7 @@ drop _m
 preserve
 use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_HHCensus.dta", clear
 * Number of individuals living in the compound (<10 vs. ≥10)
-gen ncompover10 = (col7 >10) 
+gen ncompover10 = (col7 >=10) 
 * Number of children aged 5-14 years living in the compound (0 vs. ≥1)
 gen n5to14 = (col3>=1 & col3<.)
 
@@ -507,9 +522,10 @@ use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH
 replace qF2=. if qF2==888
 replace qF5=. if qF5==888
 
-gen dirtfloor = (qF2>1 & qF5>1)
+gen dirtfloor_hh = (qF2>1)
+gen dirtfloor_lat = (qF5>1)
 
-keep dataid dirtfloor
+keep dataid dirtfloor*
 tempfile dirtfloor
 save `dirtfloor'
 restore
@@ -522,7 +538,7 @@ preserve
 use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1survey_DiarrheaDeworming.dta", clear
 gen dw=0
 replace dw=1 if c301==1
-replace dw=. if c301==999
+replace dw=. if c301==999 | c301==.
 
 * Caregiver-reported geophagia by child in last week
 ren c305_4 geophagia
@@ -555,6 +571,44 @@ restore
 
 merge m:1 dataid personid using `shoedef'
 drop _m
+
+* school-age child or not
+gen sac=0
+replace sac=1 if agey>=5 & agey<=12
+replace sac=. if agey==.
+
+* Compound has latrine with water seal that flushes into pit or septic tank 
+preserve
+use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/1. WASHB_Baseline_main_survey.dta", clear
+gen lat=0
+replace lat=1 if q809_9a==1 & q809_9b<=3
+replace lat=. if q809_9a==888
+replace lat=. if q809_9a==. & q809_9b==.
+replace lat=0 if q809_9==0
+replace lat=0 if q808==0
+
+* Compound has dedicated tool to clean up feces and reports using it to dispose of child feces
+gen scoop=0
+replace scoop=1 if q919==1
+replace scoop=0 if q919==2
+
+* No open defecation reported by any compound member
+gen noopendef=0
+#delimit;
+replace noopendef=1 if (q801_a==3 |q801_a==888) & (q801_b==3|q801_b==888) & 
+	(q801_c==3|q801_c==888) & (q801_d==3|q801_d==888) & (q801_e==3|q801_e==888);
+#delimit cr
+replace noopendef=. if q801_a==999 | q801_b==999 | q801_c==999 | q801_d==999 | q801_e==999
+
+keep lat scoop noopendef dataid 
+tempfile latvars
+save `latvars'
+restore
+
+merge m:1 dataid using `latvars'
+drop if _m==2
+drop _m
+
 
 *--------------------------------------------
 * Merge in treatment assignment
