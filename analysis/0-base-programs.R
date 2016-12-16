@@ -169,3 +169,205 @@ format.epg.tmle=function(out){
   return(rr.res)
   
 }
+
+
+#----------------------------------------------------
+# function to get prevalence for sth within effect modifier strata
+# inputs:
+  # data = dataset with outcome, treatment, effect modifier
+  # em = string for name of effect modifier variable
+# outputs:
+  # list of data frames for prevalence by arm within 
+  # effect modifier levels
+#----------------------------------------------------
+emprev=function(data,em){
+  d1=data[data[[em]]==1,]
+  d0=data[data[[em]]==0,]
+  
+  # d1
+  al_prev_d1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$al[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  hw_prev_d1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$hw[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  tt_prev_d1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$tt[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  sth_prev_d1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$sth[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  
+  colnames(al_prev_d1)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(hw_prev_d1)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(tt_prev_d1)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(sth_prev_d1)=c("N","Prev","SD","Robust SE","lb","ub")
+  
+  
+  # d0
+  al_prev_d0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$al[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  hw_prev_d0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$hw[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  tt_prev_d0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$tt[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  sth_prev_d0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$sth[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  
+  colnames(al_prev_d0)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(hw_prev_d0)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(tt_prev_d0)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(sth_prev_d0)=c("N","Prev","SD","Robust SE","lb","ub")
+  
+  return(list(out1.al=al_prev_d1,out1.hw=hw_prev_d1,
+              out1.tt=tt_prev_d1,out1.sth=sth_prev_d1,
+              out0.al=al_prev_d0,out0.hw=hw_prev_d0,
+              out0.tt=tt_prev_d0,out0.sth=sth_prev_d0 ))
+}
+
+
+#----------------------------------------------------
+# function to get arithmetic mean for
+# for sth eggs per gram within effect modifier strata
+# inputs:
+# data = dataset with outcome, treatment, effect modifier
+# em = string for name of effect modifier variable
+# outputs:
+# list of data frames for arithmetic mean by arm within 
+# effect modifier levels
+#----------------------------------------------------
+em_arimean=function(data,em){
+  d1=data[data[[em]]==1,]
+  d0=data[data[[em]]==0,]
+  
+  # d1
+  al_int_mn1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$alepg[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  hw_int_mn1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$hwepg[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  tt_int_mn1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$ttepg[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  
+  colnames(al_int_mn1)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(hw_int_mn1)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(tt_int_mn1)=c("N","Prev","SD","Robust SE","lb","ub")
+  
+  # d0
+  al_int_mn0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$alepg[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  hw_int_mn0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$hwepg[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  tt_int_mn0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$ttepg[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  
+  colnames(al_int_mn0)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(hw_int_mn0)=c("N","Prev","SD","Robust SE","lb","ub")
+  colnames(tt_int_mn0)=c("N","Prev","SD","Robust SE","lb","ub")
+  
+  return(list(out1.al=al_int_mn1,out1.hw=hw_int_mn1,
+              out1.tt=tt_int_mn1,
+              out0.al=al_int_mn0,out0.hw=hw_int_mn0,
+              out0.tt=tt_int_mn0))
+}
+
+
+#----------------------------------------------------
+# function to get geometric mean for
+# for sth eggs per gram within effect modifier strata
+# inputs:
+# data = dataset with outcome, treatment, effect modifier
+# em = string for name of effect modifier variable
+# outputs:
+# list of data frames for arithmetic mean by arm within 
+# effect modifier levels
+#----------------------------------------------------
+em_geomean=function(d,em){
+  d$ln.alepg=log(d$alepg+1)
+  d$ln.hwepg=log(d$hwepg+1)
+  d$ln.ttepg=log(d$ttepg+1)
+  
+  d1=d[d[[em]]==1,]
+  d0=d[d[[em]]==0,]
+
+  #d1
+  N_al1=data.frame(table(d1$tr[!is.na(d1$ln.alepg)]))[,2]
+  N_hw1=data.frame(table(d1$tr[!is.na(d1$ln.hwepg)]))[,2]
+  N_tt1=data.frame(table(d1$tr[!is.na(d1$ln.ttepg)]))[,2]
+  
+  al_int_gmn1=t(sapply(levels(d$tr), function(x) washb_mean(
+    Y=d$ln.alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  hw_int_gmn1=t(sapply(levels(d$tr), function(x) washb_mean(
+    Y=d$ln.hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  tt_int_gmn1=t(sapply(levels(d$tr), function(x) washb_mean(
+    Y=d$ln.ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  
+  colnames(al_int_gmn1)=c("N","geomean","SD","Robust SE","lb","ub")
+  colnames(hw_int_gmn1)=c("N","geomean","SD","Robust SE","lb","ub")
+  colnames(tt_int_gmn1)=c("N","geomean","SD","Robust SE","lb","ub")
+  
+  al_int_gmn1=data.frame(al_int_gmn1[,c("geomean","Robust SE")])
+  al_int_gmn1$lb=al_int_gmn1$geomean - (qnorm(0.975)*al_int_gmn1[,"Robust.SE"])
+  al_int_gmn1$ub=al_int_gmn1$geomean + (qnorm(0.975)*al_int_gmn1[,"Robust.SE"])
+  al_int_gmn1[,"Robust.SE"]=NULL
+  al_int_gmn1=exp(al_int_gmn1)-1
+  al_int_gmn1=cbind(N_al1,al_int_gmn1)
+  colnames(al_int_gmn1)[1]="N"
+  
+  hw_int_gmn1=data.frame(hw_int_gmn1[,c("geomean","Robust SE")])
+  hw_int_gmn1$lb=hw_int_gmn1$geomean - (qnorm(0.975)*hw_int_gmn1[,"Robust.SE"])
+  hw_int_gmn1$ub=hw_int_gmn1$geomean + (qnorm(0.975)*hw_int_gmn1[,"Robust.SE"])
+  hw_int_gmn1[,"Robust.SE"]=NULL
+  hw_int_gmn1=exp(hw_int_gmn1)-1
+  hw_int_gmn1=cbind(N_hw1,hw_int_gmn1)
+  colnames(hw_int_gmn1)[1]="N"
+  
+  tt_int_gmn1=data.frame(tt_int_gmn1[,c("geomean","Robust SE")])
+  tt_int_gmn1$lb=tt_int_gmn1$geomean - (qnorm(0.975)*tt_int_gmn1[,"Robust.SE"])
+  tt_int_gmn1$ub=tt_int_gmn1$geomean + (qnorm(0.975)*tt_int_gmn1[,"Robust.SE"])
+  tt_int_gmn1[,"Robust.SE"]=NULL
+  tt_int_gmn1=exp(tt_int_gmn1)-1
+  tt_int_gmn1=cbind(N_tt1,tt_int_gmn1)
+  colnames(tt_int_gmn1)[1]="N"
+
+  #d0
+  N_al0=data.frame(table(d0$tr[!is.na(d0$ln.alepg)]))[,2]
+  N_hw0=data.frame(table(d0$tr[!is.na(d0$ln.hwepg)]))[,2]
+  N_tt0=data.frame(table(d0$tr[!is.na(d0$ln.ttepg)]))[,2]
+  
+  al_int_gmn0=t(sapply(levels(d$tr), function(x) washb_mean(
+    Y=d$ln.alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  hw_int_gmn0=t(sapply(levels(d$tr), function(x) washb_mean(
+    Y=d$ln.hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  tt_int_gmn0=t(sapply(levels(d$tr), function(x) washb_mean(
+    Y=d$ln.ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  
+  colnames(al_int_gmn0)=c("N","geomean","SD","Robust SE","lb","ub")
+  colnames(hw_int_gmn0)=c("N","geomean","SD","Robust SE","lb","ub")
+  colnames(tt_int_gmn0)=c("N","geomean","SD","Robust SE","lb","ub")
+  
+  al_int_gmn0=data.frame(al_int_gmn0[,c("geomean","Robust SE")])
+  al_int_gmn0$lb=al_int_gmn0$geomean - (qnorm(0.975)*al_int_gmn0[,"Robust.SE"])
+  al_int_gmn0$ub=al_int_gmn0$geomean + (qnorm(0.975)*al_int_gmn0[,"Robust.SE"])
+  al_int_gmn0[,"Robust.SE"]=NULL
+  al_int_gmn0=exp(al_int_gmn0)-1
+  al_int_gmn0=cbind(N_al1,al_int_gmn0)
+  colnames(al_int_gmn0)[1]="N"
+
+  hw_int_gmn0=data.frame(hw_int_gmn0[,c("geomean","Robust SE")])
+  hw_int_gmn0$lb=hw_int_gmn0$geomean - (qnorm(0.975)*hw_int_gmn0[,"Robust.SE"])
+  hw_int_gmn0$ub=hw_int_gmn0$geomean + (qnorm(0.975)*hw_int_gmn0[,"Robust.SE"])
+  hw_int_gmn0[,"Robust.SE"]=NULL
+  hw_int_gmn0=exp(hw_int_gmn0)-1
+  hw_int_gmn0=cbind(N_hw1,hw_int_gmn0)
+  colnames(hw_int_gmn0)[1]="N"
+
+  tt_int_gmn0=data.frame(tt_int_gmn0[,c("geomean","Robust SE")])
+  tt_int_gmn0$lb=tt_int_gmn0$geomean - (qnorm(0.975)*tt_int_gmn0[,"Robust.SE"])
+  tt_int_gmn0$ub=tt_int_gmn0$geomean + (qnorm(0.975)*tt_int_gmn0[,"Robust.SE"])
+  tt_int_gmn0[,"Robust.SE"]=NULL
+  tt_int_gmn0=exp(tt_int_gmn0)-1
+  tt_int_gmn0=cbind(N_tt1,tt_int_gmn0)
+  colnames(tt_int_gmn0)[1]="N"
+
+  return(list(out1.al=al_int_gmn1,out1.hw=hw_int_gmn1,
+              out1.tt=tt_int_gmn1,
+              out0.al=al_int_gmn0,out0.hw=hw_int_gmn0,
+              out0.tt=tt_int_gmn0))
+}
+
