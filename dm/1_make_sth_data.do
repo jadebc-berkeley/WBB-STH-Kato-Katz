@@ -32,10 +32,8 @@ replace originalAL="0" if dataid=="30607" & personid=="O1"
 *--------------------------------------------
 destring original*, replace
 
-replace shoes=. if shoes==99
-
 * convert long to wide for duplicate slides
-keep dataid labdate personid slide originalAL originalTT originalHW counter shoes defday
+keep dataid labdate personid slide originalAL originalTT originalHW counter defday
 ren originalAL al
 ren originalTT tt
 ren originalHW hw
