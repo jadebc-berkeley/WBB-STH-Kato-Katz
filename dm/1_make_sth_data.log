@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make
 > _sth_data.log
   log type:  text
- opened on:  16 Dec 2016, 11:46:11
+ opened on:  16 Dec 2016, 11:49:15
 
 . 
 . *********************************************
@@ -1334,7 +1334,14 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000m saved
 . 
 . gen dirtfloor_hh = (qF2>1)
 
+. replace dirtfloor_hh =. if qF2==.
+(1 real change made, 1 to missing)
+
+. 
 . gen dirtfloor_lat = (qF5>1)
+
+. replace dirtfloor_lat =. if qF5==.
+(46 real changes made, 46 to missing)
 
 . 
 . keep dataid dirtfloor*
@@ -1590,5 +1597,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make
 > _sth_data.log
   log type:  text
- closed on:  16 Dec 2016, 11:46:16
+ closed on:  16 Dec 2016, 11:49:20
 ---------------------------------------------------------------------------------------

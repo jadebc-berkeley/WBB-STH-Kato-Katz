@@ -523,7 +523,10 @@ replace qF2=. if qF2==888
 replace qF5=. if qF5==888
 
 gen dirtfloor_hh = (qF2>1)
+replace dirtfloor_hh =. if qF2==.
+
 gen dirtfloor_lat = (qF5>1)
+replace dirtfloor_lat =. if qF5==.
 
 keep dataid dirtfloor*
 tempfile dirtfloor
