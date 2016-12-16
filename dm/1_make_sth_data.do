@@ -585,12 +585,14 @@ replace lat=1 if q809_9a==1 & q809_9b<=3
 replace lat=. if q809_9a==888
 replace lat=. if q809_9a==. & q809_9b==.
 replace lat=0 if q809_9==0
-replace lat=0 if q808==0
+replace lat=0 if q808==4
 
 * Compound has dedicated tool to clean up feces and reports using it to dispose of child feces
 gen scoop=0
-replace scoop=1 if q919==1
-replace scoop=0 if q919==2
+replace scoop=1 if q919==1 & q921_2
+replace scoop=0 if q919==2 
+replace scoop=. if q921_2==. & q919==1
+replace scoop=. if q919==.
 
 * No open defecation reported by any compound member
 gen noopendef=0

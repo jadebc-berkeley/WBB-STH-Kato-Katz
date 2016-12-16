@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make
 > _sth_data.log
   log type:  text
- opened on:  16 Dec 2016, 11:41:01
+ opened on:  16 Dec 2016, 11:46:11
 
 . 
 . *********************************************
@@ -1495,10 +1495,16 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000s saved
 > ild feces
 . gen scoop=0
 
-. replace scoop=1 if q919==1
-(3,769 real changes made)
+. replace scoop=1 if q919==1 & q921_2
+(1,497 real changes made)
 
-. replace scoop=0 if q919==2
+. replace scoop=0 if q919==2 
+(0 real changes made)
+
+. replace scoop=. if q921_2==. & q919==1
+(61 real changes made, 61 to missing)
+
+. replace scoop=. if q919==.
 (0 real changes made)
 
 . 
@@ -1584,5 +1590,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make
 > _sth_data.log
   log type:  text
- closed on:  16 Dec 2016, 11:41:05
+ closed on:  16 Dec 2016, 11:46:16
 ---------------------------------------------------------------------------------------
