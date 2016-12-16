@@ -99,3 +99,6 @@ for(i in 1:length(emmean)){
   }
 }
 
+res_prev[!is.na(res_prev)]
+res_mean[!is.na(res_mean)]
+
