@@ -5,8 +5,8 @@
 # STH adjusted analysis
 # Binary STH outcomes
 
-# Effect modification by number of children
-# 5-12 years
+# Effect modification by whether the stool was
+# collected the same day as Kato-Katz
 
 # by Jade
 ##############################################

@@ -5,8 +5,9 @@
 # STH adjusted analysis
 # Binary STH outcomes
 
-# Effect modification by number of children
-# 5-12 years
+# Effect modification by whether household has
+# a latrine with a functional seal that flushes
+# into a septic tank or pit
 
 # by Jade
 ##############################################
