@@ -20,8 +20,8 @@ source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-program
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
-d1=d[d$wealth==1,]
-d0=d[d$wealth==2,]
+d1=d[d$wealth==2,]
+d0=d[d$wealth==1,]
 
 # roof and landphone excluded due to low prevalence
 
@@ -94,6 +94,12 @@ rownames(sth_rd_h1_poor1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
 # Not index child
+
+W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
+    "Nlt18","Ncomp","watmin","walls","floor",
+    "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
+    "asset_tv","asset_bike","asset_moto","asset_sewmach","asset_mobile")
+
 est.al.h1.poor0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
