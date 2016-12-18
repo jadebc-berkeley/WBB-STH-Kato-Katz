@@ -290,12 +290,12 @@ em_geomean=function(d,em){
   N_hw1=data.frame(table(d1$tr[!is.na(d1$ln.hwepg)]))[,2]
   N_tt1=data.frame(table(d1$tr[!is.na(d1$ln.ttepg)]))[,2]
   
-  al_int_gmn1=t(sapply(levels(d$tr), function(x) washb_mean(
-    Y=d$ln.alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
-  hw_int_gmn1=t(sapply(levels(d$tr), function(x) washb_mean(
-    Y=d$ln.hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
-  tt_int_gmn1=t(sapply(levels(d$tr), function(x) washb_mean(
-    Y=d$ln.ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  al_int_gmn1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$ln.alepg[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  hw_int_gmn1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$ln.hwepg[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
+  tt_int_gmn1=t(sapply(levels(d1$tr), function(x) washb_mean(
+    Y=d1$ln.ttepg[d1$tr==x],id=d1$clusterid[d1$tr==x],print=FALSE)))
   
   colnames(al_int_gmn1)=c("N","geomean","SD","Robust SE","lb","ub")
   colnames(hw_int_gmn1)=c("N","geomean","SD","Robust SE","lb","ub")
@@ -330,12 +330,12 @@ em_geomean=function(d,em){
   N_hw0=data.frame(table(d0$tr[!is.na(d0$ln.hwepg)]))[,2]
   N_tt0=data.frame(table(d0$tr[!is.na(d0$ln.ttepg)]))[,2]
   
-  al_int_gmn0=t(sapply(levels(d$tr), function(x) washb_mean(
-    Y=d$ln.alepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
-  hw_int_gmn0=t(sapply(levels(d$tr), function(x) washb_mean(
-    Y=d$ln.hwepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
-  tt_int_gmn0=t(sapply(levels(d$tr), function(x) washb_mean(
-    Y=d$ln.ttepg[d$tr==x],id=d$clusterid[d$tr==x],print=FALSE)))
+  al_int_gmn0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$ln.alepg[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  hw_int_gmn0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$ln.hwepg[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
+  tt_int_gmn0=t(sapply(levels(d0$tr), function(x) washb_mean(
+    Y=d0$ln.ttepg[d0$tr==x],id=d0$clusterid[d0$tr==x],print=FALSE)))
   
   colnames(al_int_gmn0)=c("N","geomean","SD","Robust SE","lb","ub")
   colnames(hw_int_gmn0)=c("N","geomean","SD","Robust SE","lb","ub")
@@ -346,7 +346,7 @@ em_geomean=function(d,em){
   al_int_gmn0$ub=al_int_gmn0$geomean + (qnorm(0.975)*al_int_gmn0[,"Robust.SE"])
   al_int_gmn0[,"Robust.SE"]=NULL
   al_int_gmn0=exp(al_int_gmn0)-1
-  al_int_gmn0=cbind(N_al1,al_int_gmn0)
+  al_int_gmn0=cbind(N_al0,al_int_gmn0)
   colnames(al_int_gmn0)[1]="N"
 
   hw_int_gmn0=data.frame(hw_int_gmn0[,c("geomean","Robust SE")])
@@ -354,7 +354,7 @@ em_geomean=function(d,em){
   hw_int_gmn0$ub=hw_int_gmn0$geomean + (qnorm(0.975)*hw_int_gmn0[,"Robust.SE"])
   hw_int_gmn0[,"Robust.SE"]=NULL
   hw_int_gmn0=exp(hw_int_gmn0)-1
-  hw_int_gmn0=cbind(N_hw1,hw_int_gmn0)
+  hw_int_gmn0=cbind(N_hw0,hw_int_gmn0)
   colnames(hw_int_gmn0)[1]="N"
 
   tt_int_gmn0=data.frame(tt_int_gmn0[,c("geomean","Robust SE")])
@@ -362,7 +362,7 @@ em_geomean=function(d,em){
   tt_int_gmn0$ub=tt_int_gmn0$geomean + (qnorm(0.975)*tt_int_gmn0[,"Robust.SE"])
   tt_int_gmn0[,"Robust.SE"]=NULL
   tt_int_gmn0=exp(tt_int_gmn0)-1
-  tt_int_gmn0=cbind(N_tt1,tt_int_gmn0)
+  tt_int_gmn0=cbind(N_tt0,tt_int_gmn0)
   colnames(tt_int_gmn0)[1]="N"
 
   return(list(out1.al=al_int_gmn1,out1.hw=hw_int_gmn1,
