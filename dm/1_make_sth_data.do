@@ -478,6 +478,44 @@ drop lb keeppersonid stoolever hhstatus hast1 o1 haso1 flag
 preserve
 use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enrol.dta", clear
 
+label define roof 0 "No improved roof" 1 "Has improved roof"
+label define walls 0 "No improved wall" 1 "Has improved wall" 
+label define floor 0 "No improved floor" 1 "Has improved floor" 
+label define elec 0 "No electricity" 1 "Has electricity" 
+label define asset_wardrobe 0 "No wardrobe" 1 "Has wardrobe" 
+label define asset_table 0 "No table" 1 "Has table" 
+label define asset_chair 0 "No chair" 1 "Has chair" 
+label define asset_khat 0 "No khat" 1 "Has khat" 
+label define asset_chouki 0 "No chouki" 1 "Has chouki" 
+label define asset_tv 0 "No TV" 1 "Has TV" 
+label define asset_refrig 0 "No refrigerator" 1 "Has refrigerator" 
+label define asset_bike 0 "No bicycle" 1 "Has bicycle" 
+label define asset_moto 0 "No motorcycle" 1 "Has motorcycle" 
+label define asset_sewmach 0 "No sewing machine" 1 "Has sewing machine" 
+label define asset_mobile 0 "No mobile phone" 1 "Has mobile phone" 
+label define asset_clock 0 "No clock" 1 "Has clock" 
+label define asset_radio 0 "No radio" 1 "Has radio" 
+label define asset_phone 0 "No land phone" 1 "Has land phone" 
+
+label value roof roof 
+label value walls walls
+label value floor floor
+label value elec elec
+label value asset_wardrobe asset_wardrobe
+label value asset_table asset_table
+label value asset_chair asset_chair
+label value asset_khat asset_khat
+label value asset_chouki asset_chouki
+label value asset_tv asset_tv
+label value asset_refrig asset_refrig
+label value asset_bike asset_bike
+label value asset_moto asset_moto
+label value asset_sewmach asset_sewmach
+label value asset_mobile asset_mobile
+label value asset_clock asset_clock
+label value asset_radio asset_radio
+label value asset_phone asset_phone
+
 * create wealth index
 pca roof floor walls elec asset_wardrobe asset_table asset_chair asset_khat asset_chouki asset_radio asset_tv asset_refrig asset_bike asset_moto asset_sewmach asset_mobile asset_phone
 predict score1
