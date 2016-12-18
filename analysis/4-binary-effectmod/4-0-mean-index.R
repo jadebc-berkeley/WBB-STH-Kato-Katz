@@ -154,22 +154,22 @@ hw_em_geo_odf0_j=em_geomean(d,"noopendef")$out0.hw
 tt_em_geo_odf0_j=em_geomean(d,"noopendef")$out0.tt
 
 # wealth index
-d$wealth_recode=ifelse(d$wealth==1,1,0)
-al_em_ari_poor1_j=em_arimean(d,"wealth_recode")$out1.al
-hw_em_ari_poor1_j=em_arimean(d,"wealth_recode")$out1.hw
-tt_em_ari_poor1_j=em_arimean(d,"wealth_recode")$out1.tt
+d$wealth=ifelse(d$wealth==2,0,1)
+al_em_ari_poor1_j=em_arimean(d,"wealth")$out1.al
+hw_em_ari_poor1_j=em_arimean(d,"wealth")$out1.hw
+tt_em_ari_poor1_j=em_arimean(d,"wealth")$out1.tt
 
-al_em_ari_poor0_j=em_arimean(d,"wealth_recode")$out0.al
-hw_em_ari_poor0_j=em_arimean(d,"wealth_recode")$out0.hw
-tt_em_ari_poor0_j=em_arimean(d,"wealth_recode")$out0.tt
+al_em_ari_poor0_j=em_arimean(d,"wealth")$out0.al
+hw_em_ari_poor0_j=em_arimean(d,"wealth")$out0.hw
+tt_em_ari_poor0_j=em_arimean(d,"wealth")$out0.tt
 
-al_em_geo_poor1_j=em_geomean(d,"wealth_recode")$out1.al
-hw_em_geo_poor1_j=em_geomean(d,"wealth_recode")$out1.hw
-tt_em_geo_poor1_j=em_geomean(d,"wealth_recode")$out1.tt
+al_em_geo_poor1_j=em_geomean(d,"wealth")$out1.al
+hw_em_geo_poor1_j=em_geomean(d,"wealth")$out1.hw
+tt_em_geo_poor1_j=em_geomean(d,"wealth")$out1.tt
 
-al_em_geo_poor0_j=em_geomean(d,"wealth_recode")$out0.al
-hw_em_geo_poor0_j=em_geomean(d,"wealth_recode")$out0.hw
-tt_em_geo_poor0_j=em_geomean(d,"wealth_recode")$out0.tt
+al_em_geo_poor0_j=em_geomean(d,"wealth")$out0.al
+hw_em_geo_poor0_j=em_geomean(d,"wealth")$out0.hw
+tt_em_geo_poor0_j=em_geomean(d,"wealth")$out0.tt
 
 # household dirt floor
 al_em_ari_hmud1_j=em_arimean(d,"dirtfloor_hh")$out1.al
