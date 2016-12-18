@@ -19,7 +19,7 @@ rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_dw.RData"
 rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_geophagia.RData"
 rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_shoes.RData"
 
-cd "Documents/CRG/wash-benefits/bangladesh/src/sth/analysis"
+cd "Documents/CRG/wash-benefits/bangladesh/src/sth/analysis/4-binary-effectmod/"
 
 rm -f 4-0-mean-index.Rout
 rm -f 4-0-prev-index.Rout 
