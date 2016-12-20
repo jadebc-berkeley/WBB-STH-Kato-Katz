@@ -25,13 +25,18 @@ d0=d[d$dirtfloor_hh==0,]
 
 # roof and landphone excluded due to low prevalence
 
-W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
+W1=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
     "Nlt18","Ncomp","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
-dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
-dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
+W0=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
+    "Nlt18","Ncomp","watmin","walls","floor",
+    "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
+    "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach")
+
+dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W1)]
+dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W0)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -97,7 +102,7 @@ rownames(tt_fecr_h1_geo_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing v
 
 # Not index child
 est.al.h1.hmud0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="arithmetic",
+   pair=dW0$block, id=dW0$block,W=dW0[,W0], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
