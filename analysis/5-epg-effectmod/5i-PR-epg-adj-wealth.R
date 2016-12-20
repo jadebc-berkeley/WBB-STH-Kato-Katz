@@ -38,7 +38,7 @@ W1=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","m
 
 
 dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W1)]
-dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
+dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W0)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
