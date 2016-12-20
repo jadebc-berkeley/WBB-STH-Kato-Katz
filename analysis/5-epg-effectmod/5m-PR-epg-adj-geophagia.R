@@ -19,8 +19,8 @@ source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-program
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
-d1=d[d$geophagia==1,]
-d0=d[d$geophagia==0,]
+d1=d[d$geophagia=="yes",]
+d0=d[d$geophagia=="no",]
 
 # roof and landphone excluded due to low prevalence
 
