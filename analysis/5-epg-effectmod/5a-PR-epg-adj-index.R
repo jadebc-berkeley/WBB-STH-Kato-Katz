@@ -110,9 +110,9 @@ est.tt.h1.i0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$ttepg,tr=d
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_fecr_h1_ari_i1_j=format.epg.tmle(est.al.h1.i0.ari)
-hw_fecr_h1_ari_i1_j=format.epg.tmle(est.hw.h1.i0.ari)
-tt_fecr_h1_ari_i1_j=format.epg.tmle(est.tt.h1.i0.ari)
+al_fecr_h1_ari_i0_j=format.epg.tmle(est.al.h1.i0.ari)
+hw_fecr_h1_ari_i0_j=format.epg.tmle(est.hw.h1.i0.ari)
+tt_fecr_h1_ari_i0_j=format.epg.tmle(est.tt.h1.i0.ari)
 
 rownames(al_fecr_h1_ari_i0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
