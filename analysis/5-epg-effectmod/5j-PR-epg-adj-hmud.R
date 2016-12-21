@@ -63,15 +63,15 @@ est.tt.h1.hmud1.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$ttepg,t
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_fecr_h1_ari_hmud1_j=format.epg.tmle(est.al.h1.hmud1.ari)
-hw_fecr_h1_ari_hmud1_j=format.epg.tmle(est.hw.h1.hmud1.ari)
-tt_fecr_h1_ari_hmud1_j=format.epg.tmle(est.tt.h1.hmud1.ari)
+al_fecr_ari_h1_hmud1_j=format.epg.tmle(est.al.h1.hmud1.ari)
+hw_fecr_ari_h1_hmud1_j=format.epg.tmle(est.hw.h1.hmud1.ari)
+tt_fecr_ari_h1_hmud1_j=format.epg.tmle(est.tt.h1.hmud1.ari)
 
-rownames(al_fecr_h1_ari_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_fecr_ari_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_fecr_h1_ari_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_fecr_ari_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_fecr_h1_ari_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_fecr_ari_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
 est.al.h1.hmud1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$alepg,tr=dW1$tr,
@@ -89,15 +89,15 @@ est.tt.h1.hmud1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$ttepg,t
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_fecr_h1_geo_hmud1_j=format.epg.tmle(est.al.h1.hmud1.geo)
-hw_fecr_h1_geo_hmud1_j=format.epg.tmle(est.hw.h1.hmud1.geo)
-tt_fecr_h1_geo_hmud1_j=format.epg.tmle(est.tt.h1.hmud1.geo)
+al_fecr_geo_h1_hmud1_j=format.epg.tmle(est.al.h1.hmud1.geo)
+hw_fecr_geo_h1_hmud1_j=format.epg.tmle(est.hw.h1.hmud1.geo)
+tt_fecr_geo_h1_hmud1_j=format.epg.tmle(est.tt.h1.hmud1.geo)
 
-rownames(al_fecr_h1_geo_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_fecr_geo_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_fecr_h1_geo_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_fecr_geo_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_fecr_h1_geo_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_fecr_geo_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
 # Not index child
@@ -116,15 +116,15 @@ est.tt.h1.hmud0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$ttepg,t
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_fecr_h1_ari_hmud0_j=format.epg.tmle(est.al.h1.hmud0.ari)
-hw_fecr_h1_ari_hmud0_j=format.epg.tmle(est.hw.h1.hmud0.ari)
-tt_fecr_h1_ari_hmud0_j=format.epg.tmle(est.tt.h1.hmud0.ari)
+al_fecr_ari_h1_hmud0_j=format.epg.tmle(est.al.h1.hmud0.ari)
+hw_fecr_ari_h1_hmud0_j=format.epg.tmle(est.hw.h1.hmud0.ari)
+tt_fecr_ari_h1_hmud0_j=format.epg.tmle(est.tt.h1.hmud0.ari)
 
-rownames(al_fecr_h1_ari_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_fecr_ari_h1_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_fecr_h1_ari_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_fecr_ari_h1_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_fecr_h1_ari_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_fecr_ari_h1_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
 est.al.h1.hmud0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
@@ -142,26 +142,26 @@ est.tt.h1.hmud0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$ttepg,t
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-al_fecr_h1_geo_hmud0_j=format.epg.tmle(est.al.h1.hmud0.geo)
-hw_fecr_h1_geo_hmud0_j=format.epg.tmle(est.hw.h1.hmud0.geo)
-tt_fecr_h1_geo_hmud0_j=format.epg.tmle(est.tt.h1.hmud0.geo)
+al_fecr_geo_h1_hmud0_j=format.epg.tmle(est.al.h1.hmud0.geo)
+hw_fecr_geo_h1_hmud0_j=format.epg.tmle(est.hw.h1.hmud0.geo)
+tt_fecr_geo_h1_hmud0_j=format.epg.tmle(est.tt.h1.hmud0.geo)
 
-rownames(al_fecr_h1_geo_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(al_fecr_geo_h1_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(hw_fecr_h1_geo_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(hw_fecr_geo_h1_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
-rownames(tt_fecr_h1_geo_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
+rownames(tt_fecr_geo_h1_hmud0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
 #----------------------------------------------
 # save objects
 #----------------------------------------------
 
-save(al_fecr_h1_geo_hmud1_j,hw_fecr_h1_geo_hmud1_j,tt_fecr_h1_geo_hmud1_j,
-     al_fecr_h1_geo_hmud1_j,hw_fecr_h1_geo_hmud1_j,tt_fecr_h1_geo_hmud1_j,
+save(al_fecr_geo_h1_hmud1_j,hw_fecr_geo_h1_hmud1_j,tt_fecr_geo_h1_hmud1_j,
+     al_fecr_geo_h1_hmud1_j,hw_fecr_geo_h1_hmud1_j,tt_fecr_geo_h1_hmud1_j,
 
-     al_fecr_h1_ari_hmud0_j,hw_fecr_h1_ari_hmud0_j,tt_fecr_h1_ari_hmud0_j,
-     al_fecr_h1_ari_hmud0_j,hw_fecr_h1_ari_hmud0_j,tt_fecr_h1_ari_hmud0_j,
+     al_fecr_ari_h1_hmud0_j,hw_fecr_ari_h1_hmud0_j,tt_fecr_ari_h1_hmud0_j,
+     al_fecr_ari_h1_hmud0_j,hw_fecr_ari_h1_hmud0_j,tt_fecr_ari_h1_hmud0_j,
      
      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_adj_dirtfloor_hh.RData")
 
