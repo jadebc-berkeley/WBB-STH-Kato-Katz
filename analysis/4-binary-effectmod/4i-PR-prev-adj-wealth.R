@@ -20,8 +20,8 @@ source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-program
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
-d1=d[d$wealth==2,]
-d0=d[d$wealth==1,]
+d1=d[d$wealth==1,]
+d0=d[d$wealth==2,]
 
 # roof and landphone excluded due to low prevalence
 
