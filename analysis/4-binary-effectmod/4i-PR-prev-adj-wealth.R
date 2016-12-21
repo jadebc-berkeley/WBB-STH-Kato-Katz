@@ -49,22 +49,22 @@ trlist=c("Water","Sanitation","Handwashing",
 SL.library=c("SL.mean","SL.glm","SL.bayesglm","SL.gam","SL.glmnet")
 
 est.al.h1.poor1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$al,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.hw.h1.poor1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$hw,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.tt.h1.poor1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$tt,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.sth.h1.poor1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$sth,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
@@ -106,22 +106,22 @@ W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","mo
     "asset_tv","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
 est.al.h1.poor0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.hw.h1.poor0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$hw,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.tt.h1.poor0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$tt,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.sth.h1.poor0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$sth,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
