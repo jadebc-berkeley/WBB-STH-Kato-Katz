@@ -37,7 +37,7 @@ dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
-# index child
+# deworming
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -95,7 +95,7 @@ rownames(hw_fecr_geo_h1_dw1_j)=c("Water vs C","Sanitation vs C","Handwashing vs 
 rownames(tt_fecr_geo_h1_dw1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
-# Not index child
+# No deworming
 est.al.h1.dw0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,

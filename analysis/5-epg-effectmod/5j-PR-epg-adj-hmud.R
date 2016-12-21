@@ -25,24 +25,24 @@ d0=d[d$dirtfloor_hh==0,]
 
 # roof and landphone excluded due to low prevalence
 
-W1=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
-    "Nlt18","Ncomp","watmin","walls","floor",
-    "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
-    "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
-
-W0=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
-    "Nlt18","Ncomp","watmin","walls","floor",
+# the following variables were dropped from the covariate list 
+# because they had many levels and one of the effect modification
+# strata has <20% prevalence: 
+# counter, month, birthorder, food security, number of individuals 
+# in compound, number of <18 individuals
+# mobile phone dropped because of sparse data in one level 
+W=c("aged","sex","momage","momheight","momedu","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach")
 
-dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W1)]
-dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W0)]
+dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
+dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
-# index child
+# household floor made of dirt
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -100,7 +100,7 @@ rownames(hw_fecr_geo_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing v
 rownames(tt_fecr_geo_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
-# Not index child
+# household floor not made of dirt
 est.al.h1.hmud0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W0], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,

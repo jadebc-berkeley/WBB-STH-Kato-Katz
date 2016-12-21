@@ -24,8 +24,12 @@ d0=d[d$geophagia=="no",]
 
 # roof and landphone excluded due to low prevalence
 
-W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
-    "Nlt18","Ncomp","watmin","walls","floor",
+# the following variables were dropped from the covariate list 
+# because they had many levels and one of the effect modification
+# strata has <20% prevalence: 
+# counter, month, birthorder, food security, number of individuals 
+# in compound, number of <18 individuals
+W=c("aged","sex","momage","momheight","momedu","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
@@ -36,7 +40,7 @@ geo0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
-# index child
+# child ate soil
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -94,7 +98,7 @@ rownames(hw_fecr_geo_h1_geo1_j)=c("Water vs C","Sanitation vs C","Handwashing vs
 rownames(tt_fecr_geo_h1_geo1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
-# Not index child
+# Child didn't eat soil
 est.al.h1.geo0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=geo0$alepg,tr=geo0$tr,
    pair=geo0$block, id=geo0$block,W=geo0[,W], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
