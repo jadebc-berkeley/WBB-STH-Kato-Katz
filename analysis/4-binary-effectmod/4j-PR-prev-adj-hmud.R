@@ -25,13 +25,18 @@ d0=d[d$dirtfloor_hh==0,]
 
 # roof and landphone excluded due to low prevalence
 
-W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
+W1=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
     "Nlt18","Ncomp","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
-dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W)]
-dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
+W0=c("counter","aged","sex","momage","momheight","momedu",
+    "watmin","walls","floor",
+    "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
+    "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach")
+
+dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W1)]
+dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W0)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -44,22 +49,22 @@ trlist=c("Water","Sanitation","Handwashing",
 SL.library=c("SL.mean","SL.glm","SL.bayesglm","SL.gam","SL.glmnet")
 
 est.al.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$al,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.hw.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$hw,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.tt.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$tt,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.sth.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$sth,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+   pair=dW1$block, id=dW1$block,W=dW1[,W1],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
@@ -95,22 +100,22 @@ rownames(sth_rd_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 
 # Not index child
 est.al.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.hw.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$hw,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.tt.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$tt,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.sth.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$sth,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W],
+   pair=dW0$block, id=dW0$block,W=dW0[,W0],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
