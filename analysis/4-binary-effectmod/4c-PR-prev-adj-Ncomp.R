@@ -37,7 +37,7 @@ dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
-# Index child
+# N comp members >10
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -93,7 +93,7 @@ rownames(tt_rd_h1_ind1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 rownames(sth_rd_h1_ind1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-# Not index child
+# N comp members <10
 est.al.h1.ind0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,

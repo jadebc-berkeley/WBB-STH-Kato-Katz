@@ -25,8 +25,12 @@ d0=d[d$defday=="Yesterday",]
 
 # roof and landphone excluded due to low prevalence
 
-W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
-    "Nlt18","Ncomp","watmin","walls","floor",
+# the following variables were dropped from the covariate list 
+# because they had many levels and one of the effect modification
+# strata has <20% prevalence: 
+# counter, month, birthorder, food security, number of individuals 
+# in compound, number of <18 individuals
+W=c("aged","sex","momage","momheight","momedu","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
@@ -37,7 +41,7 @@ dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
-# Index child
+# Defecated today
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -93,7 +97,7 @@ rownames(tt_rd_h1_def1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 rownames(sth_rd_h1_def1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-# Not index child
+# Defecated yesterday 
 est.al.h1.def0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
