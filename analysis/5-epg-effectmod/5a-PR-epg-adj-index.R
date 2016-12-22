@@ -29,8 +29,8 @@ W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","mo
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
-dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
-dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
+dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg","logttepg",W)]
+dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg","logttepg",W)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -68,17 +68,17 @@ rownames(hw_fecr_ari_h1_i1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C
 rownames(tt_fecr_ari_h1_i1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-est.al.h1.i1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$alepg,tr=dW1$tr,
+est.al.h1.i1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$logalepg,tr=dW1$tr,
    pair=dW1$block, id=dW1$block,W=dW1[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.i1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$hwepg,tr=dW1$tr,
+est.hw.h1.i1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$loghwepg,tr=dW1$tr,
    pair=dW1$block, id=dW1$block,W=dW1[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.i1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$ttepg,tr=dW1$tr,
+est.tt.h1.i1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$logttepg,tr=dW1$tr,
    pair=dW1$block, id=dW1$block,W=dW1[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
@@ -121,17 +121,17 @@ rownames(hw_fecr_ari_h1_i0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C
 rownames(tt_fecr_ari_h1_i0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-est.al.h1.i0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
+est.al.h1.i0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$logalepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.i0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$hwepg,tr=dW0$tr,
+est.hw.h1.i0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$loghwepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.i0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$ttepg,tr=dW0$tr,
+est.tt.h1.i0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$logttepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))

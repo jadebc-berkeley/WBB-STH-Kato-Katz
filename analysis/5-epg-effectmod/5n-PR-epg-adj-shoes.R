@@ -34,8 +34,8 @@ W=c("aged","sex","momage","momheight","momedu","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
-shoe1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
-shoe0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg",W)]
+shoe1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg","logttepg",W)]
+shoe0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg","logttepg",W)]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -73,17 +73,17 @@ rownames(hw_fecr_ari_h1_shoe1_j)=c("Water vs C","Sanitation vs C","Handwashing v
 rownames(tt_fecr_ari_h1_shoe1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-est.al.h1.shoe1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe1$alepg,tr=shoe1$tr,
+est.al.h1.shoe1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe1$logalepg,tr=shoe1$tr,
    pair=shoe1$block, id=shoe1$block,W=shoe1[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.shoe1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe1$hwepg,tr=shoe1$tr,
+est.hw.h1.shoe1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe1$loghwepg,tr=shoe1$tr,
    pair=shoe1$block, id=shoe1$block,W=shoe1[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.shoe1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe1$ttepg,tr=shoe1$tr,
+est.tt.h1.shoe1.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe1$logttepg,tr=shoe1$tr,
    pair=shoe1$block, id=shoe1$block,W=shoe1[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
@@ -126,17 +126,17 @@ rownames(hw_fecr_ari_h1_shoe0_j)=c("Water vs C","Sanitation vs C","Handwashing v
 rownames(tt_fecr_ari_h1_shoe0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                                "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
-est.al.h1.shoe0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe0$alepg,tr=shoe0$tr,
+est.al.h1.shoe0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe0$logalepg,tr=shoe0$tr,
    pair=shoe0$block, id=shoe0$block,W=shoe0[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.shoe0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe0$hwepg,tr=shoe0$tr,
+est.hw.h1.shoe0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe0$loghwepg,tr=shoe0$tr,
    pair=shoe0$block, id=shoe0$block,W=shoe0[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.shoe0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe0$ttepg,tr=shoe0$tr,
+est.tt.h1.shoe0.geo=apply(matrix(trlist), 1,function(x) washb_tmle(Y=shoe0$logttepg,tr=shoe0$tr,
    pair=shoe0$block, id=shoe0$block,W=shoe0[,W], FECR="geometric",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
