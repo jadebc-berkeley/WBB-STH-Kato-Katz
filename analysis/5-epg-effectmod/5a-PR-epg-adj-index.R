@@ -151,11 +151,11 @@ rownames(tt_fecr_geo_h1_i0_j)=c("Water vs C","Sanitation vs C","Handwashing vs C
 # save objects
 #----------------------------------------------
 
-save(al_fecr_geo_h1_i1_j,hw_fecr_geo_h1_i1_j,tt_fecr_geo_h1_i1_j,
+save(al_fecr_ari_h1_i1_j,hw_fecr_ari_h1_i1_j,tt_fecr_ari_h1_i1_j,
      al_fecr_geo_h1_i1_j,hw_fecr_geo_h1_i1_j,tt_fecr_geo_h1_i1_j,
 
      al_fecr_ari_h1_i0_j,hw_fecr_ari_h1_i0_j,tt_fecr_ari_h1_i0_j,
-     al_fecr_ari_h1_i0_j,hw_fecr_ari_h1_i0_j,tt_fecr_ari_h1_i0_j,
+     al_fecr_geo_h1_i0_j,hw_fecr_geo_h1_i0_j,tt_fecr_geo_h1_i0_j,
      
      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_adj_index.RData")
 
