@@ -26,13 +26,17 @@ d0=d[d$geophagia==0,]
 
 # the following variables were dropped from the covariate list 
 # because they had many levels and one of the effect modification
-# strata has <20% prevalence: 
-# counter, month, birthorder, food security, number of individuals 
-# in compound, number of <18 individuals
-W=c("aged","sex","momage","momheight","momedu","watmin","walls","floor",
+# strata has <20% prevalence: counter, birthorder
+# using binary versions of the following due to sparse data: 
+# food security, number of individuals in compound, number of <18 individuals
+# age days, month
+W=c("wet","sac","sex","hfiacatbin","momagebin","momheightbin","momedu",
+    "Nlt18bin","Ncompbin","watminbin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
+dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W)]
+dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 
