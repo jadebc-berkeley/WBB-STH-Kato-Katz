@@ -650,6 +650,32 @@ merge m:1 dataid using `latvars'
 drop if _m==2
 drop _m
 
+* ---------------------------------------------
+* Creating categorical covariates for analyses with sparse data
+* ---------------------------------------------
+xtile momagebin = momage if hasoutcome==1, nquantiles(2)
+xtile momheightbin = momheight if hasoutcome==1, nquantiles(2)
+recode momagebin momheightbin (2=1) (1=0)
+
+gen hfiacatbin = .
+replace hfiacatbin = 0 if (hfiacat==1) 
+replace hfiacatbin = 1 if (hfiacat==2 | hfiacat==3 | hfiacat==4) 
+
+gen Ncompbin = .
+replace Ncompbin= 0 if Ncomp<=10 
+replace Ncompbin= 1 if Ncomp>=11 & Ncomp<.
+
+gen Nlt18bin = . 
+replace Nlt18bin = 0 if Nlt18<=1 
+replace Nlt18bin = 1 if Nlt18>=2 & Nlt18<.
+
+gen watminbin=.
+replace watminbin = 0 if watmin==0 
+replace watminbin = 1 if watmin>=1 & watmin< .  
+
+gen wet=.
+replace wet = 0 if month<6 | (month>10 & month<.)
+replace wet = 1 if month>=6 & month<=10
 
 *--------------------------------------------
 * Merge in treatment assignment

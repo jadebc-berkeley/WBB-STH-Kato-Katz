@@ -1,9 +1,9 @@
----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make
-> _sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/s
+> th/dm/1_make_sth_data.log
   log type:  text
- opened on:  16 Dec 2016, 17:13:28
+ opened on:  23 Dec 2016, 11:41:11
 
 . 
 . *********************************************
@@ -23,8 +23,8 @@
 . *--------------------------------------------
 . * Read in KK data 
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-WASHB-P-sckk.
-> dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/4-W
+> ASHB-P-sckk.dta", clear
 
 . 
 . * drop spillover children
@@ -55,7 +55,8 @@ originalHW: all characters numeric; replaced as int
 
 . 
 . * convert long to wide for duplicate slides
-. keep dataid labdate personid slide originalAL originalTT originalHW counter defday
+. keep dataid labdate personid slide originalAL originalTT originalHW count
+> er defday
 
 . ren originalAL al
 
@@ -77,7 +78,8 @@ slide: all characters numeric; replaced as byte
 (note: j = 1 2)
 
 Data                               long   ->   wide
------------------------------------------------------------------------------
+---------------------------------------------------------------------------
+> --
 Number of obs.                    14374   ->    7187
 Number of variables                   9   ->      12
 j variable (2 values)             slide   ->   (dropped)
@@ -86,7 +88,8 @@ xij variables:
                                      hw   ->   hw1 hw2
                                      tt   ->   tt1 tt2
                                 counter   ->   counter1 counter2
------------------------------------------------------------------------------
+---------------------------------------------------------------------------
+> --
 
 . 
 . * counter 
@@ -97,32 +100,32 @@ xij variables:
 . gen counter = .
 (7,187 missing values generated)
 
-. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter1=="RK" & counter
-> 2=="HKC") 
+. replace counter= 1 if (counter1 =="HKC" & counter2=="RK") | (counter1=="R
+> K" & counter2=="HKC") 
 (593 real changes made)
 
-. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="MHR" & count
-> er2=="HKC") 
+. replace counter= 2 if (counter1 =="HKC" & counter2=="MHR") | (counter1=="
+> MHR" & counter2=="HKC") 
 (863 real changes made)
 
-. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="SNJ" & count
-> er2=="HKC") 
+. replace counter= 3 if (counter1 =="HKC" & counter2=="SNJ") | (counter1=="
+> SNJ" & counter2=="HKC") 
 (1,296 real changes made)
 
-. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="RK" & counter
-> 2=="MHR") 
+. replace counter= 4 if (counter1 =="MHR" & counter2=="RK") | (counter1=="R
+> K" & counter2=="MHR") 
 (1,865 real changes made)
 
-. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="SNJ" & count
-> er2=="MHR") 
+. replace counter= 5 if (counter1 =="MHR" & counter2=="SNJ") | (counter1=="
+> SNJ" & counter2=="MHR") 
 (1,254 real changes made)
 
-. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="SNJ" & counte
-> r2=="RK") 
+. replace counter= 6 if (counter1 =="RK" & counter2=="SNJ") | (counter1=="S
+> NJ" & counter2=="RK") 
 (1,315 real changes made)
 
-. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK" & counter2
-> =="RK") 
+. replace counter= 6 if (counter1 =="RK" & counter2=="RK") | (counter1=="RK
+> " & counter2=="RK") 
 (1 real change made)
 
 . 
@@ -219,8 +222,8 @@ xij variables:
 (0 real changes made)
 
 . 
-. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensity" 3 "High i
-> ntensity"
+. label define intl 0 "No infection" 1 "Low intensity" 2 "Moderate intensit
+> y" 3 "High intensity"
 
 . label values alint ttint hwint intl
 
@@ -254,7 +257,8 @@ xij variables:
 . 
 . gen sthmh=0
 
-. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 | ttint==3
+. replace sthmh=1 if alint==2 | alint==3 | hwint==2 | hwint==3 | ttint==2 |
+>  ttint==3
 (349 real changes made)
 
 . replace sthmh=. if alint==. & ttint==. & hwint==.
@@ -297,7 +301,7 @@ xij variables:
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000001 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.000001 saved
 
 . 
 . * ---------------------------------------------
@@ -306,8 +310,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000001 saved
 . * If data available from primary analysis dataset, 
 . * use that. If not, use PSTH dataset. 
 . * ---------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-diar
-> .dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-ban
+> gladesh-diar.dta", clear
 (Bangladesh diarrhea dataset, created by 3-bangladesh-dm-diar.do)
 
 . keep dataid childid clusterid sex dob 
@@ -323,15 +327,16 @@ Duplicates in terms of all variables
 . tempfile primdob
 
 . save `primdob'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000002 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.000002 saved
 
 . 
 . * merge in birth order for T1 from anthro dataset
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-anth
-> ro.dta", clear
-(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-dm-anthro.do)
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-ban
+> gladesh-anthro.dta", clear
+(Bangladesh anthropometry analysis dataset, created by 4-bangladesh-dm-anth
+> ro.do)
 
 . keep dataid childid clusterid birthord
 
@@ -346,7 +351,7 @@ Duplicates in terms of all variables
 . tempfile primbirthord
 
 . save `primbirthord'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000004 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.000004 saved
 
 . restore
 
@@ -367,8 +372,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000004 saved
 . 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1
-> survey_STHCohort.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WAS
+> HB-PSTH-Day1survey_STHCohort.dta", clear
 
 . ren col1 persondesc
 
@@ -475,9 +480,9 @@ year: all characters numeric; replaced as int
 
 . codebook sex
 
----------------------------------------------------------------------------------------
-sex_psth                                                                            Sex
----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------
+sex_psth                                                                Sex
+---------------------------------------------------------------------------
 
                   type:  numeric (byte)
                  label:  sexl
@@ -503,7 +508,7 @@ sex_psth                                                                        
 . tempfile agesex
 
 . save `agesex'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000006 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.000006 saved
 
 . restore
 
@@ -531,15 +536,15 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000006 saved
 . keep if keep==1
 (5,373 observations deleted)
 
-. replace personid="C1" if personid=="C1" | personid=="C2" | personid=="C3" | personid=
-> ="C4" 
+. replace personid="C1" if personid=="C1" | personid=="C2" | personid=="C3"
+>  | personid=="C4" 
 (67 real changes made)
 
 . 
 . tempfile agesex2
 
 . save `agesex2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000007 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.000007 saved
 
 . 
 . * merge primary analysis dob with sth dataset to identify
@@ -547,7 +552,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000007 saved
 . use `sth', clear
 
 . merge 1:1 dataid personid using `agesex2'
-(note: variable personid was str2, now str3 to accommodate using data's values)
+(note: variable personid was str2, now str3 to accommodate using data's
+       values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -570,7 +576,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000007 saved
 
 . 
 . * use psth dob if primary dob not available for T1 T2
-. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | personid=="C1")
+. replace dob = dob_psth if dob==. & (personid=="T1" | personid=="T2" | per
+> sonid=="C1")
 (8 real changes made)
 
 . replace dob = dob_psth if  personid=="O1" 
@@ -580,7 +587,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000007 saved
 
 . 
 . * use psth sex if primary sex not available for T1 T2
-. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" | personid=="C1")
+. replace sex = sex_psth if sex==. & (personid=="T1" | personid=="T2" | per
+> sonid=="C1")
 (8 real changes made)
 
 . replace sex = sex_psth if personid=="O1" 
@@ -590,8 +598,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000007 saved
 
 . 
 . * use psth birth order if primary dob not available for T1 T2
-. replace birthord = birthorder_psth if birthord==. & (personid=="T1" | personid=="T2" 
-> | personid=="C1")
+. replace birthord = birthorder_psth if birthord==. & (personid=="T1" | per
+> sonid=="T2" | personid=="C1")
 (562 real changes made)
 
 . replace birthord = birthorder_psth if  personid=="O1" 
@@ -617,15 +625,15 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000007 saved
 . tempfile sth
 
 . save `sth'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000008 saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.000008 saved
 
 . 
 . *--------------------------------------------
 . * Impute households lost to FU that had live births
 . * after baseline
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-trac
-> k-compound.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-ban
+> gladesh-track-compound.dta", clear
 (WASH Benefits Bangladesh tracking file, compounds)
 
 . gen lb = 1
@@ -639,8 +647,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000008 saved
 . * impute T1 and T2 from baseline list of twins
 . preserve 
 
-. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline survey info/Twin Chi
-> ld list.xlsx", clear firstrow
+. import excel using "~/Dropbox/WASHB-PSTH/Sampling Frame/baseline survey i
+> nfo/Twin Child list.xlsx", clear firstrow
 
 . gen newdataid=string(dataid,"%05.0f")
 
@@ -655,7 +663,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.000008 saved
 . tempfile t1t2
 
 . save `t1t2'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000a saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000a saved
 
 . restore
 
@@ -691,7 +699,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000a saved
 . tempfile c1
 
 . save `c1'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000c saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000c saved
 
 . restore
 
@@ -729,14 +737,14 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000c saved
 . tempfile lb
 
 . save `lb'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000d saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000d saved
 
 . 
 . *--------------------------------------------
 . * Impute individuals lost to FU at PSTH round
 . *--------------------------------------------
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-
-> fieldtrack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-W
+> ASHB-P-sckk-fieldtrack.dta", clear
 
 . keep dataid personid stoolever hhstatus
 
@@ -831,14 +839,15 @@ Duplicates in terms of all variables
 . tempfile fustool
 
 . save `fustool'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000e saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000e saved
 
 . 
 . use `lb', clear
 (WASH Benefits Bangladesh tracking file, compounds)
 
 . merge 1:1 dataid personid using `fustool'
-(note: variable dataid was str5, now str32 to accommodate using data's values)
+(note: variable dataid was str5, now str32 to accommodate using data's
+       values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -868,8 +877,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000e saved
 (128 real changes made)
 
 . 
-. label define fu_reasonl 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "No KK" 9 "Ex
-> cluded from PSTH"
+. label define fu_reasonl 1 "In STH sample" 2 "Loss to FU" 3 "No stool" 4 "
+> No KK" 9 "Excluded from PSTH"
 
 . label values fu_reason fu_reasonl
 
@@ -885,13 +894,14 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000e saved
 . tempfile allfu
 
 . save `allfu'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000f saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000f saved
 
 . 
 . use `sth', clear
 
 . merge 1:1 dataid personid using `allfu'
-(note: variable dataid was str7, now str32 to accommodate using data's values)
+(note: variable dataid was str7, now str32 to accommodate using data's
+       values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -962,8 +972,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000f saved
 . * not lost to FU at endline that had O1s 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-
-> fieldtrack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-W
+> ASHB-P-sckk-fieldtrack.dta", clear
 
 . drop if slide=="2"
 (7,187 observations deleted)
@@ -1006,8 +1016,8 @@ T1, T2, C1, |
 . * import the O1s we need to impute from Ayse's list 
 . preserve
 
-. insheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Ayse/2-washb-bangladesh-i
-> mputeo1.csv", clear
+. insheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Ayse/2-washb-
+> bangladesh-imputeo1.csv", clear
 (1 var, 835 obs)
 
 . gen imputeo1=1
@@ -1021,7 +1031,7 @@ T1, T2, C1, |
 . tempfile imputeo1
 
 . save `imputeo1'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000i saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000i saved
 
 . restore
 
@@ -1061,9 +1071,10 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000i saved
 . 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-enro
-> l.dta", clear
-(Bangladesh enrollment analysis dataset (HH obs), created by 2-bangladesh-dm-enro)
+. use "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-ban
+> gladesh-enrol.dta", clear
+(Bangladesh enrollment analysis dataset (HH obs), created by 2-bangladesh-d
+> m-enro)
 
 . 
 . label define roof 0 "No improved roof" 1 "Has improved roof"
@@ -1141,104 +1152,151 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000i saved
 
 . 
 . * create wealth index
-. pca roof floor walls elec asset_wardrobe asset_table asset_chair asset_khat asset_cho
-> uki asset_radio asset_tv asset_refrig asset_bike asset_moto asset_sewmach asset_mobil
-> e asset_phone
+. pca roof floor walls elec asset_wardrobe asset_table asset_chair asset_kh
+> at asset_chouki asset_radio asset_tv asset_refrig asset_bike asset_moto a
+> sset_sewmach asset_mobile asset_phone
 
-Principal components/correlation                 Number of obs    =      5,551
-                                                 Number of comp.  =         17
-                                                 Trace            =         17
-    Rotation: (unrotated = principal)            Rho              =     1.0000
+Principal components/correlation                 Number of obs    =      5,
+> 551
+                                                 Number of comp.  =        
+>  17
+                                                 Trace            =        
+>  17
+    Rotation: (unrotated = principal)            Rho              =     1.0
+> 000
 
-    --------------------------------------------------------------------------
-       Component |   Eigenvalue   Difference         Proportion   Cumulative
-    -------------+------------------------------------------------------------
-           Comp1 |      3.48207      2.02658             0.2048       0.2048
-           Comp2 |      1.45549      .184421             0.0856       0.2904
-           Comp3 |      1.27107      .162134             0.0748       0.3652
-           Comp4 |      1.10894      .092216             0.0652       0.4304
-           Comp5 |      1.01672      .026562             0.0598       0.4903
-           Comp6 |      .990157     .0705788             0.0582       0.5485
-           Comp7 |      .919578     .0184365             0.0541       0.6026
-           Comp8 |      .901142     .0407288             0.0530       0.6556
-           Comp9 |      .860413      .053327             0.0506       0.7062
-          Comp10 |      .807086     .0140613             0.0475       0.7537
-          Comp11 |      .793025     .0390846             0.0466       0.8003
-          Comp12 |       .75394      .141995             0.0443       0.8447
-          Comp13 |      .611945     .0562916             0.0360       0.8807
-          Comp14 |      .555653     .0303101             0.0327       0.9134
-          Comp15 |      .525343     .0384817             0.0309       0.9443
-          Comp16 |      .486861     .0262856             0.0286       0.9729
-          Comp17 |      .460576            .             0.0271       1.0000
-    --------------------------------------------------------------------------
+    -----------------------------------------------------------------------
+> ---
+       Component |   Eigenvalue   Difference         Proportion   Cumulativ
+> e
+    -------------+---------------------------------------------------------
+> ---
+           Comp1 |      3.48207      2.02658             0.2048       0.204
+> 8
+           Comp2 |      1.45549      .184421             0.0856       0.290
+> 4
+           Comp3 |      1.27107      .162134             0.0748       0.365
+> 2
+           Comp4 |      1.10894      .092216             0.0652       0.430
+> 4
+           Comp5 |      1.01672      .026562             0.0598       0.490
+> 3
+           Comp6 |      .990157     .0705788             0.0582       0.548
+> 5
+           Comp7 |      .919578     .0184365             0.0541       0.602
+> 6
+           Comp8 |      .901142     .0407288             0.0530       0.655
+> 6
+           Comp9 |      .860413      .053327             0.0506       0.706
+> 2
+          Comp10 |      .807086     .0140613             0.0475       0.753
+> 7
+          Comp11 |      .793025     .0390846             0.0466       0.800
+> 3
+          Comp12 |       .75394      .141995             0.0443       0.844
+> 7
+          Comp13 |      .611945     .0562916             0.0360       0.880
+> 7
+          Comp14 |      .555653     .0303101             0.0327       0.913
+> 4
+          Comp15 |      .525343     .0384817             0.0309       0.944
+> 3
+          Comp16 |      .486861     .0262856             0.0286       0.972
+> 9
+          Comp17 |      .460576            .             0.0271       1.000
+> 0
+    -----------------------------------------------------------------------
+> ---
 
 Principal components (eigenvectors) 
 
-    --------------------------------------------------------------------------
-        Variable |    Comp1     Comp2     Comp3     Comp4     Comp5     Comp6 
-    -------------+------------------------------------------------------------
-            roof |   0.0958    0.2439   -0.2662    0.4606   -0.0279   -0.0453 
-           floor |   0.2937   -0.3020   -0.1673    0.2245   -0.0350   -0.0271 
-           walls |   0.0529    0.1569   -0.4995    0.5146   -0.1437    0.0732 
-            elec |   0.3115    0.0535   -0.0100   -0.2547   -0.2610    0.2270 
-    asset_ward~e |   0.3073   -0.2754    0.0434    0.1458    0.0116   -0.0633 
-     asset_table |   0.2835    0.3682    0.1663    0.0163    0.0291    0.0256 
-     asset_chair |   0.3111    0.3650    0.1312    0.0461    0.0597    0.0034 
-      asset_khat |   0.3372    0.1467   -0.2956   -0.2326    0.1715   -0.1843 
-    asset_chouki |  -0.1306    0.0748    0.5622    0.4304   -0.2510    0.2678 
-     asset_radio |   0.0967   -0.0856    0.3094    0.2083    0.4741   -0.5458 
-        asset_tv |   0.3593   -0.0878    0.0668   -0.2135   -0.2190    0.1830 
-    asset_refrig |   0.3140   -0.3901    0.0652    0.0483   -0.0529    0.0319 
-      asset_bike |   0.1551    0.3236    0.2458    0.0268   -0.0234   -0.0966 
-      asset_moto |   0.2482   -0.2836    0.1082    0.1801    0.0536   -0.0235 
-    asset_sewm~h |   0.1582   -0.1145    0.1260    0.1247    0.0131    0.2861 
-    asset_mobile |   0.2338    0.2907    0.0731   -0.0619    0.0561   -0.0268 
-     asset_phone |   0.0075    0.0079   -0.0597    0.0289    0.7280    0.6365 
-    --------------------------------------------------------------------------
+    ----------------------------------------------------------------
+        Variable |    Comp1     Comp2     Comp3     Comp4     Comp5 
+    -------------+--------------------------------------------------
+            roof |   0.0958    0.2439   -0.2662    0.4606   -0.0279 
+           floor |   0.2937   -0.3020   -0.1673    0.2245   -0.0350 
+           walls |   0.0529    0.1569   -0.4995    0.5146   -0.1437 
+            elec |   0.3115    0.0535   -0.0100   -0.2547   -0.2610 
+    asset_ward~e |   0.3073   -0.2754    0.0434    0.1458    0.0116 
+     asset_table |   0.2835    0.3682    0.1663    0.0163    0.0291 
+     asset_chair |   0.3111    0.3650    0.1312    0.0461    0.0597 
+      asset_khat |   0.3372    0.1467   -0.2956   -0.2326    0.1715 
+    asset_chouki |  -0.1306    0.0748    0.5622    0.4304   -0.2510 
+     asset_radio |   0.0967   -0.0856    0.3094    0.2083    0.4741 
+        asset_tv |   0.3593   -0.0878    0.0668   -0.2135   -0.2190 
+    asset_refrig |   0.3140   -0.3901    0.0652    0.0483   -0.0529 
+      asset_bike |   0.1551    0.3236    0.2458    0.0268   -0.0234 
+      asset_moto |   0.2482   -0.2836    0.1082    0.1801    0.0536 
+    asset_sewm~h |   0.1582   -0.1145    0.1260    0.1247    0.0131 
+    asset_mobile |   0.2338    0.2907    0.0731   -0.0619    0.0561 
+     asset_phone |   0.0075    0.0079   -0.0597    0.0289    0.7280 
+    ----------------------------------------------------------------
 
-    --------------------------------------------------------------------------
-        Variable |    Comp7     Comp8     Comp9    Comp10    Comp11    Comp12 
-    -------------+------------------------------------------------------------
-            roof |  -0.1125    0.6050    0.2335   -0.3992   -0.0832   -0.1526 
-           floor |   0.1098   -0.1776   -0.0861    0.2553   -0.0162   -0.1496 
-           walls |   0.1213   -0.2752    0.0262    0.3539    0.1457    0.1893 
-            elec |   0.1307    0.3178    0.2338    0.2898    0.1841    0.1434 
-    asset_ward~e |   0.0751   -0.1839   -0.0323   -0.1820   -0.0349   -0.4741 
-     asset_table |   0.0451    0.0646   -0.4932   -0.0705    0.1571   -0.0304 
-     asset_chair |  -0.0360   -0.0765   -0.4006   -0.0452    0.1031   -0.0305 
-      asset_khat |  -0.0900   -0.1007   -0.0232   -0.0690    0.0623    0.0774 
-    asset_chouki |   0.1909    0.0194   -0.0393    0.1128   -0.0409   -0.0231 
-     asset_radio |   0.0083    0.2651    0.1474    0.4141    0.2048    0.0586 
-        asset_tv |   0.1338    0.2444    0.1599    0.1176    0.1354    0.0327 
-    asset_refrig |   0.0970    0.0124    0.0293   -0.1873   -0.0421   -0.2096 
-      asset_bike |   0.0470   -0.4804    0.6160   -0.2770    0.2507    0.0128 
-      asset_moto |   0.0659   -0.0302   -0.0789   -0.3406   -0.2041    0.7817 
-    asset_sewm~h |  -0.9002   -0.0687    0.0597    0.1415    0.0664    0.0268 
-    asset_mobile |  -0.0007   -0.0695    0.1654    0.2739   -0.8504   -0.0555 
-     asset_phone |   0.2135    0.0064    0.1048   -0.0200    0.0395   -0.0361 
-    --------------------------------------------------------------------------
+    ----------------------------------------------------------------
+        Variable |    Comp6     Comp7     Comp8     Comp9    Comp10 
+    -------------+--------------------------------------------------
+            roof |  -0.0453   -0.1125    0.6050    0.2335   -0.3992 
+           floor |  -0.0271    0.1098   -0.1776   -0.0861    0.2553 
+           walls |   0.0732    0.1213   -0.2752    0.0262    0.3539 
+            elec |   0.2270    0.1307    0.3178    0.2338    0.2898 
+    asset_ward~e |  -0.0633    0.0751   -0.1839   -0.0323   -0.1820 
+     asset_table |   0.0256    0.0451    0.0646   -0.4932   -0.0705 
+     asset_chair |   0.0034   -0.0360   -0.0765   -0.4006   -0.0452 
+      asset_khat |  -0.1843   -0.0900   -0.1007   -0.0232   -0.0690 
+    asset_chouki |   0.2678    0.1909    0.0194   -0.0393    0.1128 
+     asset_radio |  -0.5458    0.0083    0.2651    0.1474    0.4141 
+        asset_tv |   0.1830    0.1338    0.2444    0.1599    0.1176 
+    asset_refrig |   0.0319    0.0970    0.0124    0.0293   -0.1873 
+      asset_bike |  -0.0966    0.0470   -0.4804    0.6160   -0.2770 
+      asset_moto |  -0.0235    0.0659   -0.0302   -0.0789   -0.3406 
+    asset_sewm~h |   0.2861   -0.9002   -0.0687    0.0597    0.1415 
+    asset_mobile |  -0.0268   -0.0007   -0.0695    0.1654    0.2739 
+     asset_phone |   0.6365    0.2135    0.0064    0.1048   -0.0200 
+    ----------------------------------------------------------------
 
-    ------------------------------------------------------------------------------
-        Variable |   Comp13    Comp14    Comp15    Comp16    Comp17 | Unexplained 
-    -------------+--------------------------------------------------+-------------
-            roof |  -0.1122   -0.0848    0.0514   -0.0125    0.0090 |           0 
-           floor |  -0.6496   -0.4052    0.0901   -0.0242    0.0922 |           0 
-           walls |   0.2486    0.2628   -0.1203    0.0310   -0.1120 |           0 
-            elec |   0.1985   -0.2164   -0.1671   -0.3513    0.4083 |           0 
-    asset_ward~e |   0.5995   -0.3366   -0.0349   -0.0667   -0.1564 |           0 
-     asset_table |  -0.0945   -0.0888   -0.6016    0.3088   -0.0198 |           0 
-     asset_chair |  -0.0411    0.1864    0.4574   -0.5579   -0.0942 |           0 
-      asset_khat |   0.1541   -0.0154    0.4086    0.5093    0.4199 |           0 
-    asset_chouki |   0.0907   -0.0354    0.3165    0.3088    0.2881 |           0 
-     asset_radio |   0.0727    0.0723   -0.0302   -0.0066   -0.0338 |           0 
-        asset_tv |  -0.0662    0.1282    0.2272    0.3189   -0.6490 |           0 
-    asset_refrig |  -0.1169    0.7148   -0.1762   -0.0245    0.3023 |           0 
-      asset_bike |  -0.1823   -0.0382   -0.1062   -0.0389   -0.0228 |           0 
-      asset_moto |   0.0715   -0.1331   -0.0282   -0.0615   -0.0528 |           0 
-    asset_sewm~h |   0.0193    0.0004   -0.0529    0.0369   -0.0070 |           0 
-    asset_mobile |   0.0117    0.0572   -0.0939    0.0021   -0.0464 |           0 
-     asset_phone |  -0.0108   -0.0159    0.0047    0.0004   -0.0038 |           0 
-    ------------------------------------------------------------------------------
+    ----------------------------------------------------------------
+        Variable |   Comp11    Comp12    Comp13    Comp14    Comp15 
+    -------------+--------------------------------------------------
+            roof |  -0.0832   -0.1526   -0.1122   -0.0848    0.0514 
+           floor |  -0.0162   -0.1496   -0.6496   -0.4052    0.0901 
+           walls |   0.1457    0.1893    0.2486    0.2628   -0.1203 
+            elec |   0.1841    0.1434    0.1985   -0.2164   -0.1671 
+    asset_ward~e |  -0.0349   -0.4741    0.5995   -0.3366   -0.0349 
+     asset_table |   0.1571   -0.0304   -0.0945   -0.0888   -0.6016 
+     asset_chair |   0.1031   -0.0305   -0.0411    0.1864    0.4574 
+      asset_khat |   0.0623    0.0774    0.1541   -0.0154    0.4086 
+    asset_chouki |  -0.0409   -0.0231    0.0907   -0.0354    0.3165 
+     asset_radio |   0.2048    0.0586    0.0727    0.0723   -0.0302 
+        asset_tv |   0.1354    0.0327   -0.0662    0.1282    0.2272 
+    asset_refrig |  -0.0421   -0.2096   -0.1169    0.7148   -0.1762 
+      asset_bike |   0.2507    0.0128   -0.1823   -0.0382   -0.1062 
+      asset_moto |  -0.2041    0.7817    0.0715   -0.1331   -0.0282 
+    asset_sewm~h |   0.0664    0.0268    0.0193    0.0004   -0.0529 
+    asset_mobile |  -0.8504   -0.0555    0.0117    0.0572   -0.0939 
+     asset_phone |   0.0395   -0.0361   -0.0108   -0.0159    0.0047 
+    ----------------------------------------------------------------
+
+    ------------------------------------------------
+        Variable |   Comp16    Comp17 | Unexplained 
+    -------------+--------------------+-------------
+            roof |  -0.0125    0.0090 |           0 
+           floor |  -0.0242    0.0922 |           0 
+           walls |   0.0310   -0.1120 |           0 
+            elec |  -0.3513    0.4083 |           0 
+    asset_ward~e |  -0.0667   -0.1564 |           0 
+     asset_table |   0.3088   -0.0198 |           0 
+     asset_chair |  -0.5579   -0.0942 |           0 
+      asset_khat |   0.5093    0.4199 |           0 
+    asset_chouki |   0.3088    0.2881 |           0 
+     asset_radio |  -0.0066   -0.0338 |           0 
+        asset_tv |   0.3189   -0.6490 |           0 
+    asset_refrig |  -0.0245    0.3023 |           0 
+      asset_bike |  -0.0389   -0.0228 |           0 
+      asset_moto |  -0.0615   -0.0528 |           0 
+    asset_sewm~h |   0.0369   -0.0070 |           0 
+    asset_mobile |   0.0021   -0.0464 |           0 
+     asset_phone |   0.0004   -0.0038 |           0 
+    ------------------------------------------------
 
 . predict score1
 (score assumed)
@@ -1247,71 +1305,93 @@ Principal components (eigenvectors)
 Scoring coefficients 
     sum of squares(column-loading) = 1
 
-    --------------------------------------------------------------------------
-        Variable |    Comp1     Comp2     Comp3     Comp4     Comp5     Comp6 
-    -------------+------------------------------------------------------------
-            roof |   0.0958    0.2439   -0.2662    0.4606   -0.0279   -0.0453 
-           floor |   0.2937   -0.3020   -0.1673    0.2245   -0.0350   -0.0271 
-           walls |   0.0529    0.1569   -0.4995    0.5146   -0.1437    0.0732 
-            elec |   0.3115    0.0535   -0.0100   -0.2547   -0.2610    0.2270 
-    asset_ward~e |   0.3073   -0.2754    0.0434    0.1458    0.0116   -0.0633 
-     asset_table |   0.2835    0.3682    0.1663    0.0163    0.0291    0.0256 
-     asset_chair |   0.3111    0.3650    0.1312    0.0461    0.0597    0.0034 
-      asset_khat |   0.3372    0.1467   -0.2956   -0.2326    0.1715   -0.1843 
-    asset_chouki |  -0.1306    0.0748    0.5622    0.4304   -0.2510    0.2678 
-     asset_radio |   0.0967   -0.0856    0.3094    0.2083    0.4741   -0.5458 
-        asset_tv |   0.3593   -0.0878    0.0668   -0.2135   -0.2190    0.1830 
-    asset_refrig |   0.3140   -0.3901    0.0652    0.0483   -0.0529    0.0319 
-      asset_bike |   0.1551    0.3236    0.2458    0.0268   -0.0234   -0.0966 
-      asset_moto |   0.2482   -0.2836    0.1082    0.1801    0.0536   -0.0235 
-    asset_sewm~h |   0.1582   -0.1145    0.1260    0.1247    0.0131    0.2861 
-    asset_mobile |   0.2338    0.2907    0.0731   -0.0619    0.0561   -0.0268 
-     asset_phone |   0.0075    0.0079   -0.0597    0.0289    0.7280    0.6365 
-    --------------------------------------------------------------------------
-
-    --------------------------------------------------------------------------
-        Variable |    Comp7     Comp8     Comp9    Comp10    Comp11    Comp12 
-    -------------+------------------------------------------------------------
-            roof |  -0.1125    0.6050    0.2335   -0.3992   -0.0832   -0.1526 
-           floor |   0.1098   -0.1776   -0.0861    0.2553   -0.0162   -0.1496 
-           walls |   0.1213   -0.2752    0.0262    0.3539    0.1457    0.1893 
-            elec |   0.1307    0.3178    0.2338    0.2898    0.1841    0.1434 
-    asset_ward~e |   0.0751   -0.1839   -0.0323   -0.1820   -0.0349   -0.4741 
-     asset_table |   0.0451    0.0646   -0.4932   -0.0705    0.1571   -0.0304 
-     asset_chair |  -0.0360   -0.0765   -0.4006   -0.0452    0.1031   -0.0305 
-      asset_khat |  -0.0900   -0.1007   -0.0232   -0.0690    0.0623    0.0774 
-    asset_chouki |   0.1909    0.0194   -0.0393    0.1128   -0.0409   -0.0231 
-     asset_radio |   0.0083    0.2651    0.1474    0.4141    0.2048    0.0586 
-        asset_tv |   0.1338    0.2444    0.1599    0.1176    0.1354    0.0327 
-    asset_refrig |   0.0970    0.0124    0.0293   -0.1873   -0.0421   -0.2096 
-      asset_bike |   0.0470   -0.4804    0.6160   -0.2770    0.2507    0.0128 
-      asset_moto |   0.0659   -0.0302   -0.0789   -0.3406   -0.2041    0.7817 
-    asset_sewm~h |  -0.9002   -0.0687    0.0597    0.1415    0.0664    0.0268 
-    asset_mobile |  -0.0007   -0.0695    0.1654    0.2739   -0.8504   -0.0555 
-     asset_phone |   0.2135    0.0064    0.1048   -0.0200    0.0395   -0.0361 
-    --------------------------------------------------------------------------
-
     ----------------------------------------------------------------
-        Variable |   Comp13    Comp14    Comp15    Comp16    Comp17 
+        Variable |    Comp1     Comp2     Comp3     Comp4     Comp5 
     -------------+--------------------------------------------------
-            roof |  -0.1122   -0.0848    0.0514   -0.0125    0.0090 
-           floor |  -0.6496   -0.4052    0.0901   -0.0242    0.0922 
-           walls |   0.2486    0.2628   -0.1203    0.0310   -0.1120 
-            elec |   0.1985   -0.2164   -0.1671   -0.3513    0.4083 
-    asset_ward~e |   0.5995   -0.3366   -0.0349   -0.0667   -0.1564 
-     asset_table |  -0.0945   -0.0888   -0.6016    0.3088   -0.0198 
-     asset_chair |  -0.0411    0.1864    0.4574   -0.5579   -0.0942 
-      asset_khat |   0.1541   -0.0154    0.4086    0.5093    0.4199 
-    asset_chouki |   0.0907   -0.0354    0.3165    0.3088    0.2881 
-     asset_radio |   0.0727    0.0723   -0.0302   -0.0066   -0.0338 
-        asset_tv |  -0.0662    0.1282    0.2272    0.3189   -0.6490 
-    asset_refrig |  -0.1169    0.7148   -0.1762   -0.0245    0.3023 
-      asset_bike |  -0.1823   -0.0382   -0.1062   -0.0389   -0.0228 
-      asset_moto |   0.0715   -0.1331   -0.0282   -0.0615   -0.0528 
-    asset_sewm~h |   0.0193    0.0004   -0.0529    0.0369   -0.0070 
-    asset_mobile |   0.0117    0.0572   -0.0939    0.0021   -0.0464 
-     asset_phone |  -0.0108   -0.0159    0.0047    0.0004   -0.0038 
+            roof |   0.0958    0.2439   -0.2662    0.4606   -0.0279 
+           floor |   0.2937   -0.3020   -0.1673    0.2245   -0.0350 
+           walls |   0.0529    0.1569   -0.4995    0.5146   -0.1437 
+            elec |   0.3115    0.0535   -0.0100   -0.2547   -0.2610 
+    asset_ward~e |   0.3073   -0.2754    0.0434    0.1458    0.0116 
+     asset_table |   0.2835    0.3682    0.1663    0.0163    0.0291 
+     asset_chair |   0.3111    0.3650    0.1312    0.0461    0.0597 
+      asset_khat |   0.3372    0.1467   -0.2956   -0.2326    0.1715 
+    asset_chouki |  -0.1306    0.0748    0.5622    0.4304   -0.2510 
+     asset_radio |   0.0967   -0.0856    0.3094    0.2083    0.4741 
+        asset_tv |   0.3593   -0.0878    0.0668   -0.2135   -0.2190 
+    asset_refrig |   0.3140   -0.3901    0.0652    0.0483   -0.0529 
+      asset_bike |   0.1551    0.3236    0.2458    0.0268   -0.0234 
+      asset_moto |   0.2482   -0.2836    0.1082    0.1801    0.0536 
+    asset_sewm~h |   0.1582   -0.1145    0.1260    0.1247    0.0131 
+    asset_mobile |   0.2338    0.2907    0.0731   -0.0619    0.0561 
+     asset_phone |   0.0075    0.0079   -0.0597    0.0289    0.7280 
     ----------------------------------------------------------------
+
+    ----------------------------------------------------------------
+        Variable |    Comp6     Comp7     Comp8     Comp9    Comp10 
+    -------------+--------------------------------------------------
+            roof |  -0.0453   -0.1125    0.6050    0.2335   -0.3992 
+           floor |  -0.0271    0.1098   -0.1776   -0.0861    0.2553 
+           walls |   0.0732    0.1213   -0.2752    0.0262    0.3539 
+            elec |   0.2270    0.1307    0.3178    0.2338    0.2898 
+    asset_ward~e |  -0.0633    0.0751   -0.1839   -0.0323   -0.1820 
+     asset_table |   0.0256    0.0451    0.0646   -0.4932   -0.0705 
+     asset_chair |   0.0034   -0.0360   -0.0765   -0.4006   -0.0452 
+      asset_khat |  -0.1843   -0.0900   -0.1007   -0.0232   -0.0690 
+    asset_chouki |   0.2678    0.1909    0.0194   -0.0393    0.1128 
+     asset_radio |  -0.5458    0.0083    0.2651    0.1474    0.4141 
+        asset_tv |   0.1830    0.1338    0.2444    0.1599    0.1176 
+    asset_refrig |   0.0319    0.0970    0.0124    0.0293   -0.1873 
+      asset_bike |  -0.0966    0.0470   -0.4804    0.6160   -0.2770 
+      asset_moto |  -0.0235    0.0659   -0.0302   -0.0789   -0.3406 
+    asset_sewm~h |   0.2861   -0.9002   -0.0687    0.0597    0.1415 
+    asset_mobile |  -0.0268   -0.0007   -0.0695    0.1654    0.2739 
+     asset_phone |   0.6365    0.2135    0.0064    0.1048   -0.0200 
+    ----------------------------------------------------------------
+
+    ----------------------------------------------------------------
+        Variable |   Comp11    Comp12    Comp13    Comp14    Comp15 
+    -------------+--------------------------------------------------
+            roof |  -0.0832   -0.1526   -0.1122   -0.0848    0.0514 
+           floor |  -0.0162   -0.1496   -0.6496   -0.4052    0.0901 
+           walls |   0.1457    0.1893    0.2486    0.2628   -0.1203 
+            elec |   0.1841    0.1434    0.1985   -0.2164   -0.1671 
+    asset_ward~e |  -0.0349   -0.4741    0.5995   -0.3366   -0.0349 
+     asset_table |   0.1571   -0.0304   -0.0945   -0.0888   -0.6016 
+     asset_chair |   0.1031   -0.0305   -0.0411    0.1864    0.4574 
+      asset_khat |   0.0623    0.0774    0.1541   -0.0154    0.4086 
+    asset_chouki |  -0.0409   -0.0231    0.0907   -0.0354    0.3165 
+     asset_radio |   0.2048    0.0586    0.0727    0.0723   -0.0302 
+        asset_tv |   0.1354    0.0327   -0.0662    0.1282    0.2272 
+    asset_refrig |  -0.0421   -0.2096   -0.1169    0.7148   -0.1762 
+      asset_bike |   0.2507    0.0128   -0.1823   -0.0382   -0.1062 
+      asset_moto |  -0.2041    0.7817    0.0715   -0.1331   -0.0282 
+    asset_sewm~h |   0.0664    0.0268    0.0193    0.0004   -0.0529 
+    asset_mobile |  -0.8504   -0.0555    0.0117    0.0572   -0.0939 
+     asset_phone |   0.0395   -0.0361   -0.0108   -0.0159    0.0047 
+    ----------------------------------------------------------------
+
+    ----------------------------------
+        Variable |   Comp16    Comp17 
+    -------------+--------------------
+            roof |  -0.0125    0.0090 
+           floor |  -0.0242    0.0922 
+           walls |   0.0310   -0.1120 
+            elec |  -0.3513    0.4083 
+    asset_ward~e |  -0.0667   -0.1564 
+     asset_table |   0.3088   -0.0198 
+     asset_chair |  -0.5579   -0.0942 
+      asset_khat |   0.5093    0.4199 
+    asset_chouki |   0.3088    0.2881 
+     asset_radio |  -0.0066   -0.0338 
+        asset_tv |   0.3189   -0.6490 
+    asset_refrig |  -0.0245    0.3023 
+      asset_bike |  -0.0389   -0.0228 
+      asset_moto |  -0.0615   -0.0528 
+    asset_sewm~h |   0.0369   -0.0070 
+    asset_mobile |   0.0021   -0.0464 
+     asset_phone |   0.0004   -0.0038 
+    ----------------------------------
 
 . xtile wealth = score1, nq(2)
 
@@ -1320,7 +1400,7 @@ Scoring coefficients
 . tempfile base
 
 . save `base'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000k saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000k saved
 
 . restore
 
@@ -1353,8 +1433,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000k saved
 . * ---------------------------------------------
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1
-> survey_HHCensus.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WAS
+> HB-PSTH-Day1survey_HHCensus.dta", clear
 
 . * Number of individuals living in the compound (<10 vs. ≥10)
 . gen ncompover10 = (col7 >=10) 
@@ -1368,7 +1448,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000k saved
 . tempfile censvar
 
 . save `censvar'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000m saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000m saved
 
 . restore
 
@@ -1390,8 +1470,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000m saved
 . * Percentage of mud floors in household and latrine area (0 vs. ≥1)
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1
-> survey-main.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WAS
+> HB-PSTH-Day1survey-main.dta", clear
 
 . 
 . replace qF2=. if qF2==888
@@ -1418,7 +1498,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000m saved
 . tempfile dirtfloor
 
 . save `dirtfloor'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000o saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000o saved
 
 . restore
 
@@ -1440,8 +1520,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000o saved
 . * Caregiver-reported deworming in last six months
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WASHB-PSTH-Day1
-> survey_DiarrheaDeworming.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/WAS
+> HB-PSTH-Day1survey_DiarrheaDeworming.dta", clear
 
 . gen dw=0
 
@@ -1467,13 +1547,14 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000o saved
 . tempfile dw
 
 . save `dw'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000q saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000q saved
 
 . restore
 
 . 
 . merge m:1 dataid personid using `dw'
-(note: variable personid was str3, now str7 to accommodate using data's values)
+(note: variable personid was str3, now str7 to accommodate using data's
+       values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -1493,8 +1574,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000q saved
 . * Whether the child is observed to be wearing shoes
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-WASHB-P-sckk-
-> fieldtrack.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/2-STH-kato-katz/5-W
+> ASHB-P-sckk-fieldtrack.dta", clear
 
 . keep if slide=="1"
 (14,500 observations deleted)
@@ -1513,7 +1594,7 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000q saved
 . tempfile shoedef
 
 . save `shoedef'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000s saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000s saved
 
 . restore
 
@@ -1543,11 +1624,12 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000s saved
 (2,824 real changes made, 2,824 to missing)
 
 . 
-. * Compound has latrine with water seal that flushes into pit or septic tank 
+. * Compound has latrine with water seal that flushes into pit or septic ta
+> nk 
 . preserve
 
-. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/1. WAS
-> HB_Baseline_main_survey.dta", clear
+. use "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Bas
+> eline/1. WASHB_Baseline_main_survey.dta", clear
 
 . gen lat=0
 
@@ -1567,8 +1649,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000s saved
 (237 real changes made)
 
 . 
-. * Compound has dedicated tool to clean up feces and reports using it to dispose of ch
-> ild feces
+. * Compound has dedicated tool to clean up feces and reports using it to d
+> ispose of child feces
 . gen scoop=0
 
 . replace scoop=1 if q919==1 & q921_2
@@ -1589,14 +1671,16 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000s saved
 
 . #delimit;
 delimiter now ;
-. replace noopendef=1 if (q801_a==3 |q801_a==888) & (q801_b==3|q801_b==888) & 
->         (q801_c==3|q801_c==888) & (q801_d==3|q801_d==888) & (q801_e==3|q801_e==888);
+. replace noopendef=1 if (q801_a==3 |q801_a==888) & (q801_b==3|q801_b==888)
+>  & 
+>         (q801_c==3|q801_c==888) & (q801_d==3|q801_d==888) & (q801_e==3|q8
+> 01_e==888);
 (2,804 real changes made)
 
 . #delimit cr
 delimiter now cr
-. replace noopendef=. if q801_a==999 | q801_b==999 | q801_c==999 | q801_d==999 | q801_e
-> ==999
+. replace noopendef=. if q801_a==999 | q801_b==999 | q801_c==999 | q801_d==
+> 999 | q801_e==999
 (10 real changes made, 10 to missing)
 
 . 
@@ -1605,7 +1689,7 @@ delimiter now cr
 . tempfile latvars
 
 . save `latvars'
-file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000u saved
+file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000u saved
 
 . restore
 
@@ -1627,13 +1711,75 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_01613.00000u saved
 . drop _m
 
 . 
+. * ---------------------------------------------
+. * Creating categorical covariates for analyses with sparse data
+. * ---------------------------------------------
+. xtile momagebin = momage if hasoutcome==1, nquantiles(2)
+
+. xtile momheightbin = momheight if hasoutcome==1, nquantiles(2)
+
+. recode momagebin momheightbin (2=1) (1=0)
+(momagebin: 7161 changes made)
+(momheightbin: 7162 changes made)
+
+. 
+. gen hfiacatbin = .
+(10,011 missing values generated)
+
+. replace hfiacatbin = 0 if (hfiacat==1) 
+(6,801 real changes made)
+
+. replace hfiacatbin = 1 if (hfiacat==2 | hfiacat==3 | hfiacat==4) 
+(3,210 real changes made)
+
+. 
+. gen Ncompbin = .
+(10,011 missing values generated)
+
+. replace Ncompbin= 0 if Ncomp<=10 
+(5,281 real changes made)
+
+. replace Ncompbin= 1 if Ncomp>=11 & Ncomp<.
+(4,730 real changes made)
+
+. 
+. gen Nlt18bin = . 
+(10,011 missing values generated)
+
+. replace Nlt18bin = 0 if Nlt18<=1 
+(5,138 real changes made)
+
+. replace Nlt18bin = 1 if Nlt18>=2 & Nlt18<.
+(4,873 real changes made)
+
+. 
+. gen watminbin=.
+(10,011 missing values generated)
+
+. replace watminbin = 0 if watmin==0 
+(6,553 real changes made)
+
+. replace watminbin = 1 if watmin>=1 & watmin< .  
+(3,458 real changes made)
+
+. 
+. gen wet=.
+(10,011 missing values generated)
+
+. replace wet = 0 if month<6 | (month>10 & month<.)
+(5,406 real changes made)
+
+. replace wet = 1 if month>=6 & month<=10
+(1,781 real changes made)
+
 . 
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets
-> /washb-bangladesh-blind-tr.dta"
-(note: variable block was byte, now long to accommodate using data's values)
+. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outc
+> ome-datasets/washb-bangladesh-blind-tr.dta"
+(note: variable block was byte, now long to accommodate using data's
+       values)
 
     Result                           # of obs.
     -----------------------------------------
@@ -1654,17 +1800,17 @@ file ~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 . save "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta", replace
 file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
 
-. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace co
-> mma
+. outsheet using "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv"
+> , replace comma
 
-. outsheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv", replace c
-> omma
+. outsheet using "~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv
+> ", replace comma
 
 . 
 . log close
       name:  <unnamed>
-       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/sth/dm/1_make
-> _sth_data.log
+       log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/s
+> th/dm/1_make_sth_data.log
   log type:  text
- closed on:  16 Dec 2016, 17:13:32
----------------------------------------------------------------------------------------
+ closed on:  23 Dec 2016, 11:41:15
+---------------------------------------------------------------------------
