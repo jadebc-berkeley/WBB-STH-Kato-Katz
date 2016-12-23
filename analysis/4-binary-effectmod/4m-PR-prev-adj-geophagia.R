@@ -19,8 +19,8 @@ source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-program
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
-d1=d[d$geophagia==1,]
-d0=d[d$geophagia==0,]
+d1=d[d$geophagia=="yes",]
+d0=d[d$geophagia=="no",]
 
 # roof and landphone excluded due to low prevalence
 
@@ -35,8 +35,6 @@ W=c("wet","sac","sex","hfiacatbin","momagebin","momheightbin","momedu",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
-dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W)]
-dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 
