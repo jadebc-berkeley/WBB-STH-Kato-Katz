@@ -169,7 +169,9 @@ psth_prev_mh_j
 psth_mean_j
 psth_geomean_j
 
-save(psth_n_prev_j,psth_n_int_j,psth_prev_j,psth_prev_mh_j,psth_mean_j,psth_geomean_j,
+save(al_prev,hw_prev,tt_prev,sth_prev,
+     al_mh_prev,hw_mh_prev,tt_mh_prev,sth_mh_prev,
+     psth_n_prev_j,psth_n_int_j,psth_prev_j,psth_prev_mh_j,psth_mean_j,psth_geomean_j,
      file="~/Box Sync/WASHB Parasites/Results/Jade/sth_prev.RData")
 
 
