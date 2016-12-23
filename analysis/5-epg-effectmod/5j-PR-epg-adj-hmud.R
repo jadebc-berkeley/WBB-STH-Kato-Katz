@@ -105,7 +105,7 @@ rownames(tt_fecr_geo_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing v
 
 # household floor not made of dirt
 est.al.h1.hmud0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,W=dW0[,W0], FECR="arithmetic",
+   pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
