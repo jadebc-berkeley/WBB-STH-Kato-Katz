@@ -20,8 +20,8 @@ source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-program
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
-d1=d[d$shoes==1,]
-d0=d[d$shoes==0,]
+d1=d[d$shoes==1 & !is.na(d$shoes),]
+d0=d[d$shoes==0 & !is.na(d$shoes),]
 
 # roof and landphone excluded due to low prevalence
 
@@ -43,6 +43,13 @@ dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
+mylist=c(5,6,12,13,14,16,18,19,24,25,28,32,33,34,35,56,57,58,66,67,81,82,83,85,86)
+mymat=matrix(NA,length(mylist),1)
+for(i in 1:length(mylist)){
+  mymat[i,]=nrow(dW1[dW1$block==mylist[i],])
+  mymat[i,]=nrow(dW1[dW1$block==mylist[i],])
+  
+}
 # Child was wearing shoes
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
