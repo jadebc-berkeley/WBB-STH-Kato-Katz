@@ -24,11 +24,11 @@ d1=d[d$wealth==1,]
 d0=d[d$wealth==2,]
 
 # roof and landphone excluded due to low prevalence
-# excluding refrigerator because no one in low wealth group has fridge
+# excluding refrigerator and motorcycle because of sparse data
 W=c("counter","birthord","month","hfiacat","aged","sex","momage","momheight","momedu",
     "Nlt18","Ncomp","watmin","walls","floor",
     "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
-    "asset_tv","asset_bike","asset_moto","asset_sewmach","asset_mobile")
+    "asset_tv","asset_bike","asset_sewmach","asset_mobile")
 
 dW1=d1[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg","logttepg",W)]
 dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg","logttepg",W)]
