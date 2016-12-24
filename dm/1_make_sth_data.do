@@ -680,7 +680,7 @@ replace wet = 1 if month>=6 & month<=10
 *--------------------------------------------
 * Merge in treatment assignment
 *--------------------------------------------
-merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outcome-datasets/washb-bangladesh-blind-tr.dta"
+merge m:1 clusterid using "/Volumes/0-Treatment-assignments/washb-bangladesh-tr.dta"
 
 drop _m
 

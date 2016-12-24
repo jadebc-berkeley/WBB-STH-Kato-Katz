@@ -3,7 +3,7 @@
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/s
 > th/dm/1_make_sth_data.log
   log type:  text
- opened on:  23 Dec 2016, 11:41:11
+ opened on:  23 Dec 2016, 14:19:36
 
 . 
 . *********************************************
@@ -1776,10 +1776,8 @@ file /var/folders/gh/bgfnnwkd7wdg7cw3q0_zwvt40000gp/T//S_03342.00000u saved
 . *--------------------------------------------
 . * Merge in treatment assignment
 . *--------------------------------------------
-. merge m:1 clusterid using "~/Dropbox/WASHB-Bangladesh-Data/1-primary-outc
-> ome-datasets/washb-bangladesh-blind-tr.dta"
-(note: variable block was byte, now long to accommodate using data's
-       values)
+. merge m:1 clusterid using "/Volumes/0-Treatment-assignments/washb-banglad
+> esh-tr.dta"
 
     Result                           # of obs.
     -----------------------------------------
@@ -1812,5 +1810,5 @@ file ~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.dta saved
        log:  /Users/jadederong/documents/crg/wash-benefits/bangladesh/src/s
 > th/dm/1_make_sth_data.log
   log type:  text
- closed on:  23 Dec 2016, 11:41:15
+ closed on:  23 Dec 2016, 14:19:40
 ---------------------------------------------------------------------------
