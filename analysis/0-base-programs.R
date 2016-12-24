@@ -57,10 +57,19 @@ preprocess.adj.sth=function(d){
   
   d=d[order(d$block,d$clusterid,d$dataid,d$personid),]
   
-  # reorder tr labels
+  # set covariates as factors
   d$month=as.factor(d$month)
   d$block=as.factor(d$block)
   d$counter=as.factor(d$counter)
+  d$sac=as.factor(d$sac)
+  d$wet=as.factor(d$wet)
+  d$sex=as.factor(d$sex)
+  d$hfiacatbin=as.factor(d$hfiacatbin)
+  d$momagebin=as.factor(d$momagebin)
+  d$momheightbin=as.factor(d$momheightbin)
+  d$Ncompbin=as.factor(d$Ncompbin)
+  d$watminbin=as.factor(d$watminbin)
+  
   return(d)
 }
 
