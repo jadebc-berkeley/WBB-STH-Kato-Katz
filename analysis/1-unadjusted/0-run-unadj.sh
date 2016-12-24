@@ -5,6 +5,7 @@ cd
 rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_prev.RData"
 rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_unadj.RData"
 rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_mh_pr_unadj.RData"
+rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj.RData"
 
 cd "Documents/CRG/wash-benefits/bangladesh/src/sth/analysis/1-unadjusted/"
 
