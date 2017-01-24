@@ -80,4 +80,4 @@ flowchart_j=rbind(compound_lost_j,CompoundsSTH,enr.all,kk.samp)
 
 flowchart_j
 
-save(flowchart_j,file="~/Dropbox/WASHB Parasites/Results/Jade/flowchart.RData")
+save(flowchart_j,file="~/Box Sync/WASHB Parasites/Results/Jade/flowchart.RData")
