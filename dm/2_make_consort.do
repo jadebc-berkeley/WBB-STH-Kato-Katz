@@ -28,8 +28,10 @@ replace hhstatus = "L" if dataid=="31404"
 
 duplicates drop 
 
+gen clusterid=substr(dataid,1,3)
+
 * merge in tr assignment
-merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+merge m:1 clusterid using "/Volumes/0-Treatment-assignments/washb-bangladesh-tr.dta"
 drop if _m==1
 drop _m
 
@@ -149,8 +151,10 @@ keep dataid personid hhstatus enroll*
 
 duplicates drop 
 
+gen clusterid=substr(dataid,1,3)
+
 * merge in tr assignment
-merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+merge m:1 clusterid using "/Volumes/0-Treatment-assignments/washb-bangladesh-tr.dta"
 drop if _m==1
 drop _m
 
@@ -170,8 +174,10 @@ destring original*, replace
 drop if originalAL==. & originalTT==. & originalHW==.
 collapse (mean) originalAL originalTT originalHW, by(dataid labdate personid)
 
+gen clusterid=substr(dataid,1,3)
+
 * merge in tr assignment
-merge m:1 dataid using "~/Dropbox/WASHB-Bangladesh-Data/0-Untouched-data/1-Main-survey/1_Baseline/0. WASHB_Blinded_tr_assignment.dta"
+merge m:1 clusterid using "/Volumes/0-Treatment-assignments/washb-bangladesh-tr.dta"
 drop if _m==2
 drop _m
 
