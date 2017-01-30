@@ -23,24 +23,6 @@ d=preprocess.adj.sth(d)
 d1=d[d$dirtfloor_hh==1,]
 d0=d[d$dirtfloor_hh==0,]
 
-# roof and landphone excluded due to low prevalence
-
-# the following variables were dropped from the covariate list 
-# because they had many levels and one of the effect modification
-# strata has <20% prevalence: 
-# counter, birthorder
-# using binary versions of the following due to sparse data: 
-# food security, number of individuals in compound, number of <18 individuals
-# age days, month
-# mobile phone dropped because of sparse data in one level 
-W=c("wet","sac","sex","hfiacatbin","momagebin","momheightbin","momedu",
-    "Nlt18bin","Ncompbin","watminbin","walls","floor",
-    "elec","asset_wardrobe","asset_table","asset_chair","asset_khat","asset_chouki",
-    "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach")
-
-dW1=d1[,c("block","tr","clusterid","sth","al","hw","tt",W)]
-dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
-
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
@@ -51,23 +33,23 @@ trlist=c("Water","Sanitation","Handwashing",
 
 SL.library=c("SL.mean","SL.glm","SL.bayesglm","SL.gam","SL.glmnet")
 
-est.al.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$al,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+est.al.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d1$al,tr=d1$tr,
+   pair=d1$block, id=d1$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$hw,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+est.hw.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d1$hw,tr=d1$tr,
+   pair=d1$block, id=d1$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$tt,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+est.tt.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d1$tt,tr=d1$tr,
+   pair=d1$block, id=d1$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.sth.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW1$sth,tr=dW1$tr,
-   pair=dW1$block, id=dW1$block,W=dW1[,W],
+est.sth.h1.hmud1=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d1$sth,tr=d1$tr,
+   pair=d1$block, id=d1$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
@@ -102,23 +84,23 @@ rownames(sth_rd_h1_unadj_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing 
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
 # Household floor not made of dirt
-est.al.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,
+est.al.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d0$al,tr=d0$tr,
+   pair=d0$block, id=d0$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.hw.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$hw,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,
+est.hw.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d0$hw,tr=d0$tr,
+   pair=d0$block, id=d0$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.tt.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$tt,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,
+est.tt.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d0$tt,tr=d0$tr,
+   pair=d0$block, id=d0$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
-est.sth.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$sth,tr=dW0$tr,
-   pair=dW0$block, id=dW0$block,
+est.sth.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=d0$sth,tr=d0$tr,
+   pair=d0$block, id=d0$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
    g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
