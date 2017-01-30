@@ -81,19 +81,19 @@ rownames(sth_mh_rd_h1_unadj_tmle_j)=c("Water vs C","Sanitation vs C","Handwashin
 trlist=c("Water","Sanitation","Handwashing")
 
 est.al.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$almh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.hw.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$hwmh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.tt.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$ttmh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.sth.h2=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$sthmh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 al_mh_rr_h2_unadj_tmle_j=format.tmle(est.al.h2,family="binomial")$rr
@@ -125,19 +125,19 @@ rownames(sth_mh_rd_h2_unadj_tmle_j)=c("WSH vs Water","WSH vs Sanitation","WSH vs
 trlist=c("WSH","Nutrition")
 
 est.al.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$almh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"Nutrition+WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.hw.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$hwmh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"Nutrition+WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.tt.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$ttmh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"Nutrition+WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 est.sth.h3=apply(matrix(trlist), 1,function(x) washb_tmle(Y=df$sthmh,
-    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c("Control",x),
+    tr=df$tr, pair=df$block, id=df$block,family="binomial",contrast=c(x,"Nutrition+WSH"),
     Q.SL.library=SL.library,g.SL.library=SL.library, pval=0.2, seed=12345, print=TRUE))
 
 al_mh_rr_h3_unadj_tmle_j=format.tmle(est.al.h3,family="binomial")$rr
