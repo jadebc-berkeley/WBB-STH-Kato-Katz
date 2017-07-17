@@ -19,18 +19,11 @@ For all analysis scripts, you will need to change directory statements within th
 
 **`analysis`** : analysis scripts
 
-* **`1-diar`**: diarrhea analyses
-* **`2-laz`**: length-for-age z-score analyses
-* **`3-waz`**: weight-for-age z-score analyses
-* **`4-whz`**: weight-for-height z-score analyses
-* **`5-hcz`**: head circumference-for-age z-score analyses
-* **`6-stunting`**: stunting analyses
-* **`7-sev-stunting`**: severe stunting analyses
-* **`8-wasting`**: wasting analyses
-* **`9-underwt`**: underweight analyses
-* **`10-btw-clus-spill`**: between-cluster spillover analyses
-* **`11-negcontrol`**: negative control analyses
-* **`12-mortality`**: mortality analyses
+* **`1-unadjusted`**: unadjusted analyses for STH prevalence and intensity
+* **`2-binary-adjusted`**: adjusted analyses for STH prevalence 
+* **`3-epg-adjusted`**: adjusted analyses for STH intensity
+* **`4-binary-effectmod`**: effect modification analyses for STH prevalence 
+* **`5-epg-effectmod`**: effect modification analyses for STH intensity
 
 **`dm`** : data management scripts
 
