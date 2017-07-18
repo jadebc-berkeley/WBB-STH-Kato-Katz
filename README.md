@@ -1,7 +1,7 @@
 # WBB-STH-Kato-Katz
 ### WASH Benefits Bangladesh STH Kato-Katz analysis
 
-This is a repository for the WASH Benefits Bangladesh soil-transmitted helminths Kato-Katz analysis trial [NCT01590095](https://clinicaltrials.gov/ct2/show/NCT01590095). 
+This is a repository for the WASH Benefits Bangladesh soil-transmitted helminths Kato-Katz analysis trial [NCT01590095](https://clinicaltrials.gov/ct2/show/NCT01590095). This analysis was independently replicated by Jade Benjamin-Chung and Ayse Ercumen. 
 
 ### Associated protocols and datasets
 
