@@ -8,7 +8,8 @@
 # Effect modification by deworming consumption
 # in the past six months
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
 library(devtools)
 library(washb)

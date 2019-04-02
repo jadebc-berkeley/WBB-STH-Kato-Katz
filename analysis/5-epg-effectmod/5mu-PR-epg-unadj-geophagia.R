@@ -7,18 +7,24 @@
 
 # Effect modification by geophagia yes/no
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
+#----------------------------------------------
+# create separate datasets for those who ate
+# soil vs those who did not
+#----------------------------------------------
 d1=d[d$geophagia=="yes",]
 d0=d[d$geophagia=="no",]
 
@@ -42,7 +48,9 @@ geo0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
+#----------------------------------------------
 # child ate soil
+#----------------------------------------------
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -100,7 +108,9 @@ rownames(hw_fecr_geo_h1_unadj_geo1_j)=c("Water vs C","Sanitation vs C","Handwash
 rownames(tt_fecr_geo_h1_unadj_geo1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
+#----------------------------------------------
 # Child didn't eat soil
+#----------------------------------------------
 est.al.h1.geo0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=geo0$alepg,tr=geo0$tr,
    pair=geo0$block, id=geo0$block, FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
@@ -163,6 +173,5 @@ save(al_fecr_ari_h1_unadj_geo1_j,hw_fecr_ari_h1_unadj_geo1_j,tt_fecr_ari_h1_unad
      al_fecr_geo_h1_unadj_geo0_j,hw_fecr_geo_h1_unadj_geo0_j,tt_fecr_geo_h1_unadj_geo0_j,
      al_fecr_ari_h1_unadj_geo0_j,hw_fecr_ari_h1_unadj_geo0_j,tt_fecr_ari_h1_unadj_geo0_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_geophagia.RData")
-
+     file=paste0(save_data_path, "sth_pr_epg_unadj_geophagia.RData"))
 

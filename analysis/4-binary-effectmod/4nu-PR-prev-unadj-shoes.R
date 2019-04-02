@@ -1,4 +1,3 @@
-
 ##############################################
 # WASH Benefits Bangladesh STH Kato-Katz Study
 # Primary outcome analysis  
@@ -9,18 +8,24 @@
 # Effect modification by wearing shoes at the 
 # time of data collection 
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
+#----------------------------------------------
+# create separate datasets for those who wore
+# shoes vs those who did not
+#----------------------------------------------
 d1=d[d$shoes==1 & !is.na(d$shoes),]
 d0=d[d$shoes==0 & !is.na(d$shoes),]
 
@@ -44,6 +49,7 @@ dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
+# manual block correction
 mylist=c(5,6,12,13,14,16,18,19,24,25,28,32,33,34,35,56,57,58,66,67,81,82,83,85,86)
 mymat=matrix(NA,length(mylist),1)
 for(i in 1:length(mylist)){
@@ -51,7 +57,10 @@ for(i in 1:length(mylist)){
   mymat[i,]=nrow(dW1[dW1$block==mylist[i],])
   
 }
+
+#----------------------------------------------
 # Child was wearing shoes
+#----------------------------------------------
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -107,7 +116,9 @@ rownames(tt_rd_h1_unadj_shoe1_j)=c("Water vs C","Sanitation vs C","Handwashing v
 rownames(sth_rd_h1_unadj_shoe1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
+#----------------------------------------------
 # Child was not wearing shoes
+#----------------------------------------------
 est.al.h1.shoe0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
@@ -168,6 +179,5 @@ save(al_rr_h1_unadj_shoe1_j,hw_rr_h1_unadj_shoe1_j,tt_rr_h1_unadj_shoe1_j,sth_rr
      al_rr_h1_unadj_shoe0_j,hw_rr_h1_unadj_shoe0_j,tt_rr_h1_unadj_shoe0_j,sth_rr_h1_unadj_shoe0_j,
      al_rd_h1_unadj_shoe0_j,hw_rd_h1_unadj_shoe0_j,tt_rd_h1_unadj_shoe0_j,sth_rd_h1_unadj_shoe0_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_unadj_shoe.RData")
-
+     file=paste0(save_data_path, "sth_pr_unadj_shoe.RData"))
 

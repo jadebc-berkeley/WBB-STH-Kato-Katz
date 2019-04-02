@@ -8,18 +8,24 @@
 # Effect modification by above/below median
 # of a wealth index
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
+#----------------------------------------------
+# create separate datasets for households above
+# vs below median wealth
+#----------------------------------------------
 d1=d[d$wealth==1,]
 d0=d[d$wealth==2,]
 
@@ -37,7 +43,9 @@ dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg"
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
-# poor 
+#----------------------------------------------
+# below median 
+#----------------------------------------------
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -95,7 +103,9 @@ rownames(hw_fecr_geo_h1_poor1_j)=c("Water vs C","Sanitation vs C","Handwashing v
 rownames(tt_fecr_geo_h1_poor1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
-# not poor
+#----------------------------------------------
+# above median
+#----------------------------------------------
 est.al.h1.poor0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
@@ -158,6 +168,6 @@ save(al_fecr_ari_h1_poor1_j,hw_fecr_ari_h1_poor1_j,tt_fecr_ari_h1_poor1_j,
      al_fecr_ari_h1_poor0_j,hw_fecr_ari_h1_poor0_j,tt_fecr_ari_h1_poor0_j,
      al_fecr_geo_h1_poor0_j,hw_fecr_geo_h1_poor0_j,tt_fecr_geo_h1_poor0_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_adj_wealth.RData")
+     file=paste0(save_data_path, "sth_pr_epg_adj_wealth.RData"))
 
 

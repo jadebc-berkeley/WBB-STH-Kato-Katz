@@ -5,16 +5,24 @@
 # STH 
 # n, N, prevalence, and 95% CI by arm 
 
-# by Jade
+# Subgroup analyses
+
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
 rm(list=ls())
-library(washb)
+source(here::here("0-config.R"))
 
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 
+#----------------------------------------------
+# estimate prevalence in subgroups
+#----------------------------------------------
 # index child
 al_em_prev_i1_j=emprev(d,"index")$out1.al
 hw_em_prev_i1_j=emprev(d,"index")$out1.hw
@@ -176,5 +184,5 @@ sth_em_prev_shoe0_j=emprev(d,"shoes")$out0.sth
 
 rm(d, data)
 
-save.image(file="~/Box Sync/WASHB Parasites/Results/Jade/sth_prev_em.RData")
+save.image(file=paste0(save_data_path, "sth_prev_em.RData"))
 

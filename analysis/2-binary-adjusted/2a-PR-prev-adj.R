@@ -5,14 +5,16 @@
 # STH adjusted analysis
 # Binary STH outcomes
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
@@ -194,6 +196,4 @@ save(al_rr_h1_adj_j,hw_rr_h1_adj_j,tt_rr_h1_adj_j,sth_rr_h1_adj_j,
      al_rr_h3_adj_j,hw_rr_h3_adj_j,tt_rr_h3_adj_j,sth_rr_h3_adj_j,
      al_rd_h3_adj_j,hw_rd_h3_adj_j,tt_rd_h3_adj_j,sth_rd_h3_adj_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj.RData")
-
-
+    file=paste0(save_data_path, "sth_pr_adj.RData"))

@@ -8,18 +8,24 @@
 # Effect modification by percentage of household 
 # mud floor > 0%
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
+#----------------------------------------------
+# create separate datasets for households with 
+# and without dirt floors
+#----------------------------------------------
 d1=d[d$dirtfloor_hh==1,]
 d0=d[d$dirtfloor_hh==0,]
 
@@ -45,7 +51,9 @@ dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
+#----------------------------------------------
 # Household floor made of dirt
+#----------------------------------------------
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -101,7 +109,9 @@ rownames(tt_rd_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
 rownames(sth_rd_h1_hmud1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")
 
+#----------------------------------------------
 # Household floor not made of dirt
+#----------------------------------------------
 est.al.h1.hmud0=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$al,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W],
    family="binomial",contrast=c("Control",x),Q.SL.library=SL.library,
@@ -162,6 +172,5 @@ save(al_rr_h1_hmud1_j,hw_rr_h1_hmud1_j,tt_rr_h1_hmud1_j,sth_rr_h1_hmud1_j,
      al_rr_h1_hmud0_j,hw_rr_h1_hmud0_j,tt_rr_h1_hmud0_j,sth_rr_h1_hmud0_j,
      al_rd_h1_hmud0_j,hw_rd_h1_hmud0_j,tt_rd_h1_hmud0_j,sth_rd_h1_hmud0_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_dirtfloor_hh.RData")
-
+     file=paste0(save_data_path, "sth_pr_adj_dirtfloor_hh.RData"))
 

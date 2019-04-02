@@ -8,18 +8,24 @@
 # Effect modification by number of children
 # 5-12 years
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Box Sync/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
+#----------------------------------------------
+# create separate datasets for compounds with 
+# at least one child 5 to 14 years or none
+#----------------------------------------------
 d1=d[d$n5to14==1,]
 d0=d[d$n5to14==0,]
 
@@ -37,7 +43,9 @@ dW0=d0[,c("block","tr","clusterid","alepg","hwepg","ttepg","logalepg","loghwepg"
 # H1: Unadjusted prevalence ratios; each arm vs. 
 # control. PR, CI, P-value
 #----------------------------------------------
+#----------------------------------------------
 # Compound has children 5-12 years
+#----------------------------------------------
 trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
@@ -95,7 +103,9 @@ rownames(hw_fecr_geo_h1_ch1_j)=c("Water vs C","Sanitation vs C","Handwashing vs 
 rownames(tt_fecr_geo_h1_ch1_j)=c("Water vs C","Sanitation vs C","Handwashing vs C",
                              "WSH vs C","Nutrition vs C","Nutrition + WSH vs C")  
 
+#----------------------------------------------
 # Compound doesn't have children 5-12 years
+#----------------------------------------------
 est.al.h1.ch0.ari=apply(matrix(trlist), 1,function(x) washb_tmle(Y=dW0$alepg,tr=dW0$tr,
    pair=dW0$block, id=dW0$block,W=dW0[,W], FECR="arithmetic",
    family="gaussian",contrast=c("Control",x),Q.SL.library=SL.library,
@@ -157,7 +167,7 @@ save(al_fecr_ari_h1_ch1_j,hw_fecr_ari_h1_ch1_j,tt_fecr_ari_h1_ch1_j,
 
      al_fecr_ari_h1_ch0_j,hw_fecr_ari_h1_ch0_j,tt_fecr_ari_h1_ch0_j,
      al_fecr_geo_h1_ch0_j,hw_fecr_geo_h1_ch0_j,tt_fecr_geo_h1_ch0_j,
-     
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_adj_Nchild.RData")
+
+     file=paste0(save_data_path, "sth_pr_epg_adj_Nchild.RData"))
 
 

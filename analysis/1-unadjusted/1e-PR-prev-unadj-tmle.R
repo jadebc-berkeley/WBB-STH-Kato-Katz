@@ -4,16 +4,19 @@
 
 # STH unadjusted analysis with TMLE
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path)
 
 d=preprocess.sth(data)
-  
+
 # subset to columns needed for unadjusted PR
 df = d[,c("block","clusterid","tr","al","tt","hw","sth")]
 df$block=as.factor(df$block)
@@ -175,5 +178,5 @@ save(al_rr_h1_unadj_tmle_j,hw_rr_h1_unadj_tmle_j,tt_rr_h1_unadj_tmle_j,sth_rr_h1
      al_rr_h3_unadj_tmle_j,hw_rr_h3_unadj_tmle_j,tt_rr_h3_unadj_tmle_j,sth_rr_h3_unadj_tmle_j,
      al_rd_h3_unadj_tmle_j,hw_rd_h3_unadj_tmle_j,tt_rd_h3_unadj_tmle_j,sth_rd_h3_unadj_tmle_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_unadj_tmle.RData")
+     file=paste0(save_data_path, "sth_pr_unadj_tmle.RData"))
 

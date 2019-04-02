@@ -4,16 +4,18 @@
 
 # STH IPCW analysis
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
 
-d=preprocess.sth.ipcw(data)
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
+
+d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
 # roof and landphone excluded due to low prevalence
@@ -24,9 +26,6 @@ W=c("hfiacat","index","momage","momheight","momedu",
     "asset_tv","asset_refrig","asset_bike","asset_moto","asset_sewmach","asset_mobile")
 
 dW=d[,c("block","tr","clusterid","sth","al","hw","tt","hasoutcome",W)]
-# dW=d[,c("block","tr","clusterid","dataid","personid","sth","al","hw","tt","hasoutcome",W)]
-
-# dW=dW[order(dW$block,dW$clusterid,dW$dataid,dW$personid),]
 
 #----------------------------------------------
 # H1: Unadjusted prevalence ratios; each arm vs. 
@@ -197,6 +196,6 @@ save(al_rr_h1_ipcw_j,hw_rr_h1_ipcw_j,tt_rr_h1_ipcw_j,sth_rr_h1_ipcw_j,
      al_rr_h3_ipcw_j,hw_rr_h3_ipcw_j,tt_rr_h3_ipcw_j,sth_rr_h3_ipcw_j,
      al_rd_h3_ipcw_j,hw_rd_h3_ipcw_j,tt_rd_h3_ipcw_j,sth_rd_h3_ipcw_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_ipcw.RData")
+     file=paste0(save_data_path, "sth_pr_ipcw.RData"))
 
 

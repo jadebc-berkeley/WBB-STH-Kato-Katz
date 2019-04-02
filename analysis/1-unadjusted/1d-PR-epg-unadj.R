@@ -5,14 +5,16 @@
 # STH unadjusted analysis
 # Eggs per gram
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv",stringsAsFactors=TRUE)
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
+
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path, stringsAsFactors=TRUE)
 
 d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
@@ -210,6 +212,6 @@ save(al_fecr_ari_h1_unadj_j,hw_fecr_ari_h1_unadj_j,tt_fecr_ari_h1_unadj_j,
      al_fecr_geo_h2_unadj_j,hw_fecr_geo_h2_unadj_j,tt_fecr_geo_h2_unadj_j,
      al_fecr_geo_h3_unadj_j,hw_fecr_geo_h3_unadj_j,tt_fecr_geo_h3_unadj_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj.RData")
+     file=paste0(save_data_path, "sth_pr_epg_unadj.RData"))
 
 

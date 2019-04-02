@@ -5,16 +5,18 @@
 # STH IPCW analysis
 # Moderate heavy infection
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
-library(devtools)
-library(washb)
-
 rm(list=ls())
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(here::here("0-config.R"))
 
-d=preprocess.sth.ipcw(data)
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path,stringsAsFactors=TRUE)
+
+d=preprocess.sth(data)
 d=preprocess.adj.sth(d)
 
 d$block=as.factor(d$block)
@@ -196,6 +198,6 @@ save(al_mh_rr_h1_ipcw_j,hw_mh_rr_h1_ipcw_j,tt_mh_rr_h1_ipcw_j,sth_mh_rr_h1_ipcw_
      al_mh_rr_h3_ipcw_j,hw_mh_rr_h3_ipcw_j,tt_mh_rr_h3_ipcw_j,sth_mh_rr_h3_ipcw_j,
      al_mh_rd_h3_ipcw_j,hw_mh_rd_h3_ipcw_j,tt_mh_rd_h3_ipcw_j,sth_mh_rd_h3_ipcw_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_mh_ipcw.RData")
+     file=paste0(save_data_path, "sth_pr_mh_ipcw.RData"))
 
 

@@ -5,7 +5,8 @@
 # STH IPCW analysis
 # Eggs per gram 
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
 library(devtools)
 library(washb)

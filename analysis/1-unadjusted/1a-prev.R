@@ -5,13 +5,16 @@
 # STH 
 # n, N, prevalence, and 95% CI by arm 
 
-# by Jade
+# by Jade Benjamin-Chung
+# jadebc@berkeley.edu
 ##############################################
 rm(list=ls())
-library(washb)
+source(here::here("0-config.R"))
 
-data=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv")
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+#----------------------------------------------
+# load and pre-process analysis dataset 
+#----------------------------------------------
+data = read.csv(sth_data_path)
 
 d=preprocess.sth(data)
 
@@ -169,11 +172,15 @@ psth_prev_mh_j
 psth_mean_j
 psth_geomean_j
 
+#----------------------------------------------
+# save prevalence estimates, infection intensity
+# estimates, and geometric mean of EPG
+#----------------------------------------------
 save(al_prev,hw_prev,tt_prev,sth_prev,
      al_mh_prev,hw_mh_prev,tt_mh_prev,sth_mh_prev,
      al_int_mn,hw_int_mn,tt_int_mn,
      al_int_gmn,hw_int_gmn,tt_int_gmn,
      psth_n_prev_j,psth_n_int_j,psth_prev_j,psth_prev_mh_j,psth_mean_j,psth_geomean_j,
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_prev.RData")
+     file=paste0(save_data_path, "sth_prev.RData"))
 
 
