@@ -13,10 +13,12 @@ library(here)
 library(devtools)
 
 # define data paths
-sth_data_path = "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv"
+# sth_data_path = "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv"
+sth_data_path = "~/Dropbox/WASHB-Bangladesh-Data/2-sth-kk-outcome-datasets/Public/washb-bangladesh-sth-public.csv"
 
 # generated data paths
 save_data_path = "~/Box Sync/WASHB Parasites/Results/Jade/"
+save_data_path = "~/Box Sync/WASHB Parasites/Results/Public-test/"
 
 # load base functions
-source("~/documents/crg/wash-benefits/bangladesh/src/sth/analysis/0-base-programs.R")
+source(paste0(here::here(),"/analysis/0-base-programs.R"))
