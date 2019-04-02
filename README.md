@@ -5,9 +5,9 @@ This is a repository for the WASH Benefits Bangladesh soil-transmitted helminths
 
 ### Associated protocols and datasets
 
-The pre-specified analysis protocol and all data required to run the analyses will be made available in concert with the publication of the article through the Open Science Framework: [https://osf.io/v2c8p/](https://osf.io/v2c8p/).
+The pre-specified analysis protocol and all data required to run the analyses will be made available in concert with the publication of the article through the Open Science Framework: [https://osf.io/v2c8p/](https://osf.io/v2c8p/). Once data is downloaded from OSF, the data directory for the user must be changed in `0-config.R`.
 
-The scripts in the dm directory process raw data and create the analysis datasets that are shared publicly through OSF. The raw, unprocessed, data are not publicly avaialable at this time, but will be within approximately 2 years time (e.g., by 2019) to allow for the further development of meta-data documentation and an access platform. We will strive to update this page to link to those files when they are available.
+The scripts in the dm directory process raw data and create the analysis datasets that are shared publicly through OSF. The raw, unprocessed, data are not publicly available at this time, but will be within approximately 2 years time (e.g., by 2019) to allow for the further development of meta-data documentation and an access platform. We will strive to update this page to link to those files when they are available.
 
 ### WASH Benefits Package
 
