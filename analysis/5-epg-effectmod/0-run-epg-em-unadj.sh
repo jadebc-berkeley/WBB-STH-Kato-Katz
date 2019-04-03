@@ -1,24 +1,7 @@
 
 #!/bin/bash
 
-cd
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_index.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_psac.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_Ncomp.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_Nchild.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_defday.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_latrine.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_scoop.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_noopendef.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_wealth.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_dirtfloor_hh.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_dirtfloor_lat.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_dw.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_geophagia.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj_shoes.RData"
-
-cd "Documents/CRG/wash-benefits/bangladesh/src/sth/analysis/5-epg-effectmod/"
-
+rm -f 5-0-mean-index.Rout
 rm -f 5au-PR-prev-unadj-index.Rout
 rm -f 5bu-PR-prev-unadj-psac.Rout
 rm -f 5cu-PR-prev-unadj-Ncomp.Rout 
@@ -34,6 +17,7 @@ rm -f 5lu-PR-prev-unadj-dw.Rout
 rm -f 5mu-PR-prev-unadj-geophagia.Rout
 rm -f 5nu-PR-prev-unadj-shoes.Rout
 
+R CMD BATCH 5-0-mean-index.R
 R CMD BATCH 5au-PR-epg-unadj-index.R
 R CMD BATCH 5bu-PR-epg-unadj-psac.R
 R CMD BATCH 5cu-PR-epg-unadj-Ncomp.R 
