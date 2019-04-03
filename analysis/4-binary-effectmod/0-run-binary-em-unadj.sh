@@ -1,26 +1,6 @@
 
 #!/bin/bash
 
-cd
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_mean_em.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_prev_em.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_index.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_psac.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_Ncomp.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_Nchild.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_defday.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_latrine.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_scoop.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_noopendef.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_wealth.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_dirtfloor_hh.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_dirtfloor_lat.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_dw.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_geophagia.RData"
-rm -f "~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_shoes.RData"
-
-cd "Documents/CRG/wash-benefits/bangladesh/src/sth/analysis/4-binary-effectmod/"
-
 rm -f 4-0-mean-index.Rout
 rm -f 4-0-prev-index.Rout 
 rm -f 4au-PR-prev-unadj-index.Rout
