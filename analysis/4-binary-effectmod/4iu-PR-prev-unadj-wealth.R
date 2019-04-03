@@ -46,7 +46,7 @@ dW0=d0[,c("block","tr","clusterid","sth","al","hw","tt",W)]
 #----------------------------------------------
 # Below median
 #----------------------------------------------
-rlist=c("Water","Sanitation","Handwashing",
+trlist=c("Water","Sanitation","Handwashing",
          "WSH","Nutrition","Nutrition + WSH")
 
 SL.library=c("SL.mean","SL.glm","SL.bayesglm","SL.gam","SL.glmnet")
