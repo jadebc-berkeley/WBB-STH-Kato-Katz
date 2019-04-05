@@ -22,4 +22,8 @@ save_data_path = "~/Box Sync/WASHB Parasites/Results/Public-test/"
 
 # load base functions
 source(paste0(here::here(),"/analysis/0-base-programs.R"))
-source(paste0(here::here(),"/tables/0-base-table-functions.R"))
+source(paste0(here::here(),"/table-scripts/0-base-table-functions.R"))
+
+# define figure and table paths
+figure_path = paste0(here::here(), "/figures/")
+table_path = paste0(here::here(), "/tables/")
