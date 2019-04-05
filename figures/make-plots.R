@@ -79,6 +79,7 @@ sth.bin.plot(psth_n_prev_j$N.al,psth_n_prev_j$N.hw,psth_n_prev_j$N.tt,psth_n_pre
              lab="primary")
 
 # binary primary outcome unadj tmle
+# Corresponds to manuscript Figure 3
 sth.bin.plot(psth_n_prev_j$N.al,psth_n_prev_j$N.hw,psth_n_prev_j$N.tt,psth_n_prev_j$N.sth,
              al_prev,hw_prev,tt_prev,sth_prev,
              al_rr_h1_unadj_tmle_a,al_rr_h2_unadj_tmle_a,al_rr_h3_unadj_tmle_a,
@@ -88,6 +89,7 @@ sth.bin.plot(psth_n_prev_j$N.al,psth_n_prev_j$N.hw,psth_n_prev_j$N.tt,psth_n_pre
              lab="primary-tmle")
 
 # epg primary outcome unadj
+# Corresponds to manuscript Figure 4
 sth.epg.plot(psth_n_int_j$N.int.al,psth_n_int_j$N.int.hw,psth_n_int_j$N.int.tt,
              al_int_gmn,hw_int_gmn,tt_int_gmn,
              al_fecr_geo_h1_unadj_j,al_fecr_geo_h2_unadj_j,al_fecr_geo_h3_unadj_j,
