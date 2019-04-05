@@ -44,4 +44,4 @@ index.table=make.index.table.csv(al_prev,hw_prev,tt_prev,sth_prev,
                              al_rr_h1_unadj_ihh1_a,hw_rr_h1_unadj_ihh1_a,tt_rr_h1_unadj_ihh1_a,sth_rr_h1_unadj_ihh1_a, 
                              al_rr_h1_unadj_ihh0_a,hw_rr_h1_unadj_ihh0_a,tt_rr_h1_unadj_ihh0_a,sth_rr_h1_unadj_ihh0_a,decimals=2)
 
-write.csv(index.table, file = )
+write.csv(index.table, file = paste0(table_path, "table3.csv"), row.names=FALSE)
