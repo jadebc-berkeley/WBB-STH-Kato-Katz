@@ -23,6 +23,14 @@ prev.f=function(obj,decimals,scale){
   return(prev.f)
 }
 
+# format prevalence for csv files
+prev.f.csv=function(obj,decimals,scale){
+  obj=as.data.frame(obj)
+  prevr=sprintf(paste("%0.0",decimals,"f",sep=""),apply(as.matrix(obj$Prev),1,function(x) round(x*scale, decimals) ))
+  prev.f=paste(prevr,"%",sep="")
+  return(prev.f)
+}
+
 # format mean
 mean.f=function(obj,decimals,scale){
   obj=as.data.frame(obj)
@@ -919,6 +927,92 @@ make.index.table=function(alprev,hwprev,ttprev, sthprev,
          "",apply(hwrrihh1,1,pt.est.ci.f,decimals,1),
          "",apply(ttrrihh1,1,pt.est.ci.f,decimals,1),
          "",apply(sthrrihh1,1,pt.est.ci.f,decimals,1))
+  
+  rrihh0=c("",apply(alrrihh0,1,pt.est.ci.f,decimals,1),
+           "",apply(hwrrihh0,1,pt.est.ci.f,decimals,1),
+           "",apply(ttrrihh0,1,pt.est.ci.f,decimals,1),
+           "",apply(sthrrihh0,1,pt.est.ci.f,decimals,1))
+  
+  table=data.frame(cbind(tr,nall,prevall,rr,nalli1,prevalli1,rri1,nallihh1,prevallihh1,rrihh1,nallihh0,prevallihh0,rrihh0))
+  
+  return(table)
+}
+
+
+make.index.table.csv=function(alprev,hwprev,ttprev, sthprev,
+                          alprevi1,hwprevi1,ttprevi1,sthprevi1,
+                          alprevihh1,hwprevihh1,ttprevihh1,sthprevihh1,
+                          alprevihh0,hwprevihh0,ttprevihh0,sthprevihh0,
+                          alrr,hwrr,ttrr,sthrr,
+                          alrri1,hwrri1,ttrri1, sthrri1,
+                          alrrihh1,hwrrihh1,ttrrihh1, sthrrihh1,
+                          alrrihh0,hwrrihh0,ttrrihh0, sthrrihh0,
+                          decimals){
+  
+  tr=c("Control","Water","Sanitation","Handwashing","WSH","Nutrition","Nutrition + WSH")
+  
+  nal=alprev[,1]
+  nhw=hwprev[,1]
+  ntt=ttprev[,1]
+  nsth=sthprev[,1]
+  nall=c(nal,nhw,ntt,nsth)
+  
+  nali1=alprevi1[,1]
+  nhwi1=hwprevi1[,1]
+  ntti1=ttprevi1[,1]
+  nsthi1=sthprevi1[,1]
+  nalli1=c(nali1,nhwi1,ntti1,nsthi1)
+  
+  nalihh1=alprevihh1[,1]
+  nhwihh1=hwprevihh1[,1]
+  nttihh1=ttprevihh1[,1]
+  nsthihh1=sthprevihh1[,1]
+  nallihh1=c(nalihh1,nhwihh1,nttihh1,nsthihh1)
+  
+  nalihh0=alprevihh0[,1]
+  nhwihh0=hwprevihh0[,1]
+  nttihh0=ttprevihh0[,1]
+  nsthihh0=sthprevihh0[,1]
+  nallihh0=c(nalihh0,nhwihh0,nttihh0,nsthihh0)
+  
+  preval=prev.f.csv(alprev,1,100)
+  prevhw=prev.f.csv(hwprev,1,100)
+  prevtt=prev.f.csv(ttprev,1,100)
+  prevsth=prev.f.csv(sthprev,1,100)
+  prevall=c(preval,prevhw,prevtt,prevsth)
+  
+  prevali1=prev.f.csv(alprevi1,1,100)
+  prevhwi1=prev.f.csv(hwprevi1,1,100)
+  prevtti1=prev.f.csv(ttprevi1,1,100)
+  prevsthi1=prev.f.csv(sthprevi1,1,100)
+  prevalli1=c(prevali1,prevhwi1,prevtti1,prevsthi1)
+  
+  prevalihh1=prev.f.csv(alprevihh1,1,100)
+  prevhwihh1=prev.f.csv(hwprevihh1,1,100)
+  prevttihh1=prev.f.csv(ttprevihh1,1,100)
+  prevsthihh1=prev.f.csv(sthprevihh1,1,100)
+  prevallihh1=c(prevalihh1,prevhwihh1,prevttihh1,prevsthihh1)
+  
+  prevalihh0=prev.f.csv(alprevihh0,1,100)
+  prevhwihh0=prev.f.csv(hwprevihh0,1,100)
+  prevttihh0=prev.f.csv(ttprevihh0,1,100)
+  prevsthihh0=prev.f.csv(sthprevihh0,1,100)
+  prevallihh0=c(prevalihh0,prevhwihh0,prevttihh0,prevsthihh0)
+  
+  rr=c("",apply(alrr,1,pt.est.ci.f,decimals,1),
+       "",apply(hwrr,1,pt.est.ci.f,decimals,1),
+       "",apply(ttrr,1,pt.est.ci.f,decimals,1),
+       "",apply(sthrr,1,pt.est.ci.f,decimals,1))
+  
+  rri1=c("",apply(alrri1,1,pt.est.ci.f,decimals,1),
+         "",apply(hwrri1,1,pt.est.ci.f,decimals,1),
+         "",apply(ttrri1,1,pt.est.ci.f,decimals,1),
+         "",apply(sthrri1,1,pt.est.ci.f,decimals,1))
+  
+  rrihh1=c("",apply(alrrihh1,1,pt.est.ci.f,decimals,1),
+           "",apply(hwrrihh1,1,pt.est.ci.f,decimals,1),
+           "",apply(ttrrihh1,1,pt.est.ci.f,decimals,1),
+           "",apply(sthrrihh1,1,pt.est.ci.f,decimals,1))
   
   rrihh0=c("",apply(alrrihh0,1,pt.est.ci.f,decimals,1),
            "",apply(hwrrihh0,1,pt.est.ci.f,decimals,1),
