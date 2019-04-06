@@ -3,6 +3,8 @@
 # STH Kato-Katz analysis
 
 # CONSORT flow chart
+# Corresponds to Manuscript Fig 1 
+# Creates dataset used in flow chart
 
 # by Jade
 ##############################################
