@@ -529,8 +529,8 @@ makeepgemplot=function(mn,pr,ytitle,ylim,em1lab,em0lab,em1labs,em0labs){
 
 
 # save 4 binary sth plots in one pdf
-saveplot=function(alplot,hwplot,ttplot,sthplot,lab){
-  pdf(paste("~/Box Sync/WASHB Parasites/Results/Figures/fig-prev-",lab,".pdf",sep=""),width=9,height=15.5)
+saveplot=function(alplot,hwplot,ttplot,sthplot,lab, fig_dir){
+  pdf(paste(fig_dir,"fig-prev-",lab,".pdf",sep=""),width=9,height=15.5)
   grid.arrange(alplot,hwplot,ttplot,sthplot,ncol=1,nrow=4)
   dev.off()
 }
@@ -559,7 +559,7 @@ saveepgemplot=function(alplot0,hwplot0,ttplot0,alplot1,hwplot1,ttplot1,lab){
 }
 
 # wrapper function
-sth.bin.plot=function(aln,hwn,ttn,sthn,alprev,hwprev,ttprev,sthprev,alprh1,alprh2,alprh3,hwprh1,hwprh2,hwprh3,ttprh1,ttprh2,ttprh3,sthprh1,sthprh2,sthprh3,lab){
+sth.bin.plot=function(aln,hwn,ttn,sthn,alprev,hwprev,ttprev,sthprev,alprh1,alprh2,alprh3,hwprh1,hwprh2,hwprh3,ttprh1,ttprh2,ttprh3,sthprh1,sthprh2,sthprh3,lab, fig_dir){
   # prep data for plotting
   alprev=sth.plot.prep(alprev)
   hwprev=sth.plot.prep(hwprev)
@@ -571,7 +571,7 @@ sth.bin.plot=function(aln,hwn,ttn,sthn,alprev,hwprev,ttprev,sthprev,alprh1,alprh
   ttplot=makeplot(ttn,ttprev,ttprh1,ttprh2,ttprh3,ytitle="Trichuris",ylim)
   sthplot=makeplot(sthn,sthprev,sthprh1,sthprh2,sthprh3,ytitle="Any STH",ylim)
   
-  saveplot(alplot,hwplot,ttplot,sthplot,lab)
+  saveplot(alplot,hwplot,ttplot,sthplot,lab,fig_dir)
 }
 
 
