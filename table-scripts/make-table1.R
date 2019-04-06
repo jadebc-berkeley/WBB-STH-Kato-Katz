@@ -7,7 +7,11 @@
 # by Ayse
 ##############################################
 rm(list=ls())
-sth=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Ayse/2-washb-bangladesh-psth-enrol.csv",stringsAsFactors=TRUE)
+
+source(here::here("0-config.R"))
+
+sth=read.csv(paste0(save_data_path,"2-washb-bangladesh-psth-enrol.csv"),
+             stringsAsFactors=TRUE)
 
 # Reorder study arms
 reord=function(x){
@@ -54,6 +58,5 @@ rownames(table1_a)=c("Age","Years of education","Years of education","Works in a
                    "Visible stool on slab or floor","Owned a potty","House","Chils's play area",
                    "Has water","Has soap","Has water","Has soap")
 
-save(table1_a,file="~/Dropbox/WASHB Parasites/Results/Ayse/table1.RData")		
-save(table1_a,file="~/Box Sync/WASHB Parasites/Results/Ayse/table1.RData")	
-write.csv(table1_a,file="~/Box Sync/WASHB Parasites/Results/Tables/table1.csv")
+save(table1_a,file=paste0(table_path, "table1.RData"))
+write.csv(table1_a,file=paste0(table_path, "table1.csv"))

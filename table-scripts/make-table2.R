@@ -7,7 +7,11 @@
 # by Ayse
 ##############################################
 rm(list=ls())
-sth=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Ayse/2-washb-bangladesh-psth-table2.csv",stringsAsFactors=TRUE)
+
+source(here::here("0-config.R"))
+
+sth=read.csv(paste0(save_data_path,"2-washb-bangladesh-psth-table2.csv"),
+             stringsAsFactors=TRUE)
 sth$index=ifelse(sth$indexchild=="Index child",1,0)
 
 # Reorder study arms
@@ -57,6 +61,5 @@ rownames(table2_a)=c("Index child","Age","Years of education","Years of educatio
                    "Visible stool on slab or floor","Owned a potty","House","Chils's play area",
                    "Has water","Has soap","Has water","Has soap")
 
-save(table2_a,file="~/Dropbox/WASHB Parasites/Results/Ayse/table2.RData")		
-save(table2_a,file="~/Box Sync/WASHB Parasites/Results/Ayse/table2.RData")
-write.csv(table2_a,file="~/Box Sync/WASHB Parasites/Results/Tables/table2.csv")
+save(table2_a,file=paste0(table_path, "table2.RData"))
+write.csv(table2_a,file=paste0(table_path, "table2.csv"), row.names=FALSE)

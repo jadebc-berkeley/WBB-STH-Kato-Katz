@@ -13,15 +13,15 @@ source(here::here("0-config.R"))
 #---------------------------------------------
 # Primary analysis
 #---------------------------------------------
-load("~/Box Sync/WASHB Parasites/Results/Jade/sth_prev.RData")
-load("~/Box Sync/WASHB Parasites/Results/Jade/sth_prev_em.RData")
-load("~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_adj_index.RData")
-load("~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_adj_index.RData")
-load("~/Box Sync/WASHB Parasites/Results/Ayse/sth_prev_sub_unadj_index.RData")
-load("~/Box Sync/WASHB Parasites/Results/Ayse/sth_prev_sub_unadj_ind.RData")
-load("~/Box Sync/WASHB Parasites/Results/Ayse/sth_prev_unadj_tmle.RData")
-load("~/Box Sync/WASHB Parasites/Results/Ayse/sth_em_ihh.RData")
-load("~/Box Sync/WASHB Parasites/Results/Ayse/sth_prev_sub_unadj_ihh.RData")
+load(paste0(save_data_path,"sth_prev.RData"))
+load(paste0(save_data_path,"sth_prev_em.RData"))
+load(paste0(save_data_path,"sth_pr_adj_index.RData"))
+load(paste0(save_data_path,"sth_pr_epg_adj_index.RData"))
+load(paste0(save_data_path,"sth_prev_sub_unadj_index.RData"))
+load(paste0(save_data_path,"sth_prev_sub_unadj_ind.RData"))
+load(paste0(save_data_path,"sth_prev_unadj_tmle.RData"))
+load(paste0(save_data_path,"sth_em_ihh.RData"))
+load(paste0(save_data_path,"sth_prev_sub_unadj_ihh.RData"))
 
 # Change column name ihh objects
 colnames(al_em_prev_ihh0_a)=c("N","Prev","SD","Robust SE","lb","ub")
