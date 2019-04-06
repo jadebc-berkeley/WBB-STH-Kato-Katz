@@ -6,6 +6,8 @@
 # Corresponds to manuscript Figure 3
 
 # by Jade
+
+# Output: fig-prev-primary-tmle.pdf
 ##############################################
 rm(list=ls())
 
