@@ -537,8 +537,8 @@ saveplot=function(alplot,hwplot,ttplot,sthplot,lab, fig_dir){
 
 
 # save 3 binary sth plots in one pdf
-saveepgplot=function(alplot,hwplot,ttplot,lab){
-  pdf(paste("~/Box Sync/WASHB Parasites/Results/Figures/fig-epg-",lab,".pdf",sep=""),width=10,height=11)
+saveepgplot=function(alplot,hwplot,ttplot,lab, fig_dir){
+  pdf(paste(fig_dir,"fig-epg-",lab,".pdf",sep=""),width=10,height=11)
   grid.arrange(alplot,hwplot,ttplot,ncol=1,nrow=3)
   dev.off()
 }
@@ -577,7 +577,7 @@ sth.bin.plot=function(aln,hwn,ttn,sthn,alprev,hwprev,ttprev,sthprev,alprh1,alprh
 
 
 # wrapper function
-sth.epg.plot=function(aln,hwn,ttn,almn,hwmn,ttmn,algeoh1,algeoh2,algeoh3,hwgeoh1,hwgeoh2,hwgeoh3,ttgeoh1,ttgeoh2,ttgeoh3,lab){
+sth.epg.plot=function(aln,hwn,ttn,almn,hwmn,ttmn,algeoh1,algeoh2,algeoh3,hwgeoh1,hwgeoh2,hwgeoh3,ttgeoh1,ttgeoh2,ttgeoh3,lab, fig_dir){
   # prep data for plotting
   almn=sth.epg.plot.prep(almn)
   hwmn=sth.epg.plot.prep(hwmn)
@@ -587,7 +587,7 @@ sth.epg.plot=function(aln,hwn,ttn,almn,hwmn,ttmn,algeoh1,algeoh2,algeoh3,hwgeoh1
   hwplot=makeepgplot(hwn,hwmn,hwgeoh1,hwgeoh2,hwgeoh3,ytitle="Hookworm")
   ttplot=makeepgplot(ttn,ttmn,ttgeoh1,ttgeoh2,ttgeoh3,ytitle="Trichuris")
 
-  saveepgplot(alplot,hwplot,ttplot,lab)
+  saveepgplot(alplot,hwplot,ttplot,lab, fig_dir)
 }
 
 
