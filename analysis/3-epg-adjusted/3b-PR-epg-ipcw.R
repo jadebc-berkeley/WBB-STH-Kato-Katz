@@ -211,6 +211,6 @@ save(al_fecr_ari_h1_ipcw_j,hw_fecr_ari_h1_ipcw_j,tt_fecr_ari_h1_ipcw_j,
      al_fecr_geo_h2_ipcw_j,hw_fecr_geo_h2_ipcw_j,tt_fecr_geo_h2_ipcw_j,
      al_fecr_geo_h3_ipcw_j,hw_fecr_geo_h3_ipcw_j,tt_fecr_geo_h3_ipcw_j,
      
-     file="~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_ipcw.RData")
+     file=paste0(save_data_path, "sth_pr_epg_ipcw.RData"))
 
 
