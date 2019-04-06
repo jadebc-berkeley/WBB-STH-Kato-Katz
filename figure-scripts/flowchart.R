@@ -9,13 +9,20 @@
 # by Jade
 ##############################################
 rm(list=ls())
-library(plyr)
+# library(plyr)
 
-wd=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_withdraw.csv")
-enr=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_enroll_sth.csv")
-kk=read.csv("~/Dropbox/WASHB Parasites/Analysis datasets/Jade/endline_kk.csv")
+source(here::here("0-config.R"))
 
+# ---------------------------------------------
+# load data
+# ---------------------------------------------
+wd=read.csv(paste0(sth_data_path,"washb-bangladesh-sth-consort-endline-withdraw-public.csv"))
+enr=read.csv(paste0(sth_data_path,"washb-bangladesh-sth-consort-endline-enroll-public.csv"))
+kk=read.csv(paste0(sth_data_path,"washb-bangladesh-sth-consort-endline-kato-katz-public.csv"))
+
+# ---------------------------------------------
 # reorder tr labels
+# ---------------------------------------------
 reord=function(x){
   x$tr=factor(x$tr,levels(x$tr)[c(1,6,5,2,7,3,4)])
   return(x)
@@ -82,4 +89,4 @@ flowchart_j=rbind(compound_lost_j,CompoundsSTH,enr.all,kk.samp)
 
 flowchart_j
 
-save(flowchart_j,file="~/Box Sync/WASHB Parasites/Results/Jade/flowchart.RData")
+save(flowchart_j,file=paste0(save_data_path,"flowchart.RData"))
