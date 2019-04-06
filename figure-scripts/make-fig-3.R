@@ -19,10 +19,7 @@ source(here::here("0-config.R"))
 # Descriptive
 load(paste0(save_data_path, "sth_prev.RData"))
 
-# Unadjusted
-load(paste0(save_data_path, "sth_pr_unadj.RData"))
-load(paste0(save_data_path, "sth_mh_pr_unadj.RData"))
-load(paste0(save_data_path, "sth_pr_epg_unadj.RData"))
+# Unadjusted prevalence ratios
 load(paste0(save_data_path, "sth_pr_unadj_tmle.RData"))
 
 #---------------------------------------------
