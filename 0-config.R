@@ -17,7 +17,8 @@ library(gridExtra)
 
 # define data paths
 # sth_data_path = "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv"
-sth_data_path = "~/Dropbox/WASHB-Bangladesh-Data/2-sth-kk-outcome-datasets/Public/"
+data_path = "~/Dropbox/WASHB-Bangladesh-Data/2-sth-kk-outcome-datasets/Public/"
+sth_data_path = "~/Dropbox/WASHB-Bangladesh-Data/2-sth-kk-outcome-datasets/Public/washb-bangladesh-sth-public.csv"
 
 # generated data paths
 save_data_path = "~/Box Sync/WASHB Parasites/Results/Jade/"
