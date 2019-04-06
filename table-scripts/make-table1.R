@@ -10,21 +10,28 @@ rm(list=ls())
 
 source(here::here("0-config.R"))
 
-sth=read.csv(paste0(save_data_path,"2-washb-bangladesh-psth-enrol.csv"),
+#---------------------------------------------
+# load data
+#---------------------------------------------
+sth=read.csv(paste0(data_path,"washb-bangladesh-sth-psth-kk-public.csv"),
              stringsAsFactors=TRUE)
 
+#---------------------------------------------
 # Reorder study arms
+#---------------------------------------------
 reord=function(x){
   x$tr=factor(x$tr,levels(x$tr)[c(1,6,5,2,7,3,4)])
   return(x)}
 sth=reord(sth)
 
+#---------------------------------------------
 # Tabulate baseline variables 
+#---------------------------------------------
 t1=(t(aggregate(momage~tr,sth,mean))[2,])
 t2=(t(aggregate(momeduy~tr,sth,mean))[2,])
 t3=(t(aggregate(dadeduy~tr,sth,mean))[2,])
 t4=100*as.numeric((t(aggregate(dadagri~tr,sth,mean))[2,]))
-t5=(t(aggregate(Nhh~tr,sth,mean))[2,])
+t5=(t(aggregate(nhh~tr,sth,mean))[2,])
 t6=100*as.numeric((t(aggregate(elec~tr,sth,mean))[2,]))
 t7=100*as.numeric((t(aggregate(cement~tr,sth,mean))[2,]))
 t8=(t(aggregate(landacre~tr,sth,mean))[2,])
@@ -58,5 +65,10 @@ rownames(table1_a)=c("Age","Years of education","Years of education","Works in a
                    "Visible stool on slab or floor","Owned a potty","House","Chils's play area",
                    "Has water","Has soap","Has water","Has soap")
 
+#---------------------------------------------
+# save table
+#---------------------------------------------
+
 save(table1_a,file=paste0(table_path, "table1.RData"))
 write.csv(table1_a,file=paste0(table_path, "table1.csv"))
+
