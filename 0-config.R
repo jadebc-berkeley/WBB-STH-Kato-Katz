@@ -14,6 +14,7 @@ library(devtools)
 library(ggplot2)
 library(grid)
 library(gridExtra)
+library(dplyr)
 
 # define data paths
 # sth_data_path = "~/Dropbox/WASHB Parasites/Analysis datasets/Jade/sth.csv"
