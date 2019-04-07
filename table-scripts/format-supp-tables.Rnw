@@ -1,0 +1,127 @@
+\documentclass[11pt, nogin]{article}
+\usepackage[fleqn]{amsmath}
+\usepackage{fancyhdr, graphicx, listings,amssymb, comment,cancel}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{Sweave}
+\usepackage{placeins}
+\usepackage{pdflscape}
+\usepackage{subcaption}
+
+\usepackage[table]{xcolor}
+
+\raggedbottom
+%\SweaveOpts{pdfcrop=TRUE}
+%\graphicspath{{Figures/}}
+
+\usepackage{pdfpages}
+\usepackage{setspace}
+\usepackage{amsmath}
+\geometry{ left = 0.5in, right = 0.5in, top = 0.75in, bottom = 0.5in, foot=0.5in} %foot option ensures page number prints on page
+\pagestyle{fancy}
+%\setlength{\headsep}{.5in}
+
+\lhead{}
+\chead{}
+\rhead{}
+
+\lstset{breaklines=true}
+
+% change font to helvetica
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+\usepackage[helvet]{sfmath}
+\everymath={\sf}
+
+% the following three lines ensure table is at top of page
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\cfoot{\vspace*{1.5\baselineskip}\thepage} % this line ensures page number doesn't overlap
+% with the footer
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<<preamble,echo=false>>=
+library(xtable)
+
+source(here::here("0-config.R"))
+
+# read in datasets
+tables1 = read.csv(paste0(table_path, "table-s1.csv"))
+
+tables2 = read.csv(paste0(table_path, "table-s2.csv"))
+tables3 = read.csv(paste0(table_path, "table-s3.csv"))
+tables4 = read.csv(paste0(table_path, "table-s4.csv"))
+tables5 = read.csv(paste0(table_path, "table-s5.csv"))
+tables6 = read.csv(paste0(table_path, "table-s6.csv"))
+tables7 = read.csv(paste0(table_path, "table-s7.csv"))
+tables8 = read.csv(paste0(table_path, "table-s8.csv"))
+tables9 = read.csv(paste0(table_path, "table-s9.csv"))
+tables10 = read.csv(paste0(table_path, "table-s10.csv"))
+
+
+#function to strip row/colnames from table and output contents only
+##for formatting in latex
+cleantable <- function(x,digits) {
+ print( xtable(x,digits=digits),
+        sanitize.text.function=function(y){y},
+        floating=FALSE,
+        include.rownames=FALSE,
+        include.colnames=FALSE,
+        only.contents=TRUE,
+        hline.after=NULL
+ )
+}
+
+@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table S1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{table}{0} \renewcommand{\thetable}{S\arabic{table}}
+
+\FloatBarrier
+
+\begin{table}[!ht]
+\caption{Enrollment characteristics of individuals with missing vs. observed outcomes}
+\begin{center}
+\begin{small}
+\begin{tabular}{@{\extracolsep{4pt}}l c c }\hline
+ & Missing & Observed\\
+No. of individuals & (N=2824) & (N=7187)\\
+\hline
+
+<<table,echo=false,results=tex>>=
+cleantable(tables1,digits=1)
+@
+\hline
+\end{tabular}
+\begin{scriptsize}
+\begin{spacing}{1.0}
+% add footnote here 
+
+\end{spacing}
+\end{scriptsize}
+\end{small}
+\end{center}
+\end{table}
+
+\FloatBarrier
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table S2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\end{document}
+
+
