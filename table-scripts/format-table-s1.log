@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  7 APR 2019 08:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  8 APR 2019 09:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**format-supp-tables.tex
-(./format-supp-tables.tex
+**format-table-s1.tex
+(./format-table-s1.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
@@ -494,8 +494,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathsl' in version `bold'
 (Font)                  OT1/phv/m/sl --> OT1/phv/bx/sl on input line 466.
 )
-(./format-supp-tables.aux)
-\openout1 = `format-supp-tables.aux'.
+(./format-table-s1.aux)
+\openout1 = `format-table-s1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
@@ -622,20 +622,18 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box34
-(./format-supp-tables-concordance.tex)
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 62.
+(./format-table-s1-concordance.tex)
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 63.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 63.
+(Font)              scaled to size 10.40245pt on input line 63.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 63.
+(Font)              scaled to size 7.59998pt on input line 63.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 63.
+(Font)              scaled to size 5.69998pt on input line 63.
 LaTeX Font Info:    Try loading font information for U+msa on input line 63.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -647,33 +645,33 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 63.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 63.
+(Font)              scaled to size 10.40245pt on input line 63.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 63.
+(Font)              scaled to size 7.59998pt on input line 63.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 4.74998pt on input line 63.
-LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              scaled to size 5.69998pt on input line 63.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 71.
+(Font)              scaled to size 10.40245pt on input line 71.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 7.59998pt on input line 110.
  [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./format-supp-tables.aux) ) 
+(./format-table-s1.aux) ) 
 Here is how much of TeX's memory you used:
- 8039 strings out of 492995
- 118396 string characters out of 6132704
- 198909 words of memory out of 5000000
- 11420 multiletter control sequences out of 15000+600000
- 22879 words of font info for 41 fonts, out of 8000000 for 9000
+ 8046 strings out of 492995
+ 118473 string characters out of 6132704
+ 198016 words of memory out of 5000000
+ 11425 multiletter control sequences out of 15000+600000
+ 22038 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,11n,43p,279b,363s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips
-/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8
-a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on format-supp-tables.pdf (1 page, 19463 bytes).
+ 42i,10n,43p,276b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/ba
+se/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.p
+fb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on format-table-s1.pdf (1 page, 19415 bytes).
 PDF statistics:
  18 PDF objects out of 1000 (max. 8388607)
  11 compressed objects within 1 object stream
