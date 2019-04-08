@@ -16,6 +16,12 @@ source(here::here("0-config.R"))
 sth=read.csv(paste0(data_path,"washb-bangladesh-sth-psth-kk-public.csv"),
              stringsAsFactors=TRUE)
 
+sth = read.csv(sth_data_path)
+
+sth = sth %>% 
+  filter(hasoutcome==1) %>%
+  mutate(elec = ifelse(elec == "Has electricity", 1, 0))
+
 #---------------------------------------------
 # Reorder study arms
 #---------------------------------------------
@@ -25,13 +31,65 @@ reord=function(x){
 sth=reord(sth)
 
 #---------------------------------------------
+# Functions to obtain mean, min, max
+#---------------------------------------------
+print_mean_range = function(vector){
+  paste0(sprintf("%0.1f", vector[1]), " (", 
+         sprintf("%0.1f", vector[2]), ", ", 
+         sprintf("%0.1f", vector[3]), ")")
+}
+
+est_mean_range_tr = function(data, y){
+  out = data %>% 
+    group_by(tr) %>%
+    summarise(mean = mean(!!sym(y), na.rm=TRUE),
+              min = min(!!sym(y), na.rm=TRUE),
+              max = max(!!sym(y), na.rm=TRUE))
+ 
+  out.f = matrix(NA, nrow = nrow(out), ncol = 1)
+  for(i in 1:nrow(out)){
+    out.f[i,1] = print_mean_range(out[i,2:4])
+  }
+  
+  return(out.f)
+
+}
+
+
+t(est_mean_range_tr(data = sth, y = "momage"))
+
+#---------------------------------------------
+# Functions to obtain percent, n
+#---------------------------------------------
+print_percent_n = function(vector){
+  paste0(sprintf("%0.1f", vector[1]), " (", 
+         sprintf("%0.1f", vector[2]), ")")
+}
+
+percent_n_tr = function(data, y){
+  out = data %>% 
+    group_by(tr) %>%
+    summarise(percent = mean(!!sym(y), na.rm=TRUE)*100,
+              n = sum(!!sym(y)==1, na.rm=TRUE))
+  
+  out.f = matrix(NA, nrow = nrow(out), ncol = 1)
+  for(i in 1:nrow(out)){
+    out.f[i,1] = print_percent_n(out[i,2:4])
+  }
+  
+  return(out.f)
+}
+
+percent_n_tr(data = sth, y = "dadagri")
+
+#---------------------------------------------
 # Tabulate baseline variables 
 #---------------------------------------------
 t1=(t(aggregate(momage~tr,sth,mean))[2,])
 t2=(t(aggregate(momeduy~tr,sth,mean))[2,])
 t3=(t(aggregate(dadeduy~tr,sth,mean))[2,])
 t4=100*as.numeric((t(aggregate(dadagri~tr,sth,mean))[2,]))
-t5=(t(aggregate(nhh~tr,sth,mean))[2,])
+t5=(t(aggregate(Nhh~tr,sth,mean))[2,])
 t6=100*as.numeric((t(aggregate(elec~tr,sth,mean))[2,]))
 t7=100*as.numeric((t(aggregate(cement~tr,sth,mean))[2,]))
 t8=(t(aggregate(landacre~tr,sth,mean))[2,])
