@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 *.Rout
+"table-scripts/make-table1.R"
+"tables/table1.csv"
+"tables/table1.RData"
