@@ -25,12 +25,30 @@ load(paste0(save_data_path, "sth_pr_unadj_tmle.RData"))
 #---------------------------------------------
 # Create plot
 #---------------------------------------------
+alprev=sth.plot.prep(al_prev)
+hwprev=sth.plot.prep(hw_prev)
+ttprev=sth.plot.prep(tt_prev)
+sthprev=sth.plot.prep(sth_prev)
 
-sth.bin.plot(psth_n_prev_j$N.al,psth_n_prev_j$N.hw,psth_n_prev_j$N.tt,psth_n_prev_j$N.sth,
-             al_prev,hw_prev,tt_prev,sth_prev,
-             al_rr_h1_unadj_tmle_j,al_rr_h2_unadj_tmle_j,al_rr_h3_unadj_tmle_j,
-             hw_rr_h1_unadj_tmle_j,hw_rr_h2_unadj_tmle_j,hw_rr_h3_unadj_tmle_j,
-             tt_rr_h1_unadj_tmle_j,tt_rr_h2_unadj_tmle_j,tt_rr_h3_unadj_tmle_j,
-             sth_rr_h1_unadj_tmle_j,sth_rr_h2_unadj_tmle_j,sth_rr_h3_unadj_tmle_j,
-             lab="primary-tmle",
-             fig_dir = figure_path)
+alplot=makeplot(n = psth_n_prev_j$N.al,
+                prev = alprev,
+                prh1 = al_rr_h1_unadj_tmle_j,
+                ytitle = "A. lumbricoides",
+                ylim = ylim)
+
+hwplot = makeplot(n = psth_n_prev_j$N.hw, 
+                  prev = hwprev, 
+                  prh1 = hw_rr_h1_unadj_tmle_j, 
+                  ytitle = "Hookworm", 
+                  ylim = ylim)
+
+ttplot = makeplot(n = psth_n_prev_j$N.tt, 
+                  prev = ttprev, 
+                  prh1 = tt_rr_h1_unadj_tmle_j, 
+                  ytitle = "T. trichiura", 
+                  ylim = ylim)
+
+pdf(paste0(figure_path,"fig-PR-primary-tmle.pdf"),width=7.2,height=8)
+grid.arrange(alplot,hwplot,ttplot,ncol=1,nrow=3)
+dev.off()
+
