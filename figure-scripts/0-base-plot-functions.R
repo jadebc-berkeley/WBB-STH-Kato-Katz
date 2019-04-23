@@ -55,17 +55,12 @@ sth.epg.plot.prep=function(mn){
 
 
 # make single plot
-makeplot=function(n,prev,prh1,prh2,prh3,ytitle,ylim){
+makeplot=function(n,prev,prh1,ytitle,ylim){
   
   # format estimates
   n=paste("(N=",format(n,big.mark=","),")",sep="")
   rr=apply(as.matrix(prh1),1,pt.est.ci.f,decimals=2,scale=1)
   rrh1=c("ref",rr)
-  rrh2w=c("","ref","","",pt.est.ci.f(prh2[1,],decimals=2,scale=1),"","")
-  rrh2s=c("","","ref","",pt.est.ci.f(prh2[2,],decimals=2,scale=1),"","")
-  rrh2h=c("","","","ref",pt.est.ci.f(prh2[3,],decimals=2,scale=1),"","")
-  rrh3wsh=c("","","","","ref","",pt.est.ci.f(prh3[1,],decimals=2,scale=1))
-  rrh3n=c("","","","","","ref",pt.est.ci.f(prh3[2,],decimals=2,scale=1))
   
   cliney=as.numeric(prev$prev.f[1])
   
@@ -82,35 +77,33 @@ makeplot=function(n,prev,prh1,prh2,prh3,ytitle,ylim){
   grey = "#777777"
   cols=c(black,blue,teal,green,orange,red,magent,blue)
   
-  colh2w=c("#5e5f60",cols[2],"#5e5f60","#5e5f60","#5e5f60","#5e5f60","#5e5f60")
-  colh2s=c("#5e5f60","#5e5f60",cols[3],"#5e5f60","#5e5f60","#5e5f60","#5e5f60")
-  colh2h=c("#5e5f60","#5e5f60","#5e5f60",cols[4],"#5e5f60","#5e5f60","#5e5f60")
-  colh3wsh=c("#5e5f60","#5e5f60","#5e5f60","#5e5f60",cols[5],"#5e5f60","#5e5f60")
-  colh3n=c("#5e5f60","#5e5f60","#5e5f60","#5e5f60","#5e5f60",cols[6],"#5e5f60")
-  
-  if(ytitle=="Ascaris"){
-    ytitlex=-0.75
-    ylim=c(0,60)
-    pylim=58
-    linediff=0.038
-    secdiff=0.07  
+  if(ytitle=="A. lumbricoides"){
+    ytitlex=-0.2
+    ylim=c(25,50)
+    pylim=50
+    linediff=0.039
+    secdiff=0.029
     gap=5
+    ytitle_f = "italic('A. lumbricoides')"
   }
   if(ytitle=="Hookworm"){
-    ytitlex=-0.6
-    ylim=c(0,20)
-    pylim=20
-    linediff=0.06
-    secdiff=0.1
+    ytitlex=0
+    ylim=c(2,14)
+    pylim=14
+    linediff=0.065
+    secdiff=0.045
     gap=2
+    ytitle_f = "Hookworm"
   }
-  if(ytitle=="Trichuris"){
-    ytitlex=-0.7
-    ylim=c(0,20)
-    pylim=20
-    linediff=0.06
-    secdiff=0.1
+  if(ytitle=="T. trichiura"){
+    ytitlex=-0.15
+    ylim=c(2,14)
+    pylim=14
+    linediff=0.065
+    secdiff=0.045
     gap=2
+    ytitle_f = "italic('T. trichiura')"
+    
   }
   if(ytitle=="Any STH"){
     ytitlex=-0.69
@@ -119,7 +112,11 @@ makeplot=function(n,prev,prh1,prh2,prh3,ytitle,ylim){
     linediff=0.038
     secdiff=0.07  
     gap=5
+    ytitle_f = "Any STH"
+    
   }
+  
+  yaxis_shift = 1
 
   g1=ggplot(prev,aes(x=x,y=prev.f))+
     geom_point(aes(col=x),alpha=0.7,size=1.5,show.legend=FALSE)+
@@ -127,46 +124,164 @@ makeplot=function(n,prev,prh1,prh2,prh3,ytitle,ylim){
     geom_hline(yintercept=cliney,linetype="dashed")+
     coord_cartesian(ylim = ylim,xlim=c(1,7)) +
     scale_color_manual("",values=cols)+
-    ylab("Prevalence\nat 2-year\nfollow-up (%)")+xlab("")+
-    scale_y_continuous(breaks=seq(ylim[1],ylim[2],gap),labels=seq(ylim[1],ylim[2],gap))+
+    ylab("Prevalence (%)")+xlab("")+
+    scale_y_continuous(breaks=seq(ylim[1],ylim[2],gap),
+                       labels=seq(ylim[1],ylim[2],gap))+
     theme_complete_bw() +
-    theme(plot.margin = unit(c(6.8, 0.5, 0.5, 3.5), "lines"))+
+    theme(plot.margin = unit(c(t = 3, r = 0.2, b = -0.5, l = 2), "lines"))+
   
+    # label control mean 
     annotate(geom="text",x=0.65,y=cliney+0.05,label="Control",size=2.5)+
     annotate(geom="text",x=0.62,y=cliney+0.02,label="mean",size=2.5)+
-    annotate(geom="text",x=ytitlex,y=pylim*(1.1+linediff*4+secdiff*2.95),label=ytitle,size=5.5)+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*4+secdiff*3.4),
+    
+    # helminth name
+    annotate(geom="text",x=ytitlex,y=pylim*(yaxis_shift+linediff*4+secdiff*0.5),
+             label=ytitle_f,size=5.5, parse=TRUE)+
+    
+    # label treatment arms
+    annotate(geom="text",x=seq(1,7,1),y=pylim*(yaxis_shift+linediff*4+secdiff*0.5),
              label=c("Control","Water","Sanitation","Handwashing",
                      "Combined","Nutrition","Combined"),
              color=cols[1:7],size=3)+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*4+secdiff*2.8),
+    annotate(geom="text",x=seq(1,7,1),y=pylim*(yaxis_shift+linediff*3+secdiff*0.5),
              label=c("","","","","WSH","","Nutrition+WSH"),
              color=cols[1:7],size=3)+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*4+secdiff*2.1),
-             label=n,size=3,color="#5e5f60")+
-    annotate(geom="text",x=-0.3,y=pylim*(1.1+linediff*4+secdiff*2.02), label="Prevalence Ratio (95% CI)",size=3.5)+
-    annotate(geom="text",x=-0.1,y=pylim*(1.1+linediff*3+secdiff*2), label="Intervention vs. Control",size=2.7,col="#5e5f60")+
     
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*3+secdiff*2),label=rrh1,size=2.7,col="#5e5f60")+
+    # add ns
+    annotate(geom="text",x=seq(1,7,1),y=pylim*(yaxis_shift+linediff*1+secdiff*0.5),
+             label=n,size=2.7,color="#5e5f60")+
     
-    annotate(geom="text",x=0.22,y=pylim*(1.1+linediff*3+secdiff), label="WSH vs. W",size=2.7,col="#5e5f60")+
-    annotate(geom="text",x=0.22,y=pylim*(1.1+linediff*2+secdiff), label="WSH vs. S",size=2.7,col="#5e5f60")+
-    annotate(geom="text",x=0.22,y=pylim*(1.1+linediff+secdiff), label="WSH vs. H",size=2.7,col="#5e5f60")+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*3+secdiff),label=rrh2w,size=2.7,col=colh2w)+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*2+secdiff),label=rrh2s,size=2.7,col=colh2s)+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff+secdiff),label=rrh2h,size=2.7,col=colh2h)+
+    # print PR on plot
+    annotate(geom="text",x=seq(1,7,1),y=pylim*(yaxis_shift+linediff*2+secdiff*0.5),
+             label=rrh1,size=2.7,col="#5e5f60")+
     
-    annotate(geom="text",x=-.16,y=pylim*(1.1+linediff), label="Nutrition + WSH vs. WSH",size=2.7,col="#5e5f60")+
-    annotate(geom="text",x=-.23,y=pylim*1.1, label="Nutrition + WSH vs. Nutrition",size=2.7,col="#5e5f60")+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff),label=rrh3wsh,size=2.7,col=colh3wsh)+
-    annotate(geom="text",x=seq(1,7,1),y=pylim*1.1,label=rrh3n,size=2.7,col=colh3n)+
-  annotate(geom="text",x=seq(1,7,1)+.15,y=prev$prev.f,label=prev$prev.f,size=2.7,col=cols[1:7])
+    # plot labels
+    annotate(geom="text",x=0,y=pylim*(yaxis_shift+linediff*2+secdiff*0.5), 
+             label="PR (95% CI)",size=3.5)+
+
+    # print prevalence on plot
+  annotate(geom="text",x=seq(1,7,1)+.22,y=prev$prev.f,label=as.character(prev$prev.f),
+           size=4,col=cols[1:7])
   
   # remove clipping of x axis labels
   g2 <- ggplot_gtable(ggplot_build(g1))
   g2$layout$clip[g2$layout$name == "panel"] <- "off"
   return(arrangeGrob(g2))
 }
+
+# # make single plot
+# makeplot=function(n,prev,prh1,prh2,prh3,ytitle,ylim){
+#   
+#   # format estimates
+#   n=paste("(N=",format(n,big.mark=","),")",sep="")
+#   rr=apply(as.matrix(prh1),1,pt.est.ci.f,decimals=2,scale=1)
+#   rrh1=c("ref",rr)
+#   rrh2w=c("","ref","","",pt.est.ci.f(prh2[1,],decimals=2,scale=1),"","")
+#   rrh2s=c("","","ref","",pt.est.ci.f(prh2[2,],decimals=2,scale=1),"","")
+#   rrh2h=c("","","","ref",pt.est.ci.f(prh2[3,],decimals=2,scale=1),"","")
+#   rrh3wsh=c("","","","","ref","",pt.est.ci.f(prh3[1,],decimals=2,scale=1))
+#   rrh3n=c("","","","","","ref",pt.est.ci.f(prh3[2,],decimals=2,scale=1))
+#   
+#   cliney=as.numeric(prev$prev.f[1])
+#   
+#   # define color palette
+#   black = "#000004FF"
+#   blue = "#3366AA"
+#   teal = "#11AA99"
+#   green = "#66AA55"
+#   chartr = "#CCCC55"
+#   magent = "#992288"
+#   red = "#EE3333"
+#   orange = "#EEA722"
+#   yellow = "#FFEE33"
+#   grey = "#777777"
+#   cols=c(black,blue,teal,green,orange,red,magent,blue)
+#   
+#   colh2w=c("#5e5f60",cols[2],"#5e5f60","#5e5f60","#5e5f60","#5e5f60","#5e5f60")
+#   colh2s=c("#5e5f60","#5e5f60",cols[3],"#5e5f60","#5e5f60","#5e5f60","#5e5f60")
+#   colh2h=c("#5e5f60","#5e5f60","#5e5f60",cols[4],"#5e5f60","#5e5f60","#5e5f60")
+#   colh3wsh=c("#5e5f60","#5e5f60","#5e5f60","#5e5f60",cols[5],"#5e5f60","#5e5f60")
+#   colh3n=c("#5e5f60","#5e5f60","#5e5f60","#5e5f60","#5e5f60",cols[6],"#5e5f60")
+#   
+#   if(ytitle=="Ascaris"){
+#     ytitlex=-0.75
+#     ylim=c(0,60)
+#     pylim=58
+#     linediff=0.038
+#     secdiff=0.07  
+#     gap=5
+#   }
+#   if(ytitle=="Hookworm"){
+#     ytitlex=-0.6
+#     ylim=c(0,20)
+#     pylim=20
+#     linediff=0.06
+#     secdiff=0.1
+#     gap=2
+#   }
+#   if(ytitle=="Trichuris"){
+#     ytitlex=-0.7
+#     ylim=c(0,20)
+#     pylim=20
+#     linediff=0.06
+#     secdiff=0.1
+#     gap=2
+#   }
+#   if(ytitle=="Any STH"){
+#     ytitlex=-0.69
+#     ylim=c(20,60)
+#     pylim=58
+#     linediff=0.038
+#     secdiff=0.07  
+#     gap=5
+#   }
+#   
+#   g1=ggplot(prev,aes(x=x,y=prev.f))+
+#     geom_point(aes(col=x),alpha=0.7,size=1.5,show.legend=FALSE)+
+#     geom_errorbar(aes(ymin=lb.f,ymax=ub.f,col=x),width=0.11,show.legend=FALSE)+
+#     geom_hline(yintercept=cliney,linetype="dashed")+
+#     coord_cartesian(ylim = ylim,xlim=c(1,7)) +
+#     scale_color_manual("",values=cols)+
+#     ylab("Prevalence\nat 2-year\nfollow-up (%)")+xlab("")+
+#     scale_y_continuous(breaks=seq(ylim[1],ylim[2],gap),labels=seq(ylim[1],ylim[2],gap))+
+#     theme_complete_bw() +
+#     theme(plot.margin = unit(c(6.8, 0.5, 0.5, 3.5), "lines"))+
+#     
+#     annotate(geom="text",x=0.65,y=cliney+0.05,label="Control",size=2.5)+
+#     annotate(geom="text",x=0.62,y=cliney+0.02,label="mean",size=2.5)+
+#     annotate(geom="text",x=ytitlex,y=pylim*(1.1+linediff*4+secdiff*2.95),label=ytitle,size=5.5)+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*4+secdiff*3.4),
+#              label=c("Control","Water","Sanitation","Handwashing",
+#                      "Combined","Nutrition","Combined"),
+#              color=cols[1:7],size=3)+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*4+secdiff*2.8),
+#              label=c("","","","","WSH","","Nutrition+WSH"),
+#              color=cols[1:7],size=3)+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*4+secdiff*2.1),
+#              label=n,size=3,color="#5e5f60")+
+#     annotate(geom="text",x=-0.3,y=pylim*(1.1+linediff*4+secdiff*2.02), label="Prevalence Ratio (95% CI)",size=3.5)+
+#     annotate(geom="text",x=-0.1,y=pylim*(1.1+linediff*3+secdiff*2), label="Intervention vs. Control",size=2.7,col="#5e5f60")+
+#     
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*3+secdiff*2),label=rrh1,size=2.7,col="#5e5f60")+
+#     
+#     annotate(geom="text",x=0.22,y=pylim*(1.1+linediff*3+secdiff), label="WSH vs. W",size=2.7,col="#5e5f60")+
+#     annotate(geom="text",x=0.22,y=pylim*(1.1+linediff*2+secdiff), label="WSH vs. S",size=2.7,col="#5e5f60")+
+#     annotate(geom="text",x=0.22,y=pylim*(1.1+linediff+secdiff), label="WSH vs. H",size=2.7,col="#5e5f60")+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*3+secdiff),label=rrh2w,size=2.7,col=colh2w)+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff*2+secdiff),label=rrh2s,size=2.7,col=colh2s)+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff+secdiff),label=rrh2h,size=2.7,col=colh2h)+
+#     
+#     annotate(geom="text",x=-.16,y=pylim*(1.1+linediff), label="Nutrition + WSH vs. WSH",size=2.7,col="#5e5f60")+
+#     annotate(geom="text",x=-.23,y=pylim*1.1, label="Nutrition + WSH vs. Nutrition",size=2.7,col="#5e5f60")+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*(1.1+linediff),label=rrh3wsh,size=2.7,col=colh3wsh)+
+#     annotate(geom="text",x=seq(1,7,1),y=pylim*1.1,label=rrh3n,size=2.7,col=colh3n)+
+#     annotate(geom="text",x=seq(1,7,1)+.15,y=prev$prev.f,label=prev$prev.f,size=2.7,col=cols[1:7])
+#   
+#   # remove clipping of x axis labels
+#   g2 <- ggplot_gtable(ggplot_build(g1))
+#   g2$layout$clip[g2$layout$name == "panel"] <- "off"
+#   return(arrangeGrob(g2))
+# }
 
 
 
@@ -308,21 +423,21 @@ saveepgplot=function(alplot,hwplot,ttplot,lab, fig_dir){
 }
 
 
-# wrapper function
-sth.bin.plot=function(aln,hwn,ttn,sthn,alprev,hwprev,ttprev,sthprev,alprh1,alprh2,alprh3,hwprh1,hwprh2,hwprh3,ttprh1,ttprh2,ttprh3,sthprh1,sthprh2,sthprh3,lab, fig_dir){
-  # prep data for plotting
-  alprev=sth.plot.prep(alprev)
-  hwprev=sth.plot.prep(hwprev)
-  ttprev=sth.plot.prep(ttprev)
-  sthprev=sth.plot.prep(sthprev)
-  
-  alplot=makeplot(aln,alprev,alprh1,alprh2,alprh3,ytitle="Ascaris",ylim)
-  hwplot=makeplot(hwn,hwprev,hwprh1,hwprh2,hwprh3,ytitle="Hookworm",ylim)
-  ttplot=makeplot(ttn,ttprev,ttprh1,ttprh2,ttprh3,ytitle="Trichuris",ylim)
-  sthplot=makeplot(sthn,sthprev,sthprh1,sthprh2,sthprh3,ytitle="Any STH",ylim)
-  
-  saveplot(alplot,hwplot,ttplot,sthplot,lab,fig_dir)
-}
+# # wrapper function
+# sth.bin.plot=function(aln,hwn,ttn,sthn,alprev,hwprev,ttprev,sthprev,alprh1,hwprh1,ttprh1lab, fig_dir){
+#   # prep data for plotting
+#   alprev=sth.plot.prep(alprev)
+#   hwprev=sth.plot.prep(hwprev)
+#   ttprev=sth.plot.prep(ttprev)
+#   sthprev=sth.plot.prep(sthprev)
+#   
+#   alplot=makeplot(aln,alprev,alprh1,alprh2,alprh3,ytitle="Ascaris",ylim)
+#   hwplot=makeplot(hwn,hwprev,hwprh1,hwprh2,hwprh3,ytitle="Hookworm",ylim)
+#   ttplot=makeplot(ttn,ttprev,ttprh1,ttprh2,ttprh3,ytitle="Trichuris",ylim)
+#   sthplot=makeplot(sthn,sthprev,sthprh1,sthprh2,sthprh3,ytitle="Any STH",ylim)
+#   
+#   saveplot(alplot,hwplot,ttplot,sthplot,lab,fig_dir)
+# }
 
 
 
@@ -353,7 +468,7 @@ theme_complete_bw <- function(base_size = 12, base_family = "") {
       axis.ticks.y =      element_line(colour = "black"),
       axis.ticks.x =      element_blank(),
       axis.title.x =      element_text(size = base_size, vjust = 0.5),
-      axis.title.y =      element_text(size = base_size * 0.8, angle = 0, vjust = 0.5),
+      # axis.title.y =      element_text(size = base_size * 0.8),
       axis.ticks.length = unit(0.15, "cm"),
       
       legend.background = element_rect(colour=NA), 
