@@ -26,10 +26,23 @@ load("~/Box Sync/WASHB Parasites/Results/Jade/sth_pr_epg_unadj.RData")
 #---------------------------------------------
 # Create plot
 #---------------------------------------------
-sth.epg.plot(psth_n_int_j$N.int.al,psth_n_int_j$N.int.hw,psth_n_int_j$N.int.tt,
-             al_int_gmn,hw_int_gmn,tt_int_gmn,
-             al_fecr_geo_h1_unadj_j,al_fecr_geo_h2_unadj_j,al_fecr_geo_h3_unadj_j,
-             hw_fecr_geo_h1_unadj_j,hw_fecr_geo_h2_unadj_j,hw_fecr_geo_h3_unadj_j,
-             tt_fecr_geo_h1_unadj_j,tt_fecr_geo_h2_unadj_j,tt_fecr_geo_h3_unadj_j,
-             lab="primary",
-             fig_dir = figure_path)
+almn=sth.epg.plot.prep(al_int_gmn)
+hwmn=sth.epg.plot.prep(hw_int_gmn)
+ttmn=sth.epg.plot.prep(tt_int_gmn)
+
+alplot=makeepgplot(n = psth_n_int_j$N.int.al,
+                   mn = almn,
+                   ytitle="Ascaris")
+
+hwplot=makeepgplot(n = psth_n_int_j$N.int.hw,
+                   mn = hwmn,
+                   ytitle="Hookworm")
+
+ttplot=makeepgplot(n = psth_n_int_j$N.int.tt,
+                   mn = ttmn,
+                   ytitle="Trichuris")
+
+pdf(paste0(figure_path,"fig-epg-primary.pdf"),width=7.2,height=8)
+grid.arrange(alplot,hwplot,ttplot,ncol=1,nrow=3)
+dev.off()
+
